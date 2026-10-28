@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0172-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0172",
+  "file": "aug0172-paystub.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "net_pay": {
+      "value": 2745.15,
+      "bbox": {
+        "x0": 97.5,
+        "y0": 102.0,
+        "x1": 141.9,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 91919.28,
+      "bbox": {
+        "x0": 429.7,
+        "y0": 102.0,
+        "x1": 479.7,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Michelle Gardner",
+      "bbox": {
+        "x0": 108.6,
+        "y0": 126.0,
+        "x1": 184.7,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "semimonthly",
+      "bbox": {
+        "x0": 409.7,
+        "y0": 126.0,
+        "x1": 465.8,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Mccarty-Nelson",
+      "bbox": {
+        "x0": 106.9,
+        "y0": 150.0,
+        "x1": 176.4,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/15/2025",
+      "bbox": {
+        "x0": 382.5,
+        "y0": 150.0,
+        "x1": 432.5,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 3829.97,
+      "bbox": {
+        "x0": 110.2,
+        "y0": 174.0,
+        "x1": 154.7,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 1084.82,
+      "bbox": {
+        "x0": 421.3,
+        "y0": 174.0,
+        "x1": 465.8,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

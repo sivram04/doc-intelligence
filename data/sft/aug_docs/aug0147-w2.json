@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0147-w2",
+  "doc_type": "w2",
+  "case_id": "aug0147",
+  "file": "aug0147-w2.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employee_name": {
+      "value": "Brandy Klein",
+      "bbox": {
+        "x0": 153.8,
+        "y0": 102.0,
+        "x1": 210.4,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2025,
+      "bbox": {
+        "x0": 381.9,
+        "y0": 102.0,
+        "x1": 404.1,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "0083",
+      "bbox": {
+        "x0": 116.9,
+        "y0": 126.0,
+        "x1": 139.1,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "91-8501076",
+      "bbox": {
+        "x0": 406.4,
+        "y0": 126.0,
+        "x1": 459.7,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 146009.48,
+      "bbox": {
+        "x0": 218.0,
+        "y0": 150.0,
+        "x1": 273.6,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Dominguez-Kemp",
+      "bbox": {
+        "x0": 432.1,
+        "y0": 150.0,
+        "x1": 512.1,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 146009.48,
+      "bbox": {
+        "x0": 173.6,
+        "y0": 174.0,
+        "x1": 229.2,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 146009.48,
+      "bbox": {
+        "x0": 418.0,
+        "y0": 174.0,
+        "x1": 473.6,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 23076.16,
+      "bbox": {
+        "x0": 203.6,
+        "y0": 198.0,
+        "x1": 253.6,
+        "y1": 208.5,
+        "page": 0
+      }
+    }
+  }
+}

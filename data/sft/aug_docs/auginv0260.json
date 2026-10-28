@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0260",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0260.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "invoice_date": {
+      "value": "05/10/2014",
+      "bbox": {
+        "x0": 136.0,
+        "y0": 102.0,
+        "x1": 196.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Kane and Sons",
+      "bbox": {
+        "x0": 386.0,
+        "y0": 102.0,
+        "x1": 464.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 9577.12,
+      "bbox": {
+        "x0": 124.0,
+        "y0": 126.0,
+        "x1": 178.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Greer-Johnson",
+      "bbox": {
+        "x0": 380.0,
+        "y0": 126.0,
+        "x1": 458.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 9121.07,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 150.0,
+        "x1": 172.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-50667",
+      "bbox": {
+        "x0": 428.0,
+        "y0": 150.0,
+        "x1": 482.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 456.05,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 174.0,
+        "x1": 160.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

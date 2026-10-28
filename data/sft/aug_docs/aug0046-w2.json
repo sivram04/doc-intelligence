@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0046-w2",
+  "doc_type": "w2",
+  "case_id": "aug0046",
+  "file": "aug0046-w2.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Jenkins-Carter",
+      "bbox": {
+        "x0": 142.0,
+        "y0": 102.0,
+        "x1": 226.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "78-9944189",
+      "bbox": {
+        "x0": 416.0,
+        "y0": 102.0,
+        "x1": 476.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Tyler Booth",
+      "bbox": {
+        "x0": 166.0,
+        "y0": 126.0,
+        "x1": 232.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "8075",
+      "bbox": {
+        "x0": 416.0,
+        "y0": 126.0,
+        "x1": 440.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2025,
+      "bbox": {
+        "x0": 112.0,
+        "y0": 150.0,
+        "x1": 136.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 142762.65,
+      "bbox": {
+        "x0": 530.0,
+        "y0": 150.0,
+        "x1": 596.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 14698.41,
+      "bbox": {
+        "x0": 184.0,
+        "y0": 174.0,
+        "x1": 244.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 142762.65,
+      "bbox": {
+        "x0": 470.0,
+        "y0": 174.0,
+        "x1": 536.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 142762.65,
+      "bbox": {
+        "x0": 148.0,
+        "y0": 198.0,
+        "x1": 214.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    }
+  }
+}

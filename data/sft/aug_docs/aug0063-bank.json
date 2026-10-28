@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0063-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0063",
+  "file": "aug0063-bank.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "total_withdrawals": {
+      "value": 3301.62,
+      "bbox": {
+        "x0": 163.6,
+        "y0": 102.0,
+        "x1": 203.6,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "total_deposits": {
+      "value": 4609.47,
+      "bbox": {
+        "x0": 427.4,
+        "y0": 102.0,
+        "x1": 467.4,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 5146.8,
+      "bbox": {
+        "x0": 128.8,
+        "y0": 126.0,
+        "x1": 168.8,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2024 - 11/30/2024",
+      "bbox": {
+        "x0": 369.7,
+        "y0": 126.0,
+        "x1": 469.1,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bank_name": {
+      "value": "Demo Credit Union",
+      "bbox": {
+        "x0": 84.1,
+        "y0": 150.0,
+        "x1": 163.6,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "opening_balance": {
+      "value": 3838.95,
+      "bbox": {
+        "x0": 413.3,
+        "y0": 150.0,
+        "x1": 453.3,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "account_last4": {
+      "value": "6369",
+      "bbox": {
+        "x0": 128.3,
+        "y0": 174.0,
+        "x1": 148.3,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "account_holder": {
+      "value": "Mary Higgins",
+      "bbox": {
+        "x0": 407.2,
+        "y0": 174.0,
+        "x1": 463.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

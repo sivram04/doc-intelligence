@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0036",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0036.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "subtotal": {
+      "value": 2113.76,
+      "bbox": {
+        "x0": 100.8,
+        "y0": 102.0,
+        "x1": 140.8,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 153.25,
+      "bbox": {
+        "x0": 358.0,
+        "y0": 102.0,
+        "x1": 390.5,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 2267.01,
+      "bbox": {
+        "x0": 114.4,
+        "y0": 126.0,
+        "x1": 154.4,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Pena Inc",
+      "bbox": {
+        "x0": 383.5,
+        "y0": 126.0,
+        "x1": 418.2,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Harris Inc",
+      "bbox": {
+        "x0": 93.6,
+        "y0": 150.0,
+        "x1": 133.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-36698",
+      "bbox": {
+        "x0": 379.9,
+        "y0": 150.0,
+        "x1": 426.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "04/07/2004",
+      "bbox": {
+        "x0": 81.3,
+        "y0": 174.0,
+        "x1": 126.9,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

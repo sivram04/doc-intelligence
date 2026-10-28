@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0222",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0222.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "invoice_date": {
+      "value": "04/04/1997",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 116.0,
+        "x1": 95.6,
+        "y1": 126.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Walker, Ramirez and Weaver",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 156.0,
+        "x1": 168.8,
+        "y1": 166.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Rasmussen, Flynn and Gordon",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 196.0,
+        "x1": 173.3,
+        "y1": 206.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-00223",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 236.0,
+        "x1": 96.1,
+        "y1": 246.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 24957.7,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 276.0,
+        "x1": 95.0,
+        "y1": 286.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 27016.71,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 316.0,
+        "x1": 95.0,
+        "y1": 326.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 2059.01,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 356.0,
+        "x1": 90.0,
+        "y1": 366.5,
+        "page": 0
+      }
+    }
+  }
+}

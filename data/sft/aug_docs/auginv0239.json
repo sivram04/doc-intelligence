@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0239",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0239.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Nixon Ltd",
+      "bbox": {
+        "x0": 85.2,
+        "y0": 102.0,
+        "x1": 126.6,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-39527",
+      "bbox": {
+        "x0": 99.9,
+        "y0": 126.0,
+        "x1": 146.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "07/31/2009",
+      "bbox": {
+        "x0": 81.3,
+        "y0": 150.0,
+        "x1": 126.9,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Watson, Ferguson and Gonzales",
+      "bbox": {
+        "x0": 87.2,
+        "y0": 174.0,
+        "x1": 216.6,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 13946.73,
+      "bbox": {
+        "x0": 100.8,
+        "y0": 198.0,
+        "x1": 145.8,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 697.34,
+      "bbox": {
+        "x0": 78.0,
+        "y0": 222.0,
+        "x1": 110.5,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 14644.07,
+      "bbox": {
+        "x0": 114.4,
+        "y0": 246.0,
+        "x1": 159.4,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

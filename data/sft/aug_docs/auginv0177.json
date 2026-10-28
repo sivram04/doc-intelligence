@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0177",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0177.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Johnson-Lewis",
+      "bbox": {
+        "x0": 88.0,
+        "y0": 102.0,
+        "x1": 166.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-84439",
+      "bbox": {
+        "x0": 148.0,
+        "y0": 126.0,
+        "x1": 202.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "10/28/1980",
+      "bbox": {
+        "x0": 88.0,
+        "y0": 150.0,
+        "x1": 148.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Barajas Ltd",
+      "bbox": {
+        "x0": 106.0,
+        "y0": 174.0,
+        "x1": 172.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 10395.06,
+      "bbox": {
+        "x0": 112.0,
+        "y0": 198.0,
+        "x1": 172.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 519.75,
+      "bbox": {
+        "x0": 82.0,
+        "y0": 222.0,
+        "x1": 124.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 10914.81,
+      "bbox": {
+        "x0": 124.0,
+        "y0": 246.0,
+        "x1": 184.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

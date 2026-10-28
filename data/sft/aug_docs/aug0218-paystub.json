@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0218-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0218",
+  "file": "aug0218-paystub.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "net_pay": {
+      "value": 3446.69,
+      "bbox": {
+        "x0": 97.5,
+        "y0": 102.0,
+        "x1": 141.9,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "May-Jimenez",
+      "bbox": {
+        "x0": 386.9,
+        "y0": 102.0,
+        "x1": 446.3,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "biweekly",
+      "bbox": {
+        "x0": 129.7,
+        "y0": 126.0,
+        "x1": 168.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 4424.67,
+      "bbox": {
+        "x0": 407.4,
+        "y0": 126.0,
+        "x1": 451.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/31/2023",
+      "bbox": {
+        "x0": 114.7,
+        "y0": 150.0,
+        "x1": 164.7,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 977.98,
+      "bbox": {
+        "x0": 421.3,
+        "y0": 150.0,
+        "x1": 457.5,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Lauren Williams",
+      "bbox": {
+        "x0": 108.6,
+        "y0": 174.0,
+        "x1": 179.7,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 115041.42,
+      "bbox": {
+        "x0": 391.3,
+        "y0": 174.0,
+        "x1": 446.9,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

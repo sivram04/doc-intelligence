@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0194-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0194",
+  "file": "aug0194-paystub.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "pay_frequency": {
+      "value": "monthly",
+      "bbox": {
+        "x0": 106.9,
+        "y0": 102.0,
+        "x1": 140.2,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 5523.99,
+      "bbox": {
+        "x0": 374.4,
+        "y0": 102.0,
+        "x1": 414.4,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 7746.35,
+      "bbox": {
+        "x0": 121.0,
+        "y0": 126.0,
+        "x1": 161.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Lori Silva",
+      "bbox": {
+        "x0": 409.4,
+        "y0": 126.0,
+        "x1": 449.7,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 2222.36,
+      "bbox": {
+        "x0": 109.1,
+        "y0": 150.0,
+        "x1": 149.1,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/17/2025",
+      "bbox": {
+        "x0": 389.4,
+        "y0": 150.0,
+        "x1": 434.9,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 92956.2,
+      "bbox": {
+        "x0": 140.5,
+        "y0": 174.0,
+        "x1": 185.5,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Beltran-Lara",
+      "bbox": {
+        "x0": 383.6,
+        "y0": 174.0,
+        "x1": 434.6,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

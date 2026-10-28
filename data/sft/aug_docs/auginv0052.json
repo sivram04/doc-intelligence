@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0052",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0052.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Ibarra, Green and Flores",
+      "bbox": {
+        "x0": 100.0,
+        "y0": 102.0,
+        "x1": 244.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-16283",
+      "bbox": {
+        "x0": 398.0,
+        "y0": 102.0,
+        "x1": 452.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "11/18/1974",
+      "bbox": {
+        "x0": 88.0,
+        "y0": 126.0,
+        "x1": 148.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Rogers Ltd",
+      "bbox": {
+        "x0": 386.0,
+        "y0": 126.0,
+        "x1": 446.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 1178.59,
+      "bbox": {
+        "x0": 112.0,
+        "y0": 150.0,
+        "x1": 166.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 97.23,
+      "bbox": {
+        "x0": 362.0,
+        "y0": 150.0,
+        "x1": 398.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 1275.82,
+      "bbox": {
+        "x0": 124.0,
+        "y0": 174.0,
+        "x1": 178.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

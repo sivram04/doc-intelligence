@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0037",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0037.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "invoice_number": {
+      "value": "INV-33189",
+      "bbox": {
+        "x0": 118.0,
+        "y0": 102.0,
+        "x1": 172.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 5247.37,
+      "bbox": {
+        "x0": 398.0,
+        "y0": 102.0,
+        "x1": 452.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Joyce-Hatfield",
+      "bbox": {
+        "x0": 106.0,
+        "y0": 126.0,
+        "x1": 190.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Jackson Group",
+      "bbox": {
+        "x0": 380.0,
+        "y0": 126.0,
+        "x1": 458.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 0.0,
+      "bbox": {
+        "x0": 82.0,
+        "y0": 150.0,
+        "x1": 112.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "10/27/1982",
+      "bbox": {
+        "x0": 368.0,
+        "y0": 150.0,
+        "x1": 428.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 5247.37,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 174.0,
+        "x1": 172.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

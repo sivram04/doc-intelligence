@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0033",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0033.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "invoice_number": {
+      "value": "INV-90333",
+      "bbox": {
+        "x0": 148.0,
+        "y0": 102.0,
+        "x1": 202.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "04/08/2017",
+      "bbox": {
+        "x0": 136.0,
+        "y0": 126.0,
+        "x1": 196.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 793.2,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 150.0,
+        "x1": 160.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Johnson-Sullivan",
+      "bbox": {
+        "x0": 106.0,
+        "y0": 174.0,
+        "x1": 202.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 16657.17,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 198.0,
+        "x1": 178.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 15863.97,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 222.0,
+        "x1": 178.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Brown Inc",
+      "bbox": {
+        "x0": 100.0,
+        "y0": 246.0,
+        "x1": 154.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

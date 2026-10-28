@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0113-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0113",
+  "file": "aug0113-bank.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "account_holder": {
+      "value": "Holly Ruiz",
+      "bbox": {
+        "x0": 148.0,
+        "y0": 102.0,
+        "x1": 208.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "account_last4": {
+      "value": "4043",
+      "bbox": {
+        "x0": 464.0,
+        "y0": 102.0,
+        "x1": 488.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "total_withdrawals": {
+      "value": 7676.92,
+      "bbox": {
+        "x0": 196.0,
+        "y0": 126.0,
+        "x1": 250.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "total_deposits": {
+      "value": 7909.65,
+      "bbox": {
+        "x0": 428.0,
+        "y0": 126.0,
+        "x1": 482.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2025 - 11/30/2025",
+      "bbox": {
+        "x0": 160.0,
+        "y0": 150.0,
+        "x1": 298.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bank_name": {
+      "value": "Sample National",
+      "bbox": {
+        "x0": 410.0,
+        "y0": 150.0,
+        "x1": 500.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "opening_balance": {
+      "value": 18739.66,
+      "bbox": {
+        "x0": 166.0,
+        "y0": 174.0,
+        "x1": 226.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 18972.39,
+      "bbox": {
+        "x0": 434.0,
+        "y0": 174.0,
+        "x1": 494.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

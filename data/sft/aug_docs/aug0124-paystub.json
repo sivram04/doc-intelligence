@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0124-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0124",
+  "file": "aug0124-paystub.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Davis Ltd",
+      "bbox": {
+        "x0": 106.9,
+        "y0": 102.0,
+        "x1": 148.6,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Victoria Perkins",
+      "bbox": {
+        "x0": 388.6,
+        "y0": 102.0,
+        "x1": 458.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/30/2025",
+      "bbox": {
+        "x0": 114.7,
+        "y0": 126.0,
+        "x1": 164.7,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "biweekly",
+      "bbox": {
+        "x0": 409.7,
+        "y0": 126.0,
+        "x1": 448.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 4826.76,
+      "bbox": {
+        "x0": 110.2,
+        "y0": 150.0,
+        "x1": 154.7,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 1302.57,
+      "bbox": {
+        "x0": 421.3,
+        "y0": 150.0,
+        "x1": 465.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 3524.19,
+      "bbox": {
+        "x0": 97.5,
+        "y0": 174.0,
+        "x1": 141.9,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 125495.76,
+      "bbox": {
+        "x0": 391.3,
+        "y0": 174.0,
+        "x1": 446.9,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

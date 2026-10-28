@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0232",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0232.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Brown-Lewis",
+      "bbox": {
+        "x0": 93.6,
+        "y0": 102.0,
+        "x1": 148.5,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-52253",
+      "bbox": {
+        "x0": 379.9,
+        "y0": 102.0,
+        "x1": 426.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "05/02/1980",
+      "bbox": {
+        "x0": 113.3,
+        "y0": 126.0,
+        "x1": 158.8,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Mueller Ltd",
+      "bbox": {
+        "x0": 367.2,
+        "y0": 126.0,
+        "x1": 415.2,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 3847.43,
+      "bbox": {
+        "x0": 100.8,
+        "y0": 150.0,
+        "x1": 140.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 317.41,
+      "bbox": {
+        "x0": 358.0,
+        "y0": 150.0,
+        "x1": 390.5,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 4164.84,
+      "bbox": {
+        "x0": 114.4,
+        "y0": 174.0,
+        "x1": 154.4,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

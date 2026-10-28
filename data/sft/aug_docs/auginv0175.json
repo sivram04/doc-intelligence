@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0175",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0175.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "invoice_date": {
+      "value": "11/02/2007",
+      "bbox": {
+        "x0": 88.0,
+        "y0": 102.0,
+        "x1": 148.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 17656.52,
+      "bbox": {
+        "x0": 112.0,
+        "y0": 126.0,
+        "x1": 172.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-17262",
+      "bbox": {
+        "x0": 148.0,
+        "y0": 150.0,
+        "x1": 202.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 18936.62,
+      "bbox": {
+        "x0": 124.0,
+        "y0": 174.0,
+        "x1": 184.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Murray Ltd",
+      "bbox": {
+        "x0": 106.0,
+        "y0": 198.0,
+        "x1": 166.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Lopez-Sanchez",
+      "bbox": {
+        "x0": 100.0,
+        "y0": 222.0,
+        "x1": 178.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 1280.1,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 246.0,
+        "x1": 172.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

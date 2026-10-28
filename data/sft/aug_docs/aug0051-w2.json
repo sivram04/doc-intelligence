@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0051-w2",
+  "doc_type": "w2",
+  "case_id": "aug0051",
+  "file": "aug0051-w2.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employee_name": {
+      "value": "Jasmine Cross",
+      "bbox": {
+        "x0": 153.8,
+        "y0": 102.0,
+        "x1": 219.9,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "67-2522775",
+      "bbox": {
+        "x0": 500.2,
+        "y0": 102.0,
+        "x1": 553.6,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 98499.39,
+      "bbox": {
+        "x0": 165.3,
+        "y0": 126.0,
+        "x1": 215.3,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 16242.72,
+      "bbox": {
+        "x0": 437.5,
+        "y0": 126.0,
+        "x1": 487.5,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2023,
+      "bbox": {
+        "x0": 101.9,
+        "y0": 150.0,
+        "x1": 124.2,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 98499.39,
+      "bbox": {
+        "x0": 467.5,
+        "y0": 150.0,
+        "x1": 517.5,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Young, Hodges and Gardner",
+      "bbox": {
+        "x0": 152.1,
+        "y0": 174.0,
+        "x1": 279.9,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "5233",
+      "bbox": {
+        "x0": 440.3,
+        "y0": 174.0,
+        "x1": 462.5,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 98499.39,
+      "bbox": {
+        "x0": 188.0,
+        "y0": 198.0,
+        "x1": 238.1,
+        "y1": 208.5,
+        "page": 0
+      }
+    }
+  }
+}

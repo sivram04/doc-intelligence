@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0083-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0083",
+  "file": "aug0083-bank.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "total_deposits": {
+      "value": 10748.49,
+      "bbox": {
+        "x0": 129.1,
+        "y0": 102.0,
+        "x1": 179.2,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "total_withdrawals": {
+      "value": 5415.77,
+      "bbox": {
+        "x0": 145.2,
+        "y0": 126.0,
+        "x1": 189.7,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "opening_balance": {
+      "value": 1096.18,
+      "bbox": {
+        "x0": 150.2,
+        "y0": 150.0,
+        "x1": 194.7,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bank_name": {
+      "value": "Demo Credit Union",
+      "bbox": {
+        "x0": 85.8,
+        "y0": 174.0,
+        "x1": 170.8,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 6428.9,
+      "bbox": {
+        "x0": 138.0,
+        "y0": 198.0,
+        "x1": 182.5,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2025 - 11/30/2025",
+      "bbox": {
+        "x0": 143.0,
+        "y0": 222.0,
+        "x1": 252.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "account_last4": {
+      "value": "9345",
+      "bbox": {
+        "x0": 136.9,
+        "y0": 246.0,
+        "x1": 159.1,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "account_holder": {
+      "value": "David Sandoval",
+      "bbox": {
+        "x0": 108.0,
+        "y0": 270.0,
+        "x1": 178.0,
+        "y1": 280.5,
+        "page": 0
+      }
+    }
+  }
+}

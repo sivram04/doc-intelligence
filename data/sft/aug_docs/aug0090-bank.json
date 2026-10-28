@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0090-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0090",
+  "file": "aug0090-bank.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "bank_name": {
+      "value": "First Example Bank",
+      "bbox": {
+        "x0": 106.3,
+        "y0": 102.0,
+        "x1": 186.3,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "account_holder": {
+      "value": "Angela Davis",
+      "bbox": {
+        "x0": 127.2,
+        "y0": 126.0,
+        "x1": 181.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "account_last4": {
+      "value": "0092",
+      "bbox": {
+        "x0": 144.1,
+        "y0": 150.0,
+        "x1": 164.1,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2024 - 11/30/2024",
+      "bbox": {
+        "x0": 134.9,
+        "y0": 174.0,
+        "x1": 234.4,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "opening_balance": {
+      "value": 6789.8,
+      "bbox": {
+        "x0": 140.0,
+        "y0": 198.0,
+        "x1": 180.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "total_deposits": {
+      "value": 4966.83,
+      "bbox": {
+        "x0": 121.1,
+        "y0": 222.0,
+        "x1": 161.1,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total_withdrawals": {
+      "value": 3801.71,
+      "bbox": {
+        "x0": 163.6,
+        "y0": 246.0,
+        "x1": 203.6,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 7954.92,
+      "bbox": {
+        "x0": 128.8,
+        "y0": 270.0,
+        "x1": 168.8,
+        "y1": 280.5,
+        "page": 0
+      }
+    }
+  }
+}

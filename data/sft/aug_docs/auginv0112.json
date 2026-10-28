@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0112",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0112.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "tax": {
+      "value": 0.0,
+      "bbox": {
+        "x0": 78.0,
+        "y0": 102.0,
+        "x1": 100.5,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 7336.67,
+      "bbox": {
+        "x0": 377.4,
+        "y0": 102.0,
+        "x1": 417.4,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 7336.67,
+      "bbox": {
+        "x0": 102.2,
+        "y0": 126.0,
+        "x1": 142.2,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Hampton-Clark",
+      "bbox": {
+        "x0": 373.6,
+        "y0": 126.0,
+        "x1": 436.3,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Douglas Ltd",
+      "bbox": {
+        "x0": 103.5,
+        "y0": 150.0,
+        "x1": 153.3,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-02930",
+      "bbox": {
+        "x0": 379.9,
+        "y0": 150.0,
+        "x1": 426.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "03/28/1996",
+      "bbox": {
+        "x0": 113.3,
+        "y0": 174.0,
+        "x1": 158.8,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

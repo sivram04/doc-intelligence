@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0133-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0133",
+  "file": "aug0133-bank.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "bank_name": {
+      "value": "First Example Bank",
+      "bbox": {
+        "x0": 130.0,
+        "y0": 102.0,
+        "x1": 238.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "account_holder": {
+      "value": "Kristen Richardson",
+      "bbox": {
+        "x0": 428.0,
+        "y0": 102.0,
+        "x1": 536.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "account_last4": {
+      "value": "5111",
+      "bbox": {
+        "x0": 184.0,
+        "y0": 126.0,
+        "x1": 208.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2023 - 11/30/2023",
+      "bbox": {
+        "x0": 440.0,
+        "y0": 126.0,
+        "x1": 578.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "opening_balance": {
+      "value": 8712.27,
+      "bbox": {
+        "x0": 154.0,
+        "y0": 150.0,
+        "x1": 208.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deposits": {
+      "value": 2960.77,
+      "bbox": {
+        "x0": 464.0,
+        "y0": 150.0,
+        "x1": 518.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_withdrawals": {
+      "value": 2921.57,
+      "bbox": {
+        "x0": 166.0,
+        "y0": 174.0,
+        "x1": 220.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 8751.47,
+      "bbox": {
+        "x0": 428.0,
+        "y0": 174.0,
+        "x1": 482.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

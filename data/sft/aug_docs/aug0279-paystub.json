@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0279-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0279",
+  "file": "aug0279-paystub.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "ytd_gross": {
+      "value": 168433.2,
+      "bbox": {
+        "x0": 140.5,
+        "y0": 102.0,
+        "x1": 190.5,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Richard Marquez",
+      "bbox": {
+        "x0": 409.4,
+        "y0": 102.0,
+        "x1": 479.1,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 2737.08,
+      "bbox": {
+        "x0": 132.7,
+        "y0": 126.0,
+        "x1": 172.7,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "monthly",
+      "bbox": {
+        "x0": 402.7,
+        "y0": 126.0,
+        "x1": 436.1,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 14036.1,
+      "bbox": {
+        "x0": 121.0,
+        "y0": 150.0,
+        "x1": 166.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Jackson, Stuart and Ryan",
+      "bbox": {
+        "x0": 383.6,
+        "y0": 150.0,
+        "x1": 484.6,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/20/2024",
+      "bbox": {
+        "x0": 109.4,
+        "y0": 174.0,
+        "x1": 154.9,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 11299.02,
+      "bbox": {
+        "x0": 391.6,
+        "y0": 174.0,
+        "x1": 436.6,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

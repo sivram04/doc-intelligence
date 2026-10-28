@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0288",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0288.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Stout-Phillips",
+      "bbox": {
+        "x0": 85.2,
+        "y0": 102.0,
+        "x1": 140.2,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-43004",
+      "bbox": {
+        "x0": 99.9,
+        "y0": 126.0,
+        "x1": 146.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "08/12/2005",
+      "bbox": {
+        "x0": 81.3,
+        "y0": 150.0,
+        "x1": 126.9,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Mclaughlin LLC",
+      "bbox": {
+        "x0": 103.5,
+        "y0": 174.0,
+        "x1": 171.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 3349.08,
+      "bbox": {
+        "x0": 100.8,
+        "y0": 198.0,
+        "x1": 140.8,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 276.3,
+      "bbox": {
+        "x0": 98.8,
+        "y0": 222.0,
+        "x1": 131.3,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 3625.38,
+      "bbox": {
+        "x0": 102.2,
+        "y0": 246.0,
+        "x1": 142.2,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

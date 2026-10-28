@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0112-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0112",
+  "file": "aug0112-paystub.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Tucker, Lee and Blankenship",
+      "bbox": {
+        "x0": 106.9,
+        "y0": 102.0,
+        "x1": 236.4,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Dawn Hernandez",
+      "bbox": {
+        "x0": 417.5,
+        "y0": 102.0,
+        "x1": 494.7,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/26/2024",
+      "bbox": {
+        "x0": 102.5,
+        "y0": 126.0,
+        "x1": 152.5,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "monthly",
+      "bbox": {
+        "x0": 409.7,
+        "y0": 126.0,
+        "x1": 444.7,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 7723.59,
+      "bbox": {
+        "x0": 127.5,
+        "y0": 150.0,
+        "x1": 171.9,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 1496.84,
+      "bbox": {
+        "x0": 395.8,
+        "y0": 150.0,
+        "x1": 440.3,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 6226.75,
+      "bbox": {
+        "x0": 97.5,
+        "y0": 174.0,
+        "x1": 141.9,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 92683.08,
+      "bbox": {
+        "x0": 391.3,
+        "y0": 174.0,
+        "x1": 441.4,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0253",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0253.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "subtotal": {
+      "value": 2666.98,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 102.0,
+        "x1": 172.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-02146",
+      "bbox": {
+        "x0": 428.0,
+        "y0": 102.0,
+        "x1": 482.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Woods Ltd",
+      "bbox": {
+        "x0": 100.0,
+        "y0": 126.0,
+        "x1": 154.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 2666.98,
+      "bbox": {
+        "x0": 404.0,
+        "y0": 126.0,
+        "x1": 458.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Crawford Group",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 150.0,
+        "x1": 196.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "05/31/1980",
+      "bbox": {
+        "x0": 416.0,
+        "y0": 150.0,
+        "x1": 476.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 0.0,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 174.0,
+        "x1": 148.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

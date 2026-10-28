@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0070-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0070",
+  "file": "aug0070-paystub.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Romero, Baker and Patel",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 116.0,
+        "x1": 188.0,
+        "y1": 126.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Jessica Jones MD",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 156.0,
+        "x1": 146.0,
+        "y1": 166.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/23/2024",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 196.0,
+        "x1": 110.0,
+        "y1": 206.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "semimonthly",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 236.0,
+        "x1": 116.0,
+        "y1": 246.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 7250.57,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 276.0,
+        "x1": 104.0,
+        "y1": 286.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 1722.35,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 316.0,
+        "x1": 104.0,
+        "y1": 326.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 5528.22,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 356.0,
+        "x1": 104.0,
+        "y1": 366.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 174013.68,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 396.0,
+        "x1": 116.0,
+        "y1": 406.5,
+        "page": 0
+      }
+    }
+  }
+}

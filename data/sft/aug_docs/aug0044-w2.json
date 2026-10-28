@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0044-w2",
+  "doc_type": "w2",
+  "case_id": "aug0044",
+  "file": "aug0044-w2.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Johnson, Holland and Oconnor",
+      "bbox": {
+        "x0": 142.0,
+        "y0": 102.0,
+        "x1": 310.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "51-8111703",
+      "bbox": {
+        "x0": 536.0,
+        "y0": 102.0,
+        "x1": 596.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Jennifer Reyes",
+      "bbox": {
+        "x0": 142.0,
+        "y0": 126.0,
+        "x1": 226.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "6635",
+      "bbox": {
+        "x0": 458.0,
+        "y0": 126.0,
+        "x1": 482.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2024,
+      "bbox": {
+        "x0": 88.0,
+        "y0": 150.0,
+        "x1": 112.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 78279.66,
+      "bbox": {
+        "x0": 500.0,
+        "y0": 150.0,
+        "x1": 560.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 8425.57,
+      "bbox": {
+        "x0": 238.0,
+        "y0": 174.0,
+        "x1": 292.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 78279.66,
+      "bbox": {
+        "x0": 482.0,
+        "y0": 174.0,
+        "x1": 542.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 78279.66,
+      "bbox": {
+        "x0": 214.0,
+        "y0": 198.0,
+        "x1": 274.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    }
+  }
+}

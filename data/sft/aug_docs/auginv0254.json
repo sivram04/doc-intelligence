@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0254",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0254.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Browning Inc",
+      "bbox": {
+        "x0": 86.3,
+        "y0": 102.0,
+        "x1": 144.1,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-72283",
+      "bbox": {
+        "x0": 135.2,
+        "y0": 126.0,
+        "x1": 183.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "05/25/1974",
+      "bbox": {
+        "x0": 119.1,
+        "y0": 150.0,
+        "x1": 169.2,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Mora-Freeman",
+      "bbox": {
+        "x0": 108.0,
+        "y0": 174.0,
+        "x1": 174.1,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 6788.94,
+      "bbox": {
+        "x0": 104.7,
+        "y0": 198.0,
+        "x1": 149.1,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 339.45,
+      "bbox": {
+        "x0": 78.6,
+        "y0": 222.0,
+        "x1": 114.7,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 7128.39,
+      "bbox": {
+        "x0": 105.8,
+        "y0": 246.0,
+        "x1": 150.3,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0262-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0262",
+  "file": "aug0262-paystub.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Melendez PLC",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 102.0,
+        "x1": 184.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Alexander Jackson",
+      "bbox": {
+        "x0": 392.0,
+        "y0": 102.0,
+        "x1": 494.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/18/2023",
+      "bbox": {
+        "x0": 124.0,
+        "y0": 126.0,
+        "x1": 184.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "monthly",
+      "bbox": {
+        "x0": 422.0,
+        "y0": 126.0,
+        "x1": 464.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 13601.05,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 150.0,
+        "x1": 178.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 2749.1,
+      "bbox": {
+        "x0": 440.0,
+        "y0": 150.0,
+        "x1": 494.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 10851.95,
+      "bbox": {
+        "x0": 106.0,
+        "y0": 174.0,
+        "x1": 166.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 163212.6,
+      "bbox": {
+        "x0": 452.0,
+        "y0": 174.0,
+        "x1": 518.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

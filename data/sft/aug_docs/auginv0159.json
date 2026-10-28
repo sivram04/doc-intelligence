@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0159",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0159.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Hernandez-James",
+      "bbox": {
+        "x0": 93.6,
+        "y0": 102.0,
+        "x1": 164.6,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-35347",
+      "bbox": {
+        "x0": 128.8,
+        "y0": 126.0,
+        "x1": 174.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "12/25/1994",
+      "bbox": {
+        "x0": 113.3,
+        "y0": 150.0,
+        "x1": 158.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Sosa, Bryant and Harvey",
+      "bbox": {
+        "x0": 103.5,
+        "y0": 174.0,
+        "x1": 203.5,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 491.2,
+      "bbox": {
+        "x0": 100.8,
+        "y0": 198.0,
+        "x1": 133.3,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 24.56,
+      "bbox": {
+        "x0": 98.8,
+        "y0": 222.0,
+        "x1": 126.3,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 515.76,
+      "bbox": {
+        "x0": 114.4,
+        "y0": 246.0,
+        "x1": 146.9,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

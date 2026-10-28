@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0251-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0251",
+  "file": "aug0251-paystub.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Mckinney, Peters and Lamb",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 102.0,
+        "x1": 262.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 2978.01,
+      "bbox": {
+        "x0": 142.0,
+        "y0": 126.0,
+        "x1": 196.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "weekly",
+      "bbox": {
+        "x0": 118.0,
+        "y0": 150.0,
+        "x1": 154.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 2266.78,
+      "bbox": {
+        "x0": 106.0,
+        "y0": 174.0,
+        "x1": 160.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 154856.52,
+      "bbox": {
+        "x0": 172.0,
+        "y0": 198.0,
+        "x1": 238.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/21/2025",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 222.0,
+        "x1": 172.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 711.23,
+      "bbox": {
+        "x0": 160.0,
+        "y0": 246.0,
+        "x1": 202.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Sara Lane",
+      "bbox": {
+        "x0": 142.0,
+        "y0": 270.0,
+        "x1": 196.0,
+        "y1": 280.5,
+        "page": 0
+      }
+    }
+  }
+}

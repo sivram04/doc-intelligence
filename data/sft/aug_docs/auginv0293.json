@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0293",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0293.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "bill_to": {
+      "value": "Hoffman, Mcclure and Peterson",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 116.0,
+        "x1": 224.0,
+        "y1": 126.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 23953.41,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 156.0,
+        "x1": 110.0,
+        "y1": 166.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Bishop-Davis",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 196.0,
+        "x1": 122.0,
+        "y1": 206.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-71426",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 236.0,
+        "x1": 104.0,
+        "y1": 246.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 0.0,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 276.0,
+        "x1": 80.0,
+        "y1": 286.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 23953.41,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 316.0,
+        "x1": 110.0,
+        "y1": 326.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "04/12/1972",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 356.0,
+        "x1": 110.0,
+        "y1": 366.5,
+        "page": 0
+      }
+    }
+  }
+}

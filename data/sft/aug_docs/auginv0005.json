@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0005",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0005.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Vargas-Johnson",
+      "bbox": {
+        "x0": 85.2,
+        "y0": 102.0,
+        "x1": 149.6,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-81837",
+      "bbox": {
+        "x0": 408.8,
+        "y0": 102.0,
+        "x1": 454.9,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "05/11/1981",
+      "bbox": {
+        "x0": 113.3,
+        "y0": 126.0,
+        "x1": 158.8,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Bowers PLC",
+      "bbox": {
+        "x0": 367.2,
+        "y0": 126.0,
+        "x1": 418.6,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 10625.56,
+      "bbox": {
+        "x0": 100.8,
+        "y0": 150.0,
+        "x1": 145.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 0.0,
+      "bbox": {
+        "x0": 358.0,
+        "y0": 150.0,
+        "x1": 380.5,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 10625.56,
+      "bbox": {
+        "x0": 114.4,
+        "y0": 174.0,
+        "x1": 159.4,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

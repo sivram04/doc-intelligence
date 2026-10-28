@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0137",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0137.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Wallace-Jackson",
+      "bbox": {
+        "x0": 85.2,
+        "y0": 102.0,
+        "x1": 153.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-13803",
+      "bbox": {
+        "x0": 379.9,
+        "y0": 102.0,
+        "x1": 426.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "09/25/2001",
+      "bbox": {
+        "x0": 113.3,
+        "y0": 126.0,
+        "x1": 158.8,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Brown, Gould and Davis",
+      "bbox": {
+        "x0": 383.5,
+        "y0": 126.0,
+        "x1": 483.5,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 6336.26,
+      "bbox": {
+        "x0": 100.8,
+        "y0": 150.0,
+        "x1": 140.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 0.0,
+      "bbox": {
+        "x0": 358.0,
+        "y0": 150.0,
+        "x1": 380.5,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 6336.26,
+      "bbox": {
+        "x0": 114.4,
+        "y0": 174.0,
+        "x1": 154.4,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

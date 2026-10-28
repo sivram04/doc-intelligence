@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0282-w2",
+  "doc_type": "w2",
+  "case_id": "aug0282",
+  "file": "aug0282-w2.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employee_name": {
+      "value": "Veronica Webb",
+      "bbox": {
+        "x0": 137.5,
+        "y0": 102.0,
+        "x1": 205.8,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2024,
+      "bbox": {
+        "x0": 381.9,
+        "y0": 102.0,
+        "x1": 404.1,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 167950.62,
+      "bbox": {
+        "x0": 165.3,
+        "y0": 126.0,
+        "x1": 220.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "70-1390703",
+      "bbox": {
+        "x0": 406.4,
+        "y0": 126.0,
+        "x1": 459.7,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 167950.62,
+      "bbox": {
+        "x0": 188.0,
+        "y0": 150.0,
+        "x1": 243.6,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 16377.38,
+      "bbox": {
+        "x0": 483.6,
+        "y0": 150.0,
+        "x1": 533.6,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Jenkins Inc",
+      "bbox": {
+        "x0": 135.8,
+        "y0": 174.0,
+        "x1": 185.8,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "3681",
+      "bbox": {
+        "x0": 396.9,
+        "y0": 174.0,
+        "x1": 419.1,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 167950.62,
+      "bbox": {
+        "x0": 138.0,
+        "y0": 198.0,
+        "x1": 193.6,
+        "y1": 208.5,
+        "page": 0
+      }
+    }
+  }
+}

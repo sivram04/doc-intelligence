@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0101-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0101",
+  "file": "aug0101-bank.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "bank_name": {
+      "value": "First Example Bank",
+      "bbox": {
+        "x0": 88.0,
+        "y0": 102.0,
+        "x1": 196.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "account_holder": {
+      "value": "Ian Short",
+      "bbox": {
+        "x0": 428.0,
+        "y0": 102.0,
+        "x1": 482.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "account_last4": {
+      "value": "8698",
+      "bbox": {
+        "x0": 184.0,
+        "y0": 126.0,
+        "x1": 208.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2023 - 11/30/2023",
+      "bbox": {
+        "x0": 380.0,
+        "y0": 126.0,
+        "x1": 518.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "opening_balance": {
+      "value": 19212.27,
+      "bbox": {
+        "x0": 166.0,
+        "y0": 150.0,
+        "x1": 226.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deposits": {
+      "value": 3234.41,
+      "bbox": {
+        "x0": 464.0,
+        "y0": 150.0,
+        "x1": 518.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_withdrawals": {
+      "value": 2986.98,
+      "bbox": {
+        "x0": 196.0,
+        "y0": 174.0,
+        "x1": 250.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 19459.7,
+      "bbox": {
+        "x0": 428.0,
+        "y0": 174.0,
+        "x1": 488.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

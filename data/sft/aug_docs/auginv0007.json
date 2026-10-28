@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0007",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0007.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "invoice_number": {
+      "value": "INV-57629",
+      "bbox": {
+        "x0": 99.9,
+        "y0": 102.0,
+        "x1": 146.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 18926.25,
+      "bbox": {
+        "x0": 100.8,
+        "y0": 126.0,
+        "x1": 145.8,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Lewis, Hanson and Werner",
+      "bbox": {
+        "x0": 85.2,
+        "y0": 150.0,
+        "x1": 194.6,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Wade, Patel and Mercado",
+      "bbox": {
+        "x0": 87.2,
+        "y0": 174.0,
+        "x1": 190.5,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 20487.67,
+      "bbox": {
+        "x0": 114.4,
+        "y0": 198.0,
+        "x1": 159.4,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 1561.42,
+      "bbox": {
+        "x0": 98.8,
+        "y0": 222.0,
+        "x1": 138.8,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "01/02/2024",
+      "bbox": {
+        "x0": 81.3,
+        "y0": 246.0,
+        "x1": 126.9,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

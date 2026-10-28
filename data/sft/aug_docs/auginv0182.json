@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0182",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0182.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "invoice_date": {
+      "value": "01/27/1970",
+      "bbox": {
+        "x0": 119.1,
+        "y0": 102.0,
+        "x1": 169.2,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 18889.34,
+      "bbox": {
+        "x0": 385.8,
+        "y0": 102.0,
+        "x1": 435.8,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Hall-Williamson",
+      "bbox": {
+        "x0": 86.3,
+        "y0": 126.0,
+        "x1": 155.2,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Schroeder Inc",
+      "bbox": {
+        "x0": 369.1,
+        "y0": 126.0,
+        "x1": 431.4,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 18889.34,
+      "bbox": {
+        "x0": 104.7,
+        "y0": 150.0,
+        "x1": 154.7,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-06106",
+      "bbox": {
+        "x0": 415.2,
+        "y0": 150.0,
+        "x1": 463.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 0.0,
+      "bbox": {
+        "x0": 78.6,
+        "y0": 174.0,
+        "x1": 103.6,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

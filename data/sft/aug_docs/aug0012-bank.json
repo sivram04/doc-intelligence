@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0012-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0012",
+  "file": "aug0012-bank.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "bank_name": {
+      "value": "Sample National",
+      "bbox": {
+        "x0": 84.1,
+        "y0": 102.0,
+        "x1": 151.1,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "opening_balance": {
+      "value": 12677.87,
+      "bbox": {
+        "x0": 413.3,
+        "y0": 102.0,
+        "x1": 458.3,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 12862.28,
+      "bbox": {
+        "x0": 127.7,
+        "y0": 126.0,
+        "x1": 172.7,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "account_holder": {
+      "value": "Rita Vega",
+      "bbox": {
+        "x0": 407.2,
+        "y0": 126.0,
+        "x1": 447.4,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2023 - 11/30/2023",
+      "bbox": {
+        "x0": 89.7,
+        "y0": 150.0,
+        "x1": 189.1,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_withdrawals": {
+      "value": 4756.01,
+      "bbox": {
+        "x0": 419.4,
+        "y0": 150.0,
+        "x1": 459.4,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "account_last4": {
+      "value": "6528",
+      "bbox": {
+        "x0": 144.1,
+        "y0": 174.0,
+        "x1": 164.1,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "total_deposits": {
+      "value": 4940.42,
+      "bbox": {
+        "x0": 401.1,
+        "y0": 174.0,
+        "x1": 441.1,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

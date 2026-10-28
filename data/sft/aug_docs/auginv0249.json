@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0249",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0249.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "total": {
+      "value": 12187.31,
+      "bbox": {
+        "x0": 102.2,
+        "y0": 102.0,
+        "x1": 147.2,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 11606.96,
+      "bbox": {
+        "x0": 377.4,
+        "y0": 102.0,
+        "x1": 422.4,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Stevens LLC",
+      "bbox": {
+        "x0": 93.6,
+        "y0": 126.0,
+        "x1": 146.1,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Reed and Sons",
+      "bbox": {
+        "x0": 383.5,
+        "y0": 126.0,
+        "x1": 443.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "05/15/2007",
+      "bbox": {
+        "x0": 113.3,
+        "y0": 150.0,
+        "x1": 158.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 580.35,
+      "bbox": {
+        "x0": 378.8,
+        "y0": 150.0,
+        "x1": 411.3,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-11592",
+      "bbox": {
+        "x0": 128.8,
+        "y0": 174.0,
+        "x1": 174.9,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

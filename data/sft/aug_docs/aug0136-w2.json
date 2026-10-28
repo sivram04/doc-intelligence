@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0136-w2",
+  "doc_type": "w2",
+  "case_id": "aug0136",
+  "file": "aug0136-w2.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Lindsey-Rivera",
+      "bbox": {
+        "x0": 135.8,
+        "y0": 102.0,
+        "x1": 202.5,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "96-5985546",
+      "bbox": {
+        "x0": 406.4,
+        "y0": 102.0,
+        "x1": 459.7,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 100272.22,
+      "bbox": {
+        "x0": 187.5,
+        "y0": 126.0,
+        "x1": 243.1,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 9834.23,
+      "bbox": {
+        "x0": 483.6,
+        "y0": 126.0,
+        "x1": 528.1,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2023,
+      "bbox": {
+        "x0": 83.0,
+        "y0": 150.0,
+        "x1": 105.2,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "5257",
+      "bbox": {
+        "x0": 440.3,
+        "y0": 150.0,
+        "x1": 462.5,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 100272.22,
+      "bbox": {
+        "x0": 218.0,
+        "y0": 174.0,
+        "x1": 273.6,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 100272.22,
+      "bbox": {
+        "x0": 453.6,
+        "y0": 174.0,
+        "x1": 509.2,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Kim Fitzpatrick",
+      "bbox": {
+        "x0": 153.8,
+        "y0": 198.0,
+        "x1": 219.3,
+        "y1": 208.5,
+        "page": 0
+      }
+    }
+  }
+}

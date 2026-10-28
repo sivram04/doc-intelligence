@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0014-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0014",
+  "file": "aug0014-paystub.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "pay_date": {
+      "value": "12/23/2025",
+      "bbox": {
+        "x0": 114.7,
+        "y0": 102.0,
+        "x1": 164.7,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 841.88,
+      "bbox": {
+        "x0": 141.3,
+        "y0": 126.0,
+        "x1": 177.5,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Hernandez-Rhodes",
+      "bbox": {
+        "x0": 106.9,
+        "y0": 150.0,
+        "x1": 193.6,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 2851.94,
+      "bbox": {
+        "x0": 110.2,
+        "y0": 174.0,
+        "x1": 154.7,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "semimonthly",
+      "bbox": {
+        "x0": 129.7,
+        "y0": 198.0,
+        "x1": 185.8,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 2010.06,
+      "bbox": {
+        "x0": 97.5,
+        "y0": 222.0,
+        "x1": 141.9,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Sandra Simmons",
+      "bbox": {
+        "x0": 108.6,
+        "y0": 246.0,
+        "x1": 185.3,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 68446.56,
+      "bbox": {
+        "x0": 149.7,
+        "y0": 270.0,
+        "x1": 199.7,
+        "y1": 280.5,
+        "page": 0
+      }
+    }
+  }
+}

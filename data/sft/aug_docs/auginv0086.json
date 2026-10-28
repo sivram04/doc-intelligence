@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0086",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0086.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Nixon, Sanford and Gregory",
+      "bbox": {
+        "x0": 85.2,
+        "y0": 102.0,
+        "x1": 199.6,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 10480.11,
+      "bbox": {
+        "x0": 382.2,
+        "y0": 102.0,
+        "x1": 427.2,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-14351",
+      "bbox": {
+        "x0": 99.9,
+        "y0": 126.0,
+        "x1": 146.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 499.05,
+      "bbox": {
+        "x0": 358.0,
+        "y0": 126.0,
+        "x1": 390.5,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Carter-Moon",
+      "bbox": {
+        "x0": 87.2,
+        "y0": 150.0,
+        "x1": 139.4,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "04/27/2024",
+      "bbox": {
+        "x0": 361.3,
+        "y0": 150.0,
+        "x1": 406.9,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 9981.06,
+      "bbox": {
+        "x0": 100.8,
+        "y0": 174.0,
+        "x1": 140.8,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

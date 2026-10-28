@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0235",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0235.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Williams, Curry and Gilbert",
+      "bbox": {
+        "x0": 93.6,
+        "y0": 102.0,
+        "x1": 206.3,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-45079",
+      "bbox": {
+        "x0": 128.8,
+        "y0": 126.0,
+        "x1": 174.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "08/09/2017",
+      "bbox": {
+        "x0": 113.3,
+        "y0": 150.0,
+        "x1": 158.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Lopez Group",
+      "bbox": {
+        "x0": 87.2,
+        "y0": 174.0,
+        "x1": 140.2,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 5528.37,
+      "bbox": {
+        "x0": 100.8,
+        "y0": 198.0,
+        "x1": 140.8,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 276.42,
+      "bbox": {
+        "x0": 98.8,
+        "y0": 222.0,
+        "x1": 131.3,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 5804.79,
+      "bbox": {
+        "x0": 114.4,
+        "y0": 246.0,
+        "x1": 154.4,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

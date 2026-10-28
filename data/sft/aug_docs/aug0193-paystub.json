@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0193-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0193",
+  "file": "aug0193-paystub.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "pay_frequency": {
+      "value": "weekly",
+      "bbox": {
+        "x0": 129.7,
+        "y0": 102.0,
+        "x1": 160.2,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 1609.48,
+      "bbox": {
+        "x0": 407.4,
+        "y0": 102.0,
+        "x1": 451.9,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Nicholas Price",
+      "bbox": {
+        "x0": 137.5,
+        "y0": 126.0,
+        "x1": 201.4,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Phillips, Jennings and Petersen",
+      "bbox": {
+        "x0": 386.9,
+        "y0": 126.0,
+        "x1": 526.4,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/20/2023",
+      "bbox": {
+        "x0": 114.7,
+        "y0": 150.0,
+        "x1": 164.7,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 1280.34,
+      "bbox": {
+        "x0": 396.3,
+        "y0": 150.0,
+        "x1": 440.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 83692.96,
+      "bbox": {
+        "x0": 111.3,
+        "y0": 174.0,
+        "x1": 161.4,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 329.14,
+      "bbox": {
+        "x0": 421.3,
+        "y0": 174.0,
+        "x1": 457.5,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

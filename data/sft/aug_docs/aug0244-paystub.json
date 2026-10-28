@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0244-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0244",
+  "file": "aug0244-paystub.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "gross_pay": {
+      "value": 6780.31,
+      "bbox": {
+        "x0": 127.5,
+        "y0": 102.0,
+        "x1": 171.9,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 81363.72,
+      "bbox": {
+        "x0": 391.3,
+        "y0": 102.0,
+        "x1": 441.4,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/27/2023",
+      "bbox": {
+        "x0": 114.7,
+        "y0": 126.0,
+        "x1": 164.7,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "monthly",
+      "bbox": {
+        "x0": 391.9,
+        "y0": 126.0,
+        "x1": 426.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 1601.84,
+      "bbox": {
+        "x0": 141.3,
+        "y0": 150.0,
+        "x1": 185.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Gill-Russell",
+      "bbox": {
+        "x0": 386.9,
+        "y0": 150.0,
+        "x1": 437.4,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Bryan Wu",
+      "bbox": {
+        "x0": 108.6,
+        "y0": 174.0,
+        "x1": 152.5,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 5178.47,
+      "bbox": {
+        "x0": 377.4,
+        "y0": 174.0,
+        "x1": 421.9,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

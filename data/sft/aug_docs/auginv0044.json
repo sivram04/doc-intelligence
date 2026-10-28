@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0044",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0044.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Anderson Ltd",
+      "bbox": {
+        "x0": 100.0,
+        "y0": 102.0,
+        "x1": 172.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-74853",
+      "bbox": {
+        "x0": 118.0,
+        "y0": 126.0,
+        "x1": 172.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "01/13/2025",
+      "bbox": {
+        "x0": 136.0,
+        "y0": 150.0,
+        "x1": 196.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Jacobson PLC",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 174.0,
+        "x1": 184.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 24826.41,
+      "bbox": {
+        "x0": 112.0,
+        "y0": 198.0,
+        "x1": 172.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 2048.18,
+      "bbox": {
+        "x0": 82.0,
+        "y0": 222.0,
+        "x1": 136.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 26874.59,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 246.0,
+        "x1": 178.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

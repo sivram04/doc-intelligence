@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0047-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0047",
+  "file": "aug0047-bank.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "account_last4": {
+      "value": "8706",
+      "bbox": {
+        "x0": 148.0,
+        "y0": 102.0,
+        "x1": 172.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 13270.36,
+      "bbox": {
+        "x0": 154.0,
+        "y0": 126.0,
+        "x1": 214.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "total_deposits": {
+      "value": 6260.37,
+      "bbox": {
+        "x0": 148.0,
+        "y0": 150.0,
+        "x1": 202.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_withdrawals": {
+      "value": 4933.74,
+      "bbox": {
+        "x0": 196.0,
+        "y0": 174.0,
+        "x1": 250.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "bank_name": {
+      "value": "Sample National",
+      "bbox": {
+        "x0": 130.0,
+        "y0": 198.0,
+        "x1": 220.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "opening_balance": {
+      "value": 11943.73,
+      "bbox": {
+        "x0": 154.0,
+        "y0": 222.0,
+        "x1": 214.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2025 - 11/30/2025",
+      "bbox": {
+        "x0": 160.0,
+        "y0": 246.0,
+        "x1": 298.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "account_holder": {
+      "value": "Andre Davis",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 270.0,
+        "x1": 178.0,
+        "y1": 280.5,
+        "page": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0125-w2",
+  "doc_type": "w2",
+  "case_id": "aug0125",
+  "file": "aug0125-w2.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Mccarty, Hodge and Potts",
+      "bbox": {
+        "x0": 135.8,
+        "y0": 102.0,
+        "x1": 250.9,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "84-1980066",
+      "bbox": {
+        "x0": 220.2,
+        "y0": 126.0,
+        "x1": 273.6,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Christopher Vaughan",
+      "bbox": {
+        "x0": 137.5,
+        "y0": 150.0,
+        "x1": 232.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "8646",
+      "bbox": {
+        "x0": 116.9,
+        "y0": 174.0,
+        "x1": 139.1,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2024,
+      "bbox": {
+        "x0": 101.9,
+        "y0": 198.0,
+        "x1": 124.2,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 139319.96,
+      "bbox": {
+        "x0": 218.0,
+        "y0": 222.0,
+        "x1": 273.6,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 13585.66,
+      "bbox": {
+        "x0": 157.5,
+        "y0": 246.0,
+        "x1": 207.5,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 139319.96,
+      "bbox": {
+        "x0": 173.6,
+        "y0": 270.0,
+        "x1": 229.2,
+        "y1": 280.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 139319.96,
+      "bbox": {
+        "x0": 187.5,
+        "y0": 294.0,
+        "x1": 243.1,
+        "y1": 304.5,
+        "page": 0
+      }
+    }
+  }
+}

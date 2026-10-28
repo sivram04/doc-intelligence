@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0261",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0261.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Terry-Zimmerman",
+      "bbox": {
+        "x0": 93.6,
+        "y0": 102.0,
+        "x1": 168.5,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-09510",
+      "bbox": {
+        "x0": 99.9,
+        "y0": 126.0,
+        "x1": 146.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "10/25/1998",
+      "bbox": {
+        "x0": 113.3,
+        "y0": 150.0,
+        "x1": 158.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Long, Santos and Davis",
+      "bbox": {
+        "x0": 103.5,
+        "y0": 174.0,
+        "x1": 199.1,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 5634.66,
+      "bbox": {
+        "x0": 97.5,
+        "y0": 198.0,
+        "x1": 137.4,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 464.86,
+      "bbox": {
+        "x0": 78.0,
+        "y0": 222.0,
+        "x1": 110.5,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 6099.52,
+      "bbox": {
+        "x0": 102.2,
+        "y0": 246.0,
+        "x1": 142.2,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

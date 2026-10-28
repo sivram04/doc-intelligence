@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0151-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0151",
+  "file": "aug0151-paystub.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Stewart PLC",
+      "bbox": {
+        "x0": 106.9,
+        "y0": 102.0,
+        "x1": 163.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Jason Nguyen",
+      "bbox": {
+        "x0": 388.6,
+        "y0": 102.0,
+        "x1": 452.5,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/25/2024",
+      "bbox": {
+        "x0": 102.5,
+        "y0": 126.0,
+        "x1": 152.5,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "semimonthly",
+      "bbox": {
+        "x0": 391.9,
+        "y0": 126.0,
+        "x1": 448.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 2813.65,
+      "bbox": {
+        "x0": 110.2,
+        "y0": 150.0,
+        "x1": 154.7,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 795.47,
+      "bbox": {
+        "x0": 395.8,
+        "y0": 150.0,
+        "x1": 431.9,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 2018.18,
+      "bbox": {
+        "x0": 97.5,
+        "y0": 174.0,
+        "x1": 141.9,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 67527.6,
+      "bbox": {
+        "x0": 391.3,
+        "y0": 174.0,
+        "x1": 441.4,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

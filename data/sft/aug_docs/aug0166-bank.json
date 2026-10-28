@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0166-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0166",
+  "file": "aug0166-bank.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "opening_balance": {
+      "value": 9416.88,
+      "bbox": {
+        "x0": 150.2,
+        "y0": 102.0,
+        "x1": 194.7,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "account_holder": {
+      "value": "Gregory Williams",
+      "bbox": {
+        "x0": 388.0,
+        "y0": 102.0,
+        "x1": 464.1,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2025 - 11/30/2025",
+      "bbox": {
+        "x0": 143.0,
+        "y0": 126.0,
+        "x1": 252.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 12142.43,
+      "bbox": {
+        "x0": 415.2,
+        "y0": 126.0,
+        "x1": 465.3,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "account_last4": {
+      "value": "8138",
+      "bbox": {
+        "x0": 154.1,
+        "y0": 150.0,
+        "x1": 176.4,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bank_name": {
+      "value": "Sample National",
+      "bbox": {
+        "x0": 389.7,
+        "y0": 150.0,
+        "x1": 463.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_withdrawals": {
+      "value": 4494.4,
+      "bbox": {
+        "x0": 145.2,
+        "y0": 174.0,
+        "x1": 189.7,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "total_deposits": {
+      "value": 7219.95,
+      "bbox": {
+        "x0": 409.1,
+        "y0": 174.0,
+        "x1": 453.6,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

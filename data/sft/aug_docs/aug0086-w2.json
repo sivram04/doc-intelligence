@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0086-w2",
+  "doc_type": "w2",
+  "case_id": "aug0086",
+  "file": "aug0086-w2.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Taylor, Schmidt and Martin",
+      "bbox": {
+        "x0": 142.0,
+        "y0": 102.0,
+        "x1": 298.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "62-0507642",
+      "bbox": {
+        "x0": 416.0,
+        "y0": 102.0,
+        "x1": 476.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Sarah Hurley",
+      "bbox": {
+        "x0": 142.0,
+        "y0": 126.0,
+        "x1": 214.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "7312",
+      "bbox": {
+        "x0": 458.0,
+        "y0": 126.0,
+        "x1": 482.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2024,
+      "bbox": {
+        "x0": 88.0,
+        "y0": 150.0,
+        "x1": 112.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 174071.06,
+      "bbox": {
+        "x0": 530.0,
+        "y0": 150.0,
+        "x1": 596.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 15607.15,
+      "bbox": {
+        "x0": 238.0,
+        "y0": 174.0,
+        "x1": 298.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 168600,
+      "bbox": {
+        "x0": 482.0,
+        "y0": 174.0,
+        "x1": 518.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 174071.06,
+      "bbox": {
+        "x0": 148.0,
+        "y0": 198.0,
+        "x1": 214.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0014",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0014.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "bill_to": {
+      "value": "Newman, Pope and Figueroa",
+      "bbox": {
+        "x0": 103.5,
+        "y0": 102.0,
+        "x1": 219.6,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 214.05,
+      "bbox": {
+        "x0": 78.0,
+        "y0": 126.0,
+        "x1": 110.5,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "06/17/2025",
+      "bbox": {
+        "x0": 113.3,
+        "y0": 150.0,
+        "x1": 158.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-84351",
+      "bbox": {
+        "x0": 128.8,
+        "y0": 174.0,
+        "x1": 174.9,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 4495.02,
+      "bbox": {
+        "x0": 102.2,
+        "y0": 198.0,
+        "x1": 142.2,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Hanson-Hull",
+      "bbox": {
+        "x0": 85.2,
+        "y0": 222.0,
+        "x1": 136.9,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 4280.97,
+      "bbox": {
+        "x0": 100.8,
+        "y0": 246.0,
+        "x1": 140.8,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

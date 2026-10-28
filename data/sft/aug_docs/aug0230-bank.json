@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0230-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0230",
+  "file": "aug0230-bank.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "account_last4": {
+      "value": "0695",
+      "bbox": {
+        "x0": 128.3,
+        "y0": 102.0,
+        "x1": 148.3,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "opening_balance": {
+      "value": 2807.49,
+      "bbox": {
+        "x0": 413.3,
+        "y0": 102.0,
+        "x1": 453.3,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2023 - 11/30/2023",
+      "bbox": {
+        "x0": 89.7,
+        "y0": 126.0,
+        "x1": 189.1,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "total_deposits": {
+      "value": 4849.43,
+      "bbox": {
+        "x0": 427.4,
+        "y0": 126.0,
+        "x1": 467.4,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "account_holder": {
+      "value": "Tiffany Nichols",
+      "bbox": {
+        "x0": 103.5,
+        "y0": 150.0,
+        "x1": 167.1,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_withdrawals": {
+      "value": 3727.88,
+      "bbox": {
+        "x0": 443.6,
+        "y0": 150.0,
+        "x1": 483.6,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 3929.04,
+      "bbox": {
+        "x0": 128.8,
+        "y0": 174.0,
+        "x1": 168.8,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "bank_name": {
+      "value": "Demo Credit Union",
+      "bbox": {
+        "x0": 364.1,
+        "y0": 174.0,
+        "x1": 443.6,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

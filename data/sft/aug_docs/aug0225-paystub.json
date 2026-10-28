@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0225-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0225",
+  "file": "aug0225-paystub.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Woods, Gibson and Owens",
+      "bbox": {
+        "x0": 106.9,
+        "y0": 102.0,
+        "x1": 228.6,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Amy Ortiz",
+      "bbox": {
+        "x0": 108.6,
+        "y0": 126.0,
+        "x1": 152.5,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/25/2024",
+      "bbox": {
+        "x0": 114.7,
+        "y0": 150.0,
+        "x1": 164.7,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "weekly",
+      "bbox": {
+        "x0": 129.7,
+        "y0": 174.0,
+        "x1": 160.2,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 3544.76,
+      "bbox": {
+        "x0": 110.2,
+        "y0": 198.0,
+        "x1": 154.7,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 840.47,
+      "bbox": {
+        "x0": 115.8,
+        "y0": 222.0,
+        "x1": 151.9,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 2704.29,
+      "bbox": {
+        "x0": 116.3,
+        "y0": 246.0,
+        "x1": 160.8,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 184327.52,
+      "bbox": {
+        "x0": 111.3,
+        "y0": 270.0,
+        "x1": 166.9,
+        "y1": 280.5,
+        "page": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0221",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0221.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Fox PLC",
+      "bbox": {
+        "x0": 85.2,
+        "y0": 102.0,
+        "x1": 121.6,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-52776",
+      "bbox": {
+        "x0": 128.8,
+        "y0": 126.0,
+        "x1": 174.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "03/02/1982",
+      "bbox": {
+        "x0": 81.3,
+        "y0": 150.0,
+        "x1": 126.9,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Dixon-Ward",
+      "bbox": {
+        "x0": 87.2,
+        "y0": 174.0,
+        "x1": 137.7,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 683.39,
+      "bbox": {
+        "x0": 97.5,
+        "y0": 198.0,
+        "x1": 129.9,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 49.55,
+      "bbox": {
+        "x0": 78.0,
+        "y0": 222.0,
+        "x1": 105.5,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 732.94,
+      "bbox": {
+        "x0": 114.4,
+        "y0": 246.0,
+        "x1": 146.9,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

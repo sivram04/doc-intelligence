@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0090-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0090",
+  "file": "aug0090-paystub.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employee_name": {
+      "value": "Angela Davis",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 102.0,
+        "x1": 184.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 3250.85,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 126.0,
+        "x1": 172.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/16/2024",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 150.0,
+        "x1": 172.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 839.2,
+      "bbox": {
+        "x0": 160.0,
+        "y0": 174.0,
+        "x1": 202.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Reyes Group",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 198.0,
+        "x1": 178.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 2411.65,
+      "bbox": {
+        "x0": 106.0,
+        "y0": 222.0,
+        "x1": 160.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "semimonthly",
+      "bbox": {
+        "x0": 142.0,
+        "y0": 246.0,
+        "x1": 208.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 78020.4,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 270.0,
+        "x1": 178.0,
+        "y1": 280.5,
+        "page": 0
+      }
+    }
+  }
+}

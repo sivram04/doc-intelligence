@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0167-w2",
+  "doc_type": "w2",
+  "case_id": "aug0167",
+  "file": "aug0167-w2.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "tax_year": {
+      "value": 2023,
+      "bbox": {
+        "x0": 83.0,
+        "y0": 102.0,
+        "x1": 105.2,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 14965.83,
+      "bbox": {
+        "x0": 483.6,
+        "y0": 102.0,
+        "x1": 533.6,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Tracy Barnes",
+      "bbox": {
+        "x0": 137.5,
+        "y0": 126.0,
+        "x1": 196.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "0739",
+      "bbox": {
+        "x0": 396.9,
+        "y0": 126.0,
+        "x1": 419.1,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "32-5370329",
+      "bbox": {
+        "x0": 220.2,
+        "y0": 150.0,
+        "x1": 273.6,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Parker-Shaw",
+      "bbox": {
+        "x0": 415.8,
+        "y0": 150.0,
+        "x1": 473.6,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 89663.93,
+      "bbox": {
+        "x0": 187.5,
+        "y0": 174.0,
+        "x1": 237.5,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 89663.93,
+      "bbox": {
+        "x0": 468.0,
+        "y0": 174.0,
+        "x1": 518.1,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 89663.93,
+      "bbox": {
+        "x0": 165.3,
+        "y0": 198.0,
+        "x1": 215.3,
+        "y1": 208.5,
+        "page": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0198-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0198",
+  "file": "aug0198-paystub.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "pay_date": {
+      "value": "12/21/2024",
+      "bbox": {
+        "x0": 114.7,
+        "y0": 102.0,
+        "x1": 164.7,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 117140.92,
+      "bbox": {
+        "x0": 111.3,
+        "y0": 126.0,
+        "x1": 166.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 2252.71,
+      "bbox": {
+        "x0": 127.5,
+        "y0": 150.0,
+        "x1": 171.9,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Christopher Barton",
+      "bbox": {
+        "x0": 137.5,
+        "y0": 174.0,
+        "x1": 221.4,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Mccormick Ltd",
+      "bbox": {
+        "x0": 106.9,
+        "y0": 198.0,
+        "x1": 171.4,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "weekly",
+      "bbox": {
+        "x0": 111.9,
+        "y0": 222.0,
+        "x1": 142.5,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 536.25,
+      "bbox": {
+        "x0": 141.3,
+        "y0": 246.0,
+        "x1": 177.5,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 1716.46,
+      "bbox": {
+        "x0": 97.5,
+        "y0": 270.0,
+        "x1": 141.9,
+        "y1": 280.5,
+        "page": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0255",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0255.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Mejia PLC",
+      "bbox": {
+        "x0": 100.0,
+        "y0": 102.0,
+        "x1": 154.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-62410",
+      "bbox": {
+        "x0": 398.0,
+        "y0": 102.0,
+        "x1": 452.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "05/17/2019",
+      "bbox": {
+        "x0": 88.0,
+        "y0": 126.0,
+        "x1": 148.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Haynes, Smith and Mack",
+      "bbox": {
+        "x0": 386.0,
+        "y0": 126.0,
+        "x1": 518.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 1662.13,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 150.0,
+        "x1": 172.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 120.5,
+      "bbox": {
+        "x0": 362.0,
+        "y0": 150.0,
+        "x1": 404.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 1782.63,
+      "bbox": {
+        "x0": 124.0,
+        "y0": 174.0,
+        "x1": 178.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

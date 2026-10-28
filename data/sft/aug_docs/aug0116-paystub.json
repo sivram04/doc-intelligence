@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0116-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0116",
+  "file": "aug0116-paystub.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Wright-Soto",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 102.0,
+        "x1": 178.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "David Kim",
+      "bbox": {
+        "x0": 422.0,
+        "y0": 102.0,
+        "x1": 476.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/25/2024",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 126.0,
+        "x1": 172.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "semimonthly",
+      "bbox": {
+        "x0": 398.0,
+        "y0": 126.0,
+        "x1": 464.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 3846.07,
+      "bbox": {
+        "x0": 142.0,
+        "y0": 150.0,
+        "x1": 196.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 906.77,
+      "bbox": {
+        "x0": 404.0,
+        "y0": 150.0,
+        "x1": 446.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 2939.3,
+      "bbox": {
+        "x0": 106.0,
+        "y0": 174.0,
+        "x1": 160.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 92305.68,
+      "bbox": {
+        "x0": 452.0,
+        "y0": 174.0,
+        "x1": 512.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

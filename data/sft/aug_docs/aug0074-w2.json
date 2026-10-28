@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0074-w2",
+  "doc_type": "w2",
+  "case_id": "aug0074",
+  "file": "aug0074-w2.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Valencia, Osborne and Chambers",
+      "bbox": {
+        "x0": 135.8,
+        "y0": 102.0,
+        "x1": 286.4,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "22-8640898",
+      "bbox": {
+        "x0": 500.2,
+        "y0": 102.0,
+        "x1": 553.6,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Jeffrey Higgins",
+      "bbox": {
+        "x0": 137.5,
+        "y0": 126.0,
+        "x1": 203.6,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "3156",
+      "bbox": {
+        "x0": 396.9,
+        "y0": 126.0,
+        "x1": 419.1,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2023,
+      "bbox": {
+        "x0": 83.0,
+        "y0": 150.0,
+        "x1": 105.2,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 54887.76,
+      "bbox": {
+        "x0": 468.0,
+        "y0": 150.0,
+        "x1": 518.1,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 5245.02,
+      "bbox": {
+        "x0": 157.5,
+        "y0": 174.0,
+        "x1": 202.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 54887.76,
+      "bbox": {
+        "x0": 445.3,
+        "y0": 174.0,
+        "x1": 495.3,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 54887.76,
+      "bbox": {
+        "x0": 187.5,
+        "y0": 198.0,
+        "x1": 237.5,
+        "y1": 208.5,
+        "page": 0
+      }
+    }
+  }
+}

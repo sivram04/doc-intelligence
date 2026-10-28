@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0148-w2",
+  "doc_type": "w2",
+  "case_id": "aug0148",
+  "file": "aug0148-w2.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Wood, Gonzales and Erickson",
+      "bbox": {
+        "x0": 129.4,
+        "y0": 102.0,
+        "x1": 251.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "94-1791855",
+      "bbox": {
+        "x0": 123.8,
+        "y0": 126.0,
+        "x1": 172.2,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Christopher Dominguez",
+      "bbox": {
+        "x0": 129.4,
+        "y0": 150.0,
+        "x1": 225.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "1888",
+      "bbox": {
+        "x0": 149.4,
+        "y0": 174.0,
+        "x1": 169.4,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2024,
+      "bbox": {
+        "x0": 82.4,
+        "y0": 198.0,
+        "x1": 102.4,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 44453.69,
+      "bbox": {
+        "x0": 173.8,
+        "y0": 222.0,
+        "x1": 218.8,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 6262.17,
+      "bbox": {
+        "x0": 149.7,
+        "y0": 246.0,
+        "x1": 189.7,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 44453.69,
+      "bbox": {
+        "x0": 151.3,
+        "y0": 270.0,
+        "x1": 196.3,
+        "y1": 280.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 44453.69,
+      "bbox": {
+        "x0": 129.9,
+        "y0": 294.0,
+        "x1": 174.9,
+        "y1": 304.5,
+        "page": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0203-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0203",
+  "file": "aug0203-paystub.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Bell, Smith and Mckinney",
+      "bbox": {
+        "x0": 103.5,
+        "y0": 102.0,
+        "x1": 209.1,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Rebecca Mcdonald",
+      "bbox": {
+        "x0": 129.4,
+        "y0": 126.0,
+        "x1": 206.3,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/23/2025",
+      "bbox": {
+        "x0": 98.3,
+        "y0": 150.0,
+        "x1": 143.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "semimonthly",
+      "bbox": {
+        "x0": 122.7,
+        "y0": 174.0,
+        "x1": 174.9,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 7229.07,
+      "bbox": {
+        "x0": 121.0,
+        "y0": 198.0,
+        "x1": 161.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 2164.44,
+      "bbox": {
+        "x0": 109.1,
+        "y0": 222.0,
+        "x1": 149.1,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 5064.63,
+      "bbox": {
+        "x0": 111.6,
+        "y0": 246.0,
+        "x1": 151.6,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 173497.68,
+      "bbox": {
+        "x0": 107.2,
+        "y0": 270.0,
+        "x1": 157.2,
+        "y1": 280.5,
+        "page": 0
+      }
+    }
+  }
+}

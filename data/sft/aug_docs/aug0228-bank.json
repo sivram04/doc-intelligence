@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0228-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0228",
+  "file": "aug0228-bank.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "bank_name": {
+      "value": "Demo Credit Union",
+      "bbox": {
+        "x0": 88.0,
+        "y0": 102.0,
+        "x1": 190.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "account_holder": {
+      "value": "Karen Baker",
+      "bbox": {
+        "x0": 148.0,
+        "y0": 126.0,
+        "x1": 214.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "account_last4": {
+      "value": "3276",
+      "bbox": {
+        "x0": 184.0,
+        "y0": 150.0,
+        "x1": 208.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2024 - 11/30/2024",
+      "bbox": {
+        "x0": 160.0,
+        "y0": 174.0,
+        "x1": 298.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "opening_balance": {
+      "value": 8833.46,
+      "bbox": {
+        "x0": 154.0,
+        "y0": 198.0,
+        "x1": 208.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "total_deposits": {
+      "value": 9299.62,
+      "bbox": {
+        "x0": 148.0,
+        "y0": 222.0,
+        "x1": 202.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total_withdrawals": {
+      "value": 5000.65,
+      "bbox": {
+        "x0": 196.0,
+        "y0": 246.0,
+        "x1": 250.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 13132.43,
+      "bbox": {
+        "x0": 154.0,
+        "y0": 270.0,
+        "x1": 214.0,
+        "y1": 280.5,
+        "page": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0271",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0271.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Long-Collins",
+      "bbox": {
+        "x0": 86.3,
+        "y0": 102.0,
+        "x1": 141.9,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-29926",
+      "bbox": {
+        "x0": 415.2,
+        "y0": 102.0,
+        "x1": 463.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "07/10/2007",
+      "bbox": {
+        "x0": 119.1,
+        "y0": 126.0,
+        "x1": 169.2,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Harrison Ltd",
+      "bbox": {
+        "x0": 369.1,
+        "y0": 126.0,
+        "x1": 423.6,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 10935.45,
+      "bbox": {
+        "x0": 101.3,
+        "y0": 150.0,
+        "x1": 151.4,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 792.82,
+      "bbox": {
+        "x0": 384.7,
+        "y0": 150.0,
+        "x1": 420.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 11728.27,
+      "bbox": {
+        "x0": 119.7,
+        "y0": 174.0,
+        "x1": 169.7,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0195",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0195.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "tax": {
+      "value": 0.0,
+      "bbox": {
+        "x0": 98.8,
+        "y0": 102.0,
+        "x1": 121.3,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 19460.46,
+      "bbox": {
+        "x0": 100.8,
+        "y0": 126.0,
+        "x1": 145.8,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Hall, Howell and Rodriguez",
+      "bbox": {
+        "x0": 87.2,
+        "y0": 150.0,
+        "x1": 199.9,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Taylor-Dixon",
+      "bbox": {
+        "x0": 93.6,
+        "y0": 174.0,
+        "x1": 148.5,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 19460.46,
+      "bbox": {
+        "x0": 102.2,
+        "y0": 198.0,
+        "x1": 147.2,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-07354",
+      "bbox": {
+        "x0": 99.9,
+        "y0": 222.0,
+        "x1": 146.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "01/14/1979",
+      "bbox": {
+        "x0": 113.3,
+        "y0": 246.0,
+        "x1": 158.8,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

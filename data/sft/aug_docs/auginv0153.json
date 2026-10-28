@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0153",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0153.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "tax": {
+      "value": 1154.62,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 116.0,
+        "x1": 104.0,
+        "y1": 126.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-35902",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 156.0,
+        "x1": 104.0,
+        "y1": 166.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "03/09/2002",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 196.0,
+        "x1": 110.0,
+        "y1": 206.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 23092.48,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 236.0,
+        "x1": 110.0,
+        "y1": 246.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Thomas, Carpenter and Medina",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 276.0,
+        "x1": 218.0,
+        "y1": 286.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 24247.1,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 316.0,
+        "x1": 110.0,
+        "y1": 326.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Ramirez, Jones and Reilly",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 356.0,
+        "x1": 200.0,
+        "y1": 366.5,
+        "page": 0
+      }
+    }
+  }
+}

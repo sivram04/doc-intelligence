@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0043-w2",
+  "doc_type": "w2",
+  "case_id": "aug0043",
+  "file": "aug0043-w2.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employee_ssn_last4": {
+      "value": "3903",
+      "bbox": {
+        "x0": 136.0,
+        "y0": 102.0,
+        "x1": 160.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "90-9966217",
+      "bbox": {
+        "x0": 136.0,
+        "y0": 126.0,
+        "x1": 196.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 168600,
+      "bbox": {
+        "x0": 190.0,
+        "y0": 150.0,
+        "x1": 226.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 217601.93,
+      "bbox": {
+        "x0": 214.0,
+        "y0": 174.0,
+        "x1": 280.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Gross-Cooke",
+      "bbox": {
+        "x0": 142.0,
+        "y0": 198.0,
+        "x1": 208.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Amanda Smith",
+      "bbox": {
+        "x0": 166.0,
+        "y0": 222.0,
+        "x1": 238.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2023,
+      "bbox": {
+        "x0": 112.0,
+        "y0": 246.0,
+        "x1": 136.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 217601.93,
+      "bbox": {
+        "x0": 220.0,
+        "y0": 270.0,
+        "x1": 286.0,
+        "y1": 280.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 31525.7,
+      "bbox": {
+        "x0": 238.0,
+        "y0": 294.0,
+        "x1": 298.0,
+        "y1": 304.5,
+        "page": 0
+      }
+    }
+  }
+}

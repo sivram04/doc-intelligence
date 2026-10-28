@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0274-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0274",
+  "file": "aug0274-paystub.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "ytd_gross": {
+      "value": 105511.44,
+      "bbox": {
+        "x0": 172.0,
+        "y0": 102.0,
+        "x1": 238.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "James Brooks",
+      "bbox": {
+        "x0": 422.0,
+        "y0": 102.0,
+        "x1": 494.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/17/2023",
+      "bbox": {
+        "x0": 124.0,
+        "y0": 126.0,
+        "x1": 184.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 4396.31,
+      "bbox": {
+        "x0": 398.0,
+        "y0": 126.0,
+        "x1": 452.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "semimonthly",
+      "bbox": {
+        "x0": 142.0,
+        "y0": 150.0,
+        "x1": 208.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 3281.5,
+      "bbox": {
+        "x0": 404.0,
+        "y0": 150.0,
+        "x1": 458.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 1114.81,
+      "bbox": {
+        "x0": 124.0,
+        "y0": 174.0,
+        "x1": 178.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Baker-Woodard",
+      "bbox": {
+        "x0": 386.0,
+        "y0": 174.0,
+        "x1": 464.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

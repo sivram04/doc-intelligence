@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0012",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0012.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Saunders and Sons",
+      "bbox": {
+        "x0": 100.0,
+        "y0": 102.0,
+        "x1": 202.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-69316",
+      "bbox": {
+        "x0": 148.0,
+        "y0": 126.0,
+        "x1": 202.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "08/04/2023",
+      "bbox": {
+        "x0": 88.0,
+        "y0": 150.0,
+        "x1": 148.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Jones-Gaines",
+      "bbox": {
+        "x0": 106.0,
+        "y0": 174.0,
+        "x1": 178.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 2592.87,
+      "bbox": {
+        "x0": 112.0,
+        "y0": 198.0,
+        "x1": 166.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 213.91,
+      "bbox": {
+        "x0": 82.0,
+        "y0": 222.0,
+        "x1": 124.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 2806.78,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 246.0,
+        "x1": 172.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

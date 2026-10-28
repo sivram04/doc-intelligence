@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0089",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0089.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Lee Ltd",
+      "bbox": {
+        "x0": 93.6,
+        "y0": 102.0,
+        "x1": 124.9,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 952.3,
+      "bbox": {
+        "x0": 378.8,
+        "y0": 102.0,
+        "x1": 411.3,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "11/30/1996",
+      "bbox": {
+        "x0": 81.3,
+        "y0": 126.0,
+        "x1": 126.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 12495.38,
+      "bbox": {
+        "x0": 394.4,
+        "y0": 126.0,
+        "x1": 439.4,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 11543.08,
+      "bbox": {
+        "x0": 100.8,
+        "y0": 150.0,
+        "x1": 145.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Hart, Wallace and Flores",
+      "bbox": {
+        "x0": 383.5,
+        "y0": 150.0,
+        "x1": 483.5,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-57820",
+      "bbox": {
+        "x0": 128.8,
+        "y0": 174.0,
+        "x1": 174.9,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

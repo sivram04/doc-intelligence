@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0131",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0131.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Dixon Group",
+      "bbox": {
+        "x0": 86.3,
+        "y0": 102.0,
+        "x1": 142.5,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-29245",
+      "bbox": {
+        "x0": 135.2,
+        "y0": 126.0,
+        "x1": 183.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "08/02/2001",
+      "bbox": {
+        "x0": 83.0,
+        "y0": 150.0,
+        "x1": 133.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Alvarado LLC",
+      "bbox": {
+        "x0": 108.0,
+        "y0": 174.0,
+        "x1": 168.6,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 7814.15,
+      "bbox": {
+        "x0": 101.3,
+        "y0": 198.0,
+        "x1": 145.8,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 566.53,
+      "bbox": {
+        "x0": 104.7,
+        "y0": 222.0,
+        "x1": 140.8,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 8380.68,
+      "bbox": {
+        "x0": 119.7,
+        "y0": 246.0,
+        "x1": 164.1,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

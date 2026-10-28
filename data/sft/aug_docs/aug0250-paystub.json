@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0250-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0250",
+  "file": "aug0250-paystub.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Adams, Warren and Pitts",
+      "bbox": {
+        "x0": 106.9,
+        "y0": 102.0,
+        "x1": 218.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Jeremy Ramirez",
+      "bbox": {
+        "x0": 417.5,
+        "y0": 102.0,
+        "x1": 490.2,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/28/2024",
+      "bbox": {
+        "x0": 102.5,
+        "y0": 126.0,
+        "x1": 152.5,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "biweekly",
+      "bbox": {
+        "x0": 391.9,
+        "y0": 126.0,
+        "x1": 430.2,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 3101.75,
+      "bbox": {
+        "x0": 127.5,
+        "y0": 150.0,
+        "x1": 171.9,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 632.72,
+      "bbox": {
+        "x0": 421.3,
+        "y0": 150.0,
+        "x1": 457.5,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 2469.03,
+      "bbox": {
+        "x0": 116.3,
+        "y0": 174.0,
+        "x1": 160.8,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 80645.5,
+      "bbox": {
+        "x0": 429.7,
+        "y0": 174.0,
+        "x1": 479.7,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

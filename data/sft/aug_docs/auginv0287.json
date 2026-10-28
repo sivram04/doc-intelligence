@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0287",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0287.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Austin-Murillo",
+      "bbox": {
+        "x0": 95.8,
+        "y0": 102.0,
+        "x1": 156.3,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-24608",
+      "bbox": {
+        "x0": 135.2,
+        "y0": 126.0,
+        "x1": 183.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "01/27/2002",
+      "bbox": {
+        "x0": 119.1,
+        "y0": 150.0,
+        "x1": 169.2,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Gardner Group",
+      "bbox": {
+        "x0": 89.1,
+        "y0": 174.0,
+        "x1": 156.4,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 5965.92,
+      "bbox": {
+        "x0": 101.3,
+        "y0": 198.0,
+        "x1": 145.8,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 432.53,
+      "bbox": {
+        "x0": 78.6,
+        "y0": 222.0,
+        "x1": 114.7,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 6398.45,
+      "bbox": {
+        "x0": 119.7,
+        "y0": 246.0,
+        "x1": 164.1,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

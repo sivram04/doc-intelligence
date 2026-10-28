@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0156",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0156.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Bates, Davis and Meadows",
+      "bbox": {
+        "x0": 86.3,
+        "y0": 102.0,
+        "x1": 207.5,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-80551",
+      "bbox": {
+        "x0": 415.2,
+        "y0": 102.0,
+        "x1": 463.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "04/19/2026",
+      "bbox": {
+        "x0": 119.1,
+        "y0": 126.0,
+        "x1": 169.2,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Knight Ltd",
+      "bbox": {
+        "x0": 369.1,
+        "y0": 126.0,
+        "x1": 414.1,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 6043.52,
+      "bbox": {
+        "x0": 104.7,
+        "y0": 150.0,
+        "x1": 149.1,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 302.18,
+      "bbox": {
+        "x0": 384.7,
+        "y0": 150.0,
+        "x1": 420.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 6345.7,
+      "bbox": {
+        "x0": 119.7,
+        "y0": 174.0,
+        "x1": 164.1,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

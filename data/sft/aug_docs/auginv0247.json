@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0247",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0247.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Esparza, Lawson and Gardner",
+      "bbox": {
+        "x0": 86.3,
+        "y0": 102.0,
+        "x1": 221.9,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-38463",
+      "bbox": {
+        "x0": 415.2,
+        "y0": 102.0,
+        "x1": 463.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "05/15/1970",
+      "bbox": {
+        "x0": 83.0,
+        "y0": 126.0,
+        "x1": 133.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Silva, Harris and Brown",
+      "bbox": {
+        "x0": 369.1,
+        "y0": 126.0,
+        "x1": 473.6,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 16638.45,
+      "bbox": {
+        "x0": 101.3,
+        "y0": 150.0,
+        "x1": 151.4,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 0.0,
+      "bbox": {
+        "x0": 384.7,
+        "y0": 150.0,
+        "x1": 409.7,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 16638.45,
+      "bbox": {
+        "x0": 119.7,
+        "y0": 174.0,
+        "x1": 169.7,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

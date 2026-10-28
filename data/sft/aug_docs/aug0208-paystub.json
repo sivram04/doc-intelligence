@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0208-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0208",
+  "file": "aug0208-paystub.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employee_name": {
+      "value": "Miranda Garcia",
+      "bbox": {
+        "x0": 142.0,
+        "y0": 102.0,
+        "x1": 226.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 153920.04,
+      "bbox": {
+        "x0": 172.0,
+        "y0": 126.0,
+        "x1": 238.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Stanley-Alvarado",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 150.0,
+        "x1": 208.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 3406.46,
+      "bbox": {
+        "x0": 124.0,
+        "y0": 174.0,
+        "x1": 178.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 12826.67,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 198.0,
+        "x1": 178.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 9420.21,
+      "bbox": {
+        "x0": 124.0,
+        "y0": 222.0,
+        "x1": 178.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "monthly",
+      "bbox": {
+        "x0": 118.0,
+        "y0": 246.0,
+        "x1": 160.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/19/2024",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 270.0,
+        "x1": 172.0,
+        "y1": 280.5,
+        "page": 0
+      }
+    }
+  }
+}

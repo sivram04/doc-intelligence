@@ -1,0 +1,10 @@
+{
+  "train": {
+    "examples": 1360,
+    "scans": 584
+  },
+  "val": {
+    "examples": 30,
+    "scans": 18
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0094",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0094.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "bill_to": {
+      "value": "Anderson Ltd",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 102.0,
+        "x1": 184.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 825.73,
+      "bbox": {
+        "x0": 398.0,
+        "y0": 102.0,
+        "x1": 440.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "08/27/1995",
+      "bbox": {
+        "x0": 136.0,
+        "y0": 126.0,
+        "x1": 196.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Crosby, Anderson and Morrow",
+      "bbox": {
+        "x0": 368.0,
+        "y0": 126.0,
+        "x1": 530.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 17340.27,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 150.0,
+        "x1": 178.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-08319",
+      "bbox": {
+        "x0": 398.0,
+        "y0": 150.0,
+        "x1": 452.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 16514.54,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 174.0,
+        "x1": 178.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

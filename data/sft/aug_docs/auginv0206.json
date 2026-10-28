@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0206",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0206.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "total": {
+      "value": 6409.73,
+      "bbox": {
+        "x0": 119.7,
+        "y0": 102.0,
+        "x1": 164.1,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Villanueva Ltd",
+      "bbox": {
+        "x0": 86.3,
+        "y0": 126.0,
+        "x1": 149.1,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "10/08/1990",
+      "bbox": {
+        "x0": 83.0,
+        "y0": 150.0,
+        "x1": 133.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 305.23,
+      "bbox": {
+        "x0": 104.7,
+        "y0": 174.0,
+        "x1": 140.8,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 6104.5,
+      "bbox": {
+        "x0": 101.3,
+        "y0": 198.0,
+        "x1": 145.8,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Eaton-Wolfe",
+      "bbox": {
+        "x0": 108.0,
+        "y0": 222.0,
+        "x1": 163.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-49924",
+      "bbox": {
+        "x0": 104.1,
+        "y0": 246.0,
+        "x1": 151.9,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

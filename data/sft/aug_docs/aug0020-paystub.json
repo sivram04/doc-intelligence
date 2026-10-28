@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0020-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0020",
+  "file": "aug0020-paystub.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Chavez, Wallace and Shaw",
+      "bbox": {
+        "x0": 103.5,
+        "y0": 102.0,
+        "x1": 213.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Ryan Hodge",
+      "bbox": {
+        "x0": 409.4,
+        "y0": 102.0,
+        "x1": 459.6,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/23/2023",
+      "bbox": {
+        "x0": 109.4,
+        "y0": 126.0,
+        "x1": 154.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "biweekly",
+      "bbox": {
+        "x0": 402.7,
+        "y0": 126.0,
+        "x1": 439.4,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 3381.78,
+      "bbox": {
+        "x0": 121.0,
+        "y0": 150.0,
+        "x1": 161.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 766.96,
+      "bbox": {
+        "x0": 389.1,
+        "y0": 150.0,
+        "x1": 421.6,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 2614.82,
+      "bbox": {
+        "x0": 94.4,
+        "y0": 174.0,
+        "x1": 134.4,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 87926.28,
+      "bbox": {
+        "x0": 387.2,
+        "y0": 174.0,
+        "x1": 432.2,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

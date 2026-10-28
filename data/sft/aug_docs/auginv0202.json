@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0202",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0202.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Wilcox Group",
+      "bbox": {
+        "x0": 85.2,
+        "y0": 102.0,
+        "x1": 142.7,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-14726",
+      "bbox": {
+        "x0": 128.8,
+        "y0": 126.0,
+        "x1": 174.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "08/20/1993",
+      "bbox": {
+        "x0": 113.3,
+        "y0": 150.0,
+        "x1": 158.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Brown-Castro",
+      "bbox": {
+        "x0": 87.2,
+        "y0": 174.0,
+        "x1": 143.8,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 15551.82,
+      "bbox": {
+        "x0": 97.5,
+        "y0": 198.0,
+        "x1": 142.4,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 1127.51,
+      "bbox": {
+        "x0": 78.0,
+        "y0": 222.0,
+        "x1": 118.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 16679.33,
+      "bbox": {
+        "x0": 102.2,
+        "y0": 246.0,
+        "x1": 147.2,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

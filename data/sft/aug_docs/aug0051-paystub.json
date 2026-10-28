@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0051-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0051",
+  "file": "aug0051-paystub.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Young, Hodges and Gardner",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 102.0,
+        "x1": 262.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Jasmine Cross",
+      "bbox": {
+        "x0": 392.0,
+        "y0": 102.0,
+        "x1": 470.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/24/2023",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 126.0,
+        "x1": 172.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "weekly",
+      "bbox": {
+        "x0": 398.0,
+        "y0": 126.0,
+        "x1": 434.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 1894.22,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 150.0,
+        "x1": 172.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 468.58,
+      "bbox": {
+        "x0": 440.0,
+        "y0": 150.0,
+        "x1": 482.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 1425.64,
+      "bbox": {
+        "x0": 106.0,
+        "y0": 174.0,
+        "x1": 160.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 98499.44,
+      "bbox": {
+        "x0": 452.0,
+        "y0": 174.0,
+        "x1": 512.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

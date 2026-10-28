@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0118-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0118",
+  "file": "aug0118-paystub.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Russell, Barber and Shields",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 102.0,
+        "x1": 274.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Dustin Villegas",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 126.0,
+        "x1": 202.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/15/2025",
+      "bbox": {
+        "x0": 124.0,
+        "y0": 150.0,
+        "x1": 184.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "biweekly",
+      "bbox": {
+        "x0": 142.0,
+        "y0": 174.0,
+        "x1": 190.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 6332.1,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 198.0,
+        "x1": 172.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 1226.46,
+      "bbox": {
+        "x0": 124.0,
+        "y0": 222.0,
+        "x1": 178.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 5105.64,
+      "bbox": {
+        "x0": 124.0,
+        "y0": 246.0,
+        "x1": 178.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 164634.6,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 270.0,
+        "x1": 184.0,
+        "y1": 280.5,
+        "page": 0
+      }
+    }
+  }
+}

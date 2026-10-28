@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0162-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0162",
+  "file": "aug0162-paystub.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "total_deductions": {
+      "value": 1248.75,
+      "bbox": {
+        "x0": 115.8,
+        "y0": 102.0,
+        "x1": 160.3,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 3831.28,
+      "bbox": {
+        "x0": 377.4,
+        "y0": 102.0,
+        "x1": 421.9,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 5080.03,
+      "bbox": {
+        "x0": 110.2,
+        "y0": 126.0,
+        "x1": 154.7,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 132080.78,
+      "bbox": {
+        "x0": 391.3,
+        "y0": 126.0,
+        "x1": 446.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Norris-Lynch",
+      "bbox": {
+        "x0": 106.9,
+        "y0": 150.0,
+        "x1": 163.6,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "biweekly",
+      "bbox": {
+        "x0": 391.9,
+        "y0": 150.0,
+        "x1": 430.2,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/29/2023",
+      "bbox": {
+        "x0": 102.5,
+        "y0": 174.0,
+        "x1": 152.5,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Jeremy Hunter",
+      "bbox": {
+        "x0": 388.6,
+        "y0": 174.0,
+        "x1": 454.1,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

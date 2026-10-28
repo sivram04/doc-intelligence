@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0208",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0208.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Thomas-Ramos",
+      "bbox": {
+        "x0": 88.0,
+        "y0": 102.0,
+        "x1": 160.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-60151",
+      "bbox": {
+        "x0": 428.0,
+        "y0": 102.0,
+        "x1": 482.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "01/23/2001",
+      "bbox": {
+        "x0": 136.0,
+        "y0": 126.0,
+        "x1": 196.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Humphrey-Woods",
+      "bbox": {
+        "x0": 392.0,
+        "y0": 126.0,
+        "x1": 476.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 2073.97,
+      "bbox": {
+        "x0": 112.0,
+        "y0": 150.0,
+        "x1": 166.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 103.7,
+      "bbox": {
+        "x0": 398.0,
+        "y0": 150.0,
+        "x1": 440.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 2177.67,
+      "bbox": {
+        "x0": 124.0,
+        "y0": 174.0,
+        "x1": 178.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

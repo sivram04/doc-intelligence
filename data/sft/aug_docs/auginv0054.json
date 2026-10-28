@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0054",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0054.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "total": {
+      "value": 11500.06,
+      "bbox": {
+        "x0": 114.4,
+        "y0": 102.0,
+        "x1": 159.4,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-51353",
+      "bbox": {
+        "x0": 408.8,
+        "y0": 102.0,
+        "x1": 454.9,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 10623.61,
+      "bbox": {
+        "x0": 100.8,
+        "y0": 126.0,
+        "x1": 145.8,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 876.45,
+      "bbox": {
+        "x0": 358.0,
+        "y0": 126.0,
+        "x1": 390.5,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "12/27/1981",
+      "bbox": {
+        "x0": 113.3,
+        "y0": 150.0,
+        "x1": 158.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Leonard, Anderson and Harris",
+      "bbox": {
+        "x0": 367.2,
+        "y0": 150.0,
+        "x1": 488.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Higgins-Burns",
+      "bbox": {
+        "x0": 93.6,
+        "y0": 174.0,
+        "x1": 152.4,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

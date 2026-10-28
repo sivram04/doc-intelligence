@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0210-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0210",
+  "file": "aug0210-paystub.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "gross_pay": {
+      "value": 1207.82,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 116.0,
+        "x1": 90.0,
+        "y1": 126.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Foster Inc",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 156.0,
+        "x1": 90.3,
+        "y1": 166.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 62806.64,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 196.0,
+        "x1": 95.0,
+        "y1": 206.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 365.66,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 236.0,
+        "x1": 82.5,
+        "y1": 246.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "weekly",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 276.0,
+        "x1": 78.9,
+        "y1": 286.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 842.16,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 316.0,
+        "x1": 82.5,
+        "y1": 326.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/19/2023",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 356.0,
+        "x1": 95.6,
+        "y1": 366.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Nichole Phelps",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 396.0,
+        "x1": 110.8,
+        "y1": 406.5,
+        "page": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0015",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0015.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "invoice_number": {
+      "value": "INV-07083",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 116.0,
+        "x1": 104.0,
+        "y1": 126.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 19152.35,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 156.0,
+        "x1": 110.0,
+        "y1": 166.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Brown, Thompson and Rodgers",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 196.0,
+        "x1": 212.0,
+        "y1": 206.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "02/07/1973",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 236.0,
+        "x1": 110.0,
+        "y1": 246.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 1459.65,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 276.0,
+        "x1": 104.0,
+        "y1": 286.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 17692.7,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 316.0,
+        "x1": 110.0,
+        "y1": 326.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Shelton-Newton",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 356.0,
+        "x1": 134.0,
+        "y1": 366.5,
+        "page": 0
+      }
+    }
+  }
+}

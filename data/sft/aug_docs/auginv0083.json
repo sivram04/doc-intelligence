@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0083",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0083.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "bill_to": {
+      "value": "Scott, Bell and Thompson",
+      "bbox": {
+        "x0": 87.2,
+        "y0": 102.0,
+        "x1": 191.6,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 21003.13,
+      "bbox": {
+        "x0": 394.4,
+        "y0": 102.0,
+        "x1": 439.4,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Russell, Li and Dixon",
+      "bbox": {
+        "x0": 93.6,
+        "y0": 126.0,
+        "x1": 181.3,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-85705",
+      "bbox": {
+        "x0": 408.8,
+        "y0": 126.0,
+        "x1": 454.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 21003.13,
+      "bbox": {
+        "x0": 100.8,
+        "y0": 150.0,
+        "x1": 145.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "09/10/1981",
+      "bbox": {
+        "x0": 361.3,
+        "y0": 150.0,
+        "x1": 406.9,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 0.0,
+      "bbox": {
+        "x0": 98.8,
+        "y0": 174.0,
+        "x1": 121.3,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

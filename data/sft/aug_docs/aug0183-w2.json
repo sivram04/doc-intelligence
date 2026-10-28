@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0183-w2",
+  "doc_type": "w2",
+  "case_id": "aug0183",
+  "file": "aug0183-w2.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Gomez-Taylor",
+      "bbox": {
+        "x0": 143.0,
+        "y0": 102.0,
+        "x1": 201.9,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "69-0334227",
+      "bbox": {
+        "x0": 207.2,
+        "y0": 126.0,
+        "x1": 255.5,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Annette Williams",
+      "bbox": {
+        "x0": 129.4,
+        "y0": 150.0,
+        "x1": 200.2,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "6731",
+      "bbox": {
+        "x0": 111.3,
+        "y0": 174.0,
+        "x1": 131.3,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2025,
+      "bbox": {
+        "x0": 99.4,
+        "y0": 198.0,
+        "x1": 119.4,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 54961.62,
+      "bbox": {
+        "x0": 199.4,
+        "y0": 222.0,
+        "x1": 244.4,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 6228.81,
+      "bbox": {
+        "x0": 190.2,
+        "y0": 246.0,
+        "x1": 230.2,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 54961.62,
+      "bbox": {
+        "x0": 158.8,
+        "y0": 270.0,
+        "x1": 203.8,
+        "y1": 280.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 54961.62,
+      "bbox": {
+        "x0": 129.9,
+        "y0": 294.0,
+        "x1": 174.9,
+        "y1": 304.5,
+        "page": 0
+      }
+    }
+  }
+}

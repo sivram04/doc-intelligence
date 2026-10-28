@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0201",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0201.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Webster and Sons",
+      "bbox": {
+        "x0": 93.6,
+        "y0": 102.0,
+        "x1": 165.8,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-85382",
+      "bbox": {
+        "x0": 379.9,
+        "y0": 102.0,
+        "x1": 426.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "07/16/2010",
+      "bbox": {
+        "x0": 81.3,
+        "y0": 126.0,
+        "x1": 126.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Good-White",
+      "bbox": {
+        "x0": 367.2,
+        "y0": 126.0,
+        "x1": 417.2,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 9378.9,
+      "bbox": {
+        "x0": 100.8,
+        "y0": 150.0,
+        "x1": 140.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 679.97,
+      "bbox": {
+        "x0": 378.8,
+        "y0": 150.0,
+        "x1": 411.3,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 10058.87,
+      "bbox": {
+        "x0": 102.2,
+        "y0": 174.0,
+        "x1": 147.2,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

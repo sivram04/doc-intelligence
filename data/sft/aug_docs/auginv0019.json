@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0019",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0019.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Anderson, Rodriguez and Meza",
+      "bbox": {
+        "x0": 85.2,
+        "y0": 102.0,
+        "x1": 212.4,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-39185",
+      "bbox": {
+        "x0": 128.8,
+        "y0": 126.0,
+        "x1": 174.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "02/16/2012",
+      "bbox": {
+        "x0": 81.3,
+        "y0": 150.0,
+        "x1": 126.9,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Wong Ltd",
+      "bbox": {
+        "x0": 87.2,
+        "y0": 174.0,
+        "x1": 128.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 18727.77,
+      "bbox": {
+        "x0": 100.8,
+        "y0": 198.0,
+        "x1": 145.8,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 1357.76,
+      "bbox": {
+        "x0": 78.0,
+        "y0": 222.0,
+        "x1": 118.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 20085.53,
+      "bbox": {
+        "x0": 102.2,
+        "y0": 246.0,
+        "x1": 147.2,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

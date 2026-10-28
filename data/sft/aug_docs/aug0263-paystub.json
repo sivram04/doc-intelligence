@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0263-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0263",
+  "file": "aug0263-paystub.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Bruce Inc",
+      "bbox": {
+        "x0": 103.5,
+        "y0": 102.0,
+        "x1": 142.7,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Jonathan Lee",
+      "bbox": {
+        "x0": 383.6,
+        "y0": 102.0,
+        "x1": 436.6,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/27/2023",
+      "bbox": {
+        "x0": 109.4,
+        "y0": 126.0,
+        "x1": 154.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "biweekly",
+      "bbox": {
+        "x0": 386.9,
+        "y0": 126.0,
+        "x1": 423.5,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 4055.53,
+      "bbox": {
+        "x0": 104.4,
+        "y0": 150.0,
+        "x1": 144.4,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 825.24,
+      "bbox": {
+        "x0": 389.1,
+        "y0": 150.0,
+        "x1": 421.6,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 3230.29,
+      "bbox": {
+        "x0": 111.6,
+        "y0": 174.0,
+        "x1": 151.6,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 105443.78,
+      "bbox": {
+        "x0": 420.5,
+        "y0": 174.0,
+        "x1": 470.5,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

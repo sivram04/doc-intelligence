@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0103-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0103",
+  "file": "aug0103-bank.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "bank_name": {
+      "value": "Sample National",
+      "bbox": {
+        "x0": 106.3,
+        "y0": 102.0,
+        "x1": 173.3,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "account_holder": {
+      "value": "Stacey Wilson",
+      "bbox": {
+        "x0": 407.2,
+        "y0": 102.0,
+        "x1": 465.2,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "account_last4": {
+      "value": "7627",
+      "bbox": {
+        "x0": 128.3,
+        "y0": 126.0,
+        "x1": 148.3,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2024 - 11/30/2024",
+      "bbox": {
+        "x0": 414.9,
+        "y0": 126.0,
+        "x1": 514.4,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "opening_balance": {
+      "value": 4989.49,
+      "bbox": {
+        "x0": 140.0,
+        "y0": 150.0,
+        "x1": 180.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deposits": {
+      "value": 12266.82,
+      "bbox": {
+        "x0": 427.4,
+        "y0": 150.0,
+        "x1": 472.4,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_withdrawals": {
+      "value": 7275.99,
+      "bbox": {
+        "x0": 163.6,
+        "y0": 174.0,
+        "x1": 203.6,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 9980.32,
+      "bbox": {
+        "x0": 407.7,
+        "y0": 174.0,
+        "x1": 447.7,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

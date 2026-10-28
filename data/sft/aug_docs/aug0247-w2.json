@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0247-w2",
+  "doc_type": "w2",
+  "case_id": "aug0247",
+  "file": "aug0247-w2.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Mack, Gonzalez and Booker",
+      "bbox": {
+        "x0": 152.1,
+        "y0": 102.0,
+        "x1": 277.7,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "81-6546512",
+      "bbox": {
+        "x0": 500.2,
+        "y0": 102.0,
+        "x1": 553.6,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Andrew Miranda",
+      "bbox": {
+        "x0": 153.8,
+        "y0": 126.0,
+        "x1": 226.6,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "7592",
+      "bbox": {
+        "x0": 396.9,
+        "y0": 126.0,
+        "x1": 419.1,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2025,
+      "bbox": {
+        "x0": 83.0,
+        "y0": 150.0,
+        "x1": 105.2,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 99119.24,
+      "bbox": {
+        "x0": 498.0,
+        "y0": 150.0,
+        "x1": 548.1,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 8289.61,
+      "bbox": {
+        "x0": 157.5,
+        "y0": 174.0,
+        "x1": 202.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 99119.24,
+      "bbox": {
+        "x0": 453.6,
+        "y0": 174.0,
+        "x1": 503.7,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 99119.24,
+      "bbox": {
+        "x0": 138.0,
+        "y0": 198.0,
+        "x1": 188.1,
+        "y1": 208.5,
+        "page": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0234",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0234.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "tax": {
+      "value": 1119.24,
+      "bbox": {
+        "x0": 78.6,
+        "y0": 102.0,
+        "x1": 123.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Holmes, Garcia and Bishop",
+      "bbox": {
+        "x0": 375.8,
+        "y0": 102.0,
+        "x1": 497.5,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-79003",
+      "bbox": {
+        "x0": 135.2,
+        "y0": 126.0,
+        "x1": 183.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "10/07/2023",
+      "bbox": {
+        "x0": 399.1,
+        "y0": 126.0,
+        "x1": 449.2,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Vaughn-Campbell",
+      "bbox": {
+        "x0": 108.0,
+        "y0": 150.0,
+        "x1": 188.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 23503.96,
+      "bbox": {
+        "x0": 399.7,
+        "y0": 150.0,
+        "x1": 449.7,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 22384.72,
+      "bbox": {
+        "x0": 104.7,
+        "y0": 174.0,
+        "x1": 154.7,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

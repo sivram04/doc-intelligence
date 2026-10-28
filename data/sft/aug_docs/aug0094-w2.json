@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0094-w2",
+  "doc_type": "w2",
+  "case_id": "aug0094",
+  "file": "aug0094-w2.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Ramirez Ltd",
+      "bbox": {
+        "x0": 143.0,
+        "y0": 102.0,
+        "x1": 193.3,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "94-3119730",
+      "bbox": {
+        "x0": 207.2,
+        "y0": 126.0,
+        "x1": 255.5,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Dustin Newman",
+      "bbox": {
+        "x0": 143.0,
+        "y0": 150.0,
+        "x1": 208.3,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "7078",
+      "bbox": {
+        "x0": 111.3,
+        "y0": 174.0,
+        "x1": 131.3,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2024,
+      "bbox": {
+        "x0": 99.4,
+        "y0": 198.0,
+        "x1": 119.4,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 112006.86,
+      "bbox": {
+        "x0": 199.4,
+        "y0": 222.0,
+        "x1": 249.4,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 20018.32,
+      "bbox": {
+        "x0": 190.2,
+        "y0": 246.0,
+        "x1": 235.2,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 112006.86,
+      "bbox": {
+        "x0": 158.8,
+        "y0": 270.0,
+        "x1": 208.8,
+        "y1": 280.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 112006.86,
+      "bbox": {
+        "x0": 174.1,
+        "y0": 294.0,
+        "x1": 224.1,
+        "y1": 304.5,
+        "page": 0
+      }
+    }
+  }
+}

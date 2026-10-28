@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0127",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0127.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Salazar-Powell",
+      "bbox": {
+        "x0": 100.0,
+        "y0": 102.0,
+        "x1": 184.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-74199",
+      "bbox": {
+        "x0": 118.0,
+        "y0": 126.0,
+        "x1": 172.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "07/06/1998",
+      "bbox": {
+        "x0": 88.0,
+        "y0": 150.0,
+        "x1": 148.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Ortiz-Patel",
+      "bbox": {
+        "x0": 106.0,
+        "y0": 174.0,
+        "x1": 172.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 11831.92,
+      "bbox": {
+        "x0": 112.0,
+        "y0": 198.0,
+        "x1": 172.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 857.81,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 222.0,
+        "x1": 160.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 12689.73,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 246.0,
+        "x1": 178.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

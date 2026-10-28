@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0023",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0023.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "invoice_number": {
+      "value": "INV-07466",
+      "bbox": {
+        "x0": 118.0,
+        "y0": 102.0,
+        "x1": 172.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 6333.01,
+      "bbox": {
+        "x0": 404.0,
+        "y0": 102.0,
+        "x1": 458.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 428.11,
+      "bbox": {
+        "x0": 82.0,
+        "y0": 126.0,
+        "x1": 124.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "vendor_name": {
+      "value": "Lopez, Walker and Robinson",
+      "bbox": {
+        "x0": 380.0,
+        "y0": 126.0,
+        "x1": 536.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Ross-Yates",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 150.0,
+        "x1": 172.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "09/13/1982",
+      "bbox": {
+        "x0": 416.0,
+        "y0": 150.0,
+        "x1": 476.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 5904.9,
+      "bbox": {
+        "x0": 112.0,
+        "y0": 174.0,
+        "x1": 166.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

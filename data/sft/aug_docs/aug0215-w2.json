@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0215-w2",
+  "doc_type": "w2",
+  "case_id": "aug0215",
+  "file": "aug0215-w2.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "tax_year": {
+      "value": 2025,
+      "bbox": {
+        "x0": 101.9,
+        "y0": 102.0,
+        "x1": 124.2,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 7151.33,
+      "bbox": {
+        "x0": 437.5,
+        "y0": 102.0,
+        "x1": 482.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "5668",
+      "bbox": {
+        "x0": 160.3,
+        "y0": 126.0,
+        "x1": 182.5,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 51230.55,
+      "bbox": {
+        "x0": 453.6,
+        "y0": 126.0,
+        "x1": 503.7,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 51230.55,
+      "bbox": {
+        "x0": 218.0,
+        "y0": 150.0,
+        "x1": 268.1,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 51230.55,
+      "bbox": {
+        "x0": 467.5,
+        "y0": 150.0,
+        "x1": 517.5,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Simmons LLC",
+      "bbox": {
+        "x0": 152.1,
+        "y0": 174.0,
+        "x1": 214.9,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Crystal Brown",
+      "bbox": {
+        "x0": 433.8,
+        "y0": 174.0,
+        "x1": 496.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "55-3691536",
+      "bbox": {
+        "x0": 220.2,
+        "y0": 198.0,
+        "x1": 273.6,
+        "y1": 208.5,
+        "page": 0
+      }
+    }
+  }
+}

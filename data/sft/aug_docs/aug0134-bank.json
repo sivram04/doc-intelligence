@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0134-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0134",
+  "file": "aug0134-bank.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "bank_name": {
+      "value": "First Example Bank",
+      "bbox": {
+        "x0": 84.1,
+        "y0": 102.0,
+        "x1": 164.1,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "account_holder": {
+      "value": "Stephanie Miller",
+      "bbox": {
+        "x0": 383.5,
+        "y0": 102.0,
+        "x1": 450.5,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "account_last4": {
+      "value": "9223",
+      "bbox": {
+        "x0": 144.1,
+        "y0": 126.0,
+        "x1": 164.1,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2025 - 11/30/2025",
+      "bbox": {
+        "x0": 369.7,
+        "y0": 126.0,
+        "x1": 469.1,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "opening_balance": {
+      "value": 15150.87,
+      "bbox": {
+        "x0": 133.3,
+        "y0": 150.0,
+        "x1": 178.3,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deposits": {
+      "value": 3281.32,
+      "bbox": {
+        "x0": 427.4,
+        "y0": 150.0,
+        "x1": 467.4,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_withdrawals": {
+      "value": 3142.26,
+      "bbox": {
+        "x0": 139.4,
+        "y0": 174.0,
+        "x1": 179.4,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 15289.93,
+      "bbox": {
+        "x0": 407.7,
+        "y0": 174.0,
+        "x1": 452.7,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

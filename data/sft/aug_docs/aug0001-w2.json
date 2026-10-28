@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0001-w2",
+  "doc_type": "w2",
+  "case_id": "aug0001",
+  "file": "aug0001-w2.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Jones-Leonard",
+      "bbox": {
+        "x0": 135.8,
+        "y0": 102.0,
+        "x1": 202.5,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "89-0481475",
+      "bbox": {
+        "x0": 406.4,
+        "y0": 102.0,
+        "x1": 459.7,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Danielle Contreras",
+      "bbox": {
+        "x0": 153.8,
+        "y0": 126.0,
+        "x1": 236.6,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "4337",
+      "bbox": {
+        "x0": 396.9,
+        "y0": 126.0,
+        "x1": 419.1,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2023,
+      "bbox": {
+        "x0": 83.0,
+        "y0": 150.0,
+        "x1": 105.2,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 88875.08,
+      "bbox": {
+        "x0": 498.0,
+        "y0": 150.0,
+        "x1": 548.1,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 13677.69,
+      "bbox": {
+        "x0": 157.5,
+        "y0": 174.0,
+        "x1": 207.5,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 88875.08,
+      "bbox": {
+        "x0": 453.6,
+        "y0": 174.0,
+        "x1": 503.7,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 88875.08,
+      "bbox": {
+        "x0": 138.0,
+        "y0": 198.0,
+        "x1": 188.1,
+        "y1": 208.5,
+        "page": 0
+      }
+    }
+  }
+}

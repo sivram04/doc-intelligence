@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0078-w2",
+  "doc_type": "w2",
+  "case_id": "aug0078",
+  "file": "aug0078-w2.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Evans PLC",
+      "bbox": {
+        "x0": 152.1,
+        "y0": 102.0,
+        "x1": 202.1,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "49-6336934",
+      "bbox": {
+        "x0": 126.3,
+        "y0": 126.0,
+        "x1": 179.7,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Donna Ross",
+      "bbox": {
+        "x0": 137.5,
+        "y0": 150.0,
+        "x1": 192.5,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "8553",
+      "bbox": {
+        "x0": 116.9,
+        "y0": 174.0,
+        "x1": 139.1,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2025,
+      "bbox": {
+        "x0": 83.0,
+        "y0": 198.0,
+        "x1": 105.2,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 131379.79,
+      "bbox": {
+        "x0": 188.0,
+        "y0": 222.0,
+        "x1": 243.6,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 12177.34,
+      "bbox": {
+        "x0": 203.6,
+        "y0": 246.0,
+        "x1": 253.6,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 131379.79,
+      "bbox": {
+        "x0": 165.3,
+        "y0": 270.0,
+        "x1": 220.9,
+        "y1": 280.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 131379.79,
+      "bbox": {
+        "x0": 138.0,
+        "y0": 294.0,
+        "x1": 193.6,
+        "y1": 304.5,
+        "page": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0113-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0113",
+  "file": "aug0113-paystub.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "pay_frequency": {
+      "value": "semimonthly",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 116.0,
+        "x1": 102.2,
+        "y1": 126.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/20/2025",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 156.0,
+        "x1": 95.6,
+        "y1": 166.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 1454.78,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 196.0,
+        "x1": 90.0,
+        "y1": 206.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Scott, Simpson and Park",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 236.0,
+        "x1": 148.3,
+        "y1": 246.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Holly Ruiz",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 276.0,
+        "x1": 94.2,
+        "y1": 286.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 127097.04,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 316.0,
+        "x1": 100.0,
+        "y1": 326.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 3840.93,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 356.0,
+        "x1": 90.0,
+        "y1": 366.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 5295.71,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 396.0,
+        "x1": 90.0,
+        "y1": 406.5,
+        "page": 0
+      }
+    }
+  }
+}

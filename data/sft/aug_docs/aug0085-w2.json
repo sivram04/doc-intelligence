@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0085-w2",
+  "doc_type": "w2",
+  "case_id": "aug0085",
+  "file": "aug0085-w2.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "social_security_wages": {
+      "value": 76577.61,
+      "bbox": {
+        "x0": 151.3,
+        "y0": 102.0,
+        "x1": 196.3,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 76577.61,
+      "bbox": {
+        "x0": 454.1,
+        "y0": 102.0,
+        "x1": 499.1,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 11697.25,
+      "bbox": {
+        "x0": 190.2,
+        "y0": 126.0,
+        "x1": 235.2,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "96-9752736",
+      "bbox": {
+        "x0": 487.2,
+        "y0": 126.0,
+        "x1": 535.5,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 76577.61,
+      "bbox": {
+        "x0": 199.4,
+        "y0": 150.0,
+        "x1": 244.4,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Joshua Smith",
+      "bbox": {
+        "x0": 409.4,
+        "y0": 150.0,
+        "x1": 463.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "8302",
+      "bbox": {
+        "x0": 149.4,
+        "y0": 174.0,
+        "x1": 169.4,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Reyes-Huber",
+      "bbox": {
+        "x0": 409.4,
+        "y0": 174.0,
+        "x1": 462.1,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2025,
+      "bbox": {
+        "x0": 82.4,
+        "y0": 198.0,
+        "x1": 102.4,
+        "y1": 208.5,
+        "page": 0
+      }
+    }
+  }
+}

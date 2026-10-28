@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0008",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0008.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Kelly-Jones",
+      "bbox": {
+        "x0": 93.6,
+        "y0": 102.0,
+        "x1": 141.3,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-35469",
+      "bbox": {
+        "x0": 379.9,
+        "y0": 102.0,
+        "x1": 426.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "10/06/2006",
+      "bbox": {
+        "x0": 113.3,
+        "y0": 126.0,
+        "x1": 158.8,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Knight, Massey and Moore",
+      "bbox": {
+        "x0": 383.5,
+        "y0": 126.0,
+        "x1": 493.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 1850.7,
+      "bbox": {
+        "x0": 97.5,
+        "y0": 150.0,
+        "x1": 137.4,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 152.68,
+      "bbox": {
+        "x0": 378.8,
+        "y0": 150.0,
+        "x1": 411.3,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 2003.38,
+      "bbox": {
+        "x0": 114.4,
+        "y0": 174.0,
+        "x1": 154.4,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

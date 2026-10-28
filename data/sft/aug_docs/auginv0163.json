@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0163",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0163.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Sanders Ltd",
+      "bbox": {
+        "x0": 88.0,
+        "y0": 102.0,
+        "x1": 154.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "03/20/2004",
+      "bbox": {
+        "x0": 136.0,
+        "y0": 126.0,
+        "x1": 196.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 1541.77,
+      "bbox": {
+        "x0": 82.0,
+        "y0": 150.0,
+        "x1": 136.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-90613",
+      "bbox": {
+        "x0": 148.0,
+        "y0": 174.0,
+        "x1": 202.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Davila-Vazquez",
+      "bbox": {
+        "x0": 106.0,
+        "y0": 198.0,
+        "x1": 190.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 18688.12,
+      "bbox": {
+        "x0": 112.0,
+        "y0": 222.0,
+        "x1": 172.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 20229.89,
+      "bbox": {
+        "x0": 124.0,
+        "y0": 246.0,
+        "x1": 184.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

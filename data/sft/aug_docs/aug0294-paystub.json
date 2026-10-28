@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0294-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0294",
+  "file": "aug0294-paystub.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Simmons, Benson and Galloway",
+      "bbox": {
+        "x0": 106.9,
+        "y0": 102.0,
+        "x1": 251.4,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Tina Holmes",
+      "bbox": {
+        "x0": 388.6,
+        "y0": 102.0,
+        "x1": 444.7,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/30/2023",
+      "bbox": {
+        "x0": 114.7,
+        "y0": 126.0,
+        "x1": 164.7,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "semimonthly",
+      "bbox": {
+        "x0": 391.9,
+        "y0": 126.0,
+        "x1": 448.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 7623.24,
+      "bbox": {
+        "x0": 127.5,
+        "y0": 150.0,
+        "x1": 171.9,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 1767.0,
+      "bbox": {
+        "x0": 421.3,
+        "y0": 150.0,
+        "x1": 465.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 5856.24,
+      "bbox": {
+        "x0": 116.3,
+        "y0": 174.0,
+        "x1": 160.8,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 182957.76,
+      "bbox": {
+        "x0": 429.7,
+        "y0": 174.0,
+        "x1": 485.3,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0160-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0160",
+  "file": "aug0160-bank.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "account_holder": {
+      "value": "Amanda Sims",
+      "bbox": {
+        "x0": 108.0,
+        "y0": 102.0,
+        "x1": 170.2,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "bank_name": {
+      "value": "First Example Bank",
+      "bbox": {
+        "x0": 389.7,
+        "y0": 102.0,
+        "x1": 476.4,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2025 - 11/30/2025",
+      "bbox": {
+        "x0": 92.5,
+        "y0": 126.0,
+        "x1": 201.4,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 9870.64,
+      "bbox": {
+        "x0": 418.0,
+        "y0": 126.0,
+        "x1": 462.5,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "account_last4": {
+      "value": "5862",
+      "bbox": {
+        "x0": 154.1,
+        "y0": 150.0,
+        "x1": 176.4,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_withdrawals": {
+      "value": 10003.07,
+      "bbox": {
+        "x0": 425.2,
+        "y0": 150.0,
+        "x1": 475.3,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deposits": {
+      "value": 11271.37,
+      "bbox": {
+        "x0": 129.1,
+        "y0": 174.0,
+        "x1": 179.2,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "opening_balance": {
+      "value": 8602.34,
+      "bbox": {
+        "x0": 421.9,
+        "y0": 174.0,
+        "x1": 466.4,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

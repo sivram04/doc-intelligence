@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0278-w2",
+  "doc_type": "w2",
+  "case_id": "aug0278",
+  "file": "aug0278-w2.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Conley Inc",
+      "bbox": {
+        "x0": 143.0,
+        "y0": 102.0,
+        "x1": 187.2,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "81-3750778",
+      "bbox": {
+        "x0": 123.8,
+        "y0": 126.0,
+        "x1": 172.2,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Paul Phelps",
+      "bbox": {
+        "x0": 129.4,
+        "y0": 150.0,
+        "x1": 176.3,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "2169",
+      "bbox": {
+        "x0": 111.3,
+        "y0": 174.0,
+        "x1": 131.3,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2023,
+      "bbox": {
+        "x0": 82.4,
+        "y0": 198.0,
+        "x1": 102.4,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 140019.97,
+      "bbox": {
+        "x0": 199.4,
+        "y0": 222.0,
+        "x1": 249.4,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 23449.23,
+      "bbox": {
+        "x0": 149.7,
+        "y0": 246.0,
+        "x1": 194.7,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 140019.97,
+      "bbox": {
+        "x0": 151.3,
+        "y0": 270.0,
+        "x1": 201.3,
+        "y1": 280.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 140019.97,
+      "bbox": {
+        "x0": 129.9,
+        "y0": 294.0,
+        "x1": 179.9,
+        "y1": 304.5,
+        "page": 0
+      }
+    }
+  }
+}

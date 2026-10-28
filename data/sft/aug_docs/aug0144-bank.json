@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0144-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0144",
+  "file": "aug0144-bank.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "bank_name": {
+      "value": "First Example Bank",
+      "bbox": {
+        "x0": 130.0,
+        "y0": 102.0,
+        "x1": 238.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "account_holder": {
+      "value": "Melissa Bridges",
+      "bbox": {
+        "x0": 392.0,
+        "y0": 102.0,
+        "x1": 482.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "account_last4": {
+      "value": "2277",
+      "bbox": {
+        "x0": 148.0,
+        "y0": 126.0,
+        "x1": 172.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2024 - 11/30/2024",
+      "bbox": {
+        "x0": 380.0,
+        "y0": 126.0,
+        "x1": 518.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "opening_balance": {
+      "value": 13613.74,
+      "bbox": {
+        "x0": 154.0,
+        "y0": 150.0,
+        "x1": 214.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_deposits": {
+      "value": 6330.59,
+      "bbox": {
+        "x0": 428.0,
+        "y0": 150.0,
+        "x1": 482.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total_withdrawals": {
+      "value": 6328.94,
+      "bbox": {
+        "x0": 166.0,
+        "y0": 174.0,
+        "x1": 220.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 13615.39,
+      "bbox": {
+        "x0": 434.0,
+        "y0": 174.0,
+        "x1": 494.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

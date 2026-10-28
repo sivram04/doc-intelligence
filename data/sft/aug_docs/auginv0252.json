@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0252",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0252.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Stone, Hampton and Byrd",
+      "bbox": {
+        "x0": 95.8,
+        "y0": 102.0,
+        "x1": 210.8,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-85792",
+      "bbox": {
+        "x0": 384.1,
+        "y0": 102.0,
+        "x1": 431.9,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "12/02/2021",
+      "bbox": {
+        "x0": 119.1,
+        "y0": 126.0,
+        "x1": 169.2,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Gonzales-Lopez",
+      "bbox": {
+        "x0": 388.0,
+        "y0": 126.0,
+        "x1": 460.8,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 10784.06,
+      "bbox": {
+        "x0": 101.3,
+        "y0": 150.0,
+        "x1": 151.4,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 889.68,
+      "bbox": {
+        "x0": 358.6,
+        "y0": 150.0,
+        "x1": 394.7,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 11673.74,
+      "bbox": {
+        "x0": 119.7,
+        "y0": 174.0,
+        "x1": 169.7,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

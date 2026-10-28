@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0005-w2",
+  "doc_type": "w2",
+  "case_id": "aug0005",
+  "file": "aug0005-w2.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Mcguire Ltd",
+      "bbox": {
+        "x0": 129.4,
+        "y0": 102.0,
+        "x1": 179.7,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "54-7194163",
+      "bbox": {
+        "x0": 207.2,
+        "y0": 126.0,
+        "x1": 255.5,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Regina Robinson",
+      "bbox": {
+        "x0": 129.4,
+        "y0": 150.0,
+        "x1": 198.6,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "1637",
+      "bbox": {
+        "x0": 111.3,
+        "y0": 174.0,
+        "x1": 131.3,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2025,
+      "bbox": {
+        "x0": 99.4,
+        "y0": 198.0,
+        "x1": 119.4,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 136563.77,
+      "bbox": {
+        "x0": 199.4,
+        "y0": 222.0,
+        "x1": 249.4,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 17746.47,
+      "bbox": {
+        "x0": 149.7,
+        "y0": 246.0,
+        "x1": 194.7,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 136563.77,
+      "bbox": {
+        "x0": 158.8,
+        "y0": 270.0,
+        "x1": 208.8,
+        "y1": 280.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 136563.77,
+      "bbox": {
+        "x0": 174.1,
+        "y0": 294.0,
+        "x1": 224.1,
+        "y1": 304.5,
+        "page": 0
+      }
+    }
+  }
+}

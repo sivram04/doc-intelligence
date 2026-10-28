@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0033-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0033",
+  "file": "aug0033-paystub.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "gross_pay": {
+      "value": 13383.82,
+      "bbox": {
+        "x0": 127.5,
+        "y0": 102.0,
+        "x1": 177.5,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Jamie Wade",
+      "bbox": {
+        "x0": 388.6,
+        "y0": 102.0,
+        "x1": 444.1,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 160605.84,
+      "bbox": {
+        "x0": 111.3,
+        "y0": 126.0,
+        "x1": 166.9,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Johnston, Torres and Hill",
+      "bbox": {
+        "x0": 386.9,
+        "y0": 126.0,
+        "x1": 498.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 2647.13,
+      "bbox": {
+        "x0": 141.3,
+        "y0": 150.0,
+        "x1": 185.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 10736.69,
+      "bbox": {
+        "x0": 396.3,
+        "y0": 150.0,
+        "x1": 446.4,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/30/2023",
+      "bbox": {
+        "x0": 114.7,
+        "y0": 174.0,
+        "x1": 164.7,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "monthly",
+      "bbox": {
+        "x0": 409.7,
+        "y0": 174.0,
+        "x1": 444.7,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

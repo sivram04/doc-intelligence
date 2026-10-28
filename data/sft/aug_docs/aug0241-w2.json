@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0241-w2",
+  "doc_type": "w2",
+  "case_id": "aug0241",
+  "file": "aug0241-w2.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Mcdaniel Inc",
+      "bbox": {
+        "x0": 142.0,
+        "y0": 102.0,
+        "x1": 214.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "65-6352539",
+      "bbox": {
+        "x0": 416.0,
+        "y0": 102.0,
+        "x1": 476.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Emily Brown",
+      "bbox": {
+        "x0": 142.0,
+        "y0": 126.0,
+        "x1": 208.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "0312",
+      "bbox": {
+        "x0": 458.0,
+        "y0": 126.0,
+        "x1": 482.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2023,
+      "bbox": {
+        "x0": 88.0,
+        "y0": 150.0,
+        "x1": 112.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 63907.5,
+      "bbox": {
+        "x0": 500.0,
+        "y0": 150.0,
+        "x1": 560.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 7726.96,
+      "bbox": {
+        "x0": 238.0,
+        "y0": 174.0,
+        "x1": 292.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 63907.5,
+      "bbox": {
+        "x0": 482.0,
+        "y0": 174.0,
+        "x1": 542.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 63907.5,
+      "bbox": {
+        "x0": 214.0,
+        "y0": 198.0,
+        "x1": 274.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    }
+  }
+}

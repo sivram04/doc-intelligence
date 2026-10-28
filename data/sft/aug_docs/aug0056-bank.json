@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0056-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0056",
+  "file": "aug0056-bank.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "total_withdrawals": {
+      "value": 1496.5,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 116.0,
+        "x1": 104.0,
+        "y1": 126.5,
+        "page": 0
+      }
+    },
+    "account_last4": {
+      "value": "5971",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 156.0,
+        "x1": 74.0,
+        "y1": 166.5,
+        "page": 0
+      }
+    },
+    "opening_balance": {
+      "value": 6941.84,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 196.0,
+        "x1": 104.0,
+        "y1": 206.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2023 - 11/30/2023",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 236.0,
+        "x1": 188.0,
+        "y1": 246.5,
+        "page": 0
+      }
+    },
+    "account_holder": {
+      "value": "Lisa Davis",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 276.0,
+        "x1": 110.0,
+        "y1": 286.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 7179.3,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 316.0,
+        "x1": 104.0,
+        "y1": 326.5,
+        "page": 0
+      }
+    },
+    "total_deposits": {
+      "value": 1733.96,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 356.0,
+        "x1": 104.0,
+        "y1": 366.5,
+        "page": 0
+      }
+    },
+    "bank_name": {
+      "value": "Sample National",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 396.0,
+        "x1": 140.0,
+        "y1": 406.5,
+        "page": 0
+      }
+    }
+  }
+}

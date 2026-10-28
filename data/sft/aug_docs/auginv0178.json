@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0178",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0178.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Swanson, Potter and Pham",
+      "bbox": {
+        "x0": 100.0,
+        "y0": 102.0,
+        "x1": 244.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-72242",
+      "bbox": {
+        "x0": 118.0,
+        "y0": 126.0,
+        "x1": 172.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "05/08/1994",
+      "bbox": {
+        "x0": 136.0,
+        "y0": 150.0,
+        "x1": 196.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Floyd, Schmitt and Walker",
+      "bbox": {
+        "x0": 106.0,
+        "y0": 174.0,
+        "x1": 256.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 6485.79,
+      "bbox": {
+        "x0": 112.0,
+        "y0": 198.0,
+        "x1": 166.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 470.22,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 222.0,
+        "x1": 160.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 6956.01,
+      "bbox": {
+        "x0": 124.0,
+        "y0": 246.0,
+        "x1": 178.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    }
+  }
+}

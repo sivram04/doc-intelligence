@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0295",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0295.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Hayes Ltd",
+      "bbox": {
+        "x0": 95.8,
+        "y0": 102.0,
+        "x1": 140.8,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-13245",
+      "bbox": {
+        "x0": 415.2,
+        "y0": 102.0,
+        "x1": 463.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "07/20/1970",
+      "bbox": {
+        "x0": 83.0,
+        "y0": 126.0,
+        "x1": 133.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Ware-Ramirez",
+      "bbox": {
+        "x0": 369.1,
+        "y0": 126.0,
+        "x1": 433.6,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 17552.51,
+      "bbox": {
+        "x0": 101.3,
+        "y0": 150.0,
+        "x1": 151.4,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 1272.56,
+      "bbox": {
+        "x0": 384.7,
+        "y0": 150.0,
+        "x1": 429.2,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 18825.07,
+      "bbox": {
+        "x0": 119.7,
+        "y0": 174.0,
+        "x1": 169.7,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0053-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0053",
+  "file": "aug0053-paystub.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Miller-Edwards",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 102.0,
+        "x1": 196.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Jeffrey Long",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 126.0,
+        "x1": 184.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "pay_date": {
+      "value": "12/30/2025",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 150.0,
+        "x1": 172.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "biweekly",
+      "bbox": {
+        "x0": 142.0,
+        "y0": 174.0,
+        "x1": 190.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 6622.25,
+      "bbox": {
+        "x0": 142.0,
+        "y0": 198.0,
+        "x1": 196.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 1841.46,
+      "bbox": {
+        "x0": 124.0,
+        "y0": 222.0,
+        "x1": 178.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 4780.79,
+      "bbox": {
+        "x0": 124.0,
+        "y0": 246.0,
+        "x1": 178.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 172178.5,
+      "bbox": {
+        "x0": 118.0,
+        "y0": 270.0,
+        "x1": 184.0,
+        "y1": 280.5,
+        "page": 0
+      }
+    }
+  }
+}

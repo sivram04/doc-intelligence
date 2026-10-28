@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0136-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0136",
+  "file": "aug0136-bank.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "bank_name": {
+      "value": "Demo Credit Union",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 116.0,
+        "x1": 135.0,
+        "y1": 126.5,
+        "page": 0
+      }
+    },
+    "account_holder": {
+      "value": "Kim Fitzpatrick",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 156.0,
+        "x1": 115.6,
+        "y1": 166.5,
+        "page": 0
+      }
+    },
+    "account_last4": {
+      "value": "9791",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 196.0,
+        "x1": 72.2,
+        "y1": 206.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2023 - 11/30/2023",
+      "bbox": {
+        "x0": 50.0,
+        "y0": 236.0,
+        "x1": 159.0,
+        "y1": 246.5,
+        "page": 0
+      }
+    },
+    "opening_balance": {
+      "value": 15491.08,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 276.0,
+        "x1": 100.0,
+        "y1": 286.5,
+        "page": 0
+      }
+    },
+    "total_deposits": {
+      "value": 6869.61,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 316.0,
+        "x1": 94.5,
+        "y1": 326.5,
+        "page": 0
+      }
+    },
+    "total_withdrawals": {
+      "value": 3967.71,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 356.0,
+        "x1": 94.5,
+        "y1": 366.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 18392.98,
+      "bbox": {
+        "x0": 50.0,
+        "y0": 396.0,
+        "x1": 100.0,
+        "y1": 406.5,
+        "page": 0
+      }
+    }
+  }
+}

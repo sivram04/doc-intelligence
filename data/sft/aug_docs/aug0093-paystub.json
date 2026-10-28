@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0093-paystub",
+  "doc_type": "paystub",
+  "case_id": "aug0093",
+  "file": "aug0093-paystub.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "pay_date": {
+      "value": "12/20/2023",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 102.0,
+        "x1": 172.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "gross_pay": {
+      "value": 3500.0,
+      "bbox": {
+        "x0": 142.0,
+        "y0": 126.0,
+        "x1": 196.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Jeremy Padilla",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 150.0,
+        "x1": 196.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "ytd_gross": {
+      "value": 42000.0,
+      "bbox": {
+        "x0": 172.0,
+        "y0": 174.0,
+        "x1": 232.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "net_pay": {
+      "value": 2815.49,
+      "bbox": {
+        "x0": 106.0,
+        "y0": 198.0,
+        "x1": 160.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "employer_name": {
+      "value": "Villarreal and Sons",
+      "bbox": {
+        "x0": 106.0,
+        "y0": 222.0,
+        "x1": 220.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total_deductions": {
+      "value": 684.51,
+      "bbox": {
+        "x0": 124.0,
+        "y0": 246.0,
+        "x1": 166.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "pay_frequency": {
+      "value": "monthly",
+      "bbox": {
+        "x0": 118.0,
+        "y0": 270.0,
+        "x1": 160.0,
+        "y1": 280.5,
+        "page": 0
+      }
+    }
+  }
+}

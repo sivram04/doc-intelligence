@@ -1,0 +1,100 @@
+{
+  "doc_id": "aug0115-w2",
+  "doc_type": "w2",
+  "case_id": "aug0115",
+  "file": "aug0115-w2.pdf",
+  "modality": "native",
+  "heldout_labels": false,
+  "fields": {
+    "employer_name": {
+      "value": "Barnes LLC",
+      "bbox": {
+        "x0": 135.8,
+        "y0": 102.0,
+        "x1": 188.6,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "employer_ein": {
+      "value": "89-6097389",
+      "bbox": {
+        "x0": 220.2,
+        "y0": 126.0,
+        "x1": 273.6,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "employee_name": {
+      "value": "Pamela Moore",
+      "bbox": {
+        "x0": 153.8,
+        "y0": 150.0,
+        "x1": 218.8,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "employee_ssn_last4": {
+      "value": "6908",
+      "bbox": {
+        "x0": 160.3,
+        "y0": 174.0,
+        "x1": 182.5,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "tax_year": {
+      "value": 2024,
+      "bbox": {
+        "x0": 83.0,
+        "y0": 198.0,
+        "x1": 105.2,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "wages": {
+      "value": 167688.15,
+      "bbox": {
+        "x0": 218.0,
+        "y0": 222.0,
+        "x1": 273.6,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "federal_tax_withheld": {
+      "value": 15847.28,
+      "bbox": {
+        "x0": 203.6,
+        "y0": 246.0,
+        "x1": 253.6,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "social_security_wages": {
+      "value": 167688.15,
+      "bbox": {
+        "x0": 165.3,
+        "y0": 270.0,
+        "x1": 220.9,
+        "y1": 280.5,
+        "page": 0
+      }
+    },
+    "medicare_wages": {
+      "value": 167688.15,
+      "bbox": {
+        "x0": 138.0,
+        "y0": 294.0,
+        "x1": 193.6,
+        "y1": 304.5,
+        "page": 0
+      }
+    }
+  }
+}

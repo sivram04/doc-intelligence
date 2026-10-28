@@ -1,0 +1,90 @@
+{
+  "doc_id": "aug0111-bank",
+  "doc_type": "bank_statement",
+  "case_id": "aug0111",
+  "file": "aug0111-bank.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "opening_balance": {
+      "value": 12210.12,
+      "bbox": {
+        "x0": 154.0,
+        "y0": 102.0,
+        "x1": 214.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "total_withdrawals": {
+      "value": 3844.98,
+      "bbox": {
+        "x0": 166.0,
+        "y0": 126.0,
+        "x1": 220.0,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "statement_period": {
+      "value": "11/01/2025 - 11/30/2025",
+      "bbox": {
+        "x0": 160.0,
+        "y0": 150.0,
+        "x1": 298.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "account_holder": {
+      "value": "Tammy Herring",
+      "bbox": {
+        "x0": 112.0,
+        "y0": 174.0,
+        "x1": 190.0,
+        "y1": 184.5,
+        "page": 0
+      }
+    },
+    "account_last4": {
+      "value": "8833",
+      "bbox": {
+        "x0": 148.0,
+        "y0": 198.0,
+        "x1": 172.0,
+        "y1": 208.5,
+        "page": 0
+      }
+    },
+    "bank_name": {
+      "value": "Demo Credit Union",
+      "bbox": {
+        "x0": 88.0,
+        "y0": 222.0,
+        "x1": 190.0,
+        "y1": 232.5,
+        "page": 0
+      }
+    },
+    "total_deposits": {
+      "value": 4628.64,
+      "bbox": {
+        "x0": 148.0,
+        "y0": 246.0,
+        "x1": 202.0,
+        "y1": 256.5,
+        "page": 0
+      }
+    },
+    "closing_balance": {
+      "value": 12993.78,
+      "bbox": {
+        "x0": 154.0,
+        "y0": 270.0,
+        "x1": 214.0,
+        "y1": 280.5,
+        "page": 0
+      }
+    }
+  }
+}

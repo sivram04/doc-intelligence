@@ -1,0 +1,80 @@
+{
+  "doc_id": "auginv0278",
+  "doc_type": "invoice",
+  "case_id": null,
+  "file": "auginv0278.png",
+  "modality": "scan",
+  "heldout_labels": false,
+  "fields": {
+    "vendor_name": {
+      "value": "Vasquez-Williams",
+      "bbox": {
+        "x0": 93.6,
+        "y0": 102.0,
+        "x1": 168.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_number": {
+      "value": "INV-88412",
+      "bbox": {
+        "x0": 379.9,
+        "y0": 102.0,
+        "x1": 426.0,
+        "y1": 112.5,
+        "page": 0
+      }
+    },
+    "invoice_date": {
+      "value": "12/01/1975",
+      "bbox": {
+        "x0": 113.3,
+        "y0": 126.0,
+        "x1": 158.8,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "bill_to": {
+      "value": "Rodriguez-Hughes",
+      "bbox": {
+        "x0": 383.5,
+        "y0": 126.0,
+        "x1": 459.1,
+        "y1": 136.5,
+        "page": 0
+      }
+    },
+    "subtotal": {
+      "value": 23411.05,
+      "bbox": {
+        "x0": 97.5,
+        "y0": 150.0,
+        "x1": 142.4,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "tax": {
+      "value": 1697.3,
+      "bbox": {
+        "x0": 358.0,
+        "y0": 150.0,
+        "x1": 398.0,
+        "y1": 160.5,
+        "page": 0
+      }
+    },
+    "total": {
+      "value": 25108.35,
+      "bbox": {
+        "x0": 102.2,
+        "y0": 174.0,
+        "x1": 147.2,
+        "y1": 184.5,
+        "page": 0
+      }
+    }
+  }
+}
