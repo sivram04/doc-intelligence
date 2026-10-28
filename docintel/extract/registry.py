@@ -1,5 +1,5 @@
 """Build extractors from a spec string, e.g. `rules`, `hf:Qwen/Qwen2.5-1.5B-Instruct`,
-`ollama:qwen2.5:1.5b`, `gemini:gemini-2.5-flash`, `groq:llama-3.3-70b-versatile`, `gateway:auto`."""
+`ollama:qwen2.5:1.5b`, `gemini:gemini-3.8-flash`, `groq:llama-3.3-70b-versatile`, `gateway:auto`."""
 from __future__ import annotations
 
 from functools import lru_cache

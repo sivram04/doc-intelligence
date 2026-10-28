@@ -59,8 +59,8 @@ def main() -> None:
     lines = [
         f"# Model race leaderboard ({a.split} split)\n",
         ("| Model | Field F1 | W-2 | Pay stub | Bank | Invoice | Native F1 | Scan F1 | Review rate "
-         "| p95 latency (s) | Tokens in/out per doc | Cost per 1K docs (USD) |"),
-        "|---|---|---|---|---|---|---|---|---|---|---|---|",
+         "| p95 latency (s) | Tokens in/out per doc | Cost per 1K docs (USD) | Failed docs |"),
+        "|---|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for r in rows:
         bt, bm = r["field_scores_by_type"], r["field_scores_by_modality"]
@@ -69,7 +69,7 @@ def main() -> None:
             r["model"], fmt(overall_f1(r)), *(fmt(bt.get(t, {}).get("f1")) for t in TYPES),
             fmt(bm.get("native", {}).get("f1")), fmt(bm.get("scan", {}).get("f1")), fmt(r["review_rate"]),
             fmt(r["p95_latency_ms"] / 1000, 1), f"{tok.get('input', 0)}/{tok.get('output', 0)}",
-            fmt(r.get("cost_per_1k_docs_usd"), 2),
+            fmt(r.get("cost_per_1k_docs_usd"), 2), str(r.get("failed_documents", 0)),
         ]) + " |")
     lines.append(f"\n{rows[0]['documents'] if rows else 0} test documents. Latency is wall-clock per document "
                  "on the machine that ran the eval; cost is at paid list prices (free tiers cost $0).")

@@ -11,7 +11,8 @@ PRICES: dict[str, tuple[float, float] | None] = {
     "rules": (0.0, 0.0),
     "hf": (0.0, 0.0),
     "ollama": (0.0, 0.0),  # local CPU; compute cost is in latency, not tokens
-    "gemini:gemini-2.5-flash": None,
+    "gemini:gemini-3.5-flash-lite": None,
+    "gemini:gemma-4-31b-it": None,
     "groq:llama-3.3-70b-versatile": None,
     "groq:qwen/qwen3-32b": None,
 }

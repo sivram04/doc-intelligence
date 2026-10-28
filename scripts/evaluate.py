@@ -4,7 +4,7 @@ latency, throughput, and cross-document detection rate.
 
     python scripts/evaluate.py                                    # rules baseline
     python scripts/evaluate.py --extractor hf:Qwen/Qwen2.5-1.5B-Instruct --workers 1
-    python scripts/evaluate.py --extractor gemini:gemini-2.5-flash  # needs GEMINI_API_KEY
+    python scripts/evaluate.py --extractor gemini:gemini-3.8-flash  # needs GEMINI_API_KEY
 """
 import argparse
 import json
@@ -25,8 +25,11 @@ from docintel.validators import validate_case
 def run_one(args: tuple[str, str, str | None]) -> dict:
     data, doc_id, spec = args
     gt = json.loads((Path(data) / "docs" / f"{doc_id}.json").read_text())
-    res = process(Path(data) / "docs" / gt["file"], make_extractor(spec))
-    return {"gt": gt, "doc_type": res.doc_type.value, "latency_ms": res.latency_ms, "model": res.model,
+    try:
+        res = process(Path(data) / "docs" / gt["file"], make_extractor(spec))
+    except Exception as e:  # noqa: BLE001 - a failed doc scores as all-missed and is reported, not fatal
+        return {"gt": gt, "error": str(e)[:300]}
+    return {"error": None, "gt": gt, "doc_type": res.doc_type.value, "latency_ms": res.latency_ms, "model": res.model,
             "pred": {k: f.value for k, f in res.fields.items()},
             "fields": {k: f.model_dump() for k, f in res.fields.items()}, "routing": route(res), "tokens": res.tokens}
 
@@ -58,9 +61,17 @@ def main() -> None:
     latency: dict[str, list[float]] = defaultdict(list)
     type_ok = review = total = 0
     case_docs: dict[str, dict] = defaultdict(dict)
+    ok = [r for r in rows if not r["error"]]
+    errors = [{"doc_id": r["gt"]["doc_id"], "error": r["error"]} for r in rows if r["error"]]
     for r in rows:
         gt = r["gt"]
         gold = {k: f["value"] for k, f in gt["fields"].items()}
+        if r["error"]:
+            by_type.add(gt["doc_type"], {}, gold)
+            by_modality.add(gt["modality"], {}, gold)
+            review += len(gold)
+            total += len(gold)
+            continue
         by_type.add(gt["doc_type"], r["pred"], gold)
         by_modality.add(gt["modality"], r["pred"], gold)
         latency[gt["modality"]].append(r["latency_ms"])
@@ -78,11 +89,12 @@ def main() -> None:
         pos, neg = pos + bad, neg + (not bad)
         tp, fp = tp + (flagged and bad), fp + (flagged and not bad)
 
-    all_lat = [x for v in latency.values() for x in v]
-    tok_in = sum(r["tokens"].get("input", 0) for r in rows) / max(len(rows), 1)
-    tok_out = sum(r["tokens"].get("output", 0) for r in rows) / max(len(rows), 1)
+    all_lat = [x for v in latency.values() for x in v] or [0.0]
+    tok_in = sum(r["tokens"].get("input", 0) for r in ok) / max(len(ok), 1)
+    tok_out = sum(r["tokens"].get("output", 0) for r in ok) / max(len(ok), 1)
     report = {
-        "model": rows[0]["model"] if rows else None, "split": a.split, "documents": len(ids),
+        "model": ok[0]["model"] if ok else a.extractor, "split": a.split, "documents": len(ids),
+        "failed_documents": len(errors), "errors": errors[:5],
         "field_scores_by_type": by_type.report(),
         "field_scores_by_modality": by_modality.report(),
         "classification_accuracy": round(type_ok / len(ids), 4),
@@ -100,6 +112,8 @@ def main() -> None:
     name = (report["model"] or "none").replace(":", "_")
     (Path(a.out) / f"eval_{name}_{a.split}.json").write_text(json.dumps(report, indent=2))
     print(json.dumps(report, indent=2))
+    if len(errors) == len(rows):
+        raise SystemExit(f"All {len(rows)} documents failed; first error: {errors[0]['error']}")
 
 
 if __name__ == "__main__":

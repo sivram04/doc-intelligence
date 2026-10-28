@@ -15,7 +15,9 @@ from __future__ import annotations
 
 import json
 import os
+import random
 import re
+import time
 from typing import Any
 
 import httpx
@@ -32,6 +34,11 @@ Text spans, one per line as `[id] text`:
 Return JSON mapping each field to {{"value": string|number|null, "confidence": 0-1, "span": id|null}}.
 Copy values exactly as printed (keep names and dates as written; numbers without $ or commas).
 Use null when a field is absent. Fields: {fields}"""
+
+MAX_ATTEMPTS = 7  # ~2 min of backoff in total
+RETRY_STATUS = {429, 500, 502, 503, 504}
+# Client-side pacing to stay inside free-tier requests-per-minute (override: <PROVIDER>_RPM).
+DEFAULT_RPM = {"gemini": 5, "groq": 25}
 
 PROVIDERS = {
     "gateway": (os.getenv("GATEWAY_URL", "http://localhost:8000/v1"), "GATEWAY_API_KEY"),
@@ -95,20 +102,37 @@ class OpenAICompatExtractor(LLMExtractor):
             raise RuntimeError(f"{key_env} is not set")
         self.model, self.timeout = model, timeout
         self.name = f"{provider}:{model}"
+        rpm = float(os.getenv(f"{provider.upper()}_RPM", DEFAULT_RPM.get(provider, 0)))
+        self.min_interval = 60.0 / rpm if rpm > 0 else 0.0
+        self._last_call = 0.0
+
+    def _pace(self) -> None:
+        wait = self._last_call + self.min_interval - time.monotonic()
+        if wait > 0:
+            time.sleep(wait)
+        self._last_call = time.monotonic()
 
     def _chat(self, system: str, user: str) -> str:
-        for attempt in range(4):  # free tiers rate-limit; back off on 429/5xx
-            r = httpx.post(f"{self.base_url}/chat/completions", timeout=self.timeout,
-                           headers={"Authorization": f"Bearer {self.api_key}"},
-                           json={"model": self.model, "temperature": 0,
-                                 "response_format": {"type": "json_object"},
-                                 "messages": [{"role": "system", "content": system},
-                                              {"role": "user", "content": user}]})
-            if r.status_code in (429, 500, 502, 503) and attempt < 3:
-                import time
-                time.sleep(float(r.headers.get("retry-after", 2 ** (attempt + 1))))
+        for attempt in range(MAX_ATTEMPTS):  # free tiers rate-limit and overload; back off with jitter
+            self._pace()
+            try:
+                r = httpx.post(f"{self.base_url}/chat/completions", timeout=self.timeout,
+                               headers={"Authorization": f"Bearer {self.api_key}"},
+                               json={"model": self.model, "temperature": 0,
+                                     "response_format": {"type": "json_object"},
+                                     "messages": [{"role": "system", "content": system},
+                                                  {"role": "user", "content": user}]})
+            except httpx.TransportError as e:
+                if attempt == MAX_ATTEMPTS - 1:
+                    raise RuntimeError(f"{self.name} transport error: {e}") from None
+                time.sleep(min(60, 2 ** (attempt + 1)) * random.uniform(0.8, 1.2))
                 continue
-            r.raise_for_status()
+            if r.status_code in RETRY_STATUS and attempt < MAX_ATTEMPTS - 1:
+                wait = r.headers.get("retry-after")
+                time.sleep(float(wait) if wait else min(60, 2 ** (attempt + 1)) * random.uniform(0.8, 1.2))
+                continue
+            if r.is_error:  # plain exception: httpx errors don't pickle across worker processes
+                raise RuntimeError(f"{self.name} HTTP {r.status_code}: {r.text[:300]}")
             body = r.json()
             u = body.get("usage") or {}
             self.last_usage = {"input": u.get("prompt_tokens", 0), "output": u.get("completion_tokens", 0)}

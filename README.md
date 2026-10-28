@@ -9,7 +9,7 @@ Reads financial documents (W-2s, pay stubs, bank statements, invoices), extracts
 | 0. Setup and data | Synthetic generator, case-grouped frozen splits (hashed test manifest), Docker Compose (API, Redis, Postgres, MLflow), DVC pipeline (remote not yet configured). |
 | 1. Baseline pipeline | Preprocess (native vs scanned, deskew, denoise), PyMuPDF layout + key-value pairing, keyword classifier, rules extractor, LLM extractor via Project 1 gateway, async REST API. |
 | 2. Validation | Field rules (sums, formats) and cross-document case checks with readable reasons. |
-| 3. Model race | Learned doc-type classifier (TF-IDF + logistic regression, DVC stage). Extractors: rules, Qwen2.5-1.5B on CPU via Ollama, Gemini / Groq / gateway adapters (run once keys are set). Leaderboard with F1, latency, tokens and cost. |
+| 3. Model race | Learned doc-type classifier (TF-IDF + logistic regression, DVC stage). Extractors: rules, Qwen2.5-1.5B on CPU via Ollama, Gemini 3.5 Flash Lite (free tier); Groq / gateway adapters ready. Leaderboard with F1, latency, tokens and cost. |
 | 4–7 | Not started. |
 
 ## Quickstart
@@ -18,7 +18,7 @@ Reads financial documents (W-2s, pay stubs, bank statements, invoices), extracts
 pip install -e ".[dev,ocr]"      # plus the Tesseract binary for scans
 python scripts/make_data.py            # 60 cases (W-2 + pay stub + bank) + 60 invoices
 python scripts/evaluate.py             # rules baseline on the frozen test split
-python scripts/evaluate.py --model gemini-2.5-flash   # needs the Project 1 gateway (.env)
+python scripts/evaluate.py --extractor gemini:gemini-3.8-flash   # needs GEMINI_API_KEY in .env
 uvicorn docintel.api.main:app --port 8080
 pytest -q
 ```
@@ -69,13 +69,17 @@ Latency on a 16-thread laptop CPU: native PDF p50 is about 27 ms. A single scan 
 
 | Model | Field F1 | Native | Scan | Doc-type acc. | Cross-doc caught | p50 latency | Tokens in/out | Cost / 1K docs |
 |---|---|---|---|---|---|---|---|---|
-| Qwen2.5-1.5B (Ollama, CPU, zero-shot) | **0.88** | 0.89 | 0.87 | 100% | 2 of 3 | 23 s native, 29 s scan | 312 / 144 | $0 (local) |
+| Gemini 3.5 Flash Lite (free tier, zero-shot) | **0.995** | 1.00 | 0.98 | 100% | 3 of 3 | 16 s native, 21 s scan* | 317 / 341 | n/a (free) |
+| Qwen2.5-1.5B (Ollama, CPU, zero-shot) | 0.88 | 0.89 | 0.87 | 100% | 2 of 3 | 23 s native, 29 s scan | 312 / 144 | $0 (local) |
 | rules-v1 + learned classifier | 0.38 | 0.42 | 0.37 | 100% | 0 of 3 | <0.1 s native, ~2 s scan | – | $0 |
 
 - **Classifier.** The learned classifier fixed document typing (74% to 100% on test) and lifted rules-v1 bank-statement F1 from 0.00 to 0.67.
 - **Small model.** A 1.5B model with no training already beats rules by 50 F1 points on unseen wording. The cost is latency: about 25 s per document on this laptop CPU, with 2 parallel requests.
 - **Review rate.** It is 78% for Qwen, because the model's self-reported confidence is uncalibrated and sits below the 0.85 auto-accept bar. Calibration and per-field thresholds are Phase 5.
-- **API models.** Gemini and Groq are not on the board yet because no free-tier keys are configured. Add `GEMINI_API_KEY` / `GROQ_API_KEY` to `.env`, then run `bash scripts/race.sh`.
+- **Gemini 3.5 Flash Lite** is close to perfect: 0.995 F1, every planted cross-document mismatch caught, and only a 2% review rate because its confidence scores are high. \*Its latency includes waiting for client-side pacing at 12 requests/min, so it overstates model time.
+- **The gap to close in Phase 4:** a hosted model scores 0.995, while the free local 1.5B model scores 0.88. Fine-tuning the small model aims to close most of that gap at $0 per document and with no data leaving the machine.
+- **Free-tier limits** (checked 2026-10-28): Gemini 3.8 Flash allows 20 requests/day, too few for a 50-document run, so the race uses Flash Lite (500/day).
+- **Not on the board yet:** Gemma 4 31B, because the API returned 503 "high demand" on every request during the run. Groq, because no key is configured. Rerun `bash scripts/race.sh` once either is available.
 - **Cost.** API costs show "n/a" until list prices are filled in `docintel/eval/prices.py` for the run date.
 - **Not used:** PyTorch CPU inference. Through `transformers` it ran about 30x slower than llama.cpp on this machine, so `hf:` is reserved for the Kaggle/Colab GPU in Phase 4.
 
