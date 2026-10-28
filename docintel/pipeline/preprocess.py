@@ -5,10 +5,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 import cv2
-import pymupdf as fitz
 import numpy as np
+import pymupdf as fitz
 
 MIN_NATIVE_CHARS = 25
+MAX_SKEW = 6.0  # degrees searched each way
 
 
 @dataclass
@@ -21,14 +22,22 @@ class Page:
 
 
 def deskew(gray: np.ndarray) -> tuple[np.ndarray, float]:
-    """Estimate skew from the min-area rectangle around ink pixels."""
-    inv = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)[1]
-    pts = np.column_stack(np.where(inv > 0))
-    if len(pts) < 50:
+    """Projection-profile skew search: text lines give the sharpest row-sum
+    profile when level. Runs on a downscaled copy, so it costs a few ms."""
+    scale = min(1.0, 800 / gray.shape[1])
+    small = cv2.resize(gray, None, fx=scale, fy=scale, interpolation=cv2.INTER_AREA)
+    inv = cv2.threshold(small, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)[1]
+    if cv2.countNonZero(inv) < 50:
         return gray, 0.0
-    angle = cv2.minAreaRect(pts[:, ::-1].astype(np.float32))[-1]
-    if angle > 45:
-        angle -= 90
+    sh, sw = inv.shape
+    best, angle = -1.0, 0.0
+    for a in np.arange(-MAX_SKEW, MAX_SKEW + 1e-6, 0.25):
+        m = cv2.getRotationMatrix2D((sw / 2, sh / 2), a, 1.0)
+        score = float(np.var(cv2.warpAffine(inv, m, (sw, sh)).sum(axis=1, dtype=np.float64)))
+        if score > best:
+            best, angle = score, float(a)
+    if abs(angle) < 0.1:
+        return gray, 0.0
     h, w = gray.shape
     m = cv2.getRotationMatrix2D((w / 2, h / 2), angle, 1.0)
     out = cv2.warpAffine(gray, m, (w, h), flags=cv2.INTER_CUBIC, borderValue=255)
@@ -36,7 +45,8 @@ def deskew(gray: np.ndarray) -> tuple[np.ndarray, float]:
 
 
 def denoise(gray: np.ndarray) -> np.ndarray:
-    return cv2.fastNlMeansDenoising(cv2.medianBlur(gray, 3), h=10)
+    # Median blur removes scanner speckle; non-local means was ~10x slower for no OCR gain.
+    return cv2.medianBlur(gray, 3)
 
 
 def load_pages(path: str, dpi: int = 200) -> tuple[fitz.Document, list[Page]]:

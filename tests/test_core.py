@@ -62,6 +62,28 @@ def test_cross_doc_catches_seeded_inconsistency(kind):
         assert bool(flags) is expect, flags
 
 
+def test_split_is_stable_and_case_grouped():
+    from docintel.synth.split import assign_split
+    assert assign_split("case0001", 42) == assign_split("case0001", 42)
+    splits = {assign_split(f"case{i:04d}", 42) for i in range(200)}
+    assert splits == {"train", "val", "test"}
+
+
+def test_heldout_labels_never_overlap_train_labels():
+    from docintel.synth.generator import HELDOUT_LABELS, LABELS
+    for dt, fields in HELDOUT_LABELS.items():
+        assert set(fields) == set(LABELS[dt])
+        for name, label in fields.items():
+            assert label.lower() not in {v.lower() for v in LABELS[dt][name]}
+
+
+def test_scan_variant_writes_png(tmp_path):
+    rng, fk = random.Random(5), Faker()
+    doc = make_invoice("invS", fk, rng)
+    render(doc, tmp_path, rng, scan=True)
+    assert (tmp_path / "invS.png").exists() and not (tmp_path / "invS.pdf").exists()
+
+
 def test_deskew_recovers_angle():
     img = np.full((400, 400), 255, np.uint8)
     img[150:250, 50:350] = 0

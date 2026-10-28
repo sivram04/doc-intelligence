@@ -1,41 +1,66 @@
 {
   "model": "rules-v1",
   "split": "test",
-  "documents": 62,
-  "field_scores": {
+  "documents": 50,
+  "field_scores_by_type": {
     "bank_statement": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1": 1.0,
-      "fields": 128
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "fields": 104
     },
     "invoice": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1": 1.0,
-      "fields": 98
+      "precision": 0.4545,
+      "recall": 0.0649,
+      "f1": 0.1136,
+      "fields": 77
     },
     "paystub": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1": 1.0,
-      "fields": 128
+      "precision": 0.48,
+      "recall": 0.1154,
+      "f1": 0.186,
+      "fields": 104
     },
     "w2": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1": 1.0,
-      "fields": 144
+      "precision": 0.7308,
+      "recall": 0.3248,
+      "f1": 0.4497,
+      "fields": 117
     }
   },
-  "classification_accuracy": 1.0,
-  "review_rate": 0.0,
-  "p95_latency_ms": 5.3,
-  "docs_per_minute": 11841.7,
+  "field_scores_by_modality": {
+    "native": {
+      "precision": 0.6333,
+      "recall": 0.1397,
+      "f1": 0.2289,
+      "fields": 272
+    },
+    "scan": {
+      "precision": 0.6071,
+      "recall": 0.1308,
+      "f1": 0.2152,
+      "fields": 130
+    }
+  },
+  "classification_accuracy": 0.74,
+  "review_rate": 1.0,
+  "latency_ms": {
+    "native": {
+      "p50": 31.0,
+      "p95": 63.8
+    },
+    "scan": {
+      "p50": 10842.5,
+      "p95": 12062.7
+    }
+  },
+  "p95_latency_ms": 11663.6,
+  "workers": 16,
+  "docs_per_minute": 95.9,
   "cross_doc": {
-    "seeded": 6,
-    "detected": 6,
-    "detection_rate": 1.0,
+    "seeded": 3,
+    "detected": 0,
+    "detection_rate": 0.0,
     "false_positive_rate": 0.0
   }
 }

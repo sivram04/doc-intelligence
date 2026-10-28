@@ -14,7 +14,7 @@ Reads financial documents (W-2s, pay stubs, bank statements, invoices), extracts
 ## Quickstart
 
 ```bash
-pip install -e ".[dev]"
+pip install -e ".[dev,ocr]"      # plus the Tesseract binary for scans
 python scripts/make_data.py            # 60 cases (W-2 + pay stub + bank) + 60 invoices
 python scripts/evaluate.py             # rules baseline on the frozen test split
 python scripts/evaluate.py --model gemini-2.5-flash   # needs the Project 1 gateway (.env)
@@ -29,20 +29,38 @@ pytest -q
 ```bash
 python -m dvc repro          # regenerate data + eval only if inputs changed
 python -m dvc metrics show
-python -m dvc remote add -d storage gdrive://<folder-id>   # or an HF Datasets / S3-compatible remote
+python -m dvc pull           # DagsHub remote; needs a DagsHub token in .dvc/config.local (see below)
 python -m dvc push
+```
+
+Remote credentials (never committed):
+
+```bash
+python -m dvc remote modify origin --local access_key_id <dagshub-token>
+python -m dvc remote modify origin --local secret_access_key <dagshub-token>
 ```
 
 API: `POST /documents?case_id=...` (multipart file) → `GET /jobs/{id}` → `GET /cases/{case_id}/check`.
 
-## First measured numbers (rules-v1, test split, 62 docs)
+## Benchmark design
 
-Field F1 is 1.00 on every type, classification is 100%, the cross-document check caught 6 of 6 seeded inconsistencies with 0 false positives, and throughput was about 3,900 docs/min on a laptop CPU.
+- **Held-out label wording.** Splits are assigned per case before rendering. Test documents use wording from `HELDOUT_LABELS` (e.g. "Take-home pay" instead of "Net pay"), and no extractor may import that dictionary. Train and val documents use `LABELS`.
+- **Scans.** 40% of documents are rendered at 200 dpi, rotated up to 3°, blurred, given noise and paper tone, and saved as JPEG-degraded PNGs.
+- **Fonts.** Helvetica, Times and Courier are mixed.
+- **No leakage.** A case's W-2, pay stub and bank statement are always in the same split, and the test manifest is SHA-256 hashed.
 
-**Treat these as a sanity check, not a result.** The current synthetic set is too easy. The PDFs are clean and have native text, and the rules extractor uses the generator's own label dictionary. The next data step is making the benchmark hard:
-- Rasterised "scan" variants with skew, blur and noise (needs Tesseract or PaddleOCR).
-- Label wording, fonts and table layouts that are held out from the extractor.
-- Public sets (FUNSD, CORD, SROIE).
+## Baseline results (rules-v1, measured)
+
+| Split | Label wording | Native F1 | Scan F1 | Doc-type accuracy |
+|---|---|---|---|---|
+| val (40 docs) | seen | 1.00 | 0.83 | 100% |
+| **test (50 docs)** | **held out** | **0.23** | **0.22** | **74%** |
+
+Test F1 by type: W-2 0.45, pay stub 0.19, invoice 0.11, bank statement 0.00 (the keyword classifier misses every held-out bank statement). Cross-document check: 0 of 3 seeded inconsistencies caught on test, because the extracted fields it needs are missing.
+
+**What this says:** OCR on scans costs about 17 F1 points. Unseen label wording costs almost everything. That gap is what the model race (Phase 3: LLMs, LayoutLMv3) and fine-tuning (Phase 4) must close, and these numbers are the bar to beat.
+
+Latency on a 16-thread laptop CPU: native PDF p50 is about 27 ms. A single scan takes about 1.8 s warm, mostly Tesseract. With 16 parallel workers, scan p95 rises to about 12 s from CPU contention. Overall throughput is about 96 docs/min.
 
 ## Layout
 

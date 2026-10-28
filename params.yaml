@@ -1,4 +1,5 @@
 data:
   cases: 60
   invoices: 60
+  scan_rate: 0.4
   seed: 42

@@ -1,6 +1,6 @@
 stages:
   make_data:
-    cmd: python scripts/make_data.py --cases ${data.cases} --invoices ${data.invoices} --seed ${data.seed}
+    cmd: python scripts/make_data.py --cases ${data.cases} --invoices ${data.invoices} --scan-rate ${data.scan_rate} --seed ${data.seed}
     deps:
       - scripts/make_data.py
       - docintel/synth

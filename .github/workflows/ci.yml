@@ -7,10 +7,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - run: pip install -e ".[dev]"
+      - run: sudo apt-get update && sudo apt-get install -y tesseract-ocr
+      - run: pip install -e ".[dev,ocr]"
       - run: ruff check .
       - run: pytest -q
       - name: Small extraction eval (N5)
         run: |
           python scripts/make_data.py --cases 12 --invoices 12
-          python scripts/evaluate.py
+          python scripts/evaluate.py --workers 2

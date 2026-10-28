@@ -28,7 +28,7 @@ def _run(job_id: str, path: Path) -> None:
     try:
         result = process(path)
         jobs[job_id] |= {"status": "done", "result": result.model_dump(mode="json"), "routing": route(result)}
-    except Exception as e:  # surfaced to the client via job status
+    except Exception as e:  # noqa: BLE001 - surfaced to the client via job status
         jobs[job_id] |= {"status": "failed", "error": str(e)}
 
 
@@ -38,7 +38,7 @@ def health():
 
 
 @app.post("/documents", status_code=202)
-async def upload(file: UploadFile = File(...), case_id: str | None = None):
+async def upload(file: UploadFile = File(...), case_id: str | None = None):  # noqa: B008
     ext = Path(file.filename or "").suffix.lower()
     if ext not in ALLOWED:
         raise HTTPException(415, f"Unsupported file type {ext!r}")

@@ -22,7 +22,7 @@ def _close(a: float, b: float, tol: float = TOL) -> bool:
 
 
 def validate_document(doc_type: DocType, fields: dict) -> list[str]:
-    v = lambda n: _v(fields, n)  # noqa: E731
+    v = lambda n: _v(fields, n)
     flags: list[str] = []
     if doc_type == DocType.W2:
         if v("employer_ein") and not re.fullmatch(r"\d{2}-\d{7}", str(v("employer_ein"))):
