@@ -6,13 +6,12 @@ from pathlib import Path
 
 from ..extract.base import Extractor
 from ..extract.rules import RulesExtractor
+from ..routing import field_score, load_thresholds, threshold_for
 from ..schemas import DocType, ExtractionResult
 from ..validators import validate_document
 from .classify import classify
 from .ocr import analyze
 from .preprocess import load_pages
-
-DEFAULT_THRESHOLD = 0.85  # per-field thresholds are tuned in Phase 5 (F8)
 
 
 def process(path: str | Path, extractor: Extractor | None = None) -> ExtractionResult:
@@ -30,11 +29,13 @@ def process(path: str | Path, extractor: Extractor | None = None) -> ExtractionR
     return result
 
 
-def route(result: ExtractionResult, thresholds: dict[str, float] | None = None) -> dict[str, list[str]]:
-    """Split fields into auto-accepted vs human review (F8)."""
-    thresholds = thresholds or {}
-    out = {"auto": [], "review": []}
+def route(result: ExtractionResult, thresholds: dict | None = None) -> dict[str, list[str]]:
+    """Split fields into auto-accepted vs human review (F8) using calibrated scores
+    and the thresholds fitted by scripts/calibrate.py."""
+    thresholds = thresholds or load_thresholds()
+    t = threshold_for(thresholds, result.doc_type.value)
+    flagged = bool(result.flags) or result.doc_type == DocType.OTHER
+    out: dict[str, list[str]] = {"auto": [], "review": []}
     for name, f in result.fields.items():
-        ok = f.value is not None and f.confidence >= thresholds.get(name, DEFAULT_THRESHOLD)
-        out["auto" if ok and not result.flags else "review"].append(name)
+        out["auto" if field_score(f.model_dump(), flagged) >= t else "review"].append(name)
     return out

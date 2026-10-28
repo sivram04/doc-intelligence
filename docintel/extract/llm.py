@@ -80,16 +80,18 @@ class LLMExtractor:
             if not isinstance(item, dict):
                 item = {"value": item, "confidence": 0.5 if item is not None else 0.0}
             sid = item.get("span")
-            bbox = None
+            bbox, source = None, None
             if isinstance(sid, int) and 0 <= sid < len(layout.spans):
                 s = layout.spans[sid]
                 bbox = BBox(x0=s.bbox[0], y0=s.bbox[1], x1=s.bbox[2], y1=s.bbox[3], page=s.page)
+                source = s.text
             try:
                 conf = min(max(float(item.get("confidence") or 0.0), 0.0), 1.0)
             except (TypeError, ValueError):
                 conf = 0.0
             value = coerce(item.get("value"), typ)
-            out[name] = ExtractedField[Any](value=value, confidence=conf if value is not None else 0.0, bbox=bbox)
+            out[name] = ExtractedField[Any](value=value, confidence=conf if value is not None else 0.0, bbox=bbox,
+                                            source_text=source)
         return out
 
 

@@ -8,3 +8,6 @@ build/
 models/finetuned/
 mlflow.db
 mlartifacts/
+data/*.db
+data/uploads/
+data/corrections/

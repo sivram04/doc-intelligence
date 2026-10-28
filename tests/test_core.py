@@ -121,3 +121,58 @@ def test_deskew_recovers_angle():
     rot = cv2.warpAffine(img, m, (400, 400), borderValue=255)
     _, angle = deskew(rot)
     assert abs(abs(angle) - 5) < 1.0
+
+
+def test_evidence_and_threshold_fit():
+    from docintel.routing import field_score, fit_threshold, has_evidence
+    assert has_evidence(3083.3, "$3,083.30") and has_evidence(2024, "Tax year: 2024")
+    assert has_evidence("Taylor Inc", "Company: Taylor Inc.") and not has_evidence(3083.3, "$3,088.30")
+    assert field_score({"value": 1.0, "confidence": 1.0, "source_text": "$1.00"}, False) == 1.0
+    assert field_score({"value": 1.0, "confidence": 1.0, "source_text": "$7.00"}, True) == pytest.approx(0.30)
+    pts = [(1.0, True)] * 99 + [(1.0, False)] + [(0.6, False)] * 5 + [(0.6, True)] * 5
+    assert fit_threshold(pts, 0.99) == 1.0
+    assert fit_threshold(pts, 0.999) is None
+
+
+def test_review_api_roundtrip(tmp_path, monkeypatch, case_dir):
+    import importlib
+    import time as _time
+
+    from fastapi.testclient import TestClient
+
+    monkeypatch.setenv("DOCINTEL_DB", str(tmp_path / "t.db"))
+    monkeypatch.setenv("CORRECTIONS_LOG", str(tmp_path / "corr.jsonl"))
+    monkeypatch.setenv("UPLOAD_DIR", str(tmp_path / "up"))
+    monkeypatch.setenv("THRESHOLDS", str(tmp_path / "none.json"))  # default 0.85 cut-off
+    import docintel.routing
+    import docintel.store
+    importlib.reload(docintel.store)
+    importlib.reload(docintel.routing)
+    import docintel.api.main as m
+    m = importlib.reload(m)
+    c = TestClient(m.app)
+
+    d, docs = case_dir
+    inv = next(x for x in docs if x.doc_type == "invoice")
+    jid = c.post("/documents", files={"file": ("inv.pdf", (d / f"{inv.doc_id}.pdf").read_bytes())}).json()["job_id"]
+    for _ in range(100):
+        if c.get(f"/jobs/{jid}").json()["status"] in ("done", "failed"):
+            break
+        _time.sleep(0.1)
+    job = c.get(f"/jobs/{jid}").json()
+    assert job["status"] == "done" and c.get(f"/jobs/{jid}/page/0.png").headers["content-type"] == "image/png"
+    fields = {k: f["value"] for k, f in job["result"]["fields"].items()}
+    fields["total"] = 1.23
+    r = c.post(f"/jobs/{jid}/review", json={"fields": fields, "reviewer": "t", "seconds": 4.2}).json()
+    assert r["fields_corrected"] == 1
+    assert c.post(f"/jobs/{jid}/review", json={"fields": {"nope": 1}, "reviewer": "t", "seconds": 1}).status_code == 422
+    s = c.get("/review/stats").json()
+    assert s["documents_reviewed"] == 1 and s["fields_corrected"] == 1
+    assert '"corrected": 1.23' in (tmp_path / "corr.jsonl").read_text()
+
+
+def test_plausibility_rules_and_noise():
+    from docintel.routing import has_evidence
+    assert any("swapped" in f for f in validate_document(
+        DocType.INVOICE, {"subtotal": {"value": 326.33}, "tax": {"value": 3955.49}, "total": {"value": 4281.82}}))
+    assert not has_evidence("Sanders~Espinoza", "Sanders~Espinoza")

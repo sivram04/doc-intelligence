@@ -48,22 +48,22 @@
   "review_rate": 1.0,
   "latency_ms": {
     "native": {
-      "p50": 37.4,
-      "p95": 17942.1
+      "p50": 20.0,
+      "p95": 4977.8
     },
     "scan": {
-      "p50": 3793.2,
-      "p95": 19373.7
+      "p50": 1830.7,
+      "p95": 6478.4
     }
   },
-  "p95_latency_ms": 19095.6,
+  "p95_latency_ms": 6416.0,
   "workers": 16,
   "tokens_per_doc": {
     "input": 0,
     "output": 0
   },
   "cost_per_1k_docs_usd": 0.0,
-  "docs_per_minute": 91.8,
+  "docs_per_minute": 218.9,
   "cross_doc": {
     "seeded": 3,
     "detected": 0,

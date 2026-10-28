@@ -111,6 +111,13 @@ def main() -> None:
     Path(a.out).mkdir(exist_ok=True)
     name = (report["model"] or "none").replace(":", "_")
     (Path(a.out) / f"eval_{name}_{a.split}.json").write_text(json.dumps(report, indent=2))
+    # Per-document predictions: input to confidence calibration (Phase 5) and error analysis.
+    with (Path(a.out) / f"preds_{name}_{a.split}.jsonl").open("w", encoding="utf-8") as f:
+        for r in rows:
+            f.write(json.dumps({"doc_id": r["gt"]["doc_id"], "doc_type": r["gt"]["doc_type"],
+                                "modality": r["gt"]["modality"], "error": r["error"],
+                                "pred_type": r.get("doc_type"), "fields": r.get("fields", {}),
+                                "gold": {k: v["value"] for k, v in r["gt"]["fields"].items()}}) + "\n")
     print(json.dumps(report, indent=2))
     if len(errors) == len(rows):
         raise SystemExit(f"All {len(rows)} documents failed; first error: {errors[0]['error']}")

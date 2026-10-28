@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review Console · DocIntel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f4f3ef;          /* paper desk */
+  --panel: #fbfaf7;
+  --panel-2: #eeede8;     /* second neutral layer: rails, toolbars */
+  --line: #dddbd3;
+  --ink: #1d1f1e;
+  --ink-2: #555a57;
+  --ink-3: #6f7470;
+  --accent: #0f6b5c;      /* actions, selection */
+  --accent-ink: #ffffff;
+  --accent-soft: #dcece7;
+  --check: #9a5b00;       /* needs review */
+  --check-soft: #fbecd2;
+  --check-box: rgba(214, 140, 20, .22);
+  --flag: #b3261e;
+  --flag-soft: #f8dedb;
+  --ok-box: rgba(15, 107, 92, .12);
+  --focus: #0f6b5c;
+  --shadow: 0 1px 2px rgba(29, 31, 30, .06), 0 8px 24px rgba(29, 31, 30, .08);
+  --radius: 6px;
+  --font: "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.45 var(--font); }
+::selection { background: var(--accent-soft); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+* { scrollbar-width: thin; scrollbar-color: #c9c6bc transparent; }
+button, input { font: inherit; color: inherit; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* App frame */
+.app { display: grid; grid-template-rows: auto 1fr; height: 100%; }
+header { display: flex; align-items: center; gap: 24px; padding: 10px 20px; background: var(--panel);
+  border-bottom: 1px solid var(--line); }
+.brand { font-weight: 600; letter-spacing: -.01em; display: flex; align-items: center; gap: 8px; }
+.brand svg { color: var(--accent); }
+.stats { display: flex; gap: 20px; margin-left: auto; color: var(--ink-2); font-size: 13px; }
+.stats b { color: var(--ink); font-weight: 500; }
+.who { display: flex; align-items: center; gap: 8px; color: var(--ink-2); font-size: 13px; }
+.who input { width: 120px; padding: 5px 8px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+
+main { display: grid; grid-template-columns: 240px minmax(0, 1fr) 380px; min-height: 0; }
+
+/* Queue rail */
+.queue { background: var(--panel-2); border-right: 1px solid var(--line); overflow: auto; display: flex; flex-direction: column; }
+.queue h2, .fields h2 { font-size: 12px; font-weight: 600; color: var(--ink-2); margin: 16px 16px 8px; }
+.qitem { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; width: 100%; text-align: left; padding: 10px 16px;
+  border: 0; background: transparent; cursor: pointer; border-top: 1px solid transparent; }
+.qitem:hover { background: rgba(255, 255, 255, .55); }
+.qitem[aria-current="true"] { background: var(--panel); box-shadow: inset 2px 0 0 var(--accent); }
+.qitem .name { font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.qitem .type { color: var(--ink-3); font-size: 12px; }
+.pill { align-self: center; grid-row: span 2; font-size: 12px; padding: 1px 8px; border-radius: 99px;
+  background: var(--check-soft); color: var(--check); font-weight: 500; }
+.pill.flag { background: var(--flag-soft); color: var(--flag); }
+.queue .empty { padding: 16px; color: var(--ink-2); }
+.queue .empty p { margin: 0 0 12px; }
+
+/* Document canvas */
+.canvas { overflow: auto; padding: 28px; display: flex; justify-content: center; align-items: flex-start; }
+.page { position: relative; background: #fff; box-shadow: var(--shadow); border-radius: 2px; width: min(100%, 820px); }
+.page img { display: block; width: 100%; height: auto; border-radius: 2px; }
+.box { position: absolute; border-radius: 3px; transition: box-shadow .15s ease-out, background-color .15s ease-out; cursor: pointer; }
+.box.auto { background: var(--ok-box); }
+.box.check { background: var(--check-box); }
+.box.active { box-shadow: 0 0 0 2px var(--accent), 0 2px 6px rgba(29, 31, 30, .18); background: rgba(15, 107, 92, .16); }
+.canvas .placeholder { width: min(100%, 820px); aspect-ratio: 8.5 / 11; background: linear-gradient(90deg, #ecebe6, #f3f2ee, #ecebe6);
+  background-size: 200% 100%; animation: shimmer 1.4s ease-in-out infinite; border-radius: 2px; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+/* Fields panel */
+.fields { background: var(--panel); border-left: 1px solid var(--line); display: grid; grid-template-rows: auto auto 1fr auto; min-height: 0; }
+.doc-head { padding: 16px 20px 12px; border-bottom: 1px solid var(--line); }
+.doc-head h1 { font-size: 16px; font-weight: 600; margin: 0 0 2px; letter-spacing: -.01em; }
+.doc-head .meta { color: var(--ink-2); font-size: 13px; }
+.flags { margin: 0; padding: 10px 20px; background: var(--flag-soft); color: var(--flag); font-size: 13px; list-style: none; }
+.flags li + li { margin-top: 4px; }
+.list { overflow: auto; padding: 4px 0 12px; }
+.field { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; padding: 10px 20px; border-top: 1px solid transparent; cursor: pointer; }
+.field + .field { border-top-color: var(--line); }
+.field.active { background: var(--accent-soft); }
+.field label { font-size: 12px; color: var(--ink-2); font-weight: 500; }
+.field .conf { font-size: 12px; color: var(--ink-3); justify-self: end; }
+.field input { grid-column: 1 / -1; width: 100%; padding: 7px 9px; border: 1px solid var(--line); border-radius: var(--radius);
+  background: #fff; font-family: var(--mono); font-size: 13px; }
+.field input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px rgba(15, 107, 92, .15); }
+.field .status { font-size: 12px; font-weight: 500; justify-self: end; display: inline-flex; gap: 4px; align-items: center; }
+.status.check { color: var(--check); }
+.status.auto { color: var(--accent); }
+.status.done { color: var(--accent); }
+.status.edited { color: var(--ink); }
+.field .src { grid-column: 1 / -1; font-size: 12px; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.actions { border-top: 1px solid var(--line); padding: 12px 20px; display: flex; gap: 10px; align-items: center; background: var(--panel-2); }
+.btn { border: 1px solid var(--line); background: #fff; padding: 8px 14px; border-radius: var(--radius); cursor: pointer; font-weight: 500; }
+.btn:hover { background: var(--panel-2); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { background: #0c5a4d; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.progress { color: var(--ink-2); font-size: 13px; margin-right: auto; }
+kbd { font-family: var(--mono); font-size: 12px; padding: 1px 5px; border: 1px solid var(--line); border-bottom-width: 2px;
+  border-radius: 4px; background: #fff; color: var(--ink-2); }
+.keys { padding: 10px 20px 14px; color: var(--ink-3); font-size: 12px; display: flex; flex-wrap: wrap; gap: 6px 14px; border-top: 1px solid var(--line); }
+.toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(12px); opacity: 0; background: var(--ink); color: #fff;
+  padding: 9px 14px; border-radius: var(--radius); font-size: 13px; transition: opacity .2s ease-out, transform .2s ease-out; pointer-events: none; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.err { background: var(--flag); }
+.center-msg { margin: auto; text-align: center; color: var(--ink-2); max-width: 340px; }
+.center-msg h2 { color: var(--ink); font-size: 16px; margin: 0 0 6px; }
+
+@media (max-width: 1180px) {
+  main { grid-template-columns: 200px minmax(0, 1fr) 340px; }
+  .canvas { padding: 16px; }
+}
+@media (max-width: 900px) {
+  main { grid-template-columns: 1fr; grid-template-rows: auto auto auto; overflow: auto; }
+  .queue { max-height: 180px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .fields { border-left: 0; border-top: 1px solid var(--line); }
+  .stats { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="brand">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="m9 15 2 2 4-4"/></svg>
+      Review console
+    </div>
+    <div class="stats" id="stats" aria-live="polite"></div>
+    <label class="who">Reviewer <input id="reviewer" autocomplete="off" spellcheck="false"></label>
+  </header>
+  <main>
+    <nav class="queue" aria-label="Review queue">
+      <h2 id="qtitle">Queue</h2>
+      <div id="queue"></div>
+    </nav>
+    <section class="canvas" id="canvas" aria-label="Document page"></section>
+    <aside class="fields" aria-label="Extracted fields">
+      <div class="doc-head" id="dochead"></div>
+      <ul class="flags" id="flags" hidden></ul>
+      <div class="list" id="list" role="listbox" aria-label="Fields"></div>
+      <div>
+        <div class="actions">
+          <span class="progress num" id="progress"></span>
+          <button class="btn" id="skip" type="button">Skip</button>
+          <button class="btn primary" id="submit" type="button">Submit review</button>
+        </div>
+        <div class="keys">
+          <span><kbd>↑</kbd> <kbd>↓</kbd> field</span>
+          <span><kbd>Enter</kbd> confirm</span>
+          <span><kbd>E</kbd> edit</span>
+          <span><kbd>Esc</kbd> stop editing</span>
+          <span><kbd>Ctrl</kbd>+<kbd>Enter</kbd> submit</span>
+          <span><kbd>N</kbd> next doc</span>
+        </div>
+      </div>
+    </aside>
+  </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const LABELS = { w2: "W-2", paystub: "Pay stub", bank_statement: "Bank statement", invoice: "Invoice", other: "Other" };
+const human = (s) => s.replace(/_/g, " ").replace(/^./, (c) => c.toUpperCase()).replace(/\bytd\b/i, "YTD").replace(/\bein\b/i, "EIN").replace(/\bssn\b/i, "SSN");
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+const state = { queue: [], job: null, page: null, fields: [], active: 0, started: 0, editing: false };
+
+function store(key, val) { try { val === undefined ? 0 : localStorage.setItem(key, val); return localStorage.getItem(key); } catch { return null; } }
+$("reviewer").value = store("docintel.reviewer") || "reviewer-1";
+$("reviewer").addEventListener("change", (e) => store("docintel.reviewer", e.target.value.trim() || "reviewer-1"));
+
+function toast(msg, err = false) {
+  const t = $("toast"); t.textContent = msg; t.classList.toggle("err", err); t.classList.add("show");
+  clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 2600);
+}
+
+async function api(path, opts) {
+  const r = await fetch(path, opts);
+  if (!r.ok) throw new Error((await r.json().catch(() => ({}))).detail || `${r.status} ${r.statusText}`);
+  return r.json();
+}
+
+async function loadStats() {
+  try {
+    const s = await api("/review/stats");
+    const running = (s.jobs.queued || 0) + (s.jobs.running || 0);
+    $("stats").innerHTML =
+      `<span>Queue <b class="num">${s.queue}</b></span>` +
+      (running ? `<span>Processing <b class="num">${running}</b></span>` : "") +
+      `<span>Reviewed <b class="num">${s.documents_reviewed}</b></span>` +
+      `<span>Corrected fields <b class="num">${s.fields_corrected}</b></span>` +
+      `<span>Avg per doc <b class="num">${s.avg_seconds_per_doc ?? "–"}${s.avg_seconds_per_doc ? "s" : ""}</b></span>`;
+    return s;
+  } catch { return null; }
+}
+
+async function loadQueue(selectFirst = true) {
+  state.queue = await api("/review/queue");
+  const stats = await loadStats();
+  $("qtitle").textContent = `Queue · ${state.queue.length}`;
+  const q = $("queue");
+  if (!state.queue.length) {
+    const busy = stats && ((stats.jobs.queued || 0) + (stats.jobs.running || 0));
+    q.innerHTML = busy
+      ? `<div class="empty"><p>Extracting ${busy} document${busy > 1 ? "s" : ""}. They appear here when fields need a check.</p></div>`
+      : `<div class="empty"><p>Nothing needs review. Load synthetic documents from the benchmark to try the flow.</p>
+         <button class="btn primary" id="seed" type="button">Load 6 demo documents</button></div>`;
+    $("seed")?.addEventListener("click", seed);
+    if (!state.job) showIdle(busy);
+    if (busy) setTimeout(() => loadQueue(true), 3000);
+    return;
+  }
+  q.innerHTML = state.queue.map((j) => `
+    <button class="qitem" type="button" data-id="${j.job_id}" aria-current="${state.job?.job_id === j.job_id}">
+      <span class="name">${esc(j.filename)}</span>
+      <span class="pill ${j.flags.length ? "flag" : ""}">${j.flags.length ? "Flagged" : `${j.to_review} to check`}</span>
+      <span class="type">${LABELS[j.doc_type] || j.doc_type} · ${j.fields} fields</span>
+    </button>`).join("");
+  q.querySelectorAll(".qitem").forEach((b) => b.addEventListener("click", () => openJob(b.dataset.id)));
+  if (selectFirst && (!state.job || !state.queue.some((j) => j.job_id === state.job.job_id))) openJob(state.queue[0].job_id);
+}
+
+async function seed() {
+  $("seed").disabled = true;
+  try { await api("/demo/seed?n=6", { method: "POST" }); toast("Queued 6 synthetic documents"); loadQueue(); }
+  catch (e) { toast(`Could not load demo documents: ${e.message}`, true); $("seed").disabled = false; }
+}
+
+function showIdle(busy) {
+  state.job = null;
+  $("canvas").innerHTML = `<div class="center-msg"><h2>${busy ? "Extracting documents" : "Queue is clear"}</h2>
+    <p>${busy ? "The first document opens as soon as it is ready." : "Every routed field has been reviewed. New uploads with low-confidence fields will appear on the left."}</p></div>`;
+  $("dochead").innerHTML = ""; $("list").innerHTML = ""; $("flags").hidden = true; $("progress").textContent = "";
+  $("submit").disabled = true; $("skip").disabled = true;
+}
+
+async function openJob(id) {
+  $("canvas").innerHTML = `<div class="placeholder" aria-hidden="true"></div>`;
+  const [job, pages] = await Promise.all([api(`/jobs/${id}`), api(`/jobs/${id}/pages`)]);
+  state.job = job; state.page = pages[0]; state.started = performance.now(); state.editing = false;
+  const review = new Set(job.routing.review);
+  state.fields = Object.entries(job.result.fields).map(([name, f]) => ({
+    name, f, value: f.value ?? "", original: f.value, needs: review.has(name), confirmed: !review.has(name),
+  }));
+  state.active = Math.max(0, state.fields.findIndex((x) => x.needs));
+  document.querySelectorAll(".qitem").forEach((b) => b.setAttribute("aria-current", b.dataset.id === id));
+
+  const r = job.result;
+  $("dochead").innerHTML = `<h1>${esc(job.filename)}</h1>
+    <div class="meta">${LABELS[r.doc_type] || r.doc_type} <span class="num">(${Math.round(r.type_confidence * 100)}%)</span> · ${esc(r.model)}</div>`;
+  $("flags").hidden = !r.flags.length;
+  $("flags").innerHTML = r.flags.map((f) => `<li>${esc(f)}</li>`).join("");
+  $("submit").disabled = false; $("skip").disabled = false;
+
+  const img = new Image();
+  img.alt = `Page 1 of ${job.filename}`;
+  img.src = `/jobs/${id}/page/0.png?v=ocr`;  // versioned: scans are served as OCR saw them
+  img.onload = () => { const p = document.createElement("div"); p.className = "page"; p.id = "page"; p.append(img);
+    $("canvas").replaceChildren(p); drawBoxes(); };
+  img.onerror = () => { $("canvas").innerHTML = `<div class="center-msg"><h2>Page image unavailable</h2><p>The fields can still be reviewed.</p></div>`; };
+  renderFields();
+}
+
+function drawBoxes() {
+  const page = $("page"); if (!page || !state.page) return;
+  page.querySelectorAll(".box").forEach((b) => b.remove());
+  const k = page.clientWidth / state.page.width, pad = 3;
+  state.fields.forEach((x, i) => {
+    const b = x.f.bbox; if (!b || b.page !== 0) return;
+    const el = document.createElement("div");
+    el.className = `box ${x.needs && !x.confirmed ? "check" : "auto"} ${i === state.active ? "active" : ""}`;
+    Object.assign(el.style, { left: `${b.x0 * k - pad}px`, top: `${b.y0 * k - pad}px`,
+      width: `${(b.x1 - b.x0) * k + 2 * pad}px`, height: `${(b.y1 - b.y0) * k + 2 * pad}px` });
+    el.title = human(x.name);
+    el.addEventListener("click", () => setActive(i, true));
+    page.append(el);
+  });
+}
+
+function statusOf(x) {
+  if (String(x.value) !== String(x.original ?? "")) return ["edited", "Edited"];
+  if (x.needs && !x.confirmed) return ["check", "Check"];
+  if (x.needs) return ["done", "Confirmed"];
+  return ["auto", "Auto"];
+}
+
+function renderFields() {
+  $("list").innerHTML = state.fields.map((x, i) => {
+    const [cls, label] = statusOf(x);
+    return `<div class="field ${i === state.active ? "active" : ""}" data-i="${i}" role="option" aria-selected="${i === state.active}">
+      <label for="f${i}">${human(x.name)}</label>
+      <span class="status ${cls}">${label} <span class="conf num">${x.f.value == null ? "missing" : Math.round(x.f.confidence * 100) + "%"}</span></span>
+      <input id="f${i}" value="${esc(x.value)}" spellcheck="false" autocomplete="off">
+      ${x.f.source_text ? `<span class="src">Source: <span class="num">${esc(x.f.source_text)}</span></span>` : ""}
+    </div>`;
+  }).join("");
+  $("list").querySelectorAll(".field").forEach((row) => {
+    const i = +row.dataset.i, input = row.querySelector("input");
+    row.addEventListener("click", (e) => { if (e.target !== input) setActive(i, false); });
+    input.addEventListener("focus", () => { state.editing = true; if (state.active !== i) setActive(i, false, true); });
+    input.addEventListener("blur", () => { state.editing = false; });
+    input.addEventListener("input", () => { state.fields[i].value = input.value; state.fields[i].confirmed = true; refreshRow(i); updateProgress(); drawBoxes(); });
+  });
+  updateProgress(); drawBoxes();
+}
+
+function refreshRow(i) {
+  const row = $("list").querySelector(`[data-i="${i}"] .status`); const [cls, label] = statusOf(state.fields[i]);
+  row.className = `status ${cls}`; row.firstChild.textContent = `${label} `;
+}
+
+function setActive(i, scrollPage, keepFocus = false) {
+  state.active = Math.max(0, Math.min(state.fields.length - 1, i));
+  $("list").querySelectorAll(".field").forEach((r) => { const on = +r.dataset.i === state.active;
+    r.classList.toggle("active", on); r.setAttribute("aria-selected", on); });
+  const row = $("list").querySelector(`[data-i="${state.active}"]`); row?.scrollIntoView({ block: "nearest" });
+  drawBoxes();
+  if (scrollPage) $("page")?.querySelector(".box.active")?.scrollIntoView({ block: "center", behavior: "smooth" });
+  if (!keepFocus && document.activeElement?.tagName === "INPUT" && document.activeElement.id !== "reviewer") document.activeElement.blur();
+}
+
+function updateProgress() {
+  const need = state.fields.filter((x) => x.needs), done = need.filter((x) => x.confirmed).length;
+  $("progress").textContent = need.length ? `${done} of ${need.length} checked` : "All fields auto-accepted";
+}
+
+function parseValue(x) {
+  if (typeof x.original === "number") {
+    const n = parseFloat(String(x.value).replace(/[$,\s]/g, ""));
+    return Number.isFinite(n) ? n : null;
+  }
+  return String(x.value).trim() === "" ? null : String(x.value).trim();
+}
+
+async function submit() {
+  if (!state.job) return;
+  const pending = state.fields.filter((x) => x.needs && !x.confirmed).length;
+  if (pending && !submit.armed) { submit.armed = true; setTimeout(() => (submit.armed = false), 3000);
+    toast(`${pending} field${pending > 1 ? "s" : ""} not checked yet. Submit again to accept them as shown.`); return; }
+  submit.armed = false;
+  const reviewer = $("reviewer").value.trim() || "reviewer-1";
+  const fields = Object.fromEntries(state.fields.map((x) => [x.name, parseValue(x)]));
+  const bad = state.fields.filter((x) => typeof x.original === "number" && String(x.value).trim() !== "" && parseValue(x) === null);
+  if (bad.length) { toast(`${human(bad[0].name)} must be a number`, true); setActive(state.fields.indexOf(bad[0]), true); return; }
+  $("submit").disabled = true;
+  try {
+    const r = await api(`/jobs/${state.job.job_id}/review`, { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ fields, reviewer, seconds: Math.round((performance.now() - state.started) / 100) / 10 }) });
+    toast(r.fields_corrected ? `Saved · ${r.fields_corrected} correction${r.fields_corrected > 1 ? "s" : ""} sent to training data` : "Saved · no corrections");
+    state.job = null; await loadQueue(true);
+  } catch (e) { toast(`Could not save the review: ${e.message}`, true); $("submit").disabled = false; }
+}
+
+function nextDoc() {
+  if (!state.queue.length) return;
+  const i = state.queue.findIndex((j) => j.job_id === state.job?.job_id);
+  openJob(state.queue[(i + 1) % state.queue.length].job_id);
+}
+
+$("submit").addEventListener("click", submit);
+$("skip").addEventListener("click", nextDoc);
+window.addEventListener("resize", drawBoxes);
+document.addEventListener("keydown", (e) => {
+  if (!state.job) return;
+  const inField = e.target.tagName === "INPUT";
+  if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); submit(); return; }
+  if (e.target.id === "reviewer") return;
+  if (inField) {
+    if (e.key === "Escape") { e.target.blur(); }
+    if (e.key === "Enter") { e.preventDefault(); state.fields[state.active].confirmed = true; refreshRow(state.active); updateProgress(); e.target.blur(); setActive(state.active + 1, true); }
+    return;
+  }
+  if (e.key === "ArrowDown" || e.key === "j") { e.preventDefault(); setActive(state.active + 1, true); }
+  else if (e.key === "ArrowUp" || e.key === "k") { e.preventDefault(); setActive(state.active - 1, true); }
+  else if (e.key === "Enter") { e.preventDefault(); const x = state.fields[state.active]; x.confirmed = true; refreshRow(state.active); updateProgress(); drawBoxes();
+    const next = state.fields.findIndex((f, i) => i > state.active && f.needs && !f.confirmed); setActive(next === -1 ? state.active + 1 : next, true); }
+  else if (e.key === "e" || e.key === "E") { e.preventDefault(); const inp = $(`f${state.active}`); inp.focus(); inp.select(); }
+  else if (e.key === "n" || e.key === "N") { nextDoc(); }
+});
+
+loadQueue().catch((e) => { $("queue").innerHTML = `<div class="empty"><p>Could not reach the API: ${esc(e.message)}</p></div>`; });
+</script>
+</body>
+</html>

@@ -37,6 +37,8 @@ def validate_document(doc_type: DocType, fields: dict) -> list[str]:
         g, d, n = v("gross_pay"), v("total_deductions"), v("net_pay")
         if None not in (g, d, n) and not _close(g - d, n):
             flags.append(f"Net pay {n:,.2f} != gross {g:,.2f} - deductions {d:,.2f}")
+        if None not in (g, d) and d > g:
+            flags.append(f"Deductions {d:,.2f} exceed gross pay {g:,.2f}")
         if None not in (g, v("ytd_gross")) and v("ytd_gross") + TOL < g:
             flags.append("YTD gross is lower than current-period gross")
     elif doc_type == DocType.BANK_STATEMENT:
@@ -47,6 +49,8 @@ def validate_document(doc_type: DocType, fields: dict) -> list[str]:
         s, t, tot = v("subtotal"), v("tax"), v("total")
         if None not in (s, t, tot) and not _close(s + t, tot):
             flags.append(f"Total {tot:,.2f} != subtotal + tax ({s + t:,.2f})")
+        if None not in (s, t) and t > s:
+            flags.append(f"Tax {t:,.2f} exceeds subtotal {s:,.2f} (fields likely swapped)")
     return flags
 
 

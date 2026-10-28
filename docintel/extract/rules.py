@@ -43,5 +43,6 @@ class RulesExtractor:
             taken.add(i)
             conf = best_sim * (1.0 if value is not None else 0.3)
             out[name] = ExtractedField[Any](value=value, confidence=round(conf, 3),
-                                            bbox=BBox(x0=v.bbox[0], y0=v.bbox[1], x1=v.bbox[2], y1=v.bbox[3], page=v.page))
+                                            bbox=BBox(x0=v.bbox[0], y0=v.bbox[1], x1=v.bbox[2], y1=v.bbox[3], page=v.page),
+                                            source_text=v.text)
         return out

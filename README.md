@@ -11,7 +11,8 @@ Reads financial documents (W-2s, pay stubs, bank statements, invoices), extracts
 | 2. Validation | Field rules (sums, formats) and cross-document case checks with readable reasons. |
 | 3. Model race | Learned doc-type classifier (TF-IDF + logistic regression, DVC stage). Extractors: rules, Qwen2.5-1.5B on CPU via Ollama, Gemini 3.5 Flash Lite (free tier); Groq / gateway adapters ready. Leaderboard with F1, latency, tokens and cost. |
 | 4. Fine-tuning | QLoRA on Qwen2.5-1.5B (Kaggle T4, 34 min), GGUF q8_0 served by Ollama, MLflow (SQLite) tracking, champion/challenger gate. **Test F1 0.88 -> 0.97.** |
-| 5–7 | Not started. |
+| 5. Routing + review | Calibrated field scores (confidence x OCR evidence x validation), thresholds fitted on val with a policy floor, plausibility rules, SQLite-backed review API, review console. **Auto-accept precision 96.8% -> 99.7%** at a 13% review rate. |
+| 6–7 | Not started. |
 
 ## Quickstart
 
@@ -124,6 +125,42 @@ python scripts/evaluate.py --extractor ollama:docintel-qwen1.5b-ft --workers 2
 python scripts/register_model.py --name docintel-qwen1.5b-ft-v1 --extractor ollama:docintel-qwen1.5b-ft     --train-metrics models/finetuned/metrics.json
 ```
 
+## Confidence routing and review (Phase 5)
+
+The fine-tuned model reports high confidence on almost everything, so its raw score cannot tell right from wrong. Each field gets a calibrated score instead:
+
+- **Model confidence**
+- **x OCR evidence:** the value must literally appear in the span it cites. OCR noise characters (`~ | _`) don't count as evidence.
+- **x Validation:** fields from a document that fails a rule are penalised decisively. The rules include sums and plausibility checks (tax above subtotal suggests swapped fields; deductions above gross pay).
+
+Thresholds are fitted on val for a target precision of 99%, per document type where val has at least 40 fields of that type. A **policy floor of 0.85** stops the fit from ever accepting fields from flagged documents; on only 30 val documents, the fit alone learned to do exactly that.
+
+| Test split, fine-tuned Qwen (402 fields) | Raw confidence >= 0.85 | **Calibrated routing** |
+|---|---|---|
+| Fields sent to review | 0% | 13.4% |
+| Precision of auto-accepted fields | 96.8% | **99.7%** |
+| Wrong values that skip review | 3.2% (13 fields) | **0.25% (1 field)** |
+
+Error analysis that drove the rules:
+
+- 8 of the 13 errors were already flagged by validators but were scored too gently.
+- 2 were subtotal and tax swapped on a scan, which balances the sum, so the new plausibility rule catches them.
+- 2 were OCR noise.
+
+Reproduce with `python scripts/calibrate.py --target 0.99` (reads `reports/preds_*` from `evaluate.py`; writes `models/thresholds.json` and `reports/routing_*.json`).
+
+### Review console
+
+`EXTRACTOR=ollama:docintel-qwen1.5b-ft uvicorn docintel.api.main:app --port 8030`, then open http://localhost:8030 and click **Load 6 demo documents** (synthetic only).
+
+- **Queue:** documents ordered by number of fields to check, with flagged documents marked.
+- **Page view:** shows the image OCR actually read; scans are served deskewed, so the boxes line up. Boxes are amber when a field needs a check and green when it was auto-accepted; the active field is ringed.
+- **Fields:** editable values with calibrated status, confidence and the OCR source text.
+- **Keyboard:** `Up`/`Down` move between fields, `Enter` confirms, `E` edits, `Esc` stops editing, `Ctrl+Enter` submits (warns once if fields are unchecked), `N` goes to the next document.
+- **Persistence:** reviews and corrections are stored in SQLite. Every correction is also appended to `data/corrections/corrections.jsonl`, the input to the Phase 6 retraining flywheel. Header stats show the queue, documents reviewed, corrections and seconds per document.
+
+API: `GET /review/queue`, `GET /jobs/{id}/page/{n}.png`, `POST /jobs/{id}/review`, `GET /review/stats`, `POST /demo/seed`.
+
 ## Layout
 
 ```
@@ -138,4 +175,7 @@ docintel/
 scripts/              make_data.py, train_classifier.py, evaluate.py, leaderboard.py, race.sh,
                       build_sft.py, kaggle_train.sh, register_model.py
 training/             train_qlora.py (Kaggle job), Modelfile (Ollama)
+docintel/routing.py   calibrated field scores + threshold fitting
+docintel/store.py     SQLite jobs / reviews / corrections
+docintel/api/static/  review console (single HTML file, no build step)
 ```

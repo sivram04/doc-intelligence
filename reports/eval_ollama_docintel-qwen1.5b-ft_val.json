@@ -1,0 +1,73 @@
+{
+  "model": "ollama:docintel-qwen1.5b-ft",
+  "split": "val",
+  "documents": 30,
+  "failed_documents": 0,
+  "errors": [],
+  "field_scores_by_type": {
+    "bank_statement": {
+      "precision": 0.9643,
+      "recall": 0.9643,
+      "f1": 0.9643,
+      "fields": 56
+    },
+    "invoice": {
+      "precision": 0.9841,
+      "recall": 0.9841,
+      "f1": 0.9841,
+      "fields": 63
+    },
+    "paystub": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fields": 56
+    },
+    "w2": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fields": 63
+    }
+  },
+  "field_scores_by_modality": {
+    "native": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fields": 97
+    },
+    "scan": {
+      "precision": 0.9787,
+      "recall": 0.9787,
+      "f1": 0.9787,
+      "fields": 141
+    }
+  },
+  "classification_accuracy": 1.0,
+  "review_rate": 0.063,
+  "latency_ms": {
+    "native": {
+      "p50": 45770.7,
+      "p95": 49262.8
+    },
+    "scan": {
+      "p50": 46446.7,
+      "p95": 66457.8
+    }
+  },
+  "p95_latency_ms": 49568.3,
+  "workers": 2,
+  "tokens_per_doc": {
+    "input": 305,
+    "output": 242
+  },
+  "cost_per_1k_docs_usd": 0.0,
+  "docs_per_minute": 2.7,
+  "cross_doc": {
+    "seeded": 2,
+    "detected": 2,
+    "detection_rate": 1.0,
+    "false_positive_rate": 0.0
+  }
+}

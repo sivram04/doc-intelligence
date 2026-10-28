@@ -1,0 +1,58 @@
+{
+  "thresholds": {
+    "target_precision": 0.99,
+    "global": 0.85,
+    "by_type": {
+      "bank_statement": 1.0,
+      "paystub": 1.0,
+      "w2": 1.0,
+      "invoice": 0.85
+    },
+    "min_threshold": 0.85,
+    "no_evidence_factor": 0.6,
+    "flagged_factor": 0.5,
+    "model": "ollama_docintel-qwen1.5b-ft",
+    "fitted_on": "val",
+    "val_fields": 238
+  },
+  "test": {
+    "fields": 402,
+    "auto_accepted": 348,
+    "review_rate": 0.1343,
+    "auto_precision": 0.9971,
+    "residual_error_rate": 0.0025,
+    "overall_accuracy": 0.9677,
+    "reliability": [
+      {
+        "bin": "0.30-0.50",
+        "fields": 1,
+        "accuracy": 0.0
+      },
+      {
+        "bin": "0.50-0.70",
+        "fields": 53,
+        "accuracy": 0.7925
+      },
+      {
+        "bin": "0.95-1.00",
+        "fields": 348,
+        "accuracy": 0.9971
+      }
+    ]
+  },
+  "test_uncalibrated_raw_conf_0.85": {
+    "fields": 402,
+    "auto_accepted": 402,
+    "review_rate": 0.0,
+    "auto_precision": 0.9677,
+    "residual_error_rate": 0.0323,
+    "overall_accuracy": 0.9677,
+    "reliability": [
+      {
+        "bin": "0.95-1.00",
+        "fields": 402,
+        "accuracy": 0.9677
+      }
+    ]
+  }
+}
