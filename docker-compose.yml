@@ -1,0 +1,19 @@
+services:
+  api:
+    build: .
+    ports: ["8080:8080"]
+    env_file: .env
+    volumes: ["./data:/app/data"]
+    depends_on: [redis, postgres]
+  redis:
+    image: redis:7-alpine
+  postgres:
+    image: postgres:16-alpine
+    environment: {POSTGRES_USER: docintel, POSTGRES_PASSWORD: docintel, POSTGRES_DB: docintel}
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.16.2
+    command: mlflow server --host 0.0.0.0 --backend-store-uri sqlite:///mlflow/mlflow.db --default-artifact-root /mlflow/artifacts
+    ports: ["5000:5000"]
+    volumes: ["mlflow:/mlflow"]
+volumes: {pgdata: {}, mlflow: {}}

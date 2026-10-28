@@ -1,0 +1,19 @@
+stages:
+  make_data:
+    cmd: python scripts/make_data.py --cases ${data.cases} --invoices ${data.invoices} --seed ${data.seed}
+    deps:
+      - scripts/make_data.py
+      - docintel/synth
+    params:
+      - data
+    outs:
+      - data/synthetic
+  evaluate:
+    cmd: python scripts/evaluate.py
+    deps:
+      - scripts/evaluate.py
+      - docintel
+      - data/synthetic
+    metrics:
+      - reports/eval_rules-v1_test.json:
+          cache: false

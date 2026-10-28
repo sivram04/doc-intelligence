@@ -1,0 +1,48 @@
+schema: '2.0'
+stages:
+  make_data:
+    cmd: python scripts/make_data.py --cases 60 --invoices 60 --seed 42
+    deps:
+    - path: docintel/synth
+      hash: md5
+      md5: f1f6e7a8ec26b1f7921399266d1c3e98.dir
+      size: 9929
+      nfiles: 3
+    - path: scripts/make_data.py
+      hash: md5
+      md5: 77e0fa8183f0adeb1283909c960a4588
+      size: 819
+    params:
+      params.yaml:
+        data:
+          cases: 60
+          invoices: 60
+          seed: 42
+    outs:
+    - path: data/synthetic
+      hash: md5
+      md5: 905592053ff4c283096501910f07bfb4.dir
+      size: 854767
+      nfiles: 482
+  evaluate:
+    cmd: python scripts/evaluate.py
+    deps:
+    - path: data/synthetic
+      hash: md5
+      md5: 905592053ff4c283096501910f07bfb4.dir
+      size: 854767
+      nfiles: 482
+    - path: docintel
+      hash: md5
+      md5: 68792b68624720a981ee7c1af9e5b827.dir
+      size: 33314
+      nfiles: 19
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 6284d93f79a10fa8622e25a489799b74
+      size: 3000
+    outs:
+    - path: reports/eval_rules-v1_test.json
+      hash: md5
+      md5: 36449b6486208aac2e1897dafa650382
+      size: 779

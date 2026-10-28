@@ -1,0 +1,41 @@
+{
+  "model": "rules-v1",
+  "split": "test",
+  "documents": 62,
+  "field_scores": {
+    "bank_statement": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fields": 128
+    },
+    "invoice": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fields": 98
+    },
+    "paystub": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fields": 128
+    },
+    "w2": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fields": 144
+    }
+  },
+  "classification_accuracy": 1.0,
+  "review_rate": 0.0,
+  "p95_latency_ms": 5.3,
+  "docs_per_minute": 11841.7,
+  "cross_doc": {
+    "seeded": 6,
+    "detected": 6,
+    "detection_rate": 1.0,
+    "false_positive_rate": 0.0
+  }
+}
