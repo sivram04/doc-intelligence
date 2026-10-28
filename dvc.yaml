@@ -1,31 +1,40 @@
 stages:
   make_data:
-    cmd: python scripts/make_data.py --cases ${data.cases} --invoices ${data.invoices} --scan-rate ${data.scan_rate} --seed ${data.seed}
+    cmd: python scripts/make_data.py --cases ${data.cases} --invoices 
+      ${data.invoices} --scan-rate ${data.scan_rate} --seed ${data.seed}
     deps:
-      - scripts/make_data.py
-      - docintel/synth
+    - scripts/make_data.py
+    - docintel/synth
     params:
-      - data
+    - data
     outs:
-      - data/synthetic
+    - data/synthetic
   train_classifier:
     cmd: python scripts/train_classifier.py
     deps:
-      - scripts/train_classifier.py
-      - docintel/pipeline
-      - data/synthetic
+    - scripts/train_classifier.py
+    - docintel/pipeline
+    - data/synthetic
     outs:
-      - models/doctype.joblib
+    - models/doctype.joblib
     metrics:
-      - reports/classifier.json:
-          cache: false
+    - reports/classifier.json:
+        cache: false
   evaluate:
     cmd: python scripts/evaluate.py
     deps:
-      - scripts/evaluate.py
-      - docintel
-      - data/synthetic
-      - models/doctype.joblib
+    - scripts/evaluate.py
+    - docintel
+    - data/synthetic
+    - models/doctype.joblib
     metrics:
-      - reports/eval_rules-v1_test.json:
-          cache: false
+    - reports/eval_rules-v1_test.json:
+        cache: false
+  build_sft:
+    cmd: python scripts/build_sft.py
+    deps:
+    - data/synthetic
+    - docintel/pipeline
+    - scripts/build_sft.py
+    outs:
+    - data/sft

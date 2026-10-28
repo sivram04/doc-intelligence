@@ -6,3 +6,5 @@ data/uploads/
 mlruns/
 build/
 models/finetuned/
+mlflow.db
+mlartifacts/

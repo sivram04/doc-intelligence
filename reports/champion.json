@@ -1,0 +1,6 @@
+{
+  "name": "docintel-qwen1.5b-ft-v1",
+  "extractor": "ollama:docintel-qwen1.5b-ft",
+  "test_f1": 0.9677,
+  "mlflow_run_id": "42a8824c0c4740eeb8cefb218d0f1194"
+}

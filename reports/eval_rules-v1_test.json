@@ -2,6 +2,8 @@
   "model": "rules-v1",
   "split": "test",
   "documents": 50,
+  "failed_documents": 0,
+  "errors": [],
   "field_scores_by_type": {
     "bank_statement": {
       "precision": 0.9032,
@@ -46,22 +48,22 @@
   "review_rate": 1.0,
   "latency_ms": {
     "native": {
-      "p50": 24.5,
-      "p95": 11531.5
+      "p50": 37.4,
+      "p95": 17942.1
     },
     "scan": {
-      "p50": 2026.5,
-      "p95": 13653.4
+      "p50": 3793.2,
+      "p95": 19373.7
     }
   },
-  "p95_latency_ms": 12737.1,
+  "p95_latency_ms": 19095.6,
   "workers": 16,
   "tokens_per_doc": {
     "input": 0,
     "output": 0
   },
   "cost_per_1k_docs_usd": 0.0,
-  "docs_per_minute": 122.9,
+  "docs_per_minute": 91.8,
   "cross_doc": {
     "seeded": 3,
     "detected": 0,

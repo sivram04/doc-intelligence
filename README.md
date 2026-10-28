@@ -10,7 +10,8 @@ Reads financial documents (W-2s, pay stubs, bank statements, invoices), extracts
 | 1. Baseline pipeline | Preprocess (native vs scanned, deskew, denoise), PyMuPDF layout + key-value pairing, keyword classifier, rules extractor, LLM extractor via Project 1 gateway, async REST API. |
 | 2. Validation | Field rules (sums, formats) and cross-document case checks with readable reasons. |
 | 3. Model race | Learned doc-type classifier (TF-IDF + logistic regression, DVC stage). Extractors: rules, Qwen2.5-1.5B on CPU via Ollama, Gemini 3.5 Flash Lite (free tier); Groq / gateway adapters ready. Leaderboard with F1, latency, tokens and cost. |
-| 4–7 | Not started. |
+| 4. Fine-tuning | QLoRA on Qwen2.5-1.5B (Kaggle T4, 34 min), GGUF q8_0 served by Ollama, MLflow (SQLite) tracking, champion/challenger gate. **Test F1 0.88 -> 0.97.** |
+| 5–7 | Not started. |
 
 ## Quickstart
 
@@ -85,6 +86,44 @@ Latency on a 16-thread laptop CPU: native PDF p50 is about 27 ms. A single scan 
 
 Full table: [`reports/leaderboard.md`](reports/leaderboard.md).
 
+## Fine-tuning (Phase 4)
+
+| | Zero-shot Qwen2.5-1.5B | **Fine-tuned (QLoRA)** | Gemini 3.5 Flash Lite |
+|---|---|---|---|
+| Test field F1 (unseen wording) | 0.878 | **0.968** | 0.995 |
+| Invoice / Bank / Pay stub / W-2 | 0.84 / 0.82 / 0.87 / 0.96 | 0.90 / 0.99 / 0.98 / 0.98 | 1.00 / 1.00 / 1.00 / 0.98 |
+| Scan F1 | 0.87 | 0.95 | 0.98 |
+| Review rate (conf. < 0.85) | 78% | **11%** | 2% |
+| Cross-doc mismatches caught | 2 of 3 | **3 of 3** | 3 of 3 |
+| Cost per 1K docs | $0 | $0 | free tier only |
+| Data leaves the machine | no | no | yes |
+
+**Results**
+
+- Fine-tuning closed 80% of the gap between the free local model and the hosted API, and cut the review rate from 78% to 11%.
+- The training targets encode confidence: 1.0 when the value is legible in the OCR text, 0.5 when it is not. The tuned model's scores now separate safe fields from unsafe ones.
+
+**Training setup**
+
+- **Data:** 1,360 chat examples, from the train split plus 900 augmentation documents rendered with *train* wording only. Test wording was never seen in training.
+- **Recipe:** QLoRA (4-bit NF4 base, LoRA r=16 on all projections), 2 epochs, loss on the answer only. Train loss 0.0073, val loss 0.0037. Seed 42; reruns reproduce the same losses.
+- **Serving:** merged and converted to GGUF q8_0 on Kaggle, then `ollama create` from [`training/Modelfile`](training/Modelfile).
+- **Champion gate:** a challenger is promoted only if its test F1 is at least 0.005 above the champion's. The decision and both runs are logged to MLflow; the current champion is in `reports/champion.json`.
+
+**Trade-off:** the q8_0 GGUF (1.6 GB) is slower on this CPU than the base model's q4 build, at about 40 s per document vs 25 s. A q4_K_M export is a planned speed-up.
+
+**Reproduce**
+
+```bash
+python -m dvc repro build_sft                 # SFT data (DVC-tracked)
+bash scripts/kaggle_train.sh                  # upload + train on Kaggle T4 (needs KAGGLE_API_TOKEN)
+bash scripts/kaggle_train.sh status
+bash scripts/kaggle_train.sh fetch            # -> models/finetuned/{model-q8_0.gguf, metrics.json}
+cd training && ollama create docintel-qwen1.5b-ft -f Modelfile && cd ..
+python scripts/evaluate.py --extractor ollama:docintel-qwen1.5b-ft --workers 2
+python scripts/register_model.py --name docintel-qwen1.5b-ft-v1 --extractor ollama:docintel-qwen1.5b-ft     --train-metrics models/finetuned/metrics.json
+```
+
 ## Layout
 
 ```
@@ -96,5 +135,7 @@ docintel/
   validators.py       field + cross-document rules
   eval/metrics.py     field-level P/R/F1
   api/main.py         FastAPI async jobs
-scripts/              make_data.py, train_classifier.py, evaluate.py, leaderboard.py, race.sh
+scripts/              make_data.py, train_classifier.py, evaluate.py, leaderboard.py, race.sh,
+                      build_sft.py, kaggle_train.sh, register_model.py
+training/             train_qlora.py (Kaggle job), Modelfile (Ollama)
 ```
