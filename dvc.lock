@@ -88,9 +88,9 @@ stages:
       nfiles: 482
     - path: docintel/pipeline
       hash: md5
-      md5: fb89c0d661dc6c761a62f29fb2e8c895.dir
-      size: 9965
-      nfiles: 5
+      md5: 041ee640b655275f6079415ca019e387.dir
+      size: 33597
+      nfiles: 10
     - path: scripts/build_sft.py
       hash: md5
       md5: e9ce050341715d5d5354b0a10e2119a9
