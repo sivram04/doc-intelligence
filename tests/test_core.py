@@ -26,7 +26,7 @@ def case_dir(tmp_path_factory):
 
 def test_schemas_have_value_types():
     for dt in SCHEMAS:
-        assert all(t in (str, float, int) for t in field_types(dt).values())
+        assert all(t in (str, float, int, list) for t in field_types(dt).values())
 
 
 def test_coerce():

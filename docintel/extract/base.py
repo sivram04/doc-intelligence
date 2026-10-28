@@ -9,15 +9,27 @@ from ..schemas import DocType, ExtractedField
 MONEY_RE = re.compile(r"-?\$?\s*-?[\d,]+(?:\.\d+)?")
 
 
-def coerce(raw: str | None, typ: type) -> Any:
-    """Normalise a raw string into the schema's value type; None if it won't parse."""
+def coerce(raw: Any, typ: type, columns: dict[str, type] | None = None) -> Any:
+    """Normalise a raw value into the schema's value type; None if it won't parse.
+    Table fields (typ is list) coerce every cell by its column type and drop empty rows."""
     if raw is None:
         return None
+    if typ is list:
+        if not isinstance(raw, list):
+            return None
+        rows = []
+        for r in raw:
+            if isinstance(r, dict):
+                row = {k: coerce(r.get(k), t) for k, t in (columns or {}).items()}
+                if any(v is not None for v in row.values()):
+                    rows.append(row)
+        return rows
     if typ in (float, int):
         m = MONEY_RE.search(str(raw))
         if not m:
             return None
-        num = float(re.sub(r"[^\d.\-]", "", m.group()))
+        neg = str(raw).strip().startswith("(") and str(raw).strip().endswith(")")  # accounting negatives
+        num = float(re.sub(r"[^\d.\-]", "", m.group())) * (-1 if neg else 1)
         return int(num) if typ is int else round(num, 2)
     return str(raw).strip()
 

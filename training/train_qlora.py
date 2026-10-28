@@ -40,9 +40,9 @@ CFG = {
     "lora_r": 16,
     "lora_alpha": 32,
     "lora_dropout": 0.05,
-    "batch_size": 4,
-    "grad_accum": 4,
-    "max_length": 2048,
+    "batch_size": 2,
+    "grad_accum": 8,
+    "max_length": 4096,
 }
 OUT = "/kaggle/working"
 t0 = time.time()

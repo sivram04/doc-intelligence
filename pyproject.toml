@@ -13,6 +13,7 @@ dependencies = [
 ocr = ["pytesseract"]
 dev = ["pytest", "ruff"]
 local-llm = ["torch", "transformers>=4.44", "accelerate"]
+public-eval = ["datasets"]
 mlops = ["mlflow", "evidently", "dvc"]
 
 [tool.setuptools.packages.find]

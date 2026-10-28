@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
+from itertools import pairwise
 
 import pymupdf as fitz
 
@@ -29,6 +30,34 @@ class Layout:
     @property
     def text(self) -> str:
         return "\n".join(s.text for s in self.spans)
+
+    def lines(self) -> list[list[int]]:
+        """Span ids grouped into visual lines (same page, overlapping vertical extent),
+        left to right. Table rows come out as one line of cells."""
+        out: list[list[int]] = []
+        last = None
+        for i in sorted(range(len(self.spans)), key=lambda i: (self.spans[i].page, self.spans[i].bbox[1])):
+            s = self.spans[i]
+            mid = (s.bbox[1] + s.bbox[3]) / 2
+            if last and last[0] == s.page and last[1] <= mid <= last[2]:
+                out[-1].append(i)
+                last = (s.page, min(last[1], s.bbox[1]), max(last[2], s.bbox[3]))
+            else:
+                out.append([i])
+                last = (s.page, s.bbox[1], s.bbox[3])
+        return [sorted(line, key=lambda i: self.spans[i].bbox[0]) for line in out]
+
+    def render(self) -> str:
+        """Layout-preserving serialisation for LLMs: one visual line per row, cells as
+        `[span id] text` separated by ' | ', with page markers."""
+        rows, page = [], None
+        for line in self.lines():
+            p = self.spans[line[0]].page
+            if p != page:
+                rows.append(f"--- page {p + 1} ---")
+                page = p
+            rows.append(" | ".join(f"[{i}] {self.spans[i].text}" for i in line))
+        return "\n".join(rows)
 
 
 def _native_spans(page: fitz.Page, idx: int) -> list[Span]:
@@ -65,8 +94,20 @@ def _tesseract_spans(page: Page) -> list[Span]:
 
     # OCR has no font info: split "Label: value" lines at the colon; lines
     # without one may be a stacked label or a value (bold=None = unknown).
-    out = []
+    # Split a Tesseract line into cells at wide horizontal gaps (table columns), then
+    # split "Label: value" cells at the colon.
+    cells: list[list[int]] = []
     for ids in lines.values():
+        h = sorted(d["height"][i] for i in ids)[len(ids) // 2]
+        cur = [ids[0]]
+        for a, b in pairwise(ids):
+            if d["left"][b] - (d["left"][a] + d["width"][a]) > 1.8 * h:
+                cells.append(cur)
+                cur = []
+            cur.append(b)
+        cells.append(cur)
+    out = []
+    for ids in cells:
         cut = next((k for k, i in enumerate(ids) if d["text"][i].endswith(":")), None)
         if cut is None:
             out.append(span(ids, None))

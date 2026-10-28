@@ -39,6 +39,12 @@ class ExtractedField(BaseModel, Generic[T]):
 
 Money = ExtractedField[float]
 Text = ExtractedField[str]
+Rows = ExtractedField[list]  # table fields: a list of row dicts, columns in TABLE_COLUMNS
+
+TABLE_COLUMNS: dict[str, dict[str, type]] = {
+    "line_items": {"description": str, "quantity": float, "unit_price": float, "amount": float},
+    "transactions": {"date": str, "description": str, "amount": float},
+}
 
 
 class W2(BaseModel):
@@ -50,7 +56,12 @@ class W2(BaseModel):
     wages: Money = Money()
     federal_tax_withheld: Money = Money()
     social_security_wages: Money = Money()
+    social_security_tax: Money = Money()
     medicare_wages: Money = Money()
+    medicare_tax: Money = Money()
+    state: Text = Text()
+    state_wages: Money = Money()
+    state_tax_withheld: Money = Money()
 
 
 class Paystub(BaseModel):
@@ -73,16 +84,21 @@ class BankStatement(BaseModel):
     total_deposits: Money = Money()
     total_withdrawals: Money = Money()
     closing_balance: Money = Money()
+    transactions: Rows = Rows()
 
 
 class Invoice(BaseModel):
     vendor_name: Text = Text()
     invoice_number: Text = Text()
     invoice_date: Text = Text()
+    due_date: Text = Text()
     bill_to: Text = Text()
     subtotal: Money = Money()
+    discount: Money = Money()
     tax: Money = Money()
+    shipping: Money = Money()
     total: Money = Money()
+    line_items: Rows = Rows()
 
 
 SCHEMAS: dict[DocType, type[BaseModel]] = {

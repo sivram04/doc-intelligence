@@ -23,17 +23,26 @@ from typing import Any
 import httpx
 
 from ..pipeline.ocr import Layout
-from ..schemas import BBox, DocType, ExtractedField, field_types
+from ..schemas import TABLE_COLUMNS, BBox, DocType, ExtractedField, field_types
 from .base import coerce
 
 SYSTEM = "You extract fields from financial documents. Reply with a single JSON object and nothing else."
 PROMPT = """Document type: {doc_type}
-Text spans, one per line as `[id] text`:
+Page text, one visual line per row; cells are `[span id] text` separated by ' | ' (table rows stay on one line):
 {spans}
 
-Return JSON mapping each field to {{"value": string|number|null, "confidence": 0-1, "span": id|null}}.
-Copy values exactly as printed (keep names and dates as written; numbers without $ or commas).
-Use null when a field is absent. Fields: {fields}"""
+Return JSON mapping each field to {{"value": ..., "confidence": 0-1, "span": id|null}}.
+- Scalar fields: value is a string or number. Copy names, IDs and dates exactly as printed; numbers without $ or commas;
+  amounts in parentheses or with a leading minus are negative.
+- Table fields: value is a list with one object per table row, in document order, across all pages; "span" is null.
+Use null when a field is absent.
+Scalar fields: {fields}
+Table fields: {tables}"""
+
+
+def describe_tables(types: dict[str, type]) -> str:
+    cols = [f"{n} (columns: {', '.join(TABLE_COLUMNS[n])})" for n, t in types.items() if t is list]
+    return "; ".join(cols) or "none"
 
 MAX_ATTEMPTS = 7  # ~2 min of backoff in total
 RETRY_STATUS = {429, 500, 502, 503, 504}
@@ -71,9 +80,9 @@ class LLMExtractor:
 
     def extract(self, layout: Layout, doc_type: DocType) -> dict[str, ExtractedField[Any]]:
         types = field_types(doc_type)
-        spans = "\n".join(f"[{i}] {s.text}" for i, s in enumerate(layout.spans))
-        raw = parse_json(self._chat(SYSTEM, PROMPT.format(doc_type=doc_type.value, spans=spans,
-                                                          fields=", ".join(types))))
+        raw = parse_json(self._chat(SYSTEM, PROMPT.format(
+            doc_type=doc_type.value, spans=layout.render(),
+            fields=", ".join(n for n, t in types.items() if t is not list), tables=describe_tables(types))))
         out: dict[str, ExtractedField[Any]] = {}
         for name, typ in types.items():
             item = raw.get(name)
@@ -89,7 +98,9 @@ class LLMExtractor:
                 conf = min(max(float(item.get("confidence") or 0.0), 0.0), 1.0)
             except (TypeError, ValueError):
                 conf = 0.0
-            value = coerce(item.get("value"), typ)
+            if typ is list and isinstance(raw.get(name), list):  # model returned the rows directly
+                item = {"value": raw[name], "confidence": 0.5}
+            value = coerce(item.get("value"), typ, TABLE_COLUMNS.get(name))
             out[name] = ExtractedField[Any](value=value, confidence=conf if value is not None else 0.0, bbox=bbox,
                                             source_text=source)
         return out
@@ -129,6 +140,9 @@ class OpenAICompatExtractor(LLMExtractor):
                     raise RuntimeError(f"{self.name} transport error: {e}") from None
                 time.sleep(min(60, 2 ** (attempt + 1)) * random.uniform(0.8, 1.2))
                 continue
+            if r.status_code == 429 and "PerDay" in r.text:
+                # Daily quota: retrying cannot succeed before the reset and every attempt burns quota.
+                raise RuntimeError(f"{self.name} daily quota exhausted: {r.text[:200]}")
             if r.status_code in RETRY_STATUS and attempt < MAX_ATTEMPTS - 1:
                 wait = r.headers.get("retry-after")
                 time.sleep(float(wait) if wait else min(60, 2 ** (attempt + 1)) * random.uniform(0.8, 1.2))

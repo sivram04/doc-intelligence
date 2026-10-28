@@ -28,15 +28,19 @@ def ocr_text(args: tuple[str, str]) -> tuple[str, str, str]:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--data", default="data/synthetic")
+    ap.add_argument("--data", nargs="+", default=["data/synthetic", "data/synthetic_v2"])
     ap.add_argument("--out", default="models/doctype.joblib")
     ap.add_argument("--seed", type=int, default=0)
     a = ap.parse_args()
 
     os.environ.setdefault("OMP_THREAD_LIMIT", "1")
-    splits = json.loads((Path(a.data) / "splits.json").read_text())["splits"]
+    jobs = {"train": [], "val": []}
+    for d in a.data:
+        splits = json.loads((Path(d) / "splits.json").read_text())["splits"]
+        for s in jobs:
+            jobs[s] += [(d, i) for i in splits[s]]
     with ProcessPoolExecutor() as pool:
-        rows = {s: list(pool.map(ocr_text, [(a.data, i) for i in splits[s]], chunksize=2)) for s in ("train", "val")}
+        rows = {s: list(pool.map(ocr_text, jobs[s], chunksize=2)) for s in jobs}
 
     features = FeatureUnion([
         ("word", TfidfVectorizer(ngram_range=(1, 2), min_df=2, sublinear_tf=True)),

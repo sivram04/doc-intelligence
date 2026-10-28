@@ -6,13 +6,13 @@ stages:
     deps:
     - path: docintel/synth
       hash: md5
-      md5: 936285be57d9e2604ca81bfd978e54d2.dir
-      size: 35297
-      nfiles: 6
+      md5: 79516bfc6698e014c3cddd6a84d2da3f.dir
+      size: 70838
+      nfiles: 8
     - path: scripts/make_data.py
       hash: md5
-      md5: 07c3d758ff34646eabd006a506f76a1b
-      size: 918
+      md5: ac12c4f36895a2832f8a813c546d0e82
+      size: 1152
     params:
       params.yaml:
         data:
@@ -62,21 +62,21 @@ stages:
       nfiles: 482
     - path: docintel/pipeline
       hash: md5
-      md5: 041ee640b655275f6079415ca019e387.dir
-      size: 33597
+      md5: 25d0f76431ef2fecd64d0f98bf5b998a.dir
+      size: 35435
       nfiles: 10
     - path: scripts/train_classifier.py
       hash: md5
-      md5: 99f132676d511dd0d8e9b871dd5bad8c
-      size: 2471
+      md5: 6faf8c90cf5e00e5811b0b23a6656a3d
+      size: 2663
     outs:
     - path: models/doctype.joblib
       hash: md5
-      md5: 8a24a5ac5293d35d99e2ffb61e71d567
-      size: 364572
+      md5: 6901bf930c0ad992bc46cc5c563e0dc5
+      size: 1519964
     - path: reports/classifier.json
       hash: md5
-      md5: ded47e4d0b54d26cfa0eb3bbd7bbfd4c
+      md5: 500e246f3325064e3c1eedb775a36e56
       size: 68
   build_sft:
     cmd: python scripts/build_sft.py
@@ -101,3 +101,22 @@ stages:
       md5: d505ae81af57ad0cc7d9063b604b4229.dir
       size: 1005662953
       nfiles: 2403
+  make_data_v2:
+    cmd: python scripts/make_data.py --benchmark v2 --out data/synthetic_v2 
+      --cases 60 --invoices 80
+    deps:
+    - path: docintel/synth
+      hash: md5
+      md5: 79516bfc6698e014c3cddd6a84d2da3f.dir
+      size: 70838
+      nfiles: 8
+    - path: scripts/make_data.py
+      hash: md5
+      md5: ac12c4f36895a2832f8a813c546d0e82
+      size: 1152
+    outs:
+    - path: data/synthetic_v2
+      hash: md5
+      md5: d7f996455869fcf13e8100815538854c.dir
+      size: 217820534
+      nfiles: 522

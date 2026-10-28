@@ -25,6 +25,9 @@ def validate_document(doc_type: DocType, fields: dict) -> list[str]:
     v = lambda n: _v(fields, n)
     flags: list[str] = []
     if doc_type == DocType.W2:
+        ssw, sst = v("social_security_wages"), v("social_security_tax")
+        if None not in (ssw, sst) and not _close(ssw * 0.062, sst, 1.0):
+            flags.append(f"Social security tax {sst:,.2f} is not 6.2% of SS wages ({ssw * 0.062:,.2f})")
         if v("employer_ein") and not re.fullmatch(r"\d{2}-\d{7}", str(v("employer_ein"))):
             flags.append(f"EIN '{v('employer_ein')}' is not in NN-NNNNNNN format")
         if v("employee_ssn_last4") and not re.fullmatch(r"\d{4}", str(v("employee_ssn_last4"))):
@@ -45,10 +48,22 @@ def validate_document(doc_type: DocType, fields: dict) -> list[str]:
         o, dep, wd, c = (v(k) for k in ("opening_balance", "total_deposits", "total_withdrawals", "closing_balance"))
         if None not in (o, dep, wd, c) and not _close(o + dep - wd, c):
             flags.append(f"Closing balance {c:,.2f} != opening + deposits - withdrawals ({o + dep - wd:,.2f})")
+        txs = v("transactions")
+        if txs and None not in (dep, wd):
+            amts = [t.get("amount") for t in txs if isinstance(t, dict) and t.get("amount") is not None]
+            cr, db = sum(a for a in amts if a > 0), -sum(a for a in amts if a < 0)
+            if not _close(cr, dep, 0.05) or not _close(db, wd, 0.05):
+                flags.append(f"Transactions sum to +{cr:,.2f} / -{db:,.2f}, summary says +{dep:,.2f} / -{wd:,.2f}")
     elif doc_type == DocType.INVOICE:
         s, t, tot = v("subtotal"), v("tax"), v("total")
-        if None not in (s, t, tot) and not _close(s + t, tot):
-            flags.append(f"Total {tot:,.2f} != subtotal + tax ({s + t:,.2f})")
+        disc, ship = v("discount") or 0.0, v("shipping") or 0.0
+        if None not in (s, t, tot) and not _close(s - disc + t + ship, tot):
+            flags.append(f"Total {tot:,.2f} != subtotal - discount + tax + shipping ({s - disc + t + ship:,.2f})")
+        items = v("line_items")
+        if items and s is not None:
+            amts = [i.get("amount") for i in items if isinstance(i, dict) and i.get("amount") is not None]
+            if amts and not _close(sum(amts), s, 0.05):
+                flags.append(f"Line items sum to {sum(amts):,.2f}, subtotal says {s:,.2f}")
         if None not in (s, t) and t > s:
             flags.append(f"Tax {t:,.2f} exceeds subtotal {s:,.2f} (fields likely swapped)")
     return flags

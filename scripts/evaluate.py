@@ -97,6 +97,7 @@ def main() -> None:
         "failed_documents": len(errors), "errors": errors[:5],
         "field_scores_by_type": by_type.report(),
         "field_scores_by_modality": by_modality.report(),
+        "table_scores": by_type.table_report(),
         "classification_accuracy": round(type_ok / len(ids), 4),
         "review_rate": round(review / max(total, 1), 4),
         "latency_ms": {m: {"p50": pctl(v, 0.5), "p95": pctl(v, 0.95)} for m, v in sorted(latency.items())},

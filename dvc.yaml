@@ -34,7 +34,18 @@ stages:
     cmd: python scripts/build_sft.py
     deps:
     - data/synthetic
+    - data/synthetic_v2
     - docintel/pipeline
+    - docintel/synth
+    - docintel/extract/llm.py
     - scripts/build_sft.py
     outs:
     - data/sft
+  make_data_v2:
+    cmd: python scripts/make_data.py --benchmark v2 --out data/synthetic_v2 
+      --cases 60 --invoices 80
+    deps:
+    - docintel/synth
+    - scripts/make_data.py
+    outs:
+    - data/synthetic_v2
