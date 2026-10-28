@@ -84,6 +84,35 @@ def test_scan_variant_writes_png(tmp_path):
     assert (tmp_path / "invS.png").exists() and not (tmp_path / "invS.pdf").exists()
 
 
+def test_llm_parser_tolerates_fences_and_bad_items(case_dir):
+    from docintel.extract.llm import LLMExtractor, parse_json
+    from docintel.pipeline.ocr import analyze
+    from docintel.pipeline.preprocess import load_pages
+
+    assert parse_json('```json\n{"a": 1}\n```') == {"a": 1}
+    assert parse_json("no json here") == {}
+
+    class Fake(LLMExtractor):
+        def _chat(self, system, user):
+            return '{"subtotal": {"value": "$1,200.50", "confidence": 0.9, "span": 0}, "tax": "8", "total": null}'
+
+    d, docs = case_dir
+    inv = next(x for x in docs if x.doc_type == "invoice")
+    layout = analyze(*load_pages(str(d / f"{inv.doc_id}.pdf")))
+    out = Fake().extract(layout, DocType.INVOICE)
+    assert out["subtotal"].value == 1200.5 and out["subtotal"].bbox is not None
+    assert out["tax"].value == 8.0 and out["total"].value is None and out["total"].confidence == 0.0
+
+
+def test_registry_rejects_unknown_and_missing_keys(monkeypatch):
+    from docintel.extract.registry import make_extractor
+    with pytest.raises(ValueError):
+        make_extractor("nope:x")
+    monkeypatch.delenv("GROQ_API_KEY", raising=False)
+    with pytest.raises(RuntimeError):
+        make_extractor("groq:some-model-unset")
+
+
 def test_deskew_recovers_angle():
     img = np.full((400, 400), 255, np.uint8)
     img[150:250, 50:350] = 0

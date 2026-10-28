@@ -2,8 +2,9 @@
 modality (native PDF vs scan), classification accuracy, review rate,
 latency, throughput, and cross-document detection rate.
 
-    python scripts/evaluate.py                           # rules baseline
-    python scripts/evaluate.py --model gemini-2.5-flash  # via Project 1 gateway
+    python scripts/evaluate.py                                    # rules baseline
+    python scripts/evaluate.py --extractor hf:Qwen/Qwen2.5-1.5B-Instruct --workers 1
+    python scripts/evaluate.py --extractor gemini:gemini-2.5-flash  # needs GEMINI_API_KEY
 """
 import argparse
 import json
@@ -14,20 +15,20 @@ from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
 from docintel.eval.metrics import FieldScorer
-from docintel.extract.llm import LLMExtractor
-from docintel.extract.rules import RulesExtractor
+from docintel.eval.prices import cost_per_1k_docs
+from docintel.extract.registry import make_extractor
 from docintel.pipeline.run import process, route
 from docintel.schemas import DocType
 from docintel.validators import validate_case
 
 
 def run_one(args: tuple[str, str, str | None]) -> dict:
-    data, doc_id, model = args
+    data, doc_id, spec = args
     gt = json.loads((Path(data) / "docs" / f"{doc_id}.json").read_text())
-    res = process(Path(data) / "docs" / gt["file"], LLMExtractor(model) if model else RulesExtractor())
+    res = process(Path(data) / "docs" / gt["file"], make_extractor(spec))
     return {"gt": gt, "doc_type": res.doc_type.value, "latency_ms": res.latency_ms, "model": res.model,
             "pred": {k: f.value for k, f in res.fields.items()},
-            "fields": {k: f.model_dump() for k, f in res.fields.items()}, "routing": route(res)}
+            "fields": {k: f.model_dump() for k, f in res.fields.items()}, "routing": route(res), "tokens": res.tokens}
 
 
 def pctl(xs: list[float], q: float) -> float:
@@ -39,17 +40,18 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", default="data/synthetic")
     ap.add_argument("--split", default="test")
-    ap.add_argument("--model", default=None, help="gateway model name; omit for rules baseline")
+    ap.add_argument("--extractor", default="rules", help="rules | hf:<id> | gemini:<m> | groq:<m> | gateway:<m>")
+    ap.add_argument("--limit", type=int, default=None, help="evaluate the first N docs only (smoke runs)")
     ap.add_argument("--workers", type=int, default=os.cpu_count() or 2)
     ap.add_argument("--out", default="reports")
     a = ap.parse_args()
 
     # One Tesseract thread per worker process; otherwise N workers x M OpenMP threads thrash the CPU.
     os.environ.setdefault("OMP_THREAD_LIMIT", "1")
-    ids = json.loads((Path(a.data) / "splits.json").read_text())["splits"][a.split]
+    ids = json.loads((Path(a.data) / "splits.json").read_text())["splits"][a.split][:a.limit]
     t0 = time.perf_counter()
     with ProcessPoolExecutor(a.workers) as pool:
-        rows = list(pool.map(run_one, [(a.data, i, a.model) for i in ids], chunksize=2))
+        rows = list(pool.map(run_one, [(a.data, i, a.extractor) for i in ids], chunksize=2))
     elapsed = time.perf_counter() - t0
 
     by_type, by_modality = FieldScorer(), FieldScorer()
@@ -77,6 +79,8 @@ def main() -> None:
         tp, fp = tp + (flagged and bad), fp + (flagged and not bad)
 
     all_lat = [x for v in latency.values() for x in v]
+    tok_in = sum(r["tokens"].get("input", 0) for r in rows) / max(len(rows), 1)
+    tok_out = sum(r["tokens"].get("output", 0) for r in rows) / max(len(rows), 1)
     report = {
         "model": rows[0]["model"] if rows else None, "split": a.split, "documents": len(ids),
         "field_scores_by_type": by_type.report(),
@@ -86,6 +90,8 @@ def main() -> None:
         "latency_ms": {m: {"p50": pctl(v, 0.5), "p95": pctl(v, 0.95)} for m, v in sorted(latency.items())},
         "p95_latency_ms": pctl(all_lat, 0.95),
         "workers": a.workers,
+        "tokens_per_doc": {"input": round(tok_in), "output": round(tok_out)},
+        "cost_per_1k_docs_usd": cost_per_1k_docs(a.extractor, tok_in, tok_out),
         "docs_per_minute": round(len(ids) / elapsed * 60, 1),
         "cross_doc": {"seeded": pos, "detected": tp, "detection_rate": round(tp / pos, 4) if pos else None,
                       "false_positive_rate": round(fp / neg, 4) if neg else None},

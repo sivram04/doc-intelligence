@@ -5,12 +5,14 @@ description = "Self-improving document intelligence engine (synthetic financial 
 requires-python = ">=3.11"
 dependencies = [
   "pydantic>=2.7", "fastapi>=0.110", "uvicorn[standard]", "python-multipart",
-  "pymupdf>=1.24", "opencv-python-headless>=4.9", "numpy", "reportlab>=4", "faker>=24", "httpx",
+  "pymupdf>=1.24", "opencv-python-headless>=4.9", "numpy", "pillow", "reportlab>=4", "faker>=24", "httpx",
+  "scikit-learn>=1.4", "joblib",
 ]
 
 [project.optional-dependencies]
 ocr = ["pytesseract"]
 dev = ["pytest", "ruff"]
+local-llm = ["torch", "transformers>=4.44", "accelerate"]
 mlops = ["mlflow", "evidently", "dvc"]
 
 [tool.setuptools.packages.find]

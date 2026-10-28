@@ -8,12 +8,24 @@ stages:
       - data
     outs:
       - data/synthetic
+  train_classifier:
+    cmd: python scripts/train_classifier.py
+    deps:
+      - scripts/train_classifier.py
+      - docintel/pipeline
+      - data/synthetic
+    outs:
+      - models/doctype.joblib
+    metrics:
+      - reports/classifier.json:
+          cache: false
   evaluate:
     cmd: python scripts/evaluate.py
     deps:
       - scripts/evaluate.py
       - docintel
       - data/synthetic
+      - models/doctype.joblib
     metrics:
       - reports/eval_rules-v1_test.json:
           cache: false

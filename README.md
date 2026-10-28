@@ -9,7 +9,8 @@ Reads financial documents (W-2s, pay stubs, bank statements, invoices), extracts
 | 0. Setup and data | Synthetic generator, case-grouped frozen splits (hashed test manifest), Docker Compose (API, Redis, Postgres, MLflow), DVC pipeline (remote not yet configured). |
 | 1. Baseline pipeline | Preprocess (native vs scanned, deskew, denoise), PyMuPDF layout + key-value pairing, keyword classifier, rules extractor, LLM extractor via Project 1 gateway, async REST API. |
 | 2. Validation | Field rules (sums, formats) and cross-document case checks with readable reasons. |
-| 3–7 | Not started. |
+| 3. Model race | Learned doc-type classifier (TF-IDF + logistic regression, DVC stage). Extractors: rules, Qwen2.5-1.5B on CPU via Ollama, Gemini / Groq / gateway adapters (run once keys are set). Leaderboard with F1, latency, tokens and cost. |
+| 4–7 | Not started. |
 
 ## Quickstart
 
@@ -62,6 +63,24 @@ Test F1 by type: W-2 0.45, pay stub 0.19, invoice 0.11, bank statement 0.00 (the
 
 Latency on a 16-thread laptop CPU: native PDF p50 is about 27 ms. A single scan takes about 1.8 s warm, mostly Tesseract. With 16 parallel workers, scan p95 rises to about 12 s from CPU contention. Overall throughput is about 96 docs/min.
 
+## Model race (Phase 3, test split, held-out label wording)
+
+![Field F1 by document type](reports/leaderboard.png)
+
+| Model | Field F1 | Native | Scan | Doc-type acc. | Cross-doc caught | p50 latency | Tokens in/out | Cost / 1K docs |
+|---|---|---|---|---|---|---|---|---|
+| Qwen2.5-1.5B (Ollama, CPU, zero-shot) | **0.88** | 0.89 | 0.87 | 100% | 2 of 3 | 23 s native, 29 s scan | 312 / 144 | $0 (local) |
+| rules-v1 + learned classifier | 0.38 | 0.42 | 0.37 | 100% | 0 of 3 | <0.1 s native, ~2 s scan | – | $0 |
+
+- **Classifier.** The learned classifier fixed document typing (74% to 100% on test) and lifted rules-v1 bank-statement F1 from 0.00 to 0.67.
+- **Small model.** A 1.5B model with no training already beats rules by 50 F1 points on unseen wording. The cost is latency: about 25 s per document on this laptop CPU, with 2 parallel requests.
+- **Review rate.** It is 78% for Qwen, because the model's self-reported confidence is uncalibrated and sits below the 0.85 auto-accept bar. Calibration and per-field thresholds are Phase 5.
+- **API models.** Gemini and Groq are not on the board yet because no free-tier keys are configured. Add `GEMINI_API_KEY` / `GROQ_API_KEY` to `.env`, then run `bash scripts/race.sh`.
+- **Cost.** API costs show "n/a" until list prices are filled in `docintel/eval/prices.py` for the run date.
+- **Not used:** PyTorch CPU inference. Through `transformers` it ran about 30x slower than llama.cpp on this machine, so `hf:` is reserved for the Kaggle/Colab GPU in Phase 4.
+
+Full table: [`reports/leaderboard.md`](reports/leaderboard.md).
+
 ## Layout
 
 ```
@@ -69,9 +88,9 @@ docintel/
   schemas.py          Pydantic schema per doc type; ExtractedField = value + confidence + bbox
   synth/              generator.py (ReportLab + Faker, ground truth JSON), split.py (frozen splits)
   pipeline/           preprocess.py, ocr.py, classify.py, run.py (process + confidence routing)
-  extract/            rules.py (baseline), llm.py (gateway: Gemini / Groq / Ollama fine-tune)
+  extract/            rules.py, llm.py (OpenAI-compatible + HF local), registry.py (spec -> extractor)
   validators.py       field + cross-document rules
   eval/metrics.py     field-level P/R/F1
   api/main.py         FastAPI async jobs
-scripts/              make_data.py, evaluate.py
+scripts/              make_data.py, train_classifier.py, evaluate.py, leaderboard.py, race.sh
 ```

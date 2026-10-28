@@ -109,4 +109,5 @@ class ExtractionResult(BaseModel):
     model: str
     fields: dict[str, ExtractedField[Any]]
     latency_ms: float = 0.0
+    tokens: dict[str, int] = {}
     flags: list[str] = []

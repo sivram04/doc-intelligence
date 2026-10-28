@@ -36,15 +36,45 @@ stages:
       nfiles: 482
     - path: docintel
       hash: md5
-      md5: 4123ffb48d1639b795ff0b3c7a1407e0.dir
-      size: 38332
-      nfiles: 19
+      md5: 99c1895f1770e202c9138adb06359380.dir
+      size: 45138
+      nfiles: 21
+    - path: models/doctype.joblib
+      hash: md5
+      md5: 8a24a5ac5293d35d99e2ffb61e71d567
+      size: 364572
     - path: scripts/evaluate.py
       hash: md5
-      md5: b5daec67c471946567e50c7f1f060ea2
-      size: 4480
+      md5: 529b4ee3e1047f721edf7dad835191f3
+      size: 5146
     outs:
     - path: reports/eval_rules-v1_test.json
       hash: md5
-      md5: 04c1d3cf1f32d2020cf55cf3963cdb39
-      size: 1263
+      md5: 8ce9ddd301a270537d7b58e9ee861a5e
+      size: 1365
+  train_classifier:
+    cmd: python scripts/train_classifier.py
+    deps:
+    - path: data/synthetic
+      hash: md5
+      md5: afe44d87a4ac48f0420c71e5928a6e92.dir
+      size: 192272625
+      nfiles: 482
+    - path: docintel/pipeline
+      hash: md5
+      md5: fb89c0d661dc6c761a62f29fb2e8c895.dir
+      size: 9965
+      nfiles: 5
+    - path: scripts/train_classifier.py
+      hash: md5
+      md5: 99f132676d511dd0d8e9b871dd5bad8c
+      size: 2471
+    outs:
+    - path: models/doctype.joblib
+      hash: md5
+      md5: 8a24a5ac5293d35d99e2ffb61e71d567
+      size: 364572
+    - path: reports/classifier.json
+      hash: md5
+      md5: ded47e4d0b54d26cfa0eb3bbd7bbfd4c
+      size: 68

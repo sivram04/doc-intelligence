@@ -24,7 +24,8 @@ def process(path: str | Path, extractor: Extractor | None = None) -> ExtractionR
     fields = extractor.extract(layout, doc_type) if doc_type != DocType.OTHER else {}
     result = ExtractionResult(doc_id=Path(path).stem, doc_type=doc_type, type_confidence=conf,
                               model=extractor.name, fields=fields,
-                              latency_ms=round((time.perf_counter() - t0) * 1000, 1))
+                              latency_ms=round((time.perf_counter() - t0) * 1000, 1),
+                              tokens=dict(getattr(extractor, "last_usage", {}) or {}))
     result.flags = validate_document(doc_type, fields)
     return result
 

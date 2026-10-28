@@ -4,9 +4,9 @@
   "documents": 50,
   "field_scores_by_type": {
     "bank_statement": {
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
+      "precision": 0.9032,
+      "recall": 0.5385,
+      "f1": 0.6747,
       "fields": 104
     },
     "invoice": {
@@ -30,33 +30,38 @@
   },
   "field_scores_by_modality": {
     "native": {
-      "precision": 0.6333,
-      "recall": 0.1397,
-      "f1": 0.2289,
+      "precision": 0.78,
+      "recall": 0.2868,
+      "f1": 0.4194,
       "fields": 272
     },
     "scan": {
-      "precision": 0.6071,
-      "recall": 0.1308,
-      "f1": 0.2152,
+      "precision": 0.66,
+      "recall": 0.2538,
+      "f1": 0.3667,
       "fields": 130
     }
   },
-  "classification_accuracy": 0.74,
+  "classification_accuracy": 1.0,
   "review_rate": 1.0,
   "latency_ms": {
     "native": {
-      "p50": 31.0,
-      "p95": 63.8
+      "p50": 24.5,
+      "p95": 11531.5
     },
     "scan": {
-      "p50": 10842.5,
-      "p95": 12062.7
+      "p50": 2026.5,
+      "p95": 13653.4
     }
   },
-  "p95_latency_ms": 11663.6,
+  "p95_latency_ms": 12737.1,
   "workers": 16,
-  "docs_per_minute": 95.9,
+  "tokens_per_doc": {
+    "input": 0,
+    "output": 0
+  },
+  "cost_per_1k_docs_usd": 0.0,
+  "docs_per_minute": 122.9,
   "cross_doc": {
     "seeded": 3,
     "detected": 0,
