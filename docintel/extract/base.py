@@ -6,12 +6,14 @@ from typing import Any, Protocol
 from ..pipeline.ocr import Layout
 from ..schemas import DocType, ExtractedField
 
-MONEY_RE = re.compile(r"-?\$?\s*-?[\d,]+(?:\.\d+)?")
+MONEY_RE = re.compile(r"-?\$?\s*-?\d[\d,]*(?:\.\d+)?|\.\d+")
 
 
 def coerce(raw: Any, typ: type, columns: dict[str, type] | None = None) -> Any:
     """Normalise a raw value into the schema's value type; None if it won't parse.
     Table fields (typ is list) coerce every cell by its column type and drop empty rows."""
+    if isinstance(raw, dict) and "value" in raw:  # some models wrap table cells like scalar fields
+        raw = raw["value"]
     if raw is None:
         return None
     if typ is list:
@@ -29,7 +31,10 @@ def coerce(raw: Any, typ: type, columns: dict[str, type] | None = None) -> Any:
         if not m:
             return None
         neg = str(raw).strip().startswith("(") and str(raw).strip().endswith(")")  # accounting negatives
-        num = float(re.sub(r"[^\d.\-]", "", m.group())) * (-1 if neg else 1)
+        cleaned = re.sub(r"[^\d.\-]", "", m.group())
+        if not re.search(r"\d", cleaned):  # a lone "," or "-" is not a number
+            return None
+        num = float(cleaned) * (-1 if neg else 1)
         return int(num) if typ is int else round(num, 2)
     return str(raw).strip()
 

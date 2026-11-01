@@ -202,3 +202,9 @@ def test_upload_security_and_pii_mask(tmp_path, monkeypatch):
     assert r.status_code == 415
     assert c.get("/ready").json()["ok"] is True
     assert b"docintel_jobs_total" in c.get("/metrics").content
+
+
+def test_coerce_handles_wrapped_cells_and_junk_numbers():
+    cols = {"description": str, "amount": float}
+    assert coerce([{"description": {"value": "Laptop", "confidence": 1}, "amount": {"value": "$1,200.50"}}], list, cols)         == [{"description": "Laptop", "amount": 1200.5}]
+    assert coerce(",", float) is None and coerce("-", float) is None and coerce("(45.10)", float) == -45.1

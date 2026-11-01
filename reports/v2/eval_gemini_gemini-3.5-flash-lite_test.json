@@ -1,0 +1,104 @@
+{
+  "model": "gemini:gemini-3.5-flash-lite",
+  "split": "test",
+  "documents": 55,
+  "failed_documents": 4,
+  "errors": [
+    {
+      "doc_id": "inv0008",
+      "error": "could not convert string to float: ''"
+    },
+    {
+      "doc_id": "inv0037",
+      "error": "could not convert string to float: ''"
+    },
+    {
+      "doc_id": "inv0043",
+      "error": "could not convert string to float: ''"
+    },
+    {
+      "doc_id": "inv0061",
+      "error": "could not convert string to float: ''"
+    }
+  ],
+  "field_scores_by_type": {
+    "bank_statement": {
+      "precision": 0.875,
+      "recall": 0.875,
+      "f1": 0.875,
+      "fields": 104
+    },
+    "invoice": {
+      "precision": 0.8624,
+      "recall": 0.6438,
+      "f1": 0.7373,
+      "fields": 146
+    },
+    "paystub": {
+      "precision": 1.0,
+      "recall": 0.9808,
+      "f1": 0.9903,
+      "fields": 104
+    },
+    "w2": {
+      "precision": 0.9697,
+      "recall": 0.8791,
+      "f1": 0.9222,
+      "fields": 182
+    }
+  },
+  "field_scores_by_modality": {
+    "native": {
+      "precision": 0.9387,
+      "recall": 0.9387,
+      "f1": 0.9387,
+      "fields": 359
+    },
+    "scan": {
+      "precision": 0.9091,
+      "recall": 0.6215,
+      "f1": 0.7383,
+      "fields": 177
+    }
+  },
+  "table_scores": {
+    "bank_statement.transactions": {
+      "row_precision": 0.7775,
+      "row_recall": 0.7775,
+      "row_f1": 0.7775,
+      "rows": 373
+    },
+    "invoice.line_items": {
+      "row_precision": 0.1231,
+      "row_recall": 0.0851,
+      "row_f1": 0.1006,
+      "rows": 94
+    }
+  },
+  "classification_accuracy": 0.9273,
+  "review_rate": 0.7979,
+  "latency_ms": {
+    "native": {
+      "p50": 5402.3,
+      "p95": 12381.4
+    },
+    "scan": {
+      "p50": 5305.3,
+      "p95": 7832.3
+    }
+  },
+  "p95_latency_ms": 8513.1,
+  "workers": 1,
+  "tokens_per_doc": {
+    "input": 1151,
+    "output": 1055
+  },
+  "cost_per_1k_docs_usd": null,
+  "docs_per_minute": 11.4,
+  "cross_doc": {
+    "seeded": 1,
+    "detected": 0,
+    "detection_rate": 0.0,
+    "false_positive_rate": 0.0833
+  }
+}
