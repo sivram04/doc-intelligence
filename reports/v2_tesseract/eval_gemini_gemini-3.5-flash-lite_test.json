@@ -1,0 +1,87 @@
+{
+  "model": "gemini:gemini-3.5-flash-lite",
+  "split": "test",
+  "documents": 55,
+  "failed_documents": 0,
+  "errors": [],
+  "field_scores_by_type": {
+    "bank_statement": {
+      "precision": 0.875,
+      "recall": 0.875,
+      "f1": 0.875,
+      "fields": 104
+    },
+    "invoice": {
+      "precision": 0.8542,
+      "recall": 0.8425,
+      "f1": 0.8483,
+      "fields": 146
+    },
+    "paystub": {
+      "precision": 1.0,
+      "recall": 0.9808,
+      "f1": 0.9903,
+      "fields": 104
+    },
+    "w2": {
+      "precision": 0.9699,
+      "recall": 0.8846,
+      "f1": 0.9253,
+      "fields": 182
+    }
+  },
+  "field_scores_by_modality": {
+    "native": {
+      "precision": 0.9387,
+      "recall": 0.9387,
+      "f1": 0.9387,
+      "fields": 359
+    },
+    "scan": {
+      "precision": 0.8917,
+      "recall": 0.791,
+      "f1": 0.8383,
+      "fields": 177
+    }
+  },
+  "table_scores": {
+    "bank_statement.transactions": {
+      "row_precision": 0.9383,
+      "row_recall": 0.9383,
+      "row_f1": 0.9383,
+      "rows": 373
+    },
+    "invoice.line_items": {
+      "row_precision": 0.7979,
+      "row_recall": 0.7979,
+      "row_f1": 0.7979,
+      "rows": 94
+    }
+  },
+  "classification_accuracy": 1.0,
+  "review_rate": 0.7634,
+  "latency_ms": {
+    "native": {
+      "p50": 5406.2,
+      "p95": 12452.0
+    },
+    "scan": {
+      "p50": 5604.3,
+      "p95": 15500.1
+    }
+  },
+  "p95_latency_ms": 13325.5,
+  "workers": 1,
+  "tokens_per_doc": {
+    "input": 1148,
+    "output": 1352
+  },
+  "cost_per_1k_docs_usd": null,
+  "docs_per_minute": 9.9,
+  "cross_doc": {
+    "seeded": 1,
+    "detected": 0,
+    "detection_rate": 0.0,
+    "false_positive_rate": 0.0833
+  }
+}

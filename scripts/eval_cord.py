@@ -45,7 +45,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--extractor", default="gemini:gemini-3.5-flash-lite")
     ap.add_argument("--limit", type=int, default=50)
-    ap.add_argument("--ocr", default="tesseract", choices=["tesseract", "rapidocr"])
+    ap.add_argument("--ocr", default="auto", choices=["auto", "tesseract", "rapidocr"])
     ap.add_argument("--out", default="reports/cord")
     a = ap.parse_args()
 

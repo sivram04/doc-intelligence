@@ -1,0 +1,108 @@
+{
+  "model": "ollama:qwen2.5-1.5b-8k",
+  "split": "test",
+  "documents": 55,
+  "failed_documents": 5,
+  "errors": [
+    {
+      "doc_id": "case0000-w2",
+      "error": "ollama:qwen2.5-1.5b-8k transport error: timed out"
+    },
+    {
+      "doc_id": "case0007-w2",
+      "error": "ollama:qwen2.5-1.5b-8k transport error: timed out"
+    },
+    {
+      "doc_id": "case0008-w2",
+      "error": "ollama:qwen2.5-1.5b-8k transport error: timed out"
+    },
+    {
+      "doc_id": "case0030-w2",
+      "error": "ollama:qwen2.5-1.5b-8k transport error: timed out"
+    },
+    {
+      "doc_id": "case0052-w2",
+      "error": "ollama:qwen2.5-1.5b-8k transport error: timed out"
+    }
+  ],
+  "field_scores_by_type": {
+    "bank_statement": {
+      "precision": 0.9038,
+      "recall": 0.9038,
+      "f1": 0.9038,
+      "fields": 104
+    },
+    "invoice": {
+      "precision": 0.7152,
+      "recall": 0.774,
+      "f1": 0.7434,
+      "fields": 146
+    },
+    "paystub": {
+      "precision": 0.9703,
+      "recall": 0.9423,
+      "f1": 0.9561,
+      "fields": 104
+    },
+    "w2": {
+      "precision": 0.9286,
+      "recall": 0.1429,
+      "f1": 0.2476,
+      "fields": 182
+    }
+  },
+  "field_scores_by_modality": {
+    "native": {
+      "precision": 0.8645,
+      "recall": 0.6045,
+      "f1": 0.7115,
+      "fields": 359
+    },
+    "scan": {
+      "precision": 0.8143,
+      "recall": 0.6441,
+      "f1": 0.7192,
+      "fields": 177
+    }
+  },
+  "table_scores": {
+    "bank_statement.transactions": {
+      "row_precision": 0.8687,
+      "row_recall": 0.8338,
+      "row_f1": 0.8509,
+      "rows": 373
+    },
+    "invoice.line_items": {
+      "row_precision": 1.0,
+      "row_recall": 0.2766,
+      "row_f1": 0.4333,
+      "rows": 94
+    }
+  },
+  "classification_accuracy": 0.9091,
+  "review_rate": 1.0,
+  "latency_ms": {
+    "native": {
+      "p50": 79122.1,
+      "p95": 196372.9
+    },
+    "scan": {
+      "p50": 82040.1,
+      "p95": 300818.3
+    }
+  },
+  "p95_latency_ms": 196372.9,
+  "workers": 2,
+  "tokens_per_doc": {
+    "input": 1150,
+    "output": 532
+  },
+  "cost_per_1k_docs_usd": 0.0,
+  "docs_per_minute": 0.8,
+  "cross_doc": {
+    "seeded": 1,
+    "detected": 0,
+    "detection_rate": 0.0,
+    "false_positive_rate": 0.0
+  }
+}

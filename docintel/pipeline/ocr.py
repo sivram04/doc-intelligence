@@ -4,6 +4,7 @@ installed (baseline) — PaddleOCR/docTR/Surya plug in behind the same API."""
 from __future__ import annotations
 
 import os
+import threading
 from dataclasses import dataclass
 from functools import lru_cache
 from itertools import pairwise
@@ -12,6 +13,8 @@ import pymupdf as fitz
 
 from .preprocess import Page
 
+MIN_TESSERACT_CONF = 75.0
+_LAST_CONF = threading.local()  # mean word confidence of this thread's last Tesseract read
 WINDOWS_TESSERACT = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 
@@ -81,6 +84,8 @@ def _tesseract_spans(page: Page) -> list[Span]:
     if os.path.exists(cmd):
         pytesseract.pytesseract.tesseract_cmd = cmd
     d = pytesseract.image_to_data(page.image, output_type=pytesseract.Output.DICT)
+    confs = [float(c) for c, t in zip(d["conf"], d["text"], strict=True) if t.strip() and float(c) >= 0]
+    _LAST_CONF.value = sum(confs) / len(confs) if confs else 0.0
     scale = page.width / page.image.shape[1]
     lines: dict[tuple, list[int]] = {}
     for i, t in enumerate(d["text"]):
@@ -153,9 +158,16 @@ def _rapid_spans(page: Page) -> list[Span]:
     return out
 
 
+def _auto_spans(page: Page) -> list[Span]:
+    """Per-page engine choice. Tesseract keeps table columns better on clean scans; RapidOCR reads
+    photos Tesseract cannot. Measured Tesseract confidence: scans >= 79, photo median 51."""
+    spans = _tesseract_spans(page)
+    return spans if _LAST_CONF.value >= MIN_TESSERACT_CONF else _rapid_spans(page)
+
+
 def analyze(doc: fitz.Document, pages: list[Page], engine: str | None = None) -> Layout:
-    engine = engine or os.getenv("OCR_ENGINE", "tesseract")
-    scan = _rapid_spans if engine == "rapidocr" else _tesseract_spans
+    engine = engine or os.getenv("OCR_ENGINE", "auto")
+    scan = {"rapidocr": _rapid_spans, "tesseract": _tesseract_spans}.get(engine, _auto_spans)
     spans: list[Span] = []
     for p in pages:
         spans += _native_spans(doc[p.index], p.index) if p.native else scan(p)
