@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
+from functools import lru_cache
 from itertools import pairwise
 
 import pymupdf as fitz
@@ -134,9 +135,29 @@ def pair_key_values(spans: list[Span]) -> list[tuple[Span, Span]]:
     return pairs
 
 
-def analyze(doc: fitz.Document, pages: list[Page]) -> Layout:
+@lru_cache(maxsize=1)
+def _rapid_engine():
+    from rapidocr_onnxruntime import RapidOCR
+    return RapidOCR()
+
+
+def _rapid_spans(page: Page) -> list[Span]:
+    """Neural OCR (PaddleOCR models on ONNX, CPU): far stronger than Tesseract on photos."""
+    result, _ = _rapid_engine()(page.image)
+    scale = page.width / page.image.shape[1]
+    out = []
+    for box, text, _score in result or []:
+        xs, ys = [p[0] * scale for p in box], [p[1] * scale for p in box]
+        if text.strip():
+            out.append(Span(text.strip(), (min(xs), min(ys), max(xs), max(ys)), page.index, None))
+    return out
+
+
+def analyze(doc: fitz.Document, pages: list[Page], engine: str | None = None) -> Layout:
+    engine = engine or os.getenv("OCR_ENGINE", "tesseract")
+    scan = _rapid_spans if engine == "rapidocr" else _tesseract_spans
     spans: list[Span] = []
     for p in pages:
-        spans += _native_spans(doc[p.index], p.index) if p.native else _tesseract_spans(p)
+        spans += _native_spans(doc[p.index], p.index) if p.native else scan(p)
     spans.sort(key=lambda s: (s.page, round(s.bbox[1] / 3), s.bbox[0]))  # reading order
     return Layout(spans, pair_key_values(spans))

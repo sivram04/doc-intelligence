@@ -1,0 +1,24 @@
+{
+  "dataset": "naver-clova-ix/cord-v2 test",
+  "extractor": "gemini:gemini-3.5-flash-lite",
+  "receipts": 50,
+  "failures": 0,
+  "field_accuracy": {
+    "total": 0.1277,
+    "subtotal": 0.2581,
+    "tax": 0.05
+  },
+  "field_support": {
+    "total": 47,
+    "subtotal": 31,
+    "tax": 20
+  },
+  "line_item_amounts": {
+    "precision": 0.3594,
+    "recall": 0.187,
+    "f1": 0.246,
+    "gold_rows": 123
+  },
+  "p50_latency_ms": 4901,
+  "p95_latency_ms": 6288
+}

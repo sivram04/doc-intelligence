@@ -208,3 +208,8 @@ def test_coerce_handles_wrapped_cells_and_junk_numbers():
     cols = {"description": str, "amount": float}
     assert coerce([{"description": {"value": "Laptop", "confidence": 1}, "amount": {"value": "$1,200.50"}}], list, cols)         == [{"description": "Laptop", "amount": 1200.5}]
     assert coerce(",", float) is None and coerce("-", float) is None and coerce("(45.10)", float) == -45.1
+
+
+def test_dot_grouped_thousands():
+    assert coerce("60.000", float) == 60000.0 and coerce("Rp 1.250.000", float) == 1250000.0
+    assert coerce("60.50", float) == 60.5

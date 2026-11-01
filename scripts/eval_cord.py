@@ -44,6 +44,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--extractor", default="gemini:gemini-3.5-flash-lite")
     ap.add_argument("--limit", type=int, default=50)
+    ap.add_argument("--ocr", default="tesseract", choices=["tesseract", "rapidocr"])
     ap.add_argument("--out", default="reports/cord")
     a = ap.parse_args()
 
@@ -61,7 +62,7 @@ def main() -> None:
         rec["image"].convert("RGB").save(img, dpi=(200, 200))
         t0 = time.perf_counter()
         try:
-            layout = analyze(*load_pages(str(img)))
+            layout = analyze(*load_pages(str(img)), engine=a.ocr)
             fields = ex.extract(layout, DocType.INVOICE)
         except Exception as e:  # noqa: BLE001 - count and continue; a failed receipt scores zero
             failures += 1
@@ -87,14 +88,14 @@ def main() -> None:
     p = rows_tp / rows_pred if rows_pred else 0.0
     r = rows_tp / rows_gold if rows_gold else 0.0
     lat.sort()
-    report = {"dataset": "naver-clova-ix/cord-v2 test", "extractor": ex.name, "receipts": len(lat), "failures": failures,
+    report = {"dataset": "naver-clova-ix/cord-v2 test", "extractor": ex.name, "ocr": a.ocr, "receipts": len(lat), "failures": failures,
               "field_accuracy": {n: round(h / t, 4) if t else None for n, (h, t) in hits.items()},
               "field_support": {n: t for n, (_, t) in hits.items()},
               "line_item_amounts": {"precision": round(p, 4), "recall": round(r, 4),
                                     "f1": round(2 * p * r / (p + r), 4) if p + r else 0.0, "gold_rows": rows_gold},
               "p50_latency_ms": round(lat[len(lat) // 2]), "p95_latency_ms": round(lat[int(0.95 * (len(lat) - 1))])}
     Path(a.out).mkdir(parents=True, exist_ok=True)
-    name = ex.name.replace(":", "_").replace("/", "_")
+    name = ex.name.replace(":", "_").replace("/", "_") + f"_{a.ocr}"
     (Path(a.out) / f"cord_{name}.json").write_text(json.dumps(report, indent=2))
     (Path(a.out) / f"cord_{name}_docs.jsonl").write_text("\n".join(json.dumps(d) for d in per_doc))
     print(json.dumps(report, indent=2))

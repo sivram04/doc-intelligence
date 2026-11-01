@@ -12,6 +12,7 @@ dependencies = [
 [project.optional-dependencies]
 ocr = ["pytesseract"]
 dev = ["pytest", "ruff"]
+ocr-neural = ["rapidocr-onnxruntime"]
 local-llm = ["torch", "transformers>=4.44", "accelerate"]
 public-eval = ["datasets"]
 mlops = ["mlflow", "evidently", "dvc"]

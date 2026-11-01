@@ -27,6 +27,8 @@ def coerce(raw: Any, typ: type, columns: dict[str, type] | None = None) -> Any:
                     rows.append(row)
         return rows
     if typ in (float, int):
+        if re.fullmatch(r"\s*\D{0,4}\d{1,3}(\.\d{3})+\s*", str(raw)):  # 60.000 is sixty thousand (dot grouping)
+            raw = str(raw).replace(".", "")
         m = MONEY_RE.search(str(raw))
         if not m:
             return None
