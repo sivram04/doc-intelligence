@@ -213,3 +213,32 @@ def test_coerce_handles_wrapped_cells_and_junk_numbers():
 def test_dot_grouped_thousands():
     assert coerce("60.000", float) == 60000.0 and coerce("Rp 1.250.000", float) == 1250000.0
     assert coerce("60.50", float) == 60.5
+
+
+def test_cascade_escalates_on_bad_primary():
+    from docintel.extract.cascade import CascadeExtractor
+    from docintel.schemas import ExtractedField
+
+    def fields(total):
+        return {"subtotal": ExtractedField(value=100.0), "tax": ExtractedField(value=8.0),
+                "total": ExtractedField(value=total)}
+
+    class Fake:
+        def __init__(self, name, out):
+            self.name, self.out, self.calls = name, out, 0
+
+        def extract(self, layout, doc_type):
+            self.calls += 1
+            if isinstance(self.out, Exception):
+                raise self.out
+            return self.out
+
+    good, bad, boom = Fake("g", fields(108.0)), Fake("b", fields(999.0)), Fake("x", RuntimeError("down"))
+    c = CascadeExtractor(good, boom)
+    assert c.extract(None, DocType.INVOICE)["total"].value == 108.0 and boom.calls == 0
+    c = CascadeExtractor(bad, good)
+    assert c.extract(None, DocType.INVOICE)["total"].value == 108.0 and c.last_route == "fallback"
+    c = CascadeExtractor(bad, boom)
+    assert c.extract(None, DocType.INVOICE)["total"].value == 999.0 and c.last_route == "primary"
+    c = CascadeExtractor(boom, good)
+    assert c.extract(None, DocType.INVOICE)["total"].value == 108.0

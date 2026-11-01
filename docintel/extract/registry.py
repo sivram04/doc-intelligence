@@ -10,6 +10,10 @@ from .base import Extractor
 @lru_cache(maxsize=4)
 def make_extractor(spec: str = "rules") -> Extractor:
     kind, _, model = spec.partition(":")
+    if kind == "cascade":
+        from .cascade import CascadeExtractor
+        primary, fallback = model.split("|", 1)
+        return CascadeExtractor(make_extractor(primary), make_extractor(fallback))
     if kind == "rules":
         from .rules import RulesExtractor
         return RulesExtractor()
