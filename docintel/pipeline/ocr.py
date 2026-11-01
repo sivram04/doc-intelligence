@@ -14,6 +14,7 @@ import pymupdf as fitz
 from .preprocess import Page
 
 MIN_TESSERACT_CONF = 75.0
+MIN_TESSERACT_WORDS = 40
 _LAST_CONF = threading.local()  # mean word confidence of this thread's last Tesseract read
 WINDOWS_TESSERACT = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
@@ -160,9 +161,12 @@ def _rapid_spans(page: Page) -> list[Span]:
 
 def _auto_spans(page: Page) -> list[Span]:
     """Per-page engine choice. Tesseract keeps table columns better on clean scans; RapidOCR reads
-    photos Tesseract cannot. Measured Tesseract confidence: scans >= 79, photo median 51."""
+    photos Tesseract cannot. Confidence alone is not enough: some photos score high on a handful of
+    words. On 106 scan pages and 50 CORD photos this rule kept 102 scans and no photos."""
     spans = _tesseract_spans(page)
-    return spans if _LAST_CONF.value >= MIN_TESSERACT_CONF else _rapid_spans(page)
+    words = sum(len(s.text.split()) for s in spans)
+    good = _LAST_CONF.value >= MIN_TESSERACT_CONF and words >= MIN_TESSERACT_WORDS
+    return spans if good else _rapid_spans(page)
 
 
 def analyze(doc: fitz.Document, pages: list[Page], engine: str | None = None) -> Layout:
