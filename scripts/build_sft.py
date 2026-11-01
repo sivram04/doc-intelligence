@@ -61,6 +61,8 @@ def example(gt_path: str) -> dict:
         # Value not legible in the OCR text: still teach the right answer, but with lower confidence
         # so the tuned model's scores carry signal for confidence routing (F8).
         conf = 0.0 if v is None else 1.0 if span is not None else 0.5
+        if isinstance(v, float):  # amounts as printed, matching the prompt
+            v = f"{v:,.2f}"
         answer[name] = {"value": v, "confidence": conf, "span": span}
     user = PROMPT.format(doc_type=dt.value, spans=layout.render(),
                          fields=", ".join(n for n, t in types.items() if t is not list), tables=describe_tables(types))

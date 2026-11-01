@@ -113,7 +113,7 @@ class OpenAICompatExtractor(LLMExtractor):
         self.base_url, self.api_key = base_url.rstrip("/"), os.getenv(key_env, "") if key_env else "ollama"
         if not self.api_key:
             raise RuntimeError(f"{key_env} is not set")
-        self.model, self.timeout = model, timeout
+        self.model, self.timeout = model, 600 if provider == "ollama" else timeout  # long tables on CPU
         self.name = f"{provider}:{model}"
         rpm = float(os.getenv(f"{provider.upper()}_RPM", DEFAULT_RPM.get(provider, 0)))
         self.min_interval = 60.0 / rpm if rpm > 0 else 0.0
