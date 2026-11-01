@@ -32,8 +32,8 @@ Page text, one visual line per row; cells are `[span id] text` separated by ' | 
 {spans}
 
 Return JSON mapping each field to {{"value": ..., "confidence": 0-1, "span": id|null}}.
-- Scalar fields: value is a string or number. Copy names, IDs and dates exactly as printed; numbers without $ or commas;
-  amounts in parentheses or with a leading minus are negative.
+- Scalar fields: value is a string. Copy names, IDs, dates and amounts exactly as printed, including separators
+  (write "60.000", never the number 60.000); amounts in parentheses or with a leading minus are negative.
 - Table fields: value is a list with one object per table row, in document order, across all pages; "span" is null.
 Use null when a field is absent.
 Scalar fields: {fields}

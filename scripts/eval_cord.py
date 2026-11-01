@@ -16,6 +16,7 @@ import tempfile
 import time
 from pathlib import Path
 
+from docintel.extract.base import coerce
 from docintel.extract.registry import make_extractor
 from docintel.pipeline.ocr import analyze
 from docintel.pipeline.preprocess import load_pages
@@ -73,7 +74,7 @@ def main() -> None:
         for n, h in hits.items():
             if gold[n] is not None:
                 h[1] += 1
-                h[0] += digits(pred[n]) == digits(gold[n]) and digits(gold[n]) != ""
+                h[0] += pred[n] is not None and coerce(gold[n], float) == pred[n]
         items = fields.get("line_items").value if fields.get("line_items") else None
         pitems = [(r.get("description") or "", r.get("amount")) for r in (items or [])]
         unused = list(range(len(gold["items"])))
