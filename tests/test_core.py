@@ -176,3 +176,29 @@ def test_plausibility_rules_and_noise():
     assert any("swapped" in f for f in validate_document(
         DocType.INVOICE, {"subtotal": {"value": 326.33}, "tax": {"value": 3955.49}, "total": {"value": 4281.82}}))
     assert not has_evidence("Sanders~Espinoza", "Sanders~Espinoza")
+
+
+def test_upload_security_and_pii_mask(tmp_path, monkeypatch):
+    import importlib
+
+    from fastapi.testclient import TestClient
+
+    from docintel.obs import mask
+    assert "123-45-6789" not in mask("ssn 123-45-6789 acct 1234567890123")
+    monkeypatch.setenv("DOCINTEL_DB", str(tmp_path / "s.db"))
+    monkeypatch.setenv("UPLOAD_DIR", str(tmp_path / "up"))
+    monkeypatch.setenv("API_KEYS", "secret")
+    monkeypatch.delenv("DATABASE_URL", raising=False)
+    monkeypatch.delenv("REDIS_URL", raising=False)
+    import docintel.store
+    importlib.reload(docintel.store)
+    import docintel.api.main as m
+    m = importlib.reload(m)
+    c = TestClient(m.app)
+    assert c.get("/review/stats").status_code == 401
+    h = {"X-API-Key": "secret"}
+    assert c.get("/review/stats", headers=h).status_code == 200
+    r = c.post("/documents", headers=h, files={"file": ("fake.pdf", b"MZ not a pdf")})
+    assert r.status_code == 415
+    assert c.get("/ready").json()["ok"] is True
+    assert b"docintel_jobs_total" in c.get("/metrics").content

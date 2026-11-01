@@ -1,19 +1,56 @@
+x-app: &app
+  build: .
+  environment: &env
+    DATABASE_URL: postgresql://docintel:${POSTGRES_PASSWORD:-docintel}@postgres:5432/docintel
+    REDIS_URL: redis://redis:6379/0
+    EXTRACTOR: ${EXTRACTOR:-rules}
+    API_KEYS: ${API_KEYS:-}
+    OLLAMA_BASE_URL: ${DOCKER_OLLAMA_URL:-http://host.docker.internal:11434}
+    GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+    WORKERS: ${WORKERS:-2}
+    OMP_THREAD_LIMIT: "1"
+  volumes:
+    - uploads:/app/data/uploads
+    - corrections:/app/data/corrections
+    - ./models:/app/models:ro
+  extra_hosts: ["host.docker.internal:host-gateway"]
+  depends_on:
+    postgres: {condition: service_healthy}
+    redis: {condition: service_healthy}
+  restart: unless-stopped
+
 services:
   api:
-    build: .
+    <<: *app
     ports: ["8080:8080"]
-    env_file: .env
-    volumes: ["./data:/app/data"]
-    depends_on: [redis, postgres]
+  worker:
+    <<: *app
+    command: arq docintel.worker.WorkerSettings
+    healthcheck: {disable: true}
   redis:
     image: redis:7-alpine
+    command: redis-server --appendonly yes
+    volumes: ["redisdata:/data"]
+    healthcheck: {test: [CMD, redis-cli, ping], interval: 5s, retries: 10}
   postgres:
     image: postgres:16-alpine
-    environment: {POSTGRES_USER: docintel, POSTGRES_PASSWORD: docintel, POSTGRES_DB: docintel}
+    environment: {POSTGRES_USER: docintel, POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-docintel}", POSTGRES_DB: docintel}
     volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck: {test: [CMD-SHELL, pg_isready -U docintel], interval: 5s, retries: 10}
   mlflow:
     image: ghcr.io/mlflow/mlflow:v2.16.2
-    command: mlflow server --host 0.0.0.0 --backend-store-uri sqlite:///mlflow/mlflow.db --default-artifact-root /mlflow/artifacts
+    command: mlflow server --host 0.0.0.0 --backend-store-uri sqlite:////mlflow/mlflow.db --default-artifact-root /mlflow/artifacts
     ports: ["5000:5000"]
     volumes: ["mlflow:/mlflow"]
-volumes: {pgdata: {}, mlflow: {}}
+    profiles: [mlops]
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    volumes: ["./infra/prometheus.yml:/etc/prometheus/prometheus.yml:ro"]
+    ports: ["9090:9090"]
+  grafana:
+    image: grafana/grafana:11.2.0
+    environment: {GF_SECURITY_ADMIN_PASSWORD: "${GRAFANA_PASSWORD:-change-me}"}
+    volumes: ["./infra/grafana/datasources.yml:/etc/grafana/provisioning/datasources/ds.yml:ro"]
+    ports: ["3000:3000"]
+
+volumes: {pgdata: {}, redisdata: {}, uploads: {}, corrections: {}, mlflow: {}}

@@ -6,7 +6,7 @@ requires-python = ">=3.11"
 dependencies = [
   "pydantic>=2.7", "fastapi>=0.110", "uvicorn[standard]", "python-multipart",
   "pymupdf>=1.24", "opencv-python-headless>=4.9", "numpy", "pillow", "reportlab>=4", "faker>=24", "httpx",
-  "scikit-learn>=1.4", "joblib",
+  "scikit-learn>=1.4", "joblib", "arq>=0.26", "redis>=5", "prometheus-client>=0.20", "psycopg[binary]>=3.1",
 ]
 
 [project.optional-dependencies]

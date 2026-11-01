@@ -11,3 +11,4 @@ mlartifacts/
 data/*.db
 data/uploads/
 data/corrections/
+models/finetuned_v2/

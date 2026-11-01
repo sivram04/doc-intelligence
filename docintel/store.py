@@ -18,32 +18,55 @@ CORRECTIONS_LOG = Path(os.getenv("CORRECTIONS_LOG", "data/corrections/correction
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS jobs (
     job_id TEXT PRIMARY KEY, filename TEXT, path TEXT, case_id TEXT, status TEXT NOT NULL,
-    result TEXT, routing TEXT, error TEXT, created REAL NOT NULL, reviewed REAL
+    result TEXT, routing TEXT, error TEXT, created DOUBLE PRECISION NOT NULL, reviewed DOUBLE PRECISION
 );
 CREATE TABLE IF NOT EXISTS reviews (
-    job_id TEXT NOT NULL, reviewer TEXT NOT NULL, seconds REAL, fields_reviewed INTEGER,
-    fields_corrected INTEGER, created REAL NOT NULL
+    job_id TEXT NOT NULL, reviewer TEXT NOT NULL, seconds DOUBLE PRECISION, fields_reviewed INTEGER,
+    fields_corrected INTEGER, created DOUBLE PRECISION NOT NULL
 );
 CREATE TABLE IF NOT EXISTS corrections (
-    job_id TEXT NOT NULL, field TEXT NOT NULL, predicted TEXT, corrected TEXT, confidence REAL,
-    reviewer TEXT NOT NULL, created REAL NOT NULL
+    job_id TEXT NOT NULL, field TEXT NOT NULL, predicted TEXT, corrected TEXT, confidence DOUBLE PRECISION,
+    reviewer TEXT NOT NULL, created DOUBLE PRECISION NOT NULL
 );
 """
 
 
 class Store:
-    def __init__(self, path: Path = DB_PATH):
-        path.parent.mkdir(parents=True, exist_ok=True)
+    def __init__(self, path: Path = DB_PATH, url: str | None = None):
+        url = url if url is not None else os.getenv("DATABASE_URL", "")
+        self.postgres = url.startswith("postgres")
         self._lock = threading.Lock()
-        self._db = sqlite3.connect(path, check_same_thread=False)
-        self._db.row_factory = sqlite3.Row
-        self._db.executescript(SCHEMA)
-
-    def _exec(self, sql: str, args: tuple = ()) -> list[sqlite3.Row]:
-        with self._lock:
-            cur = self._db.execute(sql, args)
+        if self.postgres:
+            import psycopg
+            from psycopg.rows import dict_row
+            self._db = psycopg.connect(url, row_factory=dict_row)
+            with self._db.cursor() as cur:
+                for stmt in filter(str.strip, SCHEMA.split(";")):
+                    cur.execute(stmt)
             self._db.commit()
-            return cur.fetchall()
+        else:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            self._db = sqlite3.connect(path, check_same_thread=False)
+            self._db.row_factory = sqlite3.Row
+            self._db.executescript(SCHEMA)
+
+    def _sql(self, sql: str) -> str:
+        return sql.replace("?", "%s") if self.postgres else sql
+
+    def ping(self) -> bool:
+        return bool(self._exec("SELECT 1 AS ok"))
+
+    def _exec(self, sql: str, args: tuple = ()) -> list:
+        with self._lock:
+            try:
+                cur = self._db.cursor()
+                cur.execute(self._sql(sql), args)
+                rows = cur.fetchall() if cur.description else []
+                self._db.commit()
+                return rows
+            except Exception:
+                self._db.rollback()  # a failed Postgres transaction would poison the shared connection
+                raise
 
     def create_job(self, job_id: str, filename: str, path: str, case_id: str | None) -> None:
         self._exec("INSERT INTO jobs (job_id, filename, path, case_id, status, created) VALUES (?,?,?,?,?,?)",
@@ -81,14 +104,15 @@ class Store:
                                 "predicted": pred.get("value"), "corrected": value,
                                 "confidence": pred.get("confidence"), "reviewer": reviewer, "ts": now})
         with self._lock:
-            self._db.executemany(
+            cur = self._db.cursor()
+            cur.executemany(self._sql(
                 "INSERT INTO corrections (job_id, field, predicted, corrected, confidence, reviewer, created) "
-                "VALUES (?,?,?,?,?,?,?)",
+                "VALUES (?,?,?,?,?,?,?)"),
                 [(c["job_id"], c["field"], json.dumps(c["predicted"]), json.dumps(c["corrected"]),
                   c["confidence"], reviewer, now) for c in changed])
-            self._db.execute("INSERT INTO reviews VALUES (?,?,?,?,?,?)",
+            cur.execute(self._sql("INSERT INTO reviews VALUES (?,?,?,?,?,?)"),
                              (job_id, reviewer, seconds, len(final), len(changed), now))
-            self._db.execute("UPDATE jobs SET reviewed = ? WHERE job_id = ?", (now, job_id))
+            cur.execute(self._sql("UPDATE jobs SET reviewed = ? WHERE job_id = ?"), (now, job_id))
             self._db.commit()
         if changed:
             CORRECTIONS_LOG.parent.mkdir(parents=True, exist_ok=True)
@@ -114,7 +138,7 @@ def _differs(pred: object, final: object) -> bool:
     return ("" if pred is None else str(pred)).strip() != ("" if final is None else str(final)).strip()
 
 
-def _job(row: sqlite3.Row) -> dict:
+def _job(row) -> dict:
     d = dict(row)
     for k in ("result", "routing"):
         d[k] = json.loads(d[k]) if d[k] else None

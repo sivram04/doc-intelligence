@@ -190,7 +190,12 @@ function toast(msg, err = false) {
 }
 
 async function api(path, opts) {
-  const r = await fetch(path, opts);
+  const key = store("docintel.apikey");
+  const r = await fetch(path, { ...opts, headers: { ...(opts?.headers || {}), ...(key ? { "X-API-Key": key } : {}) } });
+  if (r.status === 401) {
+    const entered = window.prompt("API key");
+    if (entered) { store("docintel.apikey", entered); return api(path, opts); }
+  }
   if (!r.ok) throw new Error((await r.json().catch(() => ({}))).detail || `${r.status} ${r.statusText}`);
   return r.json();
 }
@@ -269,7 +274,12 @@ async function openJob(id) {
 
   const img = new Image();
   img.alt = `Page 1 of ${job.filename}`;
-  img.src = `/jobs/${id}/page/0.png?v=ocr`;  // versioned: scans are served as OCR saw them
+  // fetched, not hot-linked: an <img> cannot send the API key
+  const key = store("docintel.apikey");
+  fetch(`/jobs/${id}/page/0.png?v=ocr`, { headers: key ? { "X-API-Key": key } : {} })
+    .then((r) => { if (!r.ok) throw new Error(r.status); return r.blob(); })
+    .then((b) => { img.src = URL.createObjectURL(b); })
+    .catch(() => img.onerror());
   img.onload = () => { const p = document.createElement("div"); p.className = "page"; p.id = "page"; p.append(img);
     $("canvas").replaceChildren(p); drawBoxes(); };
   img.onerror = () => { $("canvas").innerHTML = `<div class="center-msg"><h2>Page image unavailable</h2><p>The fields can still be reviewed.</p></div>`; };
