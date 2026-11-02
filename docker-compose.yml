@@ -22,7 +22,7 @@ x-app: &app
 services:
   api:
     <<: *app
-    ports: ["8080:8080"]
+    ports: ["${API_PORT:-8030}:8080"]
   worker:
     <<: *app
     command: arq docintel.worker.WorkerSettings
