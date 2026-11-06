@@ -44,6 +44,8 @@ Rows = ExtractedField[list]  # table fields: a list of row dicts, columns in TAB
 TABLE_COLUMNS: dict[str, dict[str, type]] = {
     "line_items": {"description": str, "quantity": float, "unit_price": float, "amount": float},
     "transactions": {"date": str, "description": str, "amount": float},
+    # One row per tax printed on an invoice: GST splits (CGST/SGST/IGST), VAT rates, sales tax
+    "tax_lines": {"tax_type": str, "rate": float, "taxable_amount": float, "amount": float},
 }
 
 
@@ -88,6 +90,7 @@ class BankStatement(BaseModel):
 
 
 class Invoice(BaseModel):
+    """Any invoice: US, GST (India), VAT (EU/UK). Fields a layout lacks stay null."""
     vendor_name: Text = Text()
     invoice_number: Text = Text()
     invoice_date: Text = Text()
@@ -99,6 +102,12 @@ class Invoice(BaseModel):
     shipping: Money = Money()
     total: Money = Money()
     line_items: Rows = Rows()
+    # Added for general invoices (after the v1/v2 benchmarks, whose gold labels omit them)
+    currency: Text = Text()            # ISO code as printed or implied by the symbol: USD, INR, EUR, GBP
+    vendor_tax_id: Text = Text()       # GSTIN, VAT number, EIN, ABN
+    buyer_tax_id: Text = Text()
+    purchase_order: Text = Text()
+    tax_lines: Rows = Rows()
 
 
 SCHEMAS: dict[DocType, type[BaseModel]] = {

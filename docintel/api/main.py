@@ -35,7 +35,8 @@ from fastapi.responses import FileResponse, JSONResponse
 from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
 from pydantic import BaseModel, Field
 
-from ..export import tables, to_csv, to_zip
+from ..accounting import AccountMemory, load_coa
+from ..export import journal, tables, to_csv, to_zip
 from ..jobs import run_job
 from ..obs import CORRECTIONS, REVIEWS, setup_logging
 from ..pipeline.preprocess import load_pages
@@ -310,6 +311,45 @@ def export_csv(batch_id: str, name: str, owner: str = Depends(visitor)):
         raise HTTPException(404, f"No {name}.csv in this batch; available: {sorted(found)}")
     return Response(to_csv(*found[name]), media_type="text/csv; charset=utf-8",
                     headers={"Content-Disposition": f'attachment; filename="{name}.csv"'})
+
+
+@app.get("/batches/{batch_id}/journal", dependencies=[Depends(require_key)])
+def batch_journal(batch_id: str, owner: str = Depends(visitor)):
+    """Journal entries for every invoice in the batch, with each line's account and why it was chosen."""
+    return [e.to_dict() for e in journal(_batch(batch_id, owner))]
+
+
+@app.get("/accounts", dependencies=[Depends(require_key)])
+def accounts():
+    """Chart of accounts the journal can post to (override with COA_PATH)."""
+    coa = load_coa()
+    fixed = [v for k, v in coa.items() if isinstance(v, dict) and "code" in v]
+    return sorted(fixed + [{"code": a["code"], "name": a["name"]} for a in coa["expenses"]], key=lambda a: a["code"])
+
+
+class AccountChoice(BaseModel):
+    description: str = Field(min_length=1, max_length=500)
+    code: str = Field(min_length=1, max_length=20)
+
+
+@app.post("/jobs/{job_id}/accounts", dependencies=[Depends(require_key)])
+def choose_accounts(job_id: str, body: list[AccountChoice], owner: str = Depends(visitor)):
+    """A reviewer's account for line items. Remembered per vendor and description, so the next invoice
+    with the same line is posted the same way."""
+    job = _get(job_id, owner)
+    if job["status"] != "done" or job["result"]["doc_type"] != "invoice":
+        raise HTTPException(409, "Accounts apply to processed invoices only")
+    known = {a["code"]: a for a in accounts()}
+    unknown = sorted({c.code for c in body} - set(known))
+    if unknown:
+        raise HTTPException(422, f"Unknown account codes: {unknown}")
+    if DEMO:  # the memory is shared by everyone using the instance; demo visitors must not write to it
+        return {"remembered": 0}
+    vendor = (job.get("final") or {}).get("vendor_name") or job["result"]["fields"].get("vendor_name", {}).get("value")
+    memory = AccountMemory()
+    for c in body:
+        memory.remember(vendor, c.description, known[c.code])
+    return {"remembered": len(body)}
 
 
 @app.get("/jobs/{job_id}", dependencies=[Depends(require_key)])

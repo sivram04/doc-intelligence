@@ -56,7 +56,7 @@ def validate_document(doc_type: DocType, fields: dict) -> list[str]:
                 flags.append(f"Transactions sum to +{cr:,.2f} / -{db:,.2f}, summary says +{dep:,.2f} / -{wd:,.2f}")
     elif doc_type == DocType.INVOICE:
         s, t, tot = v("subtotal"), v("tax"), v("total")
-        disc, ship = v("discount") or 0.0, v("shipping") or 0.0
+        disc, ship = abs(v("discount") or 0.0), v("shipping") or 0.0  # discounts are often printed negative
         if None not in (s, t, tot) and not _close(s - disc + t + ship, tot):
             flags.append(f"Total {tot:,.2f} != subtotal - discount + tax + shipping ({s - disc + t + ship:,.2f})")
         items = v("line_items")
@@ -66,6 +66,9 @@ def validate_document(doc_type: DocType, fields: dict) -> list[str]:
                 flags.append(f"Line items sum to {sum(amts):,.2f}, subtotal says {s:,.2f}")
         if None not in (s, t) and t > s:
             flags.append(f"Tax {t:,.2f} exceeds subtotal {s:,.2f} (fields likely swapped)")
+        taxes = [r.get("amount") for r in v("tax_lines") or [] if isinstance(r, dict) and r.get("amount") is not None]
+        if taxes and t is not None and not _close(sum(taxes), t, 0.05):
+            flags.append(f"Tax lines sum to {sum(taxes):,.2f}, tax total says {t:,.2f}")
     return flags
 
 
