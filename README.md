@@ -1,6 +1,41 @@
-# Document Intelligence Engine
+# DocIntel: documents to spreadsheets, on your own computer
 
-Reads financial documents (W-2s, pay stubs, bank statements, invoices), extracts validated structured data with per-field confidence and source boxes, and cross-checks documents within a case. PRD: [`../03-document-intelligence.md`](../03-document-intelligence.md). Synthetic data only; no real personal documents.
+Drop in a folder of invoices, W-2s, pay stubs or bank statements (PDFs, scans or phone photos) and download CSV files: one row per document, with line items and bank transactions in their own files. A fine-tuned AI model reads each document, checks its own work, and sends only the fields it is unsure about to a person for review.
+
+- **Private by default.** It runs on your computer with a local model through [Ollama](https://ollama.com). Documents never leave your machine, and there is no account or login.
+- **Free and open source.** No API keys needed. Optionally use Google's Gemini free tier for extra accuracy.
+- **Built for real documents.** It handles scans and photos (neural OCR), multi-page statements and line-item tables, and it checks that totals add up.
+
+## Quick start
+
+You need Python 3.11+ and [Ollama](https://ollama.com) (running).
+
+```bash
+git clone https://github.com/sivram04/document-intelligence.git
+cd document-intelligence
+python -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\Activate.ps1
+pip install -e ".[local]"
+python scripts/get_model.py                           # one time: downloads the model (~1.6 GB) into Ollama
+docintel                                              # opens http://localhost:8030
+```
+
+Then, in the **Batches** tab, drop your files and click **All CSVs (.zip)**.
+
+**Full guide:** [docs/USER_GUIDE.md](docs/USER_GUIDE.md) covers the CSV columns, reviewing fields, choosing a model, settings, the API and troubleshooting.
+
+| You get | One row per |
+|---|---|
+| `invoices.csv`, `w2.csv`, `paystubs.csv`, `bank_statements.csv` | document |
+| `line_items.csv`, `transactions.csv` | invoice line / bank transaction |
+| `summary.csv` | uploaded file, with its status and any error |
+
+**Accuracy on real receipts** (50 photographed receipts from the public CORD dataset, local model): total 89%, subtotal 84%, tax 65%. Details in the engineering notes below.
+
+---
+
+# Engineering notes
+
+How the system was built and measured: synthetic benchmark, model race, fine-tuning, calibrated routing and the review loop. PRD: [`../03-document-intelligence.md`](../03-document-intelligence.md). Benchmarks use synthetic documents and public datasets only; no real personal documents.
 
 ## Status
 
@@ -14,7 +49,7 @@ Reads financial documents (W-2s, pay stubs, bank statements, invoices), extracts
 | 5. Routing + review | Calibrated field scores (confidence x OCR evidence x validation), thresholds fitted on val with a policy floor, plausibility rules, SQLite-backed review API, review console. **Auto-accept precision 96.8% -> 99.7%** at a 13% review rate. |
 | 6–7 | Not started. |
 
-## Quickstart
+## Developer setup
 
 ```bash
 pip install -e ".[dev,ocr]"      # plus the Tesseract binary for scans

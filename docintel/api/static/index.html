@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Review Console · DocIntel</title>
+<title>DocIntel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -120,11 +120,80 @@ kbd { font-family: var(--mono); font-size: 12px; padding: 1px 5px; border: 1px s
 .center-msg { margin: auto; text-align: center; color: var(--ink-2); max-width: 340px; }
 .center-msg h2 { color: var(--ink); font-size: 16px; margin: 0 0 6px; }
 
+/* View switch */
+.tabs { display: flex; gap: 4px; }
+.tab { border: 0; background: transparent; padding: 6px 12px; border-radius: var(--radius); cursor: pointer; color: var(--ink-2); font-weight: 500; }
+.tab:hover { background: var(--panel-2); }
+.tab[aria-selected="true"] { background: var(--accent-soft); color: var(--accent); }
+.tab .count { font-family: var(--mono); font-size: 12px; margin-left: 4px; }
+.app { display: flex; flex-direction: column; }
+.app > .batches, .app > main { flex: 1; }
+.banner { padding: 8px 20px; background: var(--check-soft); color: #5c3a00; font-size: 13px; border-bottom: 1px solid var(--line); }
+.banner a { color: inherit; font-weight: 600; }
+[hidden] { display: none !important; }
+
+/* Batches view */
+.batches { display: grid; grid-template-columns: 300px minmax(0, 1fr); min-height: 0; }
+.batches .rail { background: var(--panel-2); border-right: 1px solid var(--line); overflow: auto; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.drop { border: 1.5px dashed #b9b6ab; border-radius: 8px; padding: 22px 16px; text-align: center; background: var(--panel);
+  color: var(--ink-2); cursor: pointer; transition: border-color .15s ease-out, background-color .15s ease-out; }
+.drop.off { cursor: default; border-style: solid; background: var(--panel-2); }
+.drop.off a { color: var(--accent); font-weight: 600; }
+.drop:not(.off):hover, .drop.over { border-color: var(--accent); background: var(--accent-soft); color: var(--ink); }
+.drop strong { display: block; color: var(--ink); font-weight: 600; margin-bottom: 2px; }
+.drop small { font-size: 12px; }
+.rail h2 { font-size: 12px; font-weight: 600; color: var(--ink-2); margin: 6px 0 0; }
+.blist { display: flex; flex-direction: column; gap: 2px; margin: 0 -8px; }
+.bitem { display: flex; justify-content: space-between; gap: 8px; text-align: left; border: 0; background: transparent; cursor: pointer;
+  padding: 8px; border-radius: var(--radius); }
+.bitem:hover { background: rgba(255, 255, 255, .6); }
+.bitem[aria-current="true"] { background: var(--panel); box-shadow: inset 2px 0 0 var(--accent); }
+.bitem span:last-child { color: var(--ink-3); font-size: 12px; }
+.detail { overflow: auto; padding: 24px 28px; }
+.detail h1 { font-size: 18px; margin: 0 0 4px; letter-spacing: -.01em; }
+.detail .sub { color: var(--ink-2); margin: 0 0 16px; }
+.bar { height: 6px; background: var(--panel-2); border-radius: 99px; overflow: hidden; margin: 0 0 16px; }
+.bar i { display: block; height: 100%; background: var(--accent); width: 0; transition: width .3s ease-out; }
+.exports { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 18px; }
+.exports .label { color: var(--ink-2); font-size: 13px; margin-right: 4px; }
+.btn.small { padding: 5px 10px; font-size: 13px; }
+table.docs { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); }
+table.docs th { text-align: left; font-size: 12px; font-weight: 600; color: var(--ink-2); padding: 8px 12px; border-bottom: 1px solid var(--line); background: var(--panel-2); }
+table.docs td { padding: 8px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+table.docs tr:first-child td { border-top: 0; }
+.st { font-size: 12px; font-weight: 500; padding: 1px 8px; border-radius: 99px; white-space: nowrap; }
+.st.ok { background: var(--accent-soft); color: var(--accent); }
+.st.check { background: var(--check-soft); color: var(--check); }
+.st.bad { background: var(--flag-soft); color: var(--flag); }
+.st.wait { background: var(--panel-2); color: var(--ink-2); }
+.err { color: var(--flag); font-size: 12px; }
+.refused { margin: 0 0 16px; padding: 10px 14px; background: var(--flag-soft); color: var(--flag); border-radius: var(--radius); font-size: 13px; }
+.refused ul { margin: 4px 0 0; padding-left: 18px; }
+
+/* Table fields in the review panel */
+.rows { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 6px; }
+.rows .head, .rows .line { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)) 24px; gap: 4px; }
+.rows .head { font-size: 11px; color: var(--ink-3); padding: 0 2px; }
+.rows .line { padding: 6px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); }
+.rows .line input { padding: 4px 6px; font-size: 12px; min-width: 0; width: 100%; grid-column: auto; }
+.rows .line input.wide { grid-column: 1 / -2; }
+.rows .line input[data-n] { text-align: right; }
+.rows .del { border: 0; background: transparent; color: var(--ink-3); cursor: pointer; padding: 0; grid-row: 1; grid-column: -2; }
+.rows .del:hover { color: var(--flag); }
+.rows .add { margin-top: 4px; }
+
 @media (max-width: 1180px) {
   main { grid-template-columns: 200px minmax(0, 1fr) 340px; }
   .canvas { padding: 16px; }
 }
 @media (max-width: 900px) {
+  header { gap: 12px; padding: 8px 16px; }
+  .who { display: none; }
+  .banner { padding: 8px 16px; }
+  .batches { grid-template-columns: 1fr; }
+  .batches .rail { border-right: 0; border-bottom: 1px solid var(--line); }
+  .detail { padding: 16px; }
+  table.docs .opt { display: none; }
   main { grid-template-columns: 1fr; grid-template-rows: auto auto auto; overflow: auto; }
   .queue { max-height: 180px; border-right: 0; border-bottom: 1px solid var(--line); }
   .fields { border-left: 0; border-top: 1px solid var(--line); }
@@ -137,12 +206,30 @@ kbd { font-family: var(--mono); font-size: 12px; padding: 1px 5px; border: 1px s
   <header>
     <div class="brand">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="m9 15 2 2 4-4"/></svg>
-      Review console
+      DocIntel
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="tabBatches" aria-selected="true" type="button">Batches</button>
+      <button class="tab" role="tab" id="tabReview" aria-selected="false" type="button">Review<span class="count" id="reviewCount"></span></button>
     </div>
     <div class="stats" id="stats" aria-live="polite"></div>
     <label class="who">Reviewer <input id="reviewer" autocomplete="off" spellcheck="false"></label>
   </header>
-  <main>
+  <div class="banner" id="banner" hidden></div>
+  <section class="batches" id="batchView" aria-label="Batches">
+    <div class="rail">
+      <label class="drop" id="drop">
+        <strong>Drop PDFs or images here</strong>
+        <small id="dropHint">or click to choose files. Each becomes one row in the CSV.</small>
+        <input type="file" id="fileInput" multiple accept=".pdf,.png,.jpg,.jpeg,.tif,.tiff,application/pdf,image/*" hidden>
+      </label>
+      <button class="btn" id="sample" type="button">Try sample documents</button>
+      <h2>Batches</h2>
+      <div class="blist" id="blist"></div>
+    </div>
+    <div class="detail" id="detail"></div>
+  </section>
+  <main id="reviewView" hidden>
     <nav class="queue" aria-label="Review queue">
       <h2 id="qtitle">Queue</h2>
       <div id="queue"></div>
@@ -196,7 +283,11 @@ async function api(path, opts) {
     const entered = window.prompt("API key");
     if (entered) { store("docintel.apikey", entered); return api(path, opts); }
   }
-  if (!r.ok) throw new Error((await r.json().catch(() => ({}))).detail || `${r.status} ${r.statusText}`);
+  if (!r.ok) {
+    const d = (await r.json().catch(() => ({}))).detail;
+    const e = new Error((typeof d === "object" ? d?.message : d) || `${r.status} ${r.statusText}`);
+    e.detail = d; e.status = r.status; throw e;
+  }
   return r.json();
 }
 
@@ -218,6 +309,7 @@ async function loadQueue(selectFirst = true) {
   state.queue = await api("/review/queue");
   const stats = await loadStats();
   $("qtitle").textContent = `Queue · ${state.queue.length}`;
+  $("reviewCount").textContent = state.queue.length || "";
   const q = $("queue");
   if (!state.queue.length) {
     const busy = stats && ((stats.jobs.queued || 0) + (stats.jobs.running || 0));
@@ -227,7 +319,7 @@ async function loadQueue(selectFirst = true) {
          <button class="btn primary" id="seed" type="button">Load 6 demo documents</button></div>`;
     $("seed")?.addEventListener("click", seed);
     if (!state.job) showIdle(busy);
-    if (busy) setTimeout(() => loadQueue(true), 3000);
+    if (busy && view === "review") setTimeout(() => loadQueue(true), 3000);
     return;
   }
   q.innerHTML = state.queue.map((j) => `
@@ -241,9 +333,12 @@ async function loadQueue(selectFirst = true) {
 }
 
 async function seed() {
-  $("seed").disabled = true;
-  try { await api("/demo/seed?n=6", { method: "POST" }); toast("Queued 6 synthetic documents"); loadQueue(); }
-  catch (e) { toast(`Could not load demo documents: ${e.message}`, true); $("seed").disabled = false; }
+  const n = config.demo ? Math.max(1, config.remaining) : 6;
+  try {
+    const r = await api(`/demo/seed?n=${n}`, { method: "POST" });
+    toast(`Queued ${r.queued.length} sample document${r.queued.length > 1 ? "s" : ""}`);
+    show("batches"); openBatch(r.batch_id); refreshConfig();
+  } catch (e) { toast(e.message, true); }
 }
 
 function showIdle(busy) {
@@ -260,7 +355,8 @@ async function openJob(id) {
   state.job = job; state.page = pages[0]; state.started = performance.now(); state.editing = false;
   const review = new Set(job.routing.review);
   state.fields = Object.entries(job.result.fields).map(([name, f]) => ({
-    name, f, value: f.value ?? "", original: f.value, needs: review.has(name), confirmed: !review.has(name),
+    name, f, value: TABLES[name] ? (f.value || []).map((r) => ({ ...r })) : (f.value ?? ""), original: f.value,
+    needs: review.has(name), confirmed: !review.has(name),
   }));
   state.active = Math.max(0, state.fields.findIndex((x) => x.needs));
   document.querySelectorAll(".qitem").forEach((b) => b.setAttribute("aria-current", b.dataset.id === id));
@@ -302,8 +398,30 @@ function drawBoxes() {
   });
 }
 
+const TABLES = {
+  line_items: { description: "text", quantity: "num", unit_price: "num", amount: "num" },
+  transactions: { date: "text", description: "text", amount: "num" },
+};
+const same = (x) => TABLES[x.name] ? JSON.stringify(parseValue(x)) === JSON.stringify(x.original ?? null)
+  : String(x.value) === String(x.original ?? "");
+
+function rowsHtml(x, i) {
+  // Each row is a small card: text columns on their own full-width line, numbers side by side below.
+  const types = TABLES[x.name], cols = Object.keys(types);
+  const wide = cols.filter((c) => c === "description"), short = cols.filter((c) => c !== "description");
+  const label = (c) => (c === "unit_price" ? "Price" : c === "quantity" ? "Qty" : human(c));
+  const inp = (row, r, c, cls = "") => `<input class="${cls}" data-r="${r}" data-c="${c}" ${types[c] === "num" ? "data-n" : ""}
+    value="${esc(row[c])}" title="${esc(row[c])}" aria-label="${label(c)} row ${r + 1}" placeholder="${label(c)}" spellcheck="false" autocomplete="off">`;
+  const lines = x.value.map((row, r) => `<div class="line" style="--n:${short.length}">
+    ${wide.map((c) => inp(row, r, c, "wide")).join("")}
+    <button class="del" type="button" data-del="${r}" aria-label="Remove row ${r + 1}" title="Remove row">✕</button>
+    ${short.map((c) => inp(row, r, c)).join("")}</div>`).join("");
+  return `<div class="rows" id="f${i}"><div class="head" style="--n:${short.length}">${short.map((c) => `<span>${label(c)}</span>`).join("")}</div>
+    ${lines}<button class="btn small add" type="button">Add row</button></div>`;
+}
+
 function statusOf(x) {
-  if (String(x.value) !== String(x.original ?? "")) return ["edited", "Edited"];
+  if (!same(x)) return ["edited", "Edited"];
   if (x.needs && !x.confirmed) return ["check", "Check"];
   if (x.needs) return ["done", "Confirmed"];
   return ["auto", "Auto"];
@@ -314,13 +432,29 @@ function renderFields() {
     const [cls, label] = statusOf(x);
     return `<div class="field ${i === state.active ? "active" : ""}" data-i="${i}" role="option" aria-selected="${i === state.active}">
       <label for="f${i}">${human(x.name)}</label>
-      <span class="status ${cls}">${label} <span class="conf num">${x.f.value == null ? "missing" : Math.round(x.f.confidence * 100) + "%"}</span></span>
-      <input id="f${i}" value="${esc(x.value)}" spellcheck="false" autocomplete="off">
+      <span class="status ${cls}">${label} <span class="conf num">${x.f.value == null ? "missing" : TABLES[x.name] ? `${x.value.length} rows` : Math.round(x.f.confidence * 100) + "%"}</span></span>
+      ${TABLES[x.name] ? rowsHtml(x, i) : `<input id="f${i}" value="${esc(x.value)}" spellcheck="false" autocomplete="off">`}
       ${x.f.source_text ? `<span class="src">Source: <span class="num">${esc(x.f.source_text)}</span></span>` : ""}
     </div>`;
   }).join("");
   $("list").querySelectorAll(".field").forEach((row) => {
-    const i = +row.dataset.i, input = row.querySelector("input");
+    const i = +row.dataset.i, x = state.fields[i];
+    if (TABLES[x.name]) {
+      const changed = () => { x.confirmed = true; refreshRow(i); updateProgress(); drawBoxes(); };
+      row.addEventListener("click", (e) => { if (e.target.tagName !== "INPUT") setActive(i, false, true); });
+      row.querySelectorAll("input").forEach((inp) => {
+        inp.addEventListener("focus", () => { state.editing = true; if (state.active !== i) setActive(i, false, true); });
+        inp.addEventListener("blur", () => { state.editing = false; });
+        inp.addEventListener("input", () => { x.value[+inp.dataset.r][inp.dataset.c] = inp.value; changed(); });
+      });
+      row.querySelectorAll(".del").forEach((b) => b.addEventListener("click", () => { x.value.splice(+b.dataset.del, 1); changed(); renderFields(); }));
+      row.querySelector(".add").addEventListener("click", () => {
+        x.value.push(Object.fromEntries(Object.keys(TABLES[x.name]).map((c) => [c, ""]))); changed(); renderFields();
+        $("list").querySelector(`[data-i="${i}"] .line:last-of-type input`)?.focus();
+      });
+      return;
+    }
+    const input = row.querySelector("input");
     row.addEventListener("click", (e) => { if (e.target !== input) setActive(i, false); });
     input.addEventListener("focus", () => { state.editing = true; if (state.active !== i) setActive(i, false, true); });
     input.addEventListener("blur", () => { state.editing = false; });
@@ -349,7 +483,16 @@ function updateProgress() {
   $("progress").textContent = need.length ? `${done} of ${need.length} checked` : "All fields auto-accepted";
 }
 
+const toNum = (v) => { const n = parseFloat(String(v ?? "").replace(/[$,\s]/g, "")); return Number.isFinite(n) ? n : null; };
+
 function parseValue(x) {
+  if (TABLES[x.name]) {
+    const types = TABLES[x.name];
+    const rows = x.value
+      .map((r) => Object.fromEntries(Object.entries(types).map(([c, t]) => [c, t === "num" ? toNum(r[c]) : (String(r[c] ?? "").trim() || null)])))
+      .filter((r) => Object.values(r).some((v) => v !== null));
+    return rows.length ? rows : (x.original == null ? null : []);
+  }
   if (typeof x.original === "number") {
     const n = parseFloat(String(x.value).replace(/[$,\s]/g, ""));
     return Number.isFinite(n) ? n : null;
@@ -365,7 +508,7 @@ async function submit() {
   submit.armed = false;
   const reviewer = $("reviewer").value.trim() || "reviewer-1";
   const fields = Object.fromEntries(state.fields.map((x) => [x.name, parseValue(x)]));
-  const bad = state.fields.filter((x) => typeof x.original === "number" && String(x.value).trim() !== "" && parseValue(x) === null);
+  const bad = state.fields.filter((x) => !TABLES[x.name] && typeof x.original === "number" && String(x.value).trim() !== "" && parseValue(x) === null);
   if (bad.length) { toast(`${human(bad[0].name)} must be a number`, true); setActive(state.fields.indexOf(bad[0]), true); return; }
   $("submit").disabled = true;
   try {
@@ -386,7 +529,7 @@ $("submit").addEventListener("click", submit);
 $("skip").addEventListener("click", nextDoc);
 window.addEventListener("resize", drawBoxes);
 document.addEventListener("keydown", (e) => {
-  if (!state.job) return;
+  if (!state.job || view !== "review") return;
   const inField = e.target.tagName === "INPUT";
   if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); submit(); return; }
   if (e.target.id === "reviewer") return;
@@ -399,11 +542,126 @@ document.addEventListener("keydown", (e) => {
   else if (e.key === "ArrowUp" || e.key === "k") { e.preventDefault(); setActive(state.active - 1, true); }
   else if (e.key === "Enter") { e.preventDefault(); const x = state.fields[state.active]; x.confirmed = true; refreshRow(state.active); updateProgress(); drawBoxes();
     const next = state.fields.findIndex((f, i) => i > state.active && f.needs && !f.confirmed); setActive(next === -1 ? state.active + 1 : next, true); }
-  else if (e.key === "e" || e.key === "E") { e.preventDefault(); const inp = $(`f${state.active}`); inp.focus(); inp.select(); }
+  else if (e.key === "e" || e.key === "E") { e.preventDefault(); const f = $(`f${state.active}`); const inp = f.tagName === "INPUT" ? f : f.querySelector("input"); inp?.focus(); inp?.select?.(); }
   else if (e.key === "n" || e.key === "N") { nextDoc(); }
 });
 
-loadQueue().catch((e) => { $("queue").innerHTML = `<div class="empty"><p>Could not reach the API: ${esc(e.message)}</p></div>`; });
+/* ---------- Batches ---------- */
+let view = "batches", config = { demo: false }, current = null, poll = null, lastRefused = [];
+const TYPE_FILES = { invoice: "invoices", w2: "w2", paystub: "paystubs", bank_statement: "bank_statements" };
+
+function show(v) {
+  view = v;
+  $("batchView").hidden = v !== "batches"; $("reviewView").hidden = v !== "review";
+  $("tabBatches").setAttribute("aria-selected", v === "batches"); $("tabReview").setAttribute("aria-selected", v === "review");
+  if (v === "review") loadQueue(true).catch((e) => toast(e.message, true)); else loadBatches();
+}
+$("tabBatches").addEventListener("click", () => show("batches"));
+$("tabReview").addEventListener("click", () => show("review"));
+
+async function refreshConfig() {
+  try { config = await api("/config"); } catch { return; }
+  const b = $("banner");
+  if (!config.demo) { b.hidden = true; return; }
+  b.hidden = false;
+  b.innerHTML = `Public demo: <b class="num">${config.remaining}</b> of ${config.max_docs} documents left today, up to ${config.max_pages} pages each.
+    Files are visible only to you and deleted after ${config.ttl_hours} hours. Need more? It is free and open source:
+    <a href="${esc(config.repo_url)}#quick-start" target="_blank" rel="noopener">run it on your own computer</a>.`;
+  const out = config.remaining < 1;
+  $("drop").classList.toggle("off", out); $("fileInput").disabled = out; $("sample").disabled = out;
+  $("drop").querySelector("strong").textContent = out ? "Demo limit reached for today" : "Drop PDFs or images here";
+  $("dropHint").innerHTML = out
+    ? `Run DocIntel on your own computer to process as many documents as you like. <a href="${esc(config.repo_url)}#quick-start" target="_blank" rel="noopener">Setup guide</a>`
+    : `or click to choose. ${config.remaining} left today in the demo.`;
+}
+
+async function loadBatches() {
+  const list = await api("/batches").catch(() => []);
+  $("blist").innerHTML = list.length ? list.map((b) => `
+    <button class="bitem" type="button" data-id="${b.batch_id}" aria-current="${b.batch_id === current}">
+      <span>${new Date(b.created * 1000).toLocaleString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}</span>
+      <span class="num">${b.finished}/${b.n} docs</span></button>`).join("")
+    : `<p class="sub" style="color:var(--ink-3);margin:0;font-size:13px">No batches yet.</p>`;
+  $("blist").querySelectorAll(".bitem").forEach((el) => el.addEventListener("click", () => openBatch(el.dataset.id)));
+  if (!current) {
+    if (list.length) openBatch(list[0].batch_id);
+    else $("detail").innerHTML = `<div class="center-msg" style="margin-top:12vh"><h2>Turn a folder of documents into a spreadsheet</h2>
+      <p>Drop invoices, W-2s, pay stubs or bank statements on the left. Each document becomes a row in a CSV, with line items and transactions in their own files.</p></div>`;
+  }
+}
+
+function statusPill(d) {
+  if (d.status === "failed") return `<span class="st bad">Failed</span>`;
+  if (d.status !== "done") return `<span class="st wait">${d.status === "running" ? "Extracting" : "Queued"}</span>`;
+  if (d.reviewed) return `<span class="st ok">Reviewed</span>`;
+  if (d.flags.length) return `<span class="st bad">Flagged</span>`;
+  return d.to_review ? `<span class="st check">${d.to_review} to check</span>` : `<span class="st ok">Auto-approved</span>`;
+}
+
+async function openBatch(id) {
+  current = id; clearTimeout(poll);
+  document.querySelectorAll(".bitem").forEach((el) => el.setAttribute("aria-current", el.dataset.id === id));
+  let b;
+  try { b = await api(`/batches/${id}`); } catch (e) { toast(e.message, true); return; }
+  if (current !== id) return;
+  const types = [...new Set(b.documents.filter((d) => d.status === "done").map((d) => d.doc_type))];
+  const files = types.filter((t) => TYPE_FILES[t]).map((t) => TYPE_FILES[t]);
+  if (types.includes("invoice")) files.push("line_items");
+  if (types.includes("bank_statement")) files.push("transactions");
+  const toCheck = b.documents.filter((d) => d.status === "done" && !d.reviewed && d.to_review).length;
+  $("detail").innerHTML = `
+    <h1>${b.complete ? "Batch ready" : "Extracting documents"}</h1>
+    <p class="sub num">${b.finished} of ${b.total} processed${b.counts.failed ? ` · ${b.counts.failed} failed` : ""}${toCheck ? ` · ${toCheck} with fields to check` : ""}</p>
+    <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="${b.total}" aria-valuenow="${b.finished}"><i style="width:${(100 * b.finished / b.total).toFixed(1)}%"></i></div>
+    ${lastRefused.length ? `<div class="refused">Not processed:<ul>${lastRefused.map((r) => `<li>${esc(r.file)}: ${esc(r.error)}</li>`).join("")}</ul></div>` : ""}
+    <div class="exports">
+      <span class="label">Download</span>
+      <button class="btn primary small" type="button" data-dl="export.zip" ${b.finished ? "" : "disabled"}>All CSVs (.zip)</button>
+      ${files.map((f) => `<button class="btn small" type="button" data-dl="export/${f}.csv">${f}.csv</button>`).join("")}
+      ${toCheck ? `<button class="btn small" type="button" id="goReview">Review ${toCheck} document${toCheck > 1 ? "s" : ""}</button>` : ""}
+    </div>
+    <table class="docs"><thead><tr><th>File</th><th>Type</th><th>Status</th><th class="opt">Notes</th></tr></thead><tbody>
+    ${b.documents.map((d) => `<tr><td>${esc(d.file)}</td><td>${LABELS[d.doc_type] || (d.doc_type ? esc(d.doc_type) : "–")}</td>
+      <td>${statusPill(d)}</td><td class="opt">${d.error ? `<span class="err">${esc(d.error)}</span>` : esc(d.flags.join("; "))}</td></tr>`).join("")}
+    </tbody></table>`;
+  $("detail").querySelectorAll("[data-dl]").forEach((el) => el.addEventListener("click", () => download(id, el.dataset.dl)));
+  $("goReview")?.addEventListener("click", () => show("review"));
+  if (!b.complete) poll = setTimeout(() => { if (view === "batches" && current === id) openBatch(id); }, 2000);
+  else loadBatches();
+}
+
+async function download(id, path) {
+  const key = store("docintel.apikey");
+  const r = await fetch(`/batches/${id}/${path}`, { headers: key ? { "X-API-Key": key } : {} });
+  if (!r.ok) { toast(`Download failed: ${r.status}`, true); return; }
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(await r.blob());
+  a.download = path === "export.zip" ? `docintel-${id}.zip` : path.split("/").pop();
+  a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+async function uploadFiles(fileList) {
+  const files = [...fileList]; if (!files.length) return;
+  const form = new FormData(); files.forEach((f) => form.append("files", f));
+  toast(`Uploading ${files.length} file${files.length > 1 ? "s" : ""}…`);
+  try {
+    const r = await api("/batches", { method: "POST", body: form });
+    lastRefused = r.refused; current = null; await loadBatches(); openBatch(r.batch_id);
+    toast(`${r.accepted.length} queued${r.refused.length ? ` · ${r.refused.length} not processed` : ""}`);
+  } catch (e) {
+    lastRefused = e.detail?.refused || [];
+    toast(e.message, true);
+  }
+  refreshConfig();
+}
+$("fileInput").addEventListener("change", (e) => { uploadFiles(e.target.files); e.target.value = ""; });
+$("sample").addEventListener("click", seed);
+["dragenter", "dragover"].forEach((t) => $("drop").addEventListener(t, (e) => { e.preventDefault(); $("drop").classList.add("over"); }));
+["dragleave", "drop"].forEach((t) => $("drop").addEventListener(t, (e) => { e.preventDefault(); $("drop").classList.remove("over"); }));
+$("drop").addEventListener("drop", (e) => uploadFiles(e.dataTransfer.files));
+
+refreshConfig().then(() => show("batches"));
+api("/review/queue").then((q) => { $("reviewCount").textContent = q.length || ""; }).catch(() => {});
 </script>
 </body>
 </html>

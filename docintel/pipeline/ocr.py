@@ -163,7 +163,10 @@ def _auto_spans(page: Page) -> list[Span]:
     """Per-page engine choice. Tesseract keeps table columns better on clean scans; RapidOCR reads
     photos Tesseract cannot. Confidence alone is not enough: some photos score high on a handful of
     words. On 106 scan pages and 50 CORD photos this rule kept 102 scans and no photos."""
-    spans = _tesseract_spans(page)
+    try:
+        spans = _tesseract_spans(page)
+    except Exception:  # noqa: BLE001 - Tesseract not installed: the neural engine alone still reads scans
+        return _rapid_spans(page)
     words = sum(len(s.text.split()) for s in spans)
     good = _LAST_CONF.value >= MIN_TESSERACT_CONF and words >= MIN_TESSERACT_WORDS
     return spans if good else _rapid_spans(page)

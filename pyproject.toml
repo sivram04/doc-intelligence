@@ -9,10 +9,15 @@ dependencies = [
   "scikit-learn>=1.4", "joblib", "arq>=0.26", "redis>=5", "prometheus-client>=0.20", "psycopg[binary]>=3.1",
 ]
 
+[project.scripts]
+docintel = "docintel.__main__:main"
+
 [project.optional-dependencies]
 ocr = ["pytesseract"]
 dev = ["pytest", "ruff"]
 ocr-neural = ["rapidocr-onnxruntime"]
+# Everything a self-hosted install needs (scans read without installing Tesseract)
+local = ["pytesseract", "rapidocr-onnxruntime"]
 local-llm = ["torch", "transformers>=4.44", "accelerate"]
 public-eval = ["datasets"]
 mlops = ["mlflow", "evidently", "dvc"]
