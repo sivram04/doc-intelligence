@@ -174,6 +174,7 @@ table.jl th { text-align: left; font-size: 11px; font-weight: 600; color: var(--
 table.jl td { padding: 5px 12px; border-top: 1px solid var(--line); vertical-align: top; }
 table.jl .r { text-align: right; white-space: nowrap; }
 table.jl .code { color: var(--ink-3); margin-right: 4px; }
+table.jl select.acct { font: inherit; font-size: 13px; padding: 3px 4px; border: 1px solid var(--line); border-radius: 4px; background: #fff; max-width: 100%; }
 table.jl .desc, table.jl .why { color: var(--ink-3); font-size: 12px; }
 table.jl tr.tot td { font-weight: 600; border-top: 1.5px solid var(--ink-3); }
 table.docs tr:first-child td { border-top: 0; }
@@ -628,15 +629,33 @@ function journalHtml(entries, files) {
         ${e.needs_review ? `<span class="st check">Review</span>` : `<span class="st ok">Ready</span>`}</div>
       ${e.issues.length ? `<ul class="issues">${e.issues.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>` : ""}
       <table class="jl"><thead><tr><th>Account</th><th class="r">Debit</th><th class="r">Credit</th><th class="opt">Why</th></tr></thead><tbody>
-      ${e.lines.map((l) => `<tr><td><span class="num code">${esc(l.account_code)}</span> ${esc(l.account_name)}<div class="desc">${esc(l.description)}</div></td>
+      ${e.lines.map((l) => `<tr><td>${(l.items || []).length && e.job_id && e.kind === "purchase" && ACCOUNTS.length
+        ? `<select class="acct" data-job="${e.job_id}" data-items="${esc(JSON.stringify(l.items))}" aria-label="Account for ${esc(l.description)}">
+            ${ACCOUNTS.map((a) => `<option value="${a.code}" ${a.code === l.account_code ? "selected" : ""}>${a.code} ${esc(a.name)}</option>`).join("")}</select>`
+        : `<span class="num code">${esc(l.account_code)}</span> ${esc(l.account_name)}`}<div class="desc">${esc(l.description)}</div></td>
         <td class="r num">${amt(l.debit)}</td><td class="r num">${amt(l.credit)}</td><td class="opt why">${esc(l.basis)}</td></tr>`).join("")}
       <tr class="tot"><td>Total</td><td class="r num">${amt(e.debits)}</td><td class="r num">${amt(e.credits)}</td><td class="opt"></td></tr>
       </tbody></table></div>`).join("")}
   </section>`;
 }
 
+let ACCOUNTS = [];
+const accountsReady = api("/accounts").then((a) => { ACCOUNTS = a.filter((x) => /^[56]/.test(x.code)); }).catch(() => {});
+
+async function setAccount(batchId, el) {
+  const items = JSON.parse(el.dataset.items);
+  try {
+    const r = await api(`/jobs/${el.dataset.job}/accounts`, { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(items.map((description) => ({ description, code: el.value }))) });
+    if (!r.remembered) { toast("Account choices aren't saved in the public demo", true); return; }
+    toast(`Saved. ${items.length > 1 ? "These lines" : "This line"} will post to ${el.selectedOptions[0].text.replace(/^\d+ /, "")} from now on`);
+    openBatch(batchId);
+  } catch (e) { toast(e.message, true); }
+}
+
 async function openBatch(id) {
   current = id; clearTimeout(poll);
+  await accountsReady;
   document.querySelectorAll(".bitem").forEach((el) => el.setAttribute("aria-current", el.dataset.id === id));
   let b;
   try { b = await api(`/batches/${id}`); } catch (e) { toast(e.message, true); return; }
@@ -666,6 +685,7 @@ async function openBatch(id) {
     </tbody></table>
     ${entries.length ? journalHtml(entries, journalFiles) : ""}`;
   $("detail").querySelectorAll("[data-dl]").forEach((el) => el.addEventListener("click", () => download(id, el.dataset.dl)));
+  $("detail").querySelectorAll("select.acct").forEach((el) => el.addEventListener("change", () => setAccount(id, el)));
   $("goReview")?.addEventListener("click", () => show("review"));
   if (!b.complete) poll = setTimeout(() => { if (view === "batches" && current === id) openBatch(id); }, 2000);
   else loadBatches();

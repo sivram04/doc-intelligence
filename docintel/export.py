@@ -95,6 +95,7 @@ def journal(jobs: list[dict]) -> list[JournalEntry]:
         if j["status"] != "done" or r.get("doc_type") != DocType.INVOICE.value:
             continue
         e = build_entry(values(j), j["filename"], f"JE-{len(entries) + 1:04d}", source_text(j), coa, memory)
+        e.job_id = j["job_id"]
         if review_status(j) == "needs_review":
             e.issues.insert(0, "Extracted fields not yet reviewed")
         entries.append(e)

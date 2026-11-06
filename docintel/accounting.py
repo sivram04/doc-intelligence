@@ -172,6 +172,7 @@ class JournalLine:
     description: str = ""
     confidence: float = 1.0
     basis: str = ""  # why this account / amount
+    items: list[str] = field(default_factory=list)  # line-item descriptions posted here (a reviewer can re-map them)
 
 
 @dataclass
@@ -185,6 +186,7 @@ class JournalEntry:
     file: str
     lines: list[JournalLine] = field(default_factory=list)
     issues: list[str] = field(default_factory=list)
+    job_id: str = ""
 
     @property
     def debits(self) -> float:
@@ -228,14 +230,15 @@ def build_entry(fields: dict, file: str, entry_id: str, text: str = "", coa: dic
     side = "credit" if sale else "debit"         # side for expense/revenue, tax and freight
     other = "debit" if sale else "credit"        # side for the party and discounts
 
-    def add(acct: dict, amount: float, desc: str, conf: float = 1.0, basis: str = "", on: str = side) -> None:
+    def add(acct: dict, amount: float, desc: str, conf: float = 1.0, basis: str = "", on: str = side,
+            items: list[str] | None = None) -> None:
         amount = round(amount, 2)
         if abs(amount) < 0.005:
             return
         if amount < 0:  # a negative debit is a credit
             amount, on = -amount, ("credit" if on == "debit" else "debit")
         e.lines.append(JournalLine(acct["code"], acct["name"], amount if on == "debit" else 0.0,
-                                   amount if on == "credit" else 0.0, desc, conf, basis))
+                                   amount if on == "credit" else 0.0, desc, conf, basis, items or []))
 
     subtotal, tax, total = _num(fields.get("subtotal")), _num(fields.get("tax")), _num(fields.get("total"))
     discount, shipping = abs(_num(fields.get("discount")) or 0.0), _num(fields.get("shipping")) or 0.0
@@ -256,7 +259,7 @@ def build_entry(fields: dict, file: str, entry_id: str, text: str = "", coa: dic
         g[3] = min(g[3], conf)
     for acct, amount, descs, conf, why in grouped.values():
         desc = "; ".join(descs[:3]) + (f" (+{len(descs) - 3} more)" if len(descs) > 3 else "")
-        add(acct, amount, desc, conf, why)
+        add(acct, amount, desc, conf, why, items=descs)
     lines_total = round(sum(float(r["amount"]) for r in items), 2)
     net = subtotal if subtotal is not None else lines_total if items else None
     if not items and net is not None:
