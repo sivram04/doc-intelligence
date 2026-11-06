@@ -81,7 +81,8 @@ def main() -> None:
         if gt["case_id"]:
             case_docs[gt["case_id"]][DocType(r["doc_type"])] = r["fields"]
 
-    cases = json.loads((Path(a.data) / "cases.json").read_text())
+    cases_file = Path(a.data) / "cases.json"  # benchmarks without multi-document cases have none
+    cases = json.loads(cases_file.read_text()) if cases_file.exists() else {}
     tp = fp = pos = neg = 0
     for cid, docs in case_docs.items():
         flagged = bool(validate_case(docs))

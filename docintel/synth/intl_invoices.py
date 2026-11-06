@@ -259,6 +259,7 @@ def generate(out: Path, n: int, scan_rate: float, seed: int) -> dict:
         ids.append(doc_id)
     splits = {"seed": seed, "splits": {"train": [], "val": [], "test": ids}}  # evaluation only
     (out / "splits.json").write_text(json.dumps(splits, indent=1))
+    (out / "cases.json").write_text("{}")  # single invoices; no cross-document cases
     return {"documents": len(ids), "by_locale": {loc: sum(i.endswith(loc.lower()) for i in ids) for loc in set(locales)}}
 
 
