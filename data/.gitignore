@@ -1,3 +1,7 @@
 /synthetic
 /sft
 /synthetic_v2
+/synthetic_intl
+/synthetic_intl_train
+/account_memory.json
+*.db
