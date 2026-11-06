@@ -11,8 +11,8 @@ Drop in a folder of invoices, W-2s, pay stubs or bank statements (PDFs, scans or
 You need Python 3.11+ and [Ollama](https://ollama.com) (running).
 
 ```bash
-git clone https://github.com/sivram04/document-intelligence.git
-cd document-intelligence
+git clone https://github.com/sivram04/doc-intelligence.git
+cd doc-intelligence
 python -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\Activate.ps1
 pip install -e ".[local]"
 python scripts/get_model.py                           # one time: downloads the model (~1.6 GB) into Ollama

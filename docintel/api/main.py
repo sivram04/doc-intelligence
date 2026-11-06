@@ -55,7 +55,7 @@ DEMO_MAX_DOCS = int(os.getenv("DEMO_MAX_DOCS", "2"))        # per visitor per da
 DEMO_MAX_PAGES = int(os.getenv("DEMO_MAX_PAGES", "3"))      # per document
 DEMO_DAILY_CAP = int(os.getenv("DEMO_DAILY_CAP", "150"))    # all visitors together (free LLM quota)
 DEMO_TTL = float(os.getenv("DEMO_TTL_HOURS", "24")) * 3600
-REPO_URL = os.getenv("REPO_URL", "https://github.com/sivram04/document-intelligence")
+REPO_URL = os.getenv("REPO_URL", "https://github.com/sivram04/doc-intelligence")
 COOKIE = "docintel_visitor"
 DAY = 86400
 

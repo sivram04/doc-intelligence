@@ -33,8 +33,8 @@ It runs on your own computer. Your documents, the extracted data and the CSVs ne
 Run these once, in a terminal:
 
 ```bash
-git clone https://github.com/sivram04/document-intelligence.git
-cd document-intelligence
+git clone https://github.com/sivram04/doc-intelligence.git
+cd doc-intelligence
 python -m venv .venv
 ```
 
