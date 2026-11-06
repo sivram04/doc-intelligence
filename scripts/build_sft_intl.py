@@ -7,6 +7,9 @@ and writes amounts in the answer the way each country prints them
 Rows from an earlier run of this script are replaced, not duplicated.
 
     python scripts/build_sft_intl.py --n 720 --val 45
+    python scripts/build_sft_intl.py --layouts --n 960 --val 60   # many page designs (docintel.synth.layouts)
+
+With --layouts only the training families are used; the held-out designs stay unseen.
 """
 import argparse
 import json
@@ -16,6 +19,7 @@ from pathlib import Path
 
 from build_sft import example
 
+from docintel.synth import layouts
 from docintel.synth.intl_invoices import EU, generate, money
 
 STYLE = {"IN": "indian", "UK": "plain", "US": "plain"} | {k: v[2] for k, v in EU.items()}
@@ -46,20 +50,27 @@ def main() -> None:
     ap.add_argument("--sft", default="data/sft")
     ap.add_argument("--n", type=int, default=720)
     ap.add_argument("--val", type=int, default=45)
-    ap.add_argument("--seed", type=int, default=2024)  # the test set uses 7
+    ap.add_argument("--seed", type=int, default=2024)  # the test sets use 7 and 11
+    ap.add_argument("--layouts", action="store_true", help="varied page designs instead of the single template")
     a = ap.parse_args()
+    if a.layouts and a.out == "data/synthetic_intl_train":
+        a.out = "data/synthetic_layouts_train"
+    bench = "layouts" if a.layouts else "intl"
 
     os.environ.setdefault("OMP_THREAD_LIMIT", "1")
-    print(generate(Path(a.out), a.n, 0.35, a.seed))
+    if a.layouts:
+        print(layouts.generate(Path(a.out), a.n, 0.35, a.seed, layouts.TRAIN_FAMILIES))
+    else:
+        print(generate(Path(a.out), a.n, 0.35, a.seed))
     paths = sorted(str(p) for p in (Path(a.out) / "docs").glob("*.json"))
     with ProcessPoolExecutor() as pool:
         rows = list(pool.map(build, paths, chunksize=8))
     split = {"val": rows[:a.val], "train": rows[a.val:]}
     for name, new in split.items():
         f = Path(a.sft) / f"{name}.jsonl"
-        kept = [r for r in map(json.loads, f.read_text(encoding="utf-8").splitlines()) if r.get("benchmark") != "intl"]
+        kept = [r for r in map(json.loads, f.read_text(encoding="utf-8").splitlines()) if r.get("benchmark") != bench]
         f.write_text("".join(json.dumps(r) + "\n" for r in kept + new), encoding="utf-8")
-        print(f"{name}: {len(kept)} existing + {len(new)} international = {len(kept) + len(new)}")
+        print(f"{name}: {len(kept)} existing + {len(new)} {bench} = {len(kept) + len(new)}")
 
 
 if __name__ == "__main__":
