@@ -160,6 +160,22 @@ kbd { font-family: var(--mono); font-size: 12px; padding: 1px 5px; border: 1px s
 table.docs { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); }
 table.docs th { text-align: left; font-size: 12px; font-weight: 600; color: var(--ink-2); padding: 8px 12px; border-bottom: 1px solid var(--line); background: var(--panel-2); }
 table.docs td { padding: 8px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+.journal { margin-top: 28px; }
+.jhead { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+.jhead h2 { font-size: 15px; margin: 0; }
+.jhead .sub { margin: 0; font-size: 13px; }
+.entry { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; }
+.entry.warn { border-color: #e5c48a; }
+.ehead { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; padding: 8px 12px; background: var(--panel-2); font-size: 13px; }
+.ehead .party { color: var(--ink-2); flex: 1; min-width: 120px; }
+.issues { margin: 0; padding: 6px 12px 6px 28px; background: var(--check-soft); color: #5c3a00; font-size: 12px; }
+table.jl { width: 100%; border-collapse: collapse; font-size: 13px; }
+table.jl th { text-align: left; font-size: 11px; font-weight: 600; color: var(--ink-3); padding: 6px 12px 2px; }
+table.jl td { padding: 5px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+table.jl .r { text-align: right; white-space: nowrap; }
+table.jl .code { color: var(--ink-3); margin-right: 4px; }
+table.jl .desc, table.jl .why { color: var(--ink-3); font-size: 12px; }
+table.jl tr.tot td { font-weight: 600; border-top: 1.5px solid var(--ink-3); }
 table.docs tr:first-child td { border-top: 0; }
 .st { font-size: 12px; font-weight: 500; padding: 1px 8px; border-radius: 99px; white-space: nowrap; }
 .st.ok { background: var(--accent-soft); color: var(--accent); }
@@ -598,6 +614,27 @@ function statusPill(d) {
   return d.to_review ? `<span class="st check">${d.to_review} to check</span>` : `<span class="st ok">Auto-approved</span>`;
 }
 
+const amt = (x) => (x ? Number(x).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "");
+
+function journalHtml(entries, files) {
+  const review = entries.filter((e) => e.needs_review).length;
+  return `<section class="journal">
+    <div class="jhead"><h2>Journal entries</h2>
+      <span class="sub">${entries.length} entr${entries.length > 1 ? "ies" : "y"}, all balanced${review ? ` · ${review} need review before posting` : ""}</span></div>
+    <div class="exports">${files.map((f) => `<button class="btn small" type="button" data-dl="export/${f}.csv">${f}.csv</button>`).join("")}</div>
+    ${entries.map((e) => `<div class="entry ${e.needs_review ? "warn" : ""}">
+      <div class="ehead"><b>${esc(e.entry_id)}</b><span>${esc(e.date || "date unread")}</span><span>${esc(e.reference || "")}</span>
+        <span class="party">${esc(e.party || "")}</span><span class="num">${esc(e.currency || "")}</span>
+        ${e.needs_review ? `<span class="st check">Review</span>` : `<span class="st ok">Ready</span>`}</div>
+      ${e.issues.length ? `<ul class="issues">${e.issues.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>` : ""}
+      <table class="jl"><thead><tr><th>Account</th><th class="r">Debit</th><th class="r">Credit</th><th class="opt">Why</th></tr></thead><tbody>
+      ${e.lines.map((l) => `<tr><td><span class="num code">${esc(l.account_code)}</span> ${esc(l.account_name)}<div class="desc">${esc(l.description)}</div></td>
+        <td class="r num">${amt(l.debit)}</td><td class="r num">${amt(l.credit)}</td><td class="opt why">${esc(l.basis)}</td></tr>`).join("")}
+      <tr class="tot"><td>Total</td><td class="r num">${amt(e.debits)}</td><td class="r num">${amt(e.credits)}</td><td class="opt"></td></tr>
+      </tbody></table></div>`).join("")}
+  </section>`;
+}
+
 async function openBatch(id) {
   current = id; clearTimeout(poll);
   document.querySelectorAll(".bitem").forEach((el) => el.setAttribute("aria-current", el.dataset.id === id));
@@ -606,8 +643,11 @@ async function openBatch(id) {
   if (current !== id) return;
   const types = [...new Set(b.documents.filter((d) => d.status === "done").map((d) => d.doc_type))];
   const files = types.filter((t) => TYPE_FILES[t]).map((t) => TYPE_FILES[t]);
-  if (types.includes("invoice")) files.push("line_items");
+  if (types.includes("invoice")) files.push("line_items", "tax_lines");
   if (types.includes("bank_statement")) files.push("transactions");
+  const journalFiles = types.includes("invoice") ? ["journal_entries", "quickbooks_journal", "xero_manual_journal"] : [];
+  const entries = journalFiles.length ? await api(`/batches/${id}/journal`).catch(() => []) : [];
+  if (current !== id) return;
   const toCheck = b.documents.filter((d) => d.status === "done" && !d.reviewed && d.to_review).length;
   $("detail").innerHTML = `
     <h1>${b.complete ? "Batch ready" : "Extracting documents"}</h1>
@@ -623,7 +663,8 @@ async function openBatch(id) {
     <table class="docs"><thead><tr><th>File</th><th>Type</th><th>Status</th><th class="opt">Notes</th></tr></thead><tbody>
     ${b.documents.map((d) => `<tr><td>${esc(d.file)}</td><td>${LABELS[d.doc_type] || (d.doc_type ? esc(d.doc_type) : "–")}</td>
       <td>${statusPill(d)}</td><td class="opt">${d.error ? `<span class="err">${esc(d.error)}</span>` : esc(d.flags.join("; "))}</td></tr>`).join("")}
-    </tbody></table>`;
+    </tbody></table>
+    ${entries.length ? journalHtml(entries, journalFiles) : ""}`;
   $("detail").querySelectorAll("[data-dl]").forEach((el) => el.addEventListener("click", () => download(id, el.dataset.dl)));
   $("goReview")?.addEventListener("click", () => show("review"));
   if (!b.complete) poll = setTimeout(() => { if (view === "batches" && current === id) openBatch(id); }, 2000);
