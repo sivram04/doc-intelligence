@@ -5,6 +5,7 @@ import time
 from pathlib import Path
 
 from ..extract.base import Extractor
+from ..extract.normalize import normalize
 from ..extract.rules import RulesExtractor
 from ..routing import field_score, load_thresholds, threshold_for
 from ..schemas import DocType, ExtractionResult
@@ -20,7 +21,7 @@ def process(path: str | Path, extractor: Extractor | None = None) -> ExtractionR
     doc, pages = load_pages(str(path))
     layout = analyze(doc, pages)
     doc_type, conf = classify(layout.text)
-    fields = extractor.extract(layout, doc_type) if doc_type != DocType.OTHER else {}
+    fields = normalize(doc_type, extractor.extract(layout, doc_type)) if doc_type != DocType.OTHER else {}
     result = ExtractionResult(doc_id=Path(path).stem, doc_type=doc_type, type_confidence=conf,
                               model=extractor.name, fields=fields,
                               latency_ms=round((time.perf_counter() - t0) * 1000, 1),

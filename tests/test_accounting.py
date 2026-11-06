@@ -94,3 +94,14 @@ def test_journal_exports():
     assert set(t) == {"journal_entries", "quickbooks_journal", "xero_manual_journal"}
     assert t["quickbooks_journal"][1][0][1] == "10/02/2026"
     assert sum(r[-1] for r in t["xero_manual_journal"][1]) == 0  # Xero: signed amounts sum to zero
+
+
+def test_normalisation_repairs_ocr_misreads_only_when_the_format_is_unambiguous():
+    from docintel.extract.normalize import currency, first_line, known_tax_id, tax_id
+    assert tax_id("1T20336659412") == "IT20336659412"   # I read as 1 in the country prefix
+    assert tax_id("DE79O271891") == "DE790271891"       # O read for 0 in a digit slot
+    assert tax_id("GSTIN: 29ABCDE1234F1Z5") == "29ABCDE1234F1Z5"
+    assert tax_id("EIN 12-3456789") == "EIN 12-3456789"  # not a checked format: unchanged
+    assert known_tax_id("291IQXWV4428X1Z0") is False      # extra character: flagged, not guessed
+    assert currency("£") == "GBP" and currency("Rs.") == "INR" and currency("eur") == "EUR"
+    assert first_line("Acme Ltd\n1 High Street") == "Acme Ltd"

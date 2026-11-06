@@ -67,6 +67,14 @@ def gstin(fk: Faker, state: str) -> str:
     return f"{state}{fk.lexify('?????').upper()}{fk.numerify('####')}{fk.lexify('?').upper()}1Z{fk.numerify('#')}"
 
 
+def vat_id(fk: Faker, country: str) -> str:
+    """VAT number in the country's real layout (random digits; not a registered number)."""
+    body = {"DE": "#########", "FR": "###########", "NL": "#########B##", "IT": "###########", "GB": "#########"}
+    if country == "ES":
+        return f"ES{fk.lexify('?').upper()}{fk.numerify('#######')}{fk.lexify('?').upper()}"
+    return country + fk.numerify(body[country])
+
+
 def make_invoice(doc_id: str, locale: str, rng: random.Random) -> dict:
     fk = Faker({"IN": "en_IN", "UK": "en_GB", "US": "en_US"}.get(locale, EU.get(locale, ("en_US",))[0]))
     fk.seed_instance(rng.randrange(1 << 30))
@@ -103,7 +111,7 @@ def make_invoice(doc_id: str, locale: str, rng: random.Random) -> dict:
                                "amount": r2(base * rate / 100)}]
     elif locale == "UK":
         v |= {"currency": "GBP", "style": "plain", "date_fmt": "%d/%m/%Y", "sym": "£",
-              "vendor_tax_id": f"GB{fk.numerify('#########')}", "buyer_tax_id": None,
+              "vendor_tax_id": vat_id(fk, "GB"), "buyer_tax_id": None,
               "invoice_number": fk.bothify("INV-######"),
               "tax_lines": [{"tax_type": "VAT", "rate": 20.0, "taxable_amount": base, "amount": r2(base * 0.2)}]}
     elif locale == "US":
@@ -116,7 +124,7 @@ def make_invoice(doc_id: str, locale: str, rng: random.Random) -> dict:
     else:
         _, rates, style = EU[locale]
         v |= {"currency": "EUR", "style": style, "date_fmt": rng.choice(["%d.%m.%Y", "%d/%m/%Y"]), "sym": "€",
-              "vendor_tax_id": f"{locale}{fk.numerify('#########')}", "buyer_tax_id": f"{locale}{fk.numerify('#########')}",
+              "vendor_tax_id": vat_id(fk, locale), "buyer_tax_id": vat_id(fk, locale),
               "invoice_number": fk.bothify("RE-####-###")}
         if rng.random() < 0.3 and len(items) > 1:  # two VAT rates on one invoice
             low = r2(items[0]["amount"])
@@ -234,6 +242,8 @@ def ground_truth(doc_id: str, v: dict, modality: str, file: str) -> dict:
         val = v.get(k)
         if k == "line_items":
             val = [{c: r[c] for c in ("description", "quantity", "unit_price", "amount")} for r in val]
+        elif k == "tax_lines":  # the layouts print each tax's rate and amount, not a per-tax taxable base
+            val = [r | {"taxable_amount": None} for r in val]
         fields[k] = {"value": val, "bbox": None}
     return {"doc_id": doc_id, "doc_type": "invoice", "case_id": None, "file": file, "benchmark": "intl",
             "locale": v["locale"], "pages": 1, "modality": modality, "fields": fields}

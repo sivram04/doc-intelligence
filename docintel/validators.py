@@ -5,6 +5,7 @@ from __future__ import annotations
 import re
 from typing import Any
 
+from .extract.normalize import known_tax_id
 from .schemas import DocType
 
 TOL = 0.01
@@ -66,6 +67,9 @@ def validate_document(doc_type: DocType, fields: dict) -> list[str]:
                 flags.append(f"Line items sum to {sum(amts):,.2f}, subtotal says {s:,.2f}")
         if None not in (s, t) and t > s:
             flags.append(f"Tax {t:,.2f} exceeds subtotal {s:,.2f} (fields likely swapped)")
+        for name in ("vendor_tax_id", "buyer_tax_id"):
+            if known_tax_id(v(name)) is False:
+                flags.append(f"{name.replace('_', ' ').capitalize()} '{v(name)}' does not match the GSTIN/VAT format")
         taxes = [r.get("amount") for r in v("tax_lines") or [] if isinstance(r, dict) and r.get("amount") is not None]
         if taxes and t is not None and not _close(sum(taxes), t, 0.05):
             flags.append(f"Tax lines sum to {sum(taxes):,.2f}, tax total says {t:,.2f}")
