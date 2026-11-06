@@ -5,6 +5,7 @@ the input to the active-learning flywheel (Phase 6).
 """
 from __future__ import annotations
 
+import contextlib
 import json
 import os
 import sqlite3
@@ -29,6 +30,8 @@ CREATE TABLE IF NOT EXISTS corrections (
     reviewer TEXT NOT NULL, created DOUBLE PRECISION NOT NULL
 );
 """
+# Columns added after the first release; applied to existing databases on start.
+MIGRATIONS = ("batch_id TEXT", "owner TEXT", "client TEXT", "final TEXT")
 
 
 class Store:
@@ -49,6 +52,9 @@ class Store:
             self._db = sqlite3.connect(path, check_same_thread=False)
             self._db.row_factory = sqlite3.Row
             self._db.executescript(SCHEMA)
+        for col in MIGRATIONS:
+            with contextlib.suppress(Exception):  # column already exists
+                self._exec(f"ALTER TABLE jobs ADD COLUMN {col}")
 
     def _sql(self, sql: str) -> str:
         return sql.replace("?", "%s") if self.postgres else sql
@@ -68,12 +74,14 @@ class Store:
                 self._db.rollback()  # a failed Postgres transaction would poison the shared connection
                 raise
 
-    def create_job(self, job_id: str, filename: str, path: str, case_id: str | None) -> None:
-        self._exec("INSERT INTO jobs (job_id, filename, path, case_id, status, created) VALUES (?,?,?,?,?,?)",
-                   (job_id, filename, path, case_id, "queued", time.time()))
+    def create_job(self, job_id: str, filename: str, path: str, case_id: str | None,
+                   batch_id: str | None = None, owner: str = "local", client: str | None = None) -> None:
+        self._exec("INSERT INTO jobs (job_id, filename, path, case_id, status, created, batch_id, owner, client) "
+                   "VALUES (?,?,?,?,?,?,?,?,?)",
+                   (job_id, filename, path, case_id, "queued", time.time(), batch_id, owner, client))
 
     def update_job(self, job_id: str, **cols) -> None:
-        cols = {k: json.dumps(v) if k in ("result", "routing") else v for k, v in cols.items()}
+        cols = {k: json.dumps(v) if k in ("result", "routing", "final") else v for k, v in cols.items()}
         sets = ", ".join(f"{k} = ?" for k in cols)
         self._exec(f"UPDATE jobs SET {sets} WHERE job_id = ?", (*cols.values(), job_id))
 
@@ -86,9 +94,38 @@ class Store:
             return [_job(r) for r in self._exec("SELECT * FROM jobs WHERE case_id = ? ORDER BY created", (case_id,))]
         return [_job(r) for r in self._exec("SELECT * FROM jobs ORDER BY created")]
 
-    def review_queue(self) -> list[dict]:
+    def batch(self, batch_id: str, owner: str) -> list[dict]:
+        return [_job(r) for r in self._exec("SELECT * FROM jobs WHERE batch_id = ? AND owner = ? ORDER BY created, filename",
+                                            (batch_id, owner))]
+
+    def batches(self, owner: str) -> list[dict]:
+        rows = self._exec("SELECT batch_id, COUNT(*) n, MIN(created) created, "
+                          "SUM(CASE WHEN status IN ('done', 'failed') THEN 1 ELSE 0 END) finished "
+                          "FROM jobs WHERE owner = ? AND batch_id IS NOT NULL GROUP BY batch_id ORDER BY created DESC",
+                          (owner,))
+        return [dict(r) for r in rows]
+
+    def count_since(self, since: float, owner: str | None = None, client: str | None = None) -> int:
+        """Documents submitted since `since` by this owner or this client (either matches), or by anyone."""
+        if owner is None and client is None:
+            return self._exec("SELECT COUNT(*) n FROM jobs WHERE created >= ?", (since,))[0]["n"]
+        return self._exec("SELECT COUNT(*) n FROM jobs WHERE created >= ? AND (owner = ? OR client = ?)",
+                          (since, owner, client))[0]["n"]
+
+    def purge_before(self, cutoff: float) -> list[str]:
+        """Delete jobs created before `cutoff` with their reviews; returns the upload paths to remove."""
+        paths = [r["path"] for r in self._exec("SELECT path FROM jobs WHERE created < ?", (cutoff,))]
+        for table in ("corrections", "reviews"):
+            self._exec(f"DELETE FROM {table} WHERE job_id IN (SELECT job_id FROM jobs WHERE created < ?)", (cutoff,))
+        self._exec("DELETE FROM jobs WHERE created < ?", (cutoff,))
+        return paths
+
+    def review_queue(self, owner: str | None = None) -> list[dict]:
         """Processed, not yet reviewed, with at least one field routed to review (lowest confidence first)."""
-        rows = [_job(r) for r in self._exec("SELECT * FROM jobs WHERE status = 'done' AND reviewed IS NULL")]
+        sql, args = "SELECT * FROM jobs WHERE status = 'done' AND reviewed IS NULL", ()
+        if owner is not None:
+            sql, args = sql + " AND owner = ?", (owner,)
+        rows = [_job(r) for r in self._exec(sql, args)]
         rows = [j for j in rows if j["routing"] and j["routing"]["review"]]
         return sorted(rows, key=lambda j: -len(j["routing"]["review"]))
 
@@ -112,7 +149,8 @@ class Store:
                   c["confidence"], reviewer, now) for c in changed])
             cur.execute(self._sql("INSERT INTO reviews VALUES (?,?,?,?,?,?)"),
                              (job_id, reviewer, seconds, len(final), len(changed), now))
-            cur.execute(self._sql("UPDATE jobs SET reviewed = ? WHERE job_id = ?"), (now, job_id))
+            cur.execute(self._sql("UPDATE jobs SET reviewed = ?, final = ? WHERE job_id = ?"),
+                        (now, json.dumps(final), job_id))
             self._db.commit()
         if changed:
             CORRECTIONS_LOG.parent.mkdir(parents=True, exist_ok=True)
@@ -121,14 +159,18 @@ class Store:
                     f.write(json.dumps(c) + "\n")
         return {"job_id": job_id, "fields_reviewed": len(final), "fields_corrected": len(changed)}
 
-    def stats(self) -> dict:
-        r = self._exec("SELECT COUNT(*) n, SUM(fields_reviewed) f, SUM(fields_corrected) c, AVG(seconds) s FROM reviews")[0]
+    def stats(self, owner: str | None = None) -> dict:
+        own = "" if owner is None else " WHERE job_id IN (SELECT job_id FROM jobs WHERE owner = ?)"
+        args = () if owner is None else (owner,)
+        r = self._exec("SELECT COUNT(*) n, SUM(fields_reviewed) f, SUM(fields_corrected) c, AVG(seconds) s FROM reviews" + own,
+                       args)[0]
         per = self._exec("SELECT reviewer, COUNT(*) docs, SUM(fields_corrected) corrected, AVG(seconds) avg_s "
-                         "FROM reviews GROUP BY reviewer ORDER BY docs DESC")
-        jobs = self._exec("SELECT status, COUNT(*) n FROM jobs GROUP BY status")
+                         "FROM reviews" + own + " GROUP BY reviewer ORDER BY docs DESC", args)
+        jobs = self._exec("SELECT status, COUNT(*) n FROM jobs" + ("" if owner is None else " WHERE owner = ?") +
+                          " GROUP BY status", args)
         return {"documents_reviewed": r["n"], "fields_reviewed": r["f"] or 0, "fields_corrected": r["c"] or 0,
                 "avg_seconds_per_doc": round(r["s"], 1) if r["s"] else None,
-                "queue": len(self.review_queue()), "jobs": {j["status"]: j["n"] for j in jobs},
+                "queue": len(self.review_queue(owner)), "jobs": {j["status"]: j["n"] for j in jobs},
                 "reviewers": [dict(p) for p in per]}
 
 
@@ -140,6 +182,6 @@ def _differs(pred: object, final: object) -> bool:
 
 def _job(row) -> dict:
     d = dict(row)
-    for k in ("result", "routing"):
+    for k in ("result", "routing", "final"):
         d[k] = json.loads(d[k]) if d[k] else None
     return d

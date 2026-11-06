@@ -88,17 +88,17 @@ stages:
       nfiles: 482
     - path: data/synthetic_v2
       hash: md5
-      md5: d7f996455869fcf13e8100815538854c.dir
-      size: 217820534
+      md5: d2db13146246a988b7f99c17c0842dd5.dir
+      size: 217821442
       nfiles: 522
     - path: docintel/extract/llm.py
       hash: md5
-      md5: fc0debc5e121dcb403bf4174087d05aa
-      size: 8627
+      md5: c4e0ced246d01ae753ecd8cea2d11461
+      size: 8898
     - path: docintel/pipeline
       hash: md5
-      md5: 25d0f76431ef2fecd64d0f98bf5b998a.dir
-      size: 35435
+      md5: 3d5774dccb55892a69dc9d6826320a5a.dir
+      size: 37304
       nfiles: 10
     - path: docintel/synth
       hash: md5
@@ -107,13 +107,13 @@ stages:
       nfiles: 8
     - path: scripts/build_sft.py
       hash: md5
-      md5: df59c582697f7ff13303b543094478d8
-      size: 5123
+      md5: ee2e4317e96e236c448a522e479a3ee5
+      size: 5335
     outs:
     - path: data/sft
       hash: md5
-      md5: f2900370540db7248fcf042b5f60ad23.dir
-      size: 1048248416
+      md5: f769635e7b16421e5238513b0f1f5798.dir
+      size: 1048334640
       nfiles: 2103
   make_data_v2:
     cmd: python scripts/make_data.py --benchmark v2 --out data/synthetic_v2 
@@ -131,6 +131,6 @@ stages:
     outs:
     - path: data/synthetic_v2
       hash: md5
-      md5: d7f996455869fcf13e8100815538854c.dir
-      size: 217820534
+      md5: d2db13146246a988b7f99c17c0842dd5.dir
+      size: 217821442
       nfiles: 522
