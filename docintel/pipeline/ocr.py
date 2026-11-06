@@ -37,19 +37,22 @@ class Layout:
         return "\n".join(s.text for s in self.spans)
 
     def lines(self) -> list[list[int]]:
-        """Span ids grouped into visual lines (same page, overlapping vertical extent),
-        left to right. Table rows come out as one line of cells."""
+        """Span ids grouped into visual lines, left to right. Table rows come out as one line of cells.
+
+        A span joins the current line when its vertical centre is within half a line height of the
+        line's first span. Comparing with a band that grows as spans join (the old rule) chains
+        neighbouring rows together on slightly skewed scans, which pairs amounts with the wrong
+        descriptions."""
         out: list[list[int]] = []
-        last = None
+        anchor = None  # (page, centre, height) of the current line's first span
         for i in sorted(range(len(self.spans)), key=lambda i: (self.spans[i].page, self.spans[i].bbox[1])):
             s = self.spans[i]
-            mid = (s.bbox[1] + s.bbox[3]) / 2
-            if last and last[0] == s.page and last[1] <= mid <= last[2]:
+            mid, h = (s.bbox[1] + s.bbox[3]) / 2, s.bbox[3] - s.bbox[1]
+            if anchor and anchor[0] == s.page and abs(mid - anchor[1]) <= 0.5 * min(anchor[2], h):
                 out[-1].append(i)
-                last = (s.page, min(last[1], s.bbox[1]), max(last[2], s.bbox[3]))
             else:
                 out.append([i])
-                last = (s.page, s.bbox[1], s.bbox[3])
+                anchor = (s.page, mid, h)
         return [sorted(line, key=lambda i: self.spans[i].bbox[0]) for line in out]
 
     def render(self) -> str:

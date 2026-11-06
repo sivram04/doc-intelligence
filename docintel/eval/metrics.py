@@ -43,7 +43,8 @@ class FieldScorer:
         hits = 0
         for r in pred:
             for j in unused:
-                if all(match(r.get(k), v) for k, v in gold[j].items()):
+                # columns the document doesn't print (gold None) aren't scored: a derived value is not an error
+                if all(match(r.get(k), v) for k, v in gold[j].items() if v is not None):
                     unused.remove(j)
                     hits += 1
                     break

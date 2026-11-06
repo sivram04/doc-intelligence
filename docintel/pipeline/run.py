@@ -13,6 +13,7 @@ from ..validators import validate_document
 from .classify import classify
 from .ocr import analyze
 from .preprocess import load_pages
+from .rowcheck import row_flags
 
 
 def process(path: str | Path, extractor: Extractor | None = None) -> ExtractionResult:
@@ -26,7 +27,7 @@ def process(path: str | Path, extractor: Extractor | None = None) -> ExtractionR
                               model=extractor.name, fields=fields,
                               latency_ms=round((time.perf_counter() - t0) * 1000, 1),
                               tokens=dict(getattr(extractor, "last_usage", {}) or {}))
-    result.flags = validate_document(doc_type, fields)
+    result.flags = validate_document(doc_type, fields) + row_flags(layout, fields)
     return result
 
 
