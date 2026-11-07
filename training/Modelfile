@@ -1,6 +1,6 @@
 # Fine-tuned docintel extractor (Phase 4).
-# Build: cd training && ollama create docintel-qwen1.5b-ft-v3 -f Modelfile   (GGUF is already q8_0)
-FROM ../models/finetuned_v3/model-q8_0.gguf
+# Build: cd training && ollama create docintel-qwen1.5b-ft-v4 -f Modelfile   (GGUF is already q8_0)
+FROM ../models/finetuned_v4/model-q8_0.gguf
 TEMPLATE """{{- if .Messages }}
 {{- if or .System .Tools }}<|im_start|>system
 {{- if .System }}

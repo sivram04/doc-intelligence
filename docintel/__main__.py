@@ -16,7 +16,7 @@ from pathlib import Path
 
 import httpx
 
-DEFAULT_MODEL = "docintel-qwen1.5b-ft-v3"
+DEFAULT_MODEL = "docintel-qwen1.5b-ft-v4"
 
 
 def load_env(path: Path = Path(".env")) -> None:

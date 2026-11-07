@@ -167,14 +167,14 @@ Set `EXTRACTOR` in a file named `.env` in the project folder (copy `.env.example
 
 | `EXTRACTOR` | Cost | Your documents leave your computer? | Notes |
 |---|---|---|---|
-| `ollama:docintel-qwen1.5b-ft-v3` (default) | Free | No | Fine-tuned for these documents. About 20–60 s per document on a CPU. |
+| `ollama:docintel-qwen1.5b-ft-v4` (default) | Free | No | Fine-tuned for these documents. About 20–60 s per document on a CPU. |
 | `gemini:gemini-3.5-flash-lite` | Free tier | Yes, to Google | Faster and a little more accurate on hard scans. Needs `GEMINI_API_KEY` from [Google AI Studio](https://aistudio.google.com/apikey). The free tier allows about 500 documents a day. |
-| `cascade:ollama:docintel-qwen1.5b-ft-v3\|gemini:gemini-3.5-flash-lite` | Mostly free | Only the documents the local model is unsure about | Local model first; a document goes to Gemini only when the local answer fails its checks. |
+| `cascade:ollama:docintel-qwen1.5b-ft-v4\|gemini:gemini-3.5-flash-lite` | Mostly free | Only the documents the local model is unsure about | Local model first; a document goes to Gemini only when the local answer fails its checks. |
 | `rules` | Free | No | No AI; very fast but weak. For testing only. |
 
 Measured accuracy on 50 real photographed receipts ([CORD dataset](https://github.com/clovaai/cord)):
 
-| Field | Local model (`docintel-qwen1.5b-ft-v3`) | Gemini 3.5 Flash Lite |
+| Field | Local model (`docintel-qwen1.5b-ft-v4`) | Gemini 3.5 Flash Lite |
 |---|---|---|
 | Total | 89% | 85% |
 | Subtotal | 84% | 90% |
@@ -188,7 +188,7 @@ Put any of these in `.env`:
 
 | Setting | Default | What it does |
 |---|---|---|
-| `EXTRACTOR` | `ollama:docintel-qwen1.5b-ft-v3` | Which model reads the documents (section 8). |
+| `EXTRACTOR` | `ollama:docintel-qwen1.5b-ft-v4` | Which model reads the documents (section 8). |
 | `OLLAMA_BASE_URL` | `http://localhost:11434` | Where Ollama runs. |
 | `WORKERS` | `2` | Documents processed at the same time. On a CPU, more than 2 rarely helps. |
 | `MAX_UPLOAD_MB` | `25` | Largest file accepted. |
