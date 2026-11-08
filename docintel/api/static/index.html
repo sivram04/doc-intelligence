@@ -238,7 +238,8 @@ dialog.page img { display: block; width: 100%; min-height: 200px; }
   .batches { grid-template-columns: 1fr; }
   .batches .rail { border-right: 0; border-bottom: 1px solid var(--line); }
   .detail { padding: 16px; }
-  table.docs .opt { display: none; }
+  table.docs .opt, table.jl .opt { display: none; }
+  table.jl td, table.jl th { padding-left: 8px; padding-right: 8px; }
   main { grid-template-columns: 1fr; grid-template-rows: auto auto auto; overflow: auto; }
   .queue { max-height: 180px; border-right: 0; border-bottom: 1px solid var(--line); }
   .fields { border-left: 0; border-top: 1px solid var(--line); }
