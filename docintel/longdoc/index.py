@@ -73,7 +73,8 @@ class Index:
         return cls(passages, vecs)
 
     def search(self, query: str, k: int = 6) -> list[Passage]:
-        rankings = [sorted(range(len(self.passages)), key=lambda i, s=self.bm25.scores(query): -s[i])]
+        bm = self.bm25.scores(query)
+        rankings = [sorted(range(len(self.passages)), key=lambda i: -bm[i])]
         if self.vectors:
             qv = embed([f"search_query: {query}"], timeout=10)  # a busy Ollama must not stall a question
             if qv:

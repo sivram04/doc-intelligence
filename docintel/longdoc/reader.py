@@ -9,7 +9,7 @@ from ..pipeline.ocr import analyze
 from ..pipeline.preprocess import load_pages
 
 PASSAGE_WORDS = 90  # about one paragraph; small enough to cite, big enough to carry context
-MONEY_RE = re.compile(r"(?:[$€£₹]|USD|EUR|GBP|INR|Rs\.?)\s?\d[\d,.]*(?:\s?(?:million|billion|bn|m|k))?", re.I)
+MONEY_RE = re.compile(r"(?:[$€£₹]|USD|EUR|GBP|INR|Rs\.?)\s?\d[\d,.]*(?:\s?(?:million|billion|bn|m|k))?", re.IGNORECASE)
 DATE_RE = re.compile(r"\b(?:\d{1,2}[/.-]\d{1,2}[/.-]\d{2,4}|\d{4}-\d{2}-\d{2}|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|"
                      r"Oct|Nov|Dec)[a-z]*\.? \d{1,2},? \d{4}|\d{1,2} (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|"
                      r"Dec)[a-z]* \d{4}|(?:Q[1-4]|FY) ?\d{2,4})\b")
@@ -58,7 +58,7 @@ def read(path: str | Path, progress=None) -> LongDoc:
         texts.append("\n".join(lines))
         buf: list[str] = []
 
-        def flush():
+        def flush(buf=buf, p=p):
             if buf:
                 passages.append(Passage(len(passages), p + 1, " ".join(buf)))
                 buf.clear()

@@ -15,10 +15,7 @@ QUOTE_MATCH = 0.9
 MIN_SUPPORT = 0.5
 NUM_RE = re.compile(r"\d[\d,.]*\d|\d")
 WORD_RE = re.compile(r"[a-z][a-z'-]{3,}")
-STOP = set("""about above after again against also among because been before being below between both could does
-doing down during each from further have having here into itself just more most other over same should some such
-than that their them then there these they this those through under until very were what when where which while
-with would your will shall total amount amounts company document report page section""".split())
+STOP = {"about", "above", "after", "again", "against", "also", "among", "because", "been", "before", "being", "below", "between", "both", "could", "does", "doing", "down", "during", "each", "from", "further", "have", "having", "here", "into", "itself", "just", "more", "most", "other", "over", "same", "should", "some", "such", "than", "that", "their", "them", "then", "there", "these", "they", "this", "those", "through", "under", "until", "very", "were", "what", "when", "where", "which", "while", "with", "would", "your", "will", "shall", "total", "amount", "amounts", "company", "document", "report", "page", "section"}
 
 
 def norm(s: str) -> str:
@@ -52,7 +49,7 @@ def find_quote(quote: str, page_text: str) -> float:
     if n == 0 or not tw:
         return 0.0
     best = 0.0
-    for i in range(0, max(1, len(tw) - n + 1)):
+    for i in range(max(1, len(tw) - n + 1)):
         r = SequenceMatcher(None, q, " ".join(tw[i:i + n])).ratio()
         best = max(best, r)
         if best >= 0.99:

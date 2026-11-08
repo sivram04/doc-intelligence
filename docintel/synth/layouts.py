@@ -32,7 +32,7 @@ from reportlab.lib.colors import HexColor, black, white
 from reportlab.pdfbase.pdfmetrics import stringWidth
 from reportlab.pdfgen import canvas
 
-from .generator_v2 import r2, rasterise
+from .generator_v2 import rasterise
 from .intl_invoices import EU, HSN, ground_truth, make_invoice, money
 
 TRAIN_FAMILIES = [0, 1, 2, 3, 4, 5]
