@@ -1,0 +1,1092 @@
+[
+ {
+  "file": "report_fed.pdf",
+  "pages": 65,
+  "modality": "native",
+  "read_index_s": 60.1,
+  "summary_s": 756.2,
+  "qa": [
+   {
+    "q": "What were the total assets of the Reserve Banks at December 31, 2024?",
+    "gold": "7,068,713",
+    "gold_page": 6,
+    "question": "What were the total assets of the Reserve Banks at December 31, 2024?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     21,
+     23,
+     50,
+     51,
+     64
+    ]
+   },
+   {
+    "q": "How much were Federal Reserve notes outstanding, net, at the end of 2024?",
+    "gold": "2,322,532",
+    "gold_page": 6,
+    "question": "How much were Federal Reserve notes outstanding, net, at the end of 2024?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     6,
+     21,
+     29,
+     31,
+     46
+    ],
+    "withheld": {
+     "answer": "At the end of 2024, Federal Reserve notes outstanding, net, were $2,322,532 million.",
+     "reason": "number(s) not in the quote: 2024"
+    }
+   },
+   {
+    "q": "What was total interest income in 2024?",
+    "gold": "158,756",
+    "gold_page": 7,
+    "question": "What was total interest income in 2024?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     7,
+     29,
+     36,
+     43
+    ]
+   },
+   {
+    "q": "What was the net loss before providing for remittances to the Treasury in 2024?",
+    "gold": "77,621",
+    "gold_page": 7,
+    "question": "What was the net loss before providing for remittances to the Treasury in 2024?",
+    "answer": "In 2024, the Reserve Bank and consolidated variable interest entity net loss before providing for remittances to the Treasury was $(77,621) million.",
+    "found": true,
+    "citations": [
+     {
+      "page": 64,
+      "quote": "2024 2023 Reserve Bank and consolidated variable interest entity net loss before providing for remittances to the Treasury $ (77,621) $ (114,300)"
+     }
+    ],
+    "searched_pages": [
+     7,
+     24,
+     63,
+     64
+    ]
+   },
+   {
+    "q": "What was net income after providing for remittances to the Treasury in 2024?",
+    "gold": "1,483",
+    "gold_page": 7,
+    "question": "What was net income after providing for remittances to the Treasury in 2024?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     7,
+     24,
+     63,
+     64
+    ],
+    "withheld": {
+     "answer": "Net income after providing for remittances to the Treasury was 1,483 million in 2024.",
+     "reason": "number(s) not in the quote: 2024"
+    }
+   },
+   {
+    "q": "Which firm audited the combined financial statements?",
+    "gold": "KPMG",
+    "gold_page": 4,
+    "question": "Which firm audited the combined financial statements?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     1,
+     4,
+     13,
+     64
+    ]
+   },
+   {
+    "q": "How many patents does the Federal Reserve hold?",
+    "gold": null,
+    "question": "How many patents does the Federal Reserve hold?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     9,
+     11,
+     21,
+     27,
+     29,
+     39
+    ]
+   },
+   {
+    "q": "What was the Federal Reserve's market share in Brazil?",
+    "gold": null,
+    "question": "What was the Federal Reserve's market share in Brazil?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     18,
+     19,
+     29,
+     37,
+     38,
+     43
+    ]
+   },
+   {
+    "q": "What is the share price target set by analysts?",
+    "gold": null,
+    "question": "What is the share price target set by analysts?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     23,
+     25,
+     56,
+     58
+    ]
+   }
+  ],
+  "summary": {
+   "model": "gemini:gemini-3.5-flash-lite",
+   "overview": [
+    {
+     "text": "The Federal Reserve System operates as the central bank of the United States, conducting monetary policy, promoting consumer protection and community development, and performing other essential functions established by the Federal Reserve Act of 1913.",
+     "citations": [
+      {
+       "page": 2,
+       "quote": "The Federal Reserve System is the central bank of the United States. It performs five key functions to promote the effective operation of the U.S. economy and, more generally, the public interest."
+      },
+      {
+       "page": 2,
+       "quote": "conducts the nation's monetary policy to promote maximum employment, stable prices, and moderate long-term interest rates in the U.S. economy"
+      },
+      {
+       "page": 2,
+       "quote": "promotes consumer protection and community development through consumer-focused supervision and examination, research and analysis of emerging consumer issues and trends, community economic development activities, and administration of consumer laws and regulations."
+      },
+      {
+       "page": 9,
+       "quote": "created by Congress under the Federal Reserve Act of 1913 (FRA), which established the central bank of the United States."
+      }
+     ]
+    },
+    {
+     "text": "Independent auditors KPMG LLP confirmed that the combined financial statements present fairly the financial position of the Reserve Banks as of December 31, 2024 and 2023.",
+     "citations": [
+      {
+       "page": 4,
+       "quote": "In our opinion, the combined financial statements referred to above present fairly, in all material respects, the financial position of the Reserve Banks as of December 31, 2024 and 2023, and the results of its operations and changes in capital for the years then ended, on the basis of accounting described in Note 3."
+      }
+     ]
+    },
+    {
+     "text": "Operations are structured through twelve regional Reserve Banks governed by nine-member boards, utilizing specialized accounting principles from the Financial Accounting Manual, and omitting a cash flows statement due to central bank powers.",
+     "citations": [
+      {
+       "page": 9,
+       "quote": "Each board is composed of nine members serving three-year terms: three directors, including those designated as chairman and deputy chairman, are appointed by the Board of Governors of the Federal Reserve System (Board of Governors) to represent the public, and six directors are elected by member banks."
+      },
+      {
+       "page": 12,
+       "quote": "The Board of Governors has developed specialized accounting principles and practices that it considers to be appropriate for the nature and function of a central bank. These accounting principles and practices are documented in the Financial Accounting Manual for Federal Reserve Banks (FAM), which is issued by the Board of Governors."
+      },
+      {
+       "page": 13,
+       "quote": "In addition, the Reserve Banks do not present a Combined Statement of Cash Flows as required by GAAP because the liquidity and cash position of the Reserve Banks are not a primary concern given the Reserve Banks' unique powers and responsibilities as a central bank."
+      }
+     ]
+    },
+    {
+     "text": "System Open Market Account transactions and specialized facilities like the Bank Term Funding Program, Paycheck Protection Program Liquidity Facility, and Main Street facilities manage liquidity and open market operations.",
+     "citations": [
+      {
+       "page": 10,
+       "quote": "The FOMC has selected the FRBNY to execute open market transactions on behalf of the Reserve Banks as provided in its annual authorization."
+      },
+      {
+       "page": 10,
+       "quote": "On March 12, 2023, each Federal Reserve Bank established and commenced operation of the Bank Term Funding Program (BTFP), pursuant to section 13(3) of the FRA. The BTFP was established to support American businesses and households by making additional funding available to eligible depository institutions to help assure banks have the ability to meet the needs of all their depositors. The BTFP's authority to extend new loans ended March 11, 2024, and the facility will continue to operate until all loans are paid off and operations cease."
+      },
+      {
+       "page": 11,
+       "quote": "On April 8, 2020, each Federal Reserve Bank established and commenced operation of the Paycheck Protection Program Liquidity Facility (PPPLF). The PPPLF offered a source of liquidity to financial institution lenders that lend to small businesses through the Small Business Administration's (SBA) Paycheck Protection Program (PPP)."
+      },
+      {
+       "page": 12,
+       "quote": "Decisions regarding securities and foreign currency transactions, including their purchase and sale, are primarily motivated by monetary policy and financial stability objectives rather than profit."
+      }
+     ]
+    },
+    {
+     "text": "Assets such as Treasury securities, GSE debt, and foreign currency investments are managed, lent, or revalued daily, while credit losses are estimated using expected loss methodologies.",
+     "citations": [
+      {
+       "page": 16,
+       "quote": "Treasury securities and GSE debt securities held in the SOMA may be lent to primary dealers, typically overnight, to facilitate the effective conduct of open market operations."
+      },
+      {
+       "page": 17,
+       "quote": "Foreign currency denominated investments, which can include foreign currency deposits, repurchase agreements, and government debt instruments, are revalued daily at current foreign currency market exchange rates in order to report these assets in U.S. dollars."
+      },
+      {
+       "page": 19,
+       "quote": "The Reserve Banks estimate the allowance for credit losses using the current expected credit loss (CECL) methodology."
+      },
+      {
+       "page": 31,
+       "quote": "Securities pledged as collateral, at December 31, 2024 and 2023, consisted solely of Treasury securities."
+      }
+     ]
+    },
+    {
+     "text": "Liabilities include fully collateralized Federal Reserve notes and depository institution balances earning interest at the IORB rate.",
+     "citations": [
+      {
+       "page": 21,
+       "quote": "Federal Reserve notes are the circulating currency of the United States. These notes, which are identified as issued to a specific Reserve Bank, must be fully collateralized."
+      },
+      {
+       "page": 22,
+       "quote": "Depository institutions' deposits represent balances maintained in master accounts and excess balance accounts held by the depository institutions at the Reserve Banks. Depository institutions earn interest at the interest on reserve balance (IORB) rate."
+      }
+     ]
+    },
+    {
+     "text": "Capital requirements, statutory surplus limits of $6.785 billion, and weekly remittances of excess earnings to the Treasury govern the financial distribution framework.",
+     "citations": [
+      {
+       "page": 23,
+       "quote": "The FRA requires that each member bank subscribe to the capital stock of the Reserve Bank in an amount equal to 6 percent of the capital and surplus of the member bank."
+      },
+      {
+       "page": 24,
+       "quote": "The FRA limits aggregate Reserve Bank surplus to $6.785 billion."
+      },
+      {
+       "page": 24,
+       "quote": "The Reserve Banks remit excess earnings to the Treasury after providing for the cost of operations, payment of dividends, and reservation of an amount necessary to maintain surplus at the aggregate surplus limitation. Remittances to the Treasury are made on a weekly basis"
+      }
+     ]
+    },
+    {
+     "text": "The financial statements also detail premises, employee retirement and benefit plans, and subsequent events evaluated through March 12, 2025.",
+     "citations": [
+      {
+       "page": 20,
+       "quote": "Bank premises and equipment are stated at cost less accumulated depreciation. Depreciation is calculated on a straight-line basis over the estimated useful lives of the assets, which range from 2 to 50 years."
+      },
+      {
+       "page": 52,
+       "quote": "The Reserve Banks currently offer three defined benefit retirement plans to its employees, based on length of service and level of compensation."
+      },
+      {
+       "page": 59,
+       "quote": "In addition to the Reserve Banks' retirement plans, employees who have met certain age and length-of-service requirements are eligible for both medical and life insurance benefits during retirement."
+      },
+      {
+       "page": 64,
+       "quote": "Subsequent events were evaluated through March 12, 2025, which is the date that the combined financial statements were available to be issued."
+      }
+     ]
+    }
+   ],
+   "key_points": [
+    {
+     "text": "The Federal Reserve System acts as the central bank of the United States and carries out five essential functions.",
+     "citations": [
+      {
+       "page": 2,
+       "quote": "The Federal Reserve System is the central bank of the United States. It performs five key functions to promote the effective operation of the U.S. economy and, more generally, the public interest."
+      }
+     ],
+     "id": 1
+    },
+    {
+     "text": "Independent auditors KPMG LLP reported that the combined financial statements present fairly the financial position of the Reserve Banks as of December 31, 2024 and 2023.",
+     "citations": [
+      {
+       "page": 4,
+       "quote": "In our opinion, the combined financial statements referred to above present fairly, in all material respects, the financial position of the Reserve Banks as of December 31, 2024 and 2023, and the results of its operations and changes in capital for the years then ended, on the basis of accounting described in Note 3."
+      }
+     ],
+     "id": 4
+    },
+    {
+     "text": "The Federal Reserve Act of 1913 established the central bank of the United States, creating the Federal Reserve System.",
+     "citations": [
+      {
+       "page": 9,
+       "quote": "created by Congress under the Federal Reserve Act of 1913 (FRA), which established the central bank of the United States."
+      }
+     ],
+     "id": 5
+    },
+    {
+     "text": "The Bank Term Funding Program was established on March 12, 2023, and its authority to extend new loans ended on March 11, 2024.",
+     "citations": [
+      {
+       "page": 10,
+       "quote": "On March 12, 2023, each Federal Reserve Bank established and commenced operation of the Bank Term Funding Program (BTFP), pursuant to section 13(3) of the FRA. The BTFP was established to support American businesses and households by making additional funding available to eligible depository institutions to help assure banks have the ability to meet the needs of all their depositors. The BTFP's authority to extend new loans ended March 11, 2024, and the facility will continue to operate until all loans are paid off and operations cease."
+      }
+     ],
+     "id": 8
+    },
+    {
+     "text": "The Reserve Banks do not present a Combined Statement of Cash Flows because their central bank powers make liquidity and cash position minor concerns.",
+     "citations": [
+      {
+       "page": 13,
+       "quote": "In addition, the Reserve Banks do not present a Combined Statement of Cash Flows as required by GAAP because the liquidity and cash position of the Reserve Banks are not a primary concern given the Reserve Banks' unique powers and responsibilities as a central bank."
+      }
+     ],
+     "id": 12
+    },
+    {
+     "text": "Federal Reserve notes serve as the circulating currency of the United States and must be fully collateralized.",
+     "citations": [
+      {
+       "page": 21,
+       "quote": "Federal Reserve notes are the circulating currency of the United States. These notes, which are identified as issued to a specific Reserve Bank, must be fully collateralized."
+      }
+     ],
+     "id": 21
+    },
+    {
+     "text": "The Federal Reserve Act limits aggregate Reserve Bank surplus to $6.785 billion.",
+     "citations": [
+      {
+       "page": 24,
+       "quote": "The FRA limits aggregate Reserve Bank surplus to $6.785 billion."
+      }
+     ],
+     "id": 24
+    },
+    {
+     "text": "Reserve Banks remit their excess earnings to the Treasury on a weekly basis after covering operations, dividends, and surplus requirements.",
+     "citations": [
+      {
+       "page": 24,
+       "quote": "The Reserve Banks remit excess earnings to the Treasury after providing for the cost of operations, payment of dividends, and reservation of an amount necessary to maintain surplus at the aggregate surplus limitation. Remittances to the Treasury are made on a weekly basis"
+      }
+     ],
+     "id": 25
+    },
+    {
+     "text": "The Reserve Banks currently offer three defined benefit retirement plans to employees based on service length and compensation level.",
+     "citations": [
+      {
+       "page": 52,
+       "quote": "The Reserve Banks currently offer three defined benefit retirement plans to its employees, based on length of service and level of compensation."
+      }
+     ],
+     "id": 50
+    }
+   ],
+   "facts": [
+    {
+     "text": "The Federal Reserve System acts as the central bank of the United States and carries out five essential functions.",
+     "citations": [
+      {
+       "page": 2,
+       "quote": "The Federal Reserve System is the central bank of the United States. It performs five key functions to promote the effective operation of the U.S. economy and, more generally, the public interest."
+      }
+     ],
+     "id": 1
+    },
+    {
+     "text": "Monetary policy is conducted by the Federal Reserve to achieve maximum employment, stable prices, and moderate long-term interest rates.",
+     "citations": [
+      {
+       "page": 2,
+       "quote": "conducts the nation's monetary policy to promote maximum employment, stable prices, and moderate long-term interest rates in the U.S. economy"
+      }
+     ],
+     "id": 2
+    },
+    {
+     "text": "Consumer protection and community development are promoted through focused supervision, research, community activities, and administration of consumer laws.",
+     "citations": [
+      {
+       "page": 2,
+       "quote": "promotes consumer protection and community development through consumer-focused supervision and examination, research and analysis of emerging consumer issues and trends, community economic development activities, and administration of consumer laws and regulations."
+      }
+     ],
+     "id": 3
+    },
+    {
+     "text": "Independent auditors KPMG LLP reported that the combined financial statements present fairly the financial position of the Reserve Banks as of December 31, 2024 and 2023.",
+     "citations": [
+      {
+       "page": 4,
+       "quote": "In our opinion, the combined financial statements referred to above present fairly, in all material respects, the financial position of the Reserve Banks as of December 31, 2024 and 2023, and the results of its operations and changes in capital for the years then ended, on the basis of accounting described in Note 3."
+      }
+     ],
+     "id": 4
+    },
+    {
+     "text": "The Federal Reserve Act of 1913 established the central bank of the United States, creating the Federal Reserve System.",
+     "citations": [
+      {
+       "page": 9,
+       "quote": "created by Congress under the Federal Reserve Act of 1913 (FRA), which established the central bank of the United States."
+      }
+     ],
+     "id": 5
+    },
+    {
+     "text": "Each Reserve Bank board of directors consists of nine members who each serve three-year terms.",
+     "citations": [
+      {
+       "page": 9,
+       "quote": "Each board is composed of nine members serving three-year terms: three directors, including those designated as chairman and deputy chairman, are appointed by the Board of Governors of the Federal Reserve System (Board of Governors) to represent the public, and six directors are elected by member banks."
+      }
+     ],
+     "id": 6
+    },
+    {
+     "text": "The Federal Open Market Committee selected the Federal Reserve Bank of New York to execute open market transactions on behalf of the Reserve Banks.",
+     "citations": [
+      {
+       "page": 10,
+       "quote": "The FOMC has selected the FRBNY to execute open market transactions on behalf of the Reserve Banks as provided in its annual authorization."
+      }
+     ],
+     "id": 7
+    },
+    {
+     "text": "The Bank Term Funding Program was established on March 12, 2023, and its authority to extend new loans ended on March 11, 2024.",
+     "citations": [
+      {
+       "page": 10,
+       "quote": "On March 12, 2023, each Federal Reserve Bank established and commenced operation of the Bank Term Funding Program (BTFP), pursuant to section 13(3) of the FRA. The BTFP was established to support American businesses and households by making additional funding available to eligible depository institutions to help assure banks have the ability to meet the needs of all their depositors. The BTFP's authority to extend new loans ended March 11, 2024, and the facility will continue to operate until all loans are paid off and operations cease."
+      }
+     ],
+     "id": 8
+    },
+    {
+     "text": "The Paycheck Protection Program Liquidity Facility was established on April 8, 2020, to offer liquidity to financial institution lenders.",
+     "citations": [
+      {
+       "page": 11,
+       "quote": "On April 8, 2020, each Federal Reserve Bank established and commenced operation of the Paycheck Protection Program Liquidity Facility (PPPLF). The PPPLF offered a source of liquidity to financial institution lenders that lend to small businesses through the Small Business Administration's (SBA) Paycheck Protection Program (PPP)."
+      }
+     ],
+     "id": 9
+    },
+    {
+     "text": "The Board of Governors developed specialized accounting principles and practices documented in the Financial Accounting Manual for Federal Reserve Banks.",
+     "citations": [
+      {
+       "page": 12,
+       "quote": "The Board of Governors has developed specialized accounting principles and practices that it considers to be appropriate for the nature and function of a central bank. These accounting principles and practices are documented in the Financial Accounting Manual for Federal Reserve Banks (FAM), which is issued by the Board of Governors."
+      }
+     ],
+     "id": 10
+    },
+    {
+     "text": "Transactions involving components of the SOMA portfolio are driven by monetary policy and financial stability rather than profit.",
+     "citations": [
+      {
+       "page": 12,
+       "quote": "Decisions regarding securities and foreign currency transactions, including their purchase and sale, are primarily motivated by monetary policy and financial stability objectives rather than profit."
+      }
+     ],
+     "id": 11
+    },
+    {
+     "text": "The Reserve Banks do not present a Combined Statement of Cash Flows because their central bank powers make liquidity and cash position minor concerns.",
+     "citations": [
+      {
+       "page": 13,
+       "quote": "In addition, the Reserve Banks do not present a Combined Statement of Cash Flows as required by GAAP because the liquidity and cash position of the Reserve Banks are not a primary concern given the Reserve Banks' unique powers and responsibilities as a central bank."
+      }
+     ],
+     "id": 12
+    },
+    {
+     "text": "The Bureau of Consumer Financial Protection is funded by the Board of Governors through assessments on the Reserve Banks.",
+     "citations": [
+      {
+       "page": 14,
+       "quote": "The Board of Governors funds the Bureau through assessments on the Reserve Banks as required by the Dodd-Frank Act."
+      }
+     ],
+     "id": 13
+    },
+    {
+     "text": "The value of gold used for backing gold certificates is set by law at a specific rate per fine troy ounce.",
+     "citations": [
+      {
+       "page": 14,
+       "quote": "The value of gold for purposes of backing the gold certificates is set by law at $42 2/9 per fine troy ounce."
+      }
+     ],
+     "id": 14
+    },
+    {
+     "text": "Treasury securities and GSE debt securities held in the SOMA may be lent to primary dealers, typically overnight, to facilitate the effective conduct of open market operations.",
+     "citations": [
+      {
+       "page": 16,
+       "quote": "Treasury securities and GSE debt securities held in the SOMA may be lent to primary dealers, typically overnight, to facilitate the effective conduct of open market operations."
+      }
+     ],
+     "id": 15
+    },
+    {
+     "text": "Securities lending transactions are fully collateralized by Treasury securities based on the fair values of the securities lent increased by a margin determined by the FRBNY.",
+     "citations": [
+      {
+       "page": 16,
+       "quote": "Securities lending transactions are fully collateralized by Treasury securities based on the fair values of the securities lent increased by a margin determined by the FRBNY."
+      }
+     ],
+     "id": 16
+    },
+    {
+     "text": "Foreign currency denominated investments are revalued daily at current foreign currency market exchange rates in order to report these assets in U.S. dollars.",
+     "citations": [
+      {
+       "page": 17,
+       "quote": "Foreign currency denominated investments, which can include foreign currency deposits, repurchase agreements, and government debt instruments, are revalued daily at current foreign currency market exchange rates in order to report these assets in U.S. dollars."
+      }
+     ],
+     "id": 17
+    },
+    {
+     "text": "The Reserve Banks estimate the allowance for credit losses using the current expected credit loss methodology.",
+     "citations": [
+      {
+       "page": 19,
+       "quote": "The Reserve Banks estimate the allowance for credit losses using the current expected credit loss (CECL) methodology."
+      }
+     ],
+     "id": 18
+    },
+    {
+     "text": "When the risk of non-payment is zero, an estimate for credit losses is not required to be recognized.",
+     "citations": [
+      {
+       "page": 20,
+       "quote": "When the risk of non-payment is zero, an estimate for credit losses is not required to be recognized."
+      }
+     ],
+     "id": 19
+    },
+    {
+     "text": "Bank premises and equipment are stated at cost less accumulated depreciation, which is calculated on a straight-line basis over estimated useful lives ranging from 2 to 50 years.",
+     "citations": [
+      {
+       "page": 20,
+       "quote": "Bank premises and equipment are stated at cost less accumulated depreciation. Depreciation is calculated on a straight-line basis over the estimated useful lives of the assets, which range from 2 to 50 years."
+      }
+     ],
+     "id": 20
+    },
+    {
+     "text": "Federal Reserve notes serve as the circulating currency of the United States and must be fully collateralized.",
+     "citations": [
+      {
+       "page": 21,
+       "quote": "Federal Reserve notes are the circulating currency of the United States. These notes, which are identified as issued to a specific Reserve Bank, must be fully collateralized."
+      }
+     ],
+     "id": 21
+    },
+    {
+     "text": "Depository institutions maintain master accounts and excess balance accounts at the Reserve Banks and earn interest at the IORB rate.",
+     "citations": [
+      {
+       "page": 22,
+       "quote": "Depository institutions' deposits represent balances maintained in master accounts and excess balance accounts held by the depository institutions at the Reserve Banks. Depository institutions earn interest at the interest on reserve balance (IORB) rate."
+      }
+     ],
+     "id": 22
+    },
+    {
+     "text": "Each member bank must subscribe to the capital stock of the Reserve Bank in an amount equal to 6 percent of the member bank's capital and surplus.",
+     "citations": [
+      {
+       "page": 23,
+       "quote": "The FRA requires that each member bank subscribe to the capital stock of the Reserve Bank in an amount equal to 6 percent of the capital and surplus of the member bank."
+      }
+     ],
+     "id": 23
+    },
+    {
+     "text": "The Federal Reserve Act limits aggregate Reserve Bank surplus to $6.785 billion.",
+     "citations": [
+      {
+       "page": 24,
+       "quote": "The FRA limits aggregate Reserve Bank surplus to $6.785 billion."
+      }
+     ],
+     "id": 24
+    },
+    {
+     "text": "Reserve Banks remit their excess earnings to the Treasury on a weekly basis after covering operations, dividends, and surplus requirements.",
+     "citations": [
+      {
+       "page": 24,
+       "quote": "The Reserve Banks remit excess earnings to the Treasury after providing for the cost of operations, payment of dividends, and reservation of an amount necessary to maintain surplus at the aggregate surplus limitation. Remittances to the Treasury are made on a weekly basis"
+      }
+     ],
+     "id": 25
+    },
+    {
+     "text": "The Reserve Banks are exempt from federal, state, and local taxes, except for taxes on real property.",
+     "citations": [
+      {
+       "page": 26,
+       "quote": "The Reserve Banks are exempt from federal, state, and local taxes, except for taxes on real property."
+      }
+     ],
+     "id": 26
+    },
+    {
+     "text": "Primary loans provide discount window credit for periods up to 90 days.",
+     "citations": [
+      {
+       "page": 27,
+       "quote": "Primary loans provide discount window credit for periods up to 90 days, secondary loans are extended on a short-term basis, typically overnight, and seasonal loans may be extended for a period of up to nine months."
+      }
+     ],
+     "id": 27
+    },
+    {
+     "text": "The BTFP offered advances up to one year in length to eligible depository institutions pledging eligible collateral valued at par.",
+     "citations": [
+      {
+       "page": 27,
+       "quote": "The BTFP offered advances up to one year in length to banks, savings associations, credit unions, and other eligible depository institutions pledging any collateral eligible for purchase in open market operations, such as Treasuries, agency securities, and agency MBS. These assets were valued at par."
+      }
+     ],
+     "id": 28
+    },
+    {
+     "text": "Level 1 fair value valuation is based on quoted prices for identical instruments traded in active markets.",
+     "citations": [
+      {
+       "page": 25,
+       "quote": "Level 1 \u2013 Valuation is based on quoted prices for identical instruments traded in active markets."
+      }
+     ],
+     "id": 29
+    },
+    {
+     "text": "Securities pledged as collateral for reverse repurchase agreements at December 31, 2024 and 2023 consisted solely of Treasury securities.",
+     "citations": [
+      {
+       "page": 31,
+       "quote": "Securities pledged as collateral, at December 31, 2024 and 2023, consisted solely of Treasury securities."
+      }
+     ],
+     "id": 30
+    },
+    {
+     "text": "Securities pledged as collateral by counterparties in securities lending arrangements at December 31, 2024 and 2023 consisted solely of Treasury securities.",
+     "citations": [
+      {
+       "page": 33,
+       "quote": "Securities pledged as collateral by the counterparties in the securities lending arrangements at December 31, 2024 and 2023 consisted solely of Treasury securities."
+      }
+     ],
+     "id": 31
+    },
+    {
+     "text": "The FRBNY holds foreign currency deposits with foreign central banks and with the Bank for International Settlements.",
+     "citations": [
+      {
+       "page": 35,
+       "quote": "The FRBNY holds foreign currency deposits with foreign central banks and with the Bank for International Settlements."
+      }
+     ],
+     "id": 32
+    },
+    {
+     "text": "During 2024, there were purchases, sales, and maturities of foreign government debt instruments of $4,695 million, $611 million, and $1,028 million, respectively.",
+     "citations": [
+      {
+       "page": 37,
+       "quote": "During 2024, there were purchases, sales, and maturities of foreign government debt instruments of $4,695 million, $611 million, and $1,028 million, respectively."
+      }
+     ],
+     "id": 33
+    },
+    {
+     "text": "Euros held in the SOMA under U.S. dollar liquidity swaps at December 31, 2024 and 2023 was $1,120 million and $1,357 million, respectively.",
+     "citations": [
+      {
+       "page": 38,
+       "quote": "Euros held in the SOMA under U.S. dollar liquidity swaps at December 31, 2024 and 2023 was $1,120 million and $1,357 million, respectively"
+      }
+     ],
+     "id": 34
+    },
+    {
+     "text": "Based on evaluations performed as of December 31, 2024 and 2023, there are no credit impairments of SOMA securities holdings.",
+     "citations": [
+      {
+       "page": 38,
+       "quote": "Based on evaluations performed as of December 31, 2024 and 2023, there are no credit impairments of SOMA securities holdings."
+      }
+     ],
+     "id": 35
+    },
+    {
+     "text": "At December 31, 2024 and 2023, the fair value of foreign currency denominated investments held in the SOMA was $17,360 million and $18,389 million, respectively.",
+     "citations": [
+      {
+       "page": 39,
+       "quote": "At December 31, 2024 and 2023, the fair value of foreign currency denominated investments held in the SOMA was $17,360 million and $18,389 million, respectively."
+      }
+     ],
+     "id": 36
+    },
+    {
+     "text": "Upon the dissolution of MLF and TALF in the first quarter of 2024, all remaining holdings were liquidated and final distributions of proceeds were made.",
+     "citations": [
+      {
+       "page": 42,
+       "quote": "Upon the dissolution of MLF and TALF in the first quarter of 2024, all remaining holdings were liquidated, final obligations were satisfied, and final distributions of proceeds were made to the FRBNY and the Treasury."
+      }
+     ],
+     "id": 37
+    },
+    {
+     "text": "As of December 31, 2023, MLF had cash equivalents in government money market funds of $213 million and TALF had cash equivalents of $46 million.",
+     "citations": [
+      {
+       "page": 42,
+       "quote": "As of December 31, 2023, MLF had cash equivalents in government money market funds of $213 million and TALF had cash equivalents of $46 million, which matured within 15 days."
+      }
+     ],
+     "id": 38
+    },
+    {
+     "text": "Under the lifetime expected credit loss methodology, loan participations with similar risks are collectively assessed for expected credit losses while different risks are assessed individually.",
+     "citations": [
+      {
+       "page": 44,
+       "quote": "Under the lifetime expected credit loss methodology, loan participations with similar risks are collectively assessed for expected credit losses whereas loan participations with different risks are individually assessed."
+      }
+     ],
+     "id": 39
+    },
+    {
+     "text": "Internal risk rating models assess probability of default, loss given default, and exposure at default for each loan participation.",
+     "citations": [
+      {
+       "page": 44,
+       "quote": "The evaluation of the adequacy of the allowance is primarily based upon internal risk rating models that assess probability of default, loss given default and exposure at default for each loan participation."
+      }
+     ],
+     "id": 40
+    },
+    {
+     "text": "A loan participation is placed on non-accrual status if it is 90 days past due or earlier based on credit indicators.",
+     "citations": [
+      {
+       "page": 45,
+       "quote": "A loan participation is placed on non-accrual status if it is 90 days past due, or earlier, based on credit indicators."
+      }
+     ],
+     "id": 41
+    },
+    {
+     "text": "Main Street realized net principal and interest losses from charge-offs of $743.6 million and $444.1 million for the years ended December 31, 2024 and 2023.",
+     "citations": [
+      {
+       "page": 45,
+       "quote": "Main Street realized principal and interest losses, net of subsequent recoveries, of $743.6 million and $444.1 million for charge-offs during the years ended December 31, 2024 and 2023, respectively."
+      }
+     ],
+     "id": 42
+    },
+    {
+     "text": "The average internal risk rating for loan participations held as of December 31, 2024 and 2023 was equivalent to Moody's ratings of Caa1 and B2, respectively.",
+     "citations": [
+      {
+       "page": 47,
+       "quote": "The average internal risk rating for loan participations at principal amount outstanding held as of December 31, 2024 and 2023 was equivalent to a Moody\u2019s rating of Caa1 and B2, respectively."
+      }
+     ],
+     "id": 43
+    },
+    {
+     "text": "Approximately 85 percent of the Treasury's initial equity contribution was invested in overnight non-marketable securities issued by the Treasury to Main Street.",
+     "citations": [
+      {
+       "page": 49,
+       "quote": "approximately 85 percent of the Treasury\u2019s initial equity contribution was invested in overnight non-marketable securities issued by the Treasury to Main Street."
+      }
+     ],
+     "id": 44
+    },
+    {
+     "text": "The Reserve Banks lease space to outside tenants with lease terms ranging from 1 to 13 years.",
+     "citations": [
+      {
+       "page": 49,
+       "quote": "The Reserve Banks lease space to outside tenants with remaining lease terms ranging from 1 to 13 years, which reflect any renewal options the lessee is reasonably certain to exercise or termination options not reasonably certain to exercise."
+      }
+     ],
+     "id": 45
+    },
+    {
+     "text": "At December 31, 2024, capitalized software assets net of amortization were $597 million for the Reserve Banks.",
+     "citations": [
+      {
+       "page": 50,
+       "quote": "The Reserve Banks had capitalized software assets, net of amortization, of $597 million and $518 million at December 31, 2024 and 2023, respectively."
+      }
+     ],
+     "id": 46
+    },
+    {
+     "text": "The Reserve Banks were obligated under non-cancelable premises leases with remaining terms of 1 to approximately 6 years at the end of 2024.",
+     "citations": [
+      {
+       "page": 50,
+       "quote": "At December 31, 2024, the Reserve Banks were obligated under non-cancelable leases for premises with remaining terms ranging from 1 to approximately 6 years."
+      }
+     ],
+     "id": 47
+    },
+    {
+     "text": "Unrecorded unconditional purchase commitments extending through the year 2030 had a remaining fixed commitment of $245 million at the end of 2024.",
+     "citations": [
+      {
+       "page": 51,
+       "quote": "At December 31, 2024, the Reserve Banks, acting on their own behalf, had unrecorded unconditional purchase commitments extending through the year 2030 with a remaining fixed commitment of $245 million."
+      }
+     ],
+     "id": 48
+    },
+    {
+     "text": "Management expects pending legal actions and claims to be resolved without material adverse effects on the financial position or operations.",
+     "citations": [
+      {
+       "page": 51,
+       "quote": "Although it is difficult to predict the ultimate outcome of these actions, in management's opinion, based on discussions with counsel, the legal actions and claims will be resolved without material adverse effect on the financial position or results of operations of the Reserve Banks."
+      }
+     ],
+     "id": 49
+    },
+    {
+     "text": "The Reserve Banks currently offer three defined benefit retirement plans to employees based on service length and compensation level.",
+     "citations": [
+      {
+       "page": 52,
+       "quote": "The Reserve Banks currently offer three defined benefit retirement plans to its employees, based on length of service and level of compensation."
+      }
+     ],
+     "id": 50
+    },
+    {
+     "text": "Adjustments to mortality tables and projection scales resulted in a $16 million decrease to the Retirement Plan projected benefit obligation in 2024.",
+     "citations": [
+      {
+       "page": 53,
+       "quote": "These adjustments resulted in a decrease to the Retirement Plan projected benefit obligation of approximately $16 million in 2024."
+      }
+     ],
+     "id": 51
+    },
+    {
+     "text": "The System Plan's assets were held across 55 investment vehicles at December 31, 2024.",
+     "citations": [
+      {
+       "page": 55,
+       "quote": "At December 31, 2024, the System Plan's assets were held in 55 investment vehicles: 6 actively-managed long-duration fixed income portfolios, a passively-managed long-duration fixed income portfolio, an actively-managed crossover high yield fixed income portfolio, an indexed U.S. equity fund, an indexed non-U.S. developed-markets equity fund, 2 indexed emerging-markets equity funds, 13 private equity limited partnerships, a private equity separate account, 4 core real estate funds, 24 real estate limited partnerships, and a money market fund."
+      }
+     ],
+     "id": 52
+    },
+    {
+     "text": "In 2025, the FRBA plans to make monthly contributions of $15 million and will reevaluate funding periodically.",
+     "citations": [
+      {
+       "page": 57,
+       "quote": "In 2025, the FRBA plans to make monthly contributions of $15 million and will reevaluate funding periodically."
+      }
+     ],
+     "id": 53
+    },
+    {
+     "text": "Reserve Banks match 100 percent of the first 6 percent of employee contributions to the Thrift Plan from the date of hire.",
+     "citations": [
+      {
+       "page": 59,
+       "quote": "The Reserve Banks match 100 percent of the first 6 percent of employee contributions from the date of hire and provides an automatic employer contribution of 1 percent of eligible pay."
+      }
+     ],
+     "id": 54
+    },
+    {
+     "text": "Reserve Banks' Thrift Plan contributions totaled $192 million for the year ended December 31, 2024.",
+     "citations": [
+      {
+       "page": 59,
+       "quote": "The Reserve Banks' Thrift Plan contributions totaled $192 million and $187 million for the years ended December 31, 2024 and 2023, respectively"
+      }
+     ],
+     "id": 55
+    },
+    {
+     "text": "Employees who meet specific age and length-of-service requirements are eligible for medical and life insurance benefits during retirement in addition to the retirement plans.",
+     "citations": [
+      {
+       "page": 59,
+       "quote": "In addition to the Reserve Banks' retirement plans, employees who have met certain age and length-of-service requirements are eligible for both medical and life insurance benefits during retirement."
+      }
+     ],
+     "id": 56
+    },
+    {
+     "text": "The accrued postemployment benefit costs recognized by the Reserve Banks at December 31, 2024 and 2023 were $61 million and $68 million, respectively.",
+     "citations": [
+      {
+       "page": 62,
+       "quote": "The accrued postemployment benefit costs recognized by the Reserve Banks at December 31, 2024 and 2023 were $61 million and $68 million, respectively."
+      }
+     ],
+     "id": 57
+    },
+    {
+     "text": "The Reserve Banks remit excess earnings to the Treasury after providing for the cost of operations, dividend payments, and surplus maintenance.",
+     "citations": [
+      {
+       "page": 63,
+       "quote": "In accordance with the FRA, the Reserve Banks remit excess earnings to the Treasury after providing for the cost of operations, payment of dividends, and reservation of an amount necessary to maintain the Reserve Banks' allocated portion of the aggregate surplus limitation."
+      }
+     ],
+     "id": 58
+    },
+    {
+     "text": "Subsequent events were evaluated through March 12, 2025, which is the date that the combined financial statements were available to be issued.",
+     "citations": [
+      {
+       "page": 64,
+       "quote": "Subsequent events were evaluated through March 12, 2025, which is the date that the combined financial statements were available to be issued."
+      }
+     ],
+     "id": 59
+    }
+   ],
+   "explain": "This document contains the combined financial statements and related disclosures for the Federal Reserve Banks for 2024. It is designed for policymakers, financial analysts, and the public to review the financial position, accounting practices, and operational results of the U.S. central bank.",
+   "explain_note": "Plain-language description; not a factual claim, so not cited.",
+   "rejected": [
+    {
+     "text": "Total assets for the Federal Reserve Banks amounted to $7,068,713 million as of December 31, 2024.",
+     "citations": [
+      {
+       "page": 6,
+       "quote": "Total assets $ 7,068,713 $ 7,835,559"
+      }
+     ],
+     "reason": "number(s) not in the quote: 2024, 31"
+    },
+    {
+     "text": "Total operating expenses for the Reserve Banks reached $9,894 million for the year ended December 31, 2024.",
+     "citations": [
+      {
+       "page": 7,
+       "quote": "Total operating expenses $ 9,894 $ 9,169"
+      }
+     ],
+     "reason": "number(s) not in the quote: 2024, 31"
+    },
+    {
+     "text": "In the year 2024, the Treasury issued ten billion dollars in special drawing rights certificates.",
+     "citations": [
+      {
+       "page": 14,
+       "quote": "In 2024, the Treasury issued $10 billion in SDR certificates."
+      }
+     ],
+     "reason": "the quote does not support the statement"
+    },
+    {
+     "text": "Paycheck Protection Program Liquidity Facility loans are non-recourse loans and only PPP loans guaranteed by the Small Business Administration are eligible to serve as collateral.",
+     "citations": [
+      {
+       "page": 28,
+       "quote": "PPPLF loans are non-recourse loans and only PPP loans guaranteed by the SBA are eligible to serve as collateral for the PPPLF."
+      }
+     ],
+     "reason": "the quote does not support the statement"
+    },
+    {
+     "text": "Interest income attributable to loans outstanding for the Bank Term Funding Program was $4,907 million in 2024 and $4,128 million in 2023.",
+     "citations": [
+      {
+       "page": 29,
+       "quote": "BTFP 4,907 4,128"
+      }
+     ],
+     "reason": "number(s) not in the quote: 2023, 2024"
+    },
+    {
+     "text": "The estimated weighted-average life of residential mortgage-backed securities was 8.3 years as of December 31, 2024, and 8.7 years as of December 31, 2023.",
+     "citations": [
+      {
+       "page": 32,
+       "quote": "Estimated weighted-average life of RMBS 8.3 8.7"
+      }
+     ],
+     "reason": "number(s) not in the quote: 2023, 2024, 31"
+    },
+    {
+     "text": "Total net interest income earned on foreign currency denominated investments held in the SOMA was $328 million for 2024 and $246 million for 2023.",
+     "citations": [
+      {
+       "page": 36,
+       "quote": "Total net interest income $ 328 $ 246"
+      }
+     ],
+     "reason": "number(s) not in the quote: 2023, 2024"
+    },
+    {
+     "text": "Total periodic pension benefit expense was $255 million in 2024 and $295 million in 2023.",
+     "citations": [
+      {
+       "page": 55,
+       "quote": "Total periodic pension benefit expense $ 255 $ 295"
+      }
+     ],
+     "reason": "number(s) not in the quote: 2023, 2024"
+    },
+    {
+     "text": "The long-duration fixed income asset category had a policy weight of 50.0 percent.",
+     "citations": [
+      {
+       "page": 57,
+       "quote": "Long-duration fixed income 50.0 % 47.1 % 51.4 %"
+      }
+     ],
+     "reason": "the quote does not support the statement"
+    }
+   ],
+   "stats": {
+    "sections": 13,
+    "facts_verified": 59,
+    "statements_rejected": 9,
+    "model_calls": 23
+   }
+  },
+  "false_claims": []
+ }
+]

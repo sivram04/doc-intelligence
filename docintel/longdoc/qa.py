@@ -7,7 +7,7 @@ from .llm import Chat
 from .reader import LongDoc
 
 NOT_FOUND = "The document does not state this."
-ON_TOPIC = 0.5  # share of the question's key words the cited quote must contain
+ON_TOPIC = 0.4  # share of the question's key words the cited quote must contain
 
 SYSTEM = """You answer questions about a document using ONLY the passages given.
 Rules:
@@ -27,7 +27,7 @@ def ask(doc: LongDoc, index: Index, question: str, chat: Chat | None = None, k: 
     answer = raw.get("answer")
     if not answer or not isinstance(answer, str):
         return {"question": question, "answer": NOT_FOUND, "found": False, "citations": [], "searched_pages": pages}
-    ok, why, cites = verify.check(answer, raw.get("citations") or [], doc.pages)
+    ok, why, cites = verify.check(answer, raw.get("citations") or [], doc.pages, question)
     if ok and verify.support(question, [c["quote"] for c in cites]) < ON_TOPIC:
         # A real quote that answers a different question ("patents?" -> the headcount line)
         ok, why = False, "the quote does not answer the question"

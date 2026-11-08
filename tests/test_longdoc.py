@@ -108,3 +108,12 @@ def test_real_quote_that_answers_another_question_is_withheld(report):
     off_topic = {"answer": f["answer"], "citations": [{"page": f["page"], "quote": f["sentence"]}]}
     r = ask(doc, index, "How many patents did the company file?", FakeChat([off_topic]))
     assert not r["found"] and r["withheld"]["reason"] == "the quote does not answer the question"
+
+
+def test_year_from_a_table_heading_is_allowed_but_amounts_are_not():
+    """Found on the real Federal Reserve statements: the year is in the column heading, not the quoted row."""
+    page = "Combined Statements of Condition As of December 31, 2024 and December 31, 2023\nTotal assets $ 7,068,713 $ 7,835,559"
+    q = [{"page": 1, "quote": "Total assets $ 7,068,713 $ 7,835,559"}]
+    assert verify.check("Total assets were $7,068,713 million at December 31, 2024.", q, [page])[0]
+    assert not verify.check("Total assets were $7,068,999 million at December 31, 2024.", q, [page])[0]
+    assert not verify.check("Total assets were $7,068,713 million at December 31, 2019.", q, [page])[0]

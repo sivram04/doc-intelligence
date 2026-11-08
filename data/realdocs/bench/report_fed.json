@@ -1,0 +1,12 @@
+{"file": "report_fed.pdf", "source": "https://www.federalreserve.gov/aboutthefed/files/combinedfinstmt2024.pdf",
+ "modality": "native",
+ "facts": [
+  {"q": "What were the total assets of the Reserve Banks at December 31, 2024?", "answer": "7,068,713", "page": 6},
+  {"q": "How much were Federal Reserve notes outstanding, net, at the end of 2024?", "answer": "2,322,532", "page": 6},
+  {"q": "What was total interest income in 2024?", "answer": "158,756", "page": 7},
+  {"q": "What was the net loss before providing for remittances to the Treasury in 2024?", "answer": "77,621", "page": 7},
+  {"q": "What was net income after providing for remittances to the Treasury in 2024?", "answer": "1,483", "page": 7},
+  {"q": "Which firm audited the combined financial statements?", "answer": "KPMG", "page": 4}
+ ],
+ "unanswerable": ["How many patents does the Federal Reserve hold?", "What was the Federal Reserve's market share in Brazil?",
+                  "What is the share price target set by analysts?"]}

@@ -1,0 +1,19 @@
+{
+  "model": "gemini:gemini-3.5-flash-lite",
+  "documents": 1,
+  "questions": 6,
+  "correct": 1,
+  "right_page": 0,
+  "wrong_shown": 0,
+  "not_found": 5,
+  "unanswerable": 3,
+  "unanswerable_ok": 3,
+  "statements": 17,
+  "false_claims": 0,
+  "rejected": 9,
+  "answer_accuracy": 0.167,
+  "citation_page_accuracy": 0.0,
+  "wrong_answer_rate": 0.0,
+  "unanswerable_accuracy": 1.0,
+  "false_claim_rate": 0.0
+}
