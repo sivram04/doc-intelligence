@@ -8,30 +8,30 @@ deployment). Every number below was measured; anything not tested says so.
 
 | | |
 |---|---|
-| Automated tests | 64 passing (`pytest -q`), lint clean (`ruff check .`) |
+| Automated tests | 75 passing + 1 skipped on Windows (`pytest -q`), lint clean (`ruff check .`) |
 | Accuracy benchmarks | 11 runs on about 520 documents, 155 of them real |
 | Bugs found and fixed in this pass | 16, each with a test |
 | Wrong values shown to a user without a flag | 0 in every benchmark (invoices, receipts, journals, long documents) |
-| Not tested yet | Docker stack live, cloud deployment, many users at once, macOS/Linux install |
+| Not tested yet | Docker stack live, cloud deployment, macOS/Linux install |
 
 ## Coverage by area
 
 | # | Area | Automated tests | Benchmarks and manual checks | Status |
 |---|---|---|---|---|
-| 1 | Frontend console | 0 | Browser: sample batch, ZIP and CSV download, journal view, review queue, report summary, citation page view, ask and unanswerable question, phone layout on all 3 tabs | Partial: no automated UI tests; drag-and-drop upload and review submit not clicked in a browser (covered at API level) |
-| 2 | Backend API | 18 | curl: batches, journal, account choice, reports | Partial: `/metrics`, `/ready`, `/review/stats`, `/jobs/{id}/page/{n}.png`, `/demo/seed` have no automated test |
+| 1 | Frontend console | 5 browser tests (Playwright, Edge/Chromium) | Batch upload, ZIP download with the right invoices, journal account change, review fix reaching the CSV, report summary, citation page, answerable and unanswerable questions, phone layout on 3 tabs, hostile file names | Covered |
+| 2 | Backend API | 23 | curl: batches, journal, account choice, reports | Covered (all endpoints, incl. /metrics, /ready, /review/stats, page images, /demo/seed, API keys) |
 | 3 | PDF and OCR processing | 9 | 120+ scanned pages across benchmarks | Covered |
 | 4 | Extraction accuracy | 13 | See results below | Covered |
 | 5 | Accounting, journal, CSV | 15 | 45-invoice journal benchmark | Covered |
 | 6 | Long documents | 8 | 2 synthetic 70-page reports, 1 real 65-page report | Covered |
 | 7 | Security and privacy | 9 | Review of every value the console renders | Covered |
 | 8 | Demo limits | 6 | Live demo server as two visitors | Covered |
-| 9 | Reliability | 2 | Ollama hang reproduced and fixed | Partial: no concurrency test |
+| 9 | Reliability | 3 | Ollama hang reproduced and fixed | Covered: restart resume, 10 simultaneous visitors |
 | 10 | Install (open source) | 0 | Full fresh install on Windows: clone, install, model script, start, process 2 invoices | Windows only |
 | 11 | Docker full stack | 0 | Configuration reviewed, 2 bugs fixed | Not run live (Docker Desktop not running) |
 | 12 | Cloud deployment | 0 | none | Not tested: not deployed yet |
 | 13 | CI on GitHub | workflow exists | passes locally | Not confirmed on GitHub (not pushed) |
-| 14 | Performance and load | 0 | Latency measured per document | No load test |
+| 14 | Performance and load | 1 | 10 visitors uploading at the same moment: no failures, no cross-visitor leaks | Basic load covered; no large-scale test |
 
 ## Accuracy results
 
@@ -101,8 +101,6 @@ questions should be added to this benchmark. Summary time for the real report wa
 | Docker full stack live | Open Docker Desktop once, then `docker compose up` |
 | Cloud deployment (HTTPS, Cloudflare, demo limits live) | Choose the host and deploy |
 | CI on GitHub | Push the branch |
-| Automated browser tests | Playwright, about 10 flows |
-| Many users at once | A simple load test (10 concurrent visitors) |
 | macOS / Linux install | A machine or a CI job on those systems |
 
 ## How to rerun
