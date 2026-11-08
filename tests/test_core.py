@@ -242,3 +242,30 @@ def test_cascade_escalates_on_bad_primary():
     assert c.extract(None, DocType.INVOICE)["total"].value == 999.0 and c.last_route == "primary"
     c = CascadeExtractor(boom, good)
     assert c.extract(None, DocType.INVOICE)["total"].value == 108.0
+
+
+def test_total_read_as_tax_is_repaired_and_sent_to_review():
+    from docintel.extract.normalize import REPAIRED_CONFIDENCE, normalize
+    from docintel.schemas import DocType, ExtractedField as F
+
+    # CORD receipt 8: model copied the subtotal into total and put the grand total in tax
+    f = normalize(DocType.INVOICE, {"subtotal": F(value=45455.0, confidence=0.9),
+                                    "tax": F(value=50000.0, confidence=0.9), "total": F(value=45455.0, confidence=0.9)})
+    assert (f["total"].value, f["tax"].value) == (50000.0, 4545.0)
+    assert f["total"].confidence == REPAIRED_CONFIDENCE
+    # CORD receipt 19: model summed subtotal + "tax" (really the total)
+    f = normalize(DocType.INVOICE, {"subtotal": F(value=160000.0), "tax": F(value=176000.0),
+                                    "total": F(value=336000.0)})
+    assert (f["total"].value, f["tax"].value) == (176000.0, 16000.0)
+
+
+def test_normal_invoice_totals_untouched():
+    from docintel.extract.normalize import normalize
+    from docintel.schemas import DocType, ExtractedField as F
+
+    f = normalize(DocType.INVOICE, {"subtotal": F(value=100.0, confidence=0.9), "tax": F(value=20.0, confidence=0.9),
+                                    "total": F(value=120.0, confidence=0.9)})
+    assert (f["total"].value, f["tax"].value, f["total"].confidence) == (120.0, 20.0, 0.9)
+    # tax larger than subtotal but the leftover is not tax-sized: leave it for the validator to flag
+    f = normalize(DocType.INVOICE, {"subtotal": F(value=100.0), "tax": F(value=900.0), "total": F(value=100.0)})
+    assert f["total"].value == 100.0

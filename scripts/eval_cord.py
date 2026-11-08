@@ -17,10 +17,12 @@ import time
 from pathlib import Path
 
 from docintel.extract.base import coerce
+from docintel.extract.normalize import normalize
 from docintel.extract.registry import make_extractor
 from docintel.pipeline.ocr import analyze
 from docintel.pipeline.preprocess import load_pages
 from docintel.schemas import DocType
+from docintel.validators import validate_document
 
 
 def digits(x) -> str:
@@ -54,6 +56,7 @@ def main() -> None:
     ds = load_dataset("naver-clova-ix/cord-v2", split="test")
     ex = make_extractor(a.extractor)
     hits = {"total": [0, 0], "subtotal": [0, 0], "tax": [0, 0]}
+    safety = [0, 0]  # wrong totals, wrong totals with no flag and no low-confidence field
     rows_tp = rows_pred = rows_gold = 0
     lat, failures, per_doc = [], 0, []
     tmp = Path(tempfile.mkdtemp())
@@ -64,13 +67,20 @@ def main() -> None:
         t0 = time.perf_counter()
         try:
             layout = analyze(*load_pages(str(img)), engine=a.ocr)
-            fields = ex.extract(layout, DocType.INVOICE)
+            fields = normalize(DocType.INVOICE, ex.extract(layout, DocType.INVOICE))  # same as the app
         except Exception as e:  # noqa: BLE001 - count and continue; a failed receipt scores zero
             failures += 1
             per_doc.append({"i": k, "error": str(e)[:200]})
             fields = {}
         lat.append((time.perf_counter() - t0) * 1000)
         pred = {n: (fields[n].value if n in fields else None) for n in ("total", "subtotal", "tax")}
+        flags = validate_document(DocType.INVOICE, fields) if fields else ["extraction failed"]
+        low = [n for n in ("total", "subtotal", "tax") if n in fields and fields[n].confidence < 0.5]
+        caught = bool(flags or low)
+        if gold["total"] is not None:
+            wrong = pred["total"] is None or coerce(gold["total"], float) != pred["total"]
+            safety[0] += wrong
+            safety[1] += wrong and not caught
         for n, h in hits.items():
             if gold[n] is not None:
                 h[1] += 1
@@ -85,13 +95,14 @@ def main() -> None:
                 rows_tp += 1
         rows_pred += len(pitems)
         rows_gold += len(gold["items"])
-        per_doc.append({"i": k, "gold": gold, "pred": pred, "rows_pred": len(pitems)})
+        per_doc.append({"i": k, "gold": gold, "pred": pred, "rows_pred": len(pitems), "flags": flags, "low_conf": low})
     p = rows_tp / rows_pred if rows_pred else 0.0
     r = rows_tp / rows_gold if rows_gold else 0.0
     lat.sort()
     report = {"dataset": "naver-clova-ix/cord-v2 test", "extractor": ex.name, "ocr": a.ocr, "receipts": len(lat), "failures": failures,
               "field_accuracy": {n: round(h / t, 4) if t else None for n, (h, t) in hits.items()},
               "field_support": {n: t for n, (_, t) in hits.items()},
+              "wrong_totals": safety[0], "wrong_totals_unflagged": safety[1],
               "line_item_amounts": {"precision": round(p, 4), "recall": round(r, 4),
                                     "f1": round(2 * p * r / (p + r), 4) if p + r else 0.0, "gold_rows": rows_gold},
               "p50_latency_ms": round(lat[len(lat) // 2]), "p95_latency_ms": round(lat[int(0.95 * (len(lat) - 1))])}

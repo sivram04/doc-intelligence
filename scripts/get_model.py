@@ -12,9 +12,9 @@ from pathlib import Path
 
 import httpx
 
-REPO = "sivram04/docintel-qwen1.5b-ft-v4-GGUF"
+REPO = "sivram04/docintel-qwen1.5b-ft-v5-GGUF"
 FILE = "model-q8_0.gguf"
-NAME = "docintel-qwen1.5b-ft-v4"
+NAME = "docintel-qwen1.5b-ft-v5"
 
 
 def download(url: str, dest: Path) -> None:

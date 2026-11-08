@@ -3,6 +3,10 @@
 - Party names: first line only (models often append the address).
 - Currency: symbols to ISO codes.
 - Discount: stored as a positive amount, however it is printed.
+- Totals: small models sometimes put the grand total in the tax field (receipts that print
+  "Subtotal / Tax / Total" in a narrow column). When tax exceeds the subtotal and the
+  numbers only add up with tax read as the total, the two are put back and marked
+  low-confidence, so the document still goes to review.
 - Tax IDs: OCR on scans confuses I/1, O/0, S/5, B/8, Z/2. GSTINs and EU VAT numbers
   have fixed layouts (which positions are letters, which are digits), so a
   misread character can be put back when only one reading fits. IDs that still
@@ -84,11 +88,39 @@ RULES = {
 }
 
 
+REPAIRED_CONFIDENCE = 0.4  # below every review threshold: a repaired total is always checked by a person
+
+
+def _num(f: ExtractedField[Any] | None) -> float | None:
+    return float(f.value) if f is not None and isinstance(f.value, (int, float)) else None
+
+
+def repair_total_in_tax(fields: dict[str, ExtractedField[Any]]) -> bool:
+    """Tax read as the grand total: tax > subtotal, and the printed total equals the subtotal
+    (model copied it) or subtotal + tax (model summed them). Then tax - subtotal is the real tax."""
+    sub, tax, tot = (_num(fields.get(n)) for n in ("subtotal", "tax", "total"))
+    if None in (sub, tax) or sub <= 0 or tax <= sub:
+        return False
+    disc = abs(_num(fields.get("discount")) or 0.0)
+    ship = _num(fields.get("shipping")) or 0.0
+    base = sub - disc + ship
+    if tot is not None and not (abs(tot - sub) <= 0.01 or abs(tot - (sub + tax)) <= 0.01):
+        return False
+    if not 0 < tax - base <= 0.35 * base:  # what is left must look like a tax, not another amount
+        return False
+    fields["total"] = ExtractedField(value=round(tax, 2), confidence=REPAIRED_CONFIDENCE,
+                                     source_text=fields["tax"].source_text)
+    fields["tax"] = ExtractedField(value=round(tax - base, 2), confidence=REPAIRED_CONFIDENCE)
+    return True
+
+
 def normalize(doc_type: DocType, fields: dict[str, ExtractedField[Any]]) -> dict[str, ExtractedField[Any]]:
     for name, fn in RULES.get(doc_type, {}).items():
         f = fields.get(name)
         if f is not None and f.value is not None:
             f.value = fn(f.value)
+    if doc_type == DocType.INVOICE:
+        repair_total_in_tax(fields)
     return fields
 
 
