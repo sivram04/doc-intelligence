@@ -105,3 +105,16 @@ def test_normalisation_repairs_ocr_misreads_only_when_the_format_is_unambiguous(
     assert known_tax_id("291IQXWV4428X1Z0") is False      # extra character: flagged, not guessed
     assert currency("£") == "GBP" and currency("Rs.") == "INR" and currency("eur") == "EUR"
     assert first_line("Acme Ltd\n1 High Street") == "Acme Ltd"
+
+
+def test_line_items_off_from_subtotal_but_matching_total_need_no_suspense():
+    """Seen in QA: two offsetting 28,585.51 suspense lines when items disagreed with the subtotal only."""
+    from docintel.accounting import build_entry
+    f = {"invoice_number": "GST/1", "invoice_date": "05/11/2026", "vendor_name": "A Ltd", "currency": "INR",
+         "subtotal": 793459.31, "tax": 41102.24, "total": 863147.06,
+         "line_items": [{"description": "Desk lamp LED", "amount": 172904.31},
+                        {"description": "Monitor 27in", "amount": 649140.51}]}
+    e = build_entry(f, "x.pdf", "JE-1")
+    assert not [ln for ln in e.lines if ln.account_code == "9999"]
+    assert e.needs_review and any("Line items sum" in i for i in e.issues)
+    assert round(e.debits, 2) == round(e.credits, 2) == 863147.06

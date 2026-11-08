@@ -307,7 +307,17 @@ def build_entry(fields: dict, file: str, entry_id: str, text: str = "", coa: dic
         if abs(diff) <= ROUNDING_LIMIT:
             add(coa["rounding"], abs(diff), "rounding", on=fix_on)
         else:
-            e.issues.append(f"Total {total:,.2f} != subtotal - discount + tax + shipping ({implied:,.2f})")
-            add(coa["suspense"], abs(diff), "unbalanced difference", 0.0, "unexplained", on=fix_on)
+            # One suspense line, net: if the line items disagreed with the subtotal but agree with the total,
+            # the two differences cancel and the entry needs no suspense line at all (the issue stays listed).
+            prior = next((ln for ln in e.lines if ln.account_code == coa["suspense"]["code"]), None)
+            net = round(diff + ((prior.credit - prior.debit) if prior else 0.0), 2)
+            if prior:
+                e.lines.remove(prior)
+            if abs(net) > ROUNDING_LIMIT or (net and not prior):
+                e.issues.append(f"Total {total:,.2f} != subtotal - discount + tax + shipping ({implied:,.2f})")
+                add(coa["suspense"], abs(net), "unexplained difference", 0.0, "unexplained",
+                    on="credit" if net > 0 else "debit")
+            elif net:
+                add(coa["rounding"], abs(net), "rounding", on="credit" if net > 0 else "debit")
     assert abs(e.debits - e.credits) < 0.005, "entry must balance"
     return e
