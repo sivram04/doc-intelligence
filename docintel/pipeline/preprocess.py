@@ -52,6 +52,9 @@ def denoise(gray: np.ndarray) -> np.ndarray:
 def load_pages(path: str, dpi: int = 200) -> tuple[fitz.Document, list[Page]]:
     """Open PDF or image; image files are wrapped as a single-page PDF."""
     doc = fitz.open(path)
+    if doc.needs_pass:
+        raise ValueError("This PDF is password-protected. Remove the password (for example, print it to a new PDF) "
+                         "and upload it again.")
     if not doc.is_pdf:
         doc = fitz.open("pdf", doc.convert_to_pdf())
     pages = []

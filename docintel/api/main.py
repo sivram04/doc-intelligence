@@ -56,6 +56,7 @@ DEMO_MAX_DOCS = int(os.getenv("DEMO_MAX_DOCS", "2"))        # per visitor per da
 DEMO_MAX_PAGES = int(os.getenv("DEMO_MAX_PAGES", "3"))      # per document
 DEMO_DAILY_CAP = int(os.getenv("DEMO_DAILY_CAP", "150"))    # all visitors together (free LLM quota)
 DEMO_TTL = float(os.getenv("DEMO_TTL_HOURS", "24")) * 3600
+TRUST_CLOUDFLARE = os.getenv("TRUST_CLOUDFLARE", "").lower() in ("1", "true", "yes")
 REPO_URL = os.getenv("REPO_URL", "https://github.com/sivram04/doc-intelligence")
 COOKIE = "docintel_visitor"
 DAY = 86400
@@ -109,7 +110,9 @@ def visitor(request: Request, response: Response) -> str:
 def client_of(request: Request) -> str:
     """Salted hash of the caller's IP (Cloudflare header first), so limits survive cleared cookies
     without storing addresses."""
-    ip = request.headers.get("cf-connecting-ip") or (request.client.host if request.client else "")
+    ip = request.client.host if request.client else ""
+    if TRUST_CLOUDFLARE:  # only behind Cloudflare: anyone can send this header to a server reached directly
+        ip = request.headers.get("cf-connecting-ip") or ip
     salt = os.getenv("DEMO_SALT", "docintel")
     return hashlib.sha256(f"{salt}:{ip}".encode()).hexdigest()[:16]
 
@@ -536,7 +539,13 @@ async def upload_report(request: Request, file: UploadFile = File(...),  # noqa:
     try:
         n = page_count(data, ext)
     except Exception:  # noqa: BLE001
-        raise HTTPException(415, "Could not open this PDF") from None
+        raise HTTPException(415, "Could not open this PDF: it is damaged or password-protected") from None
+    if n < 1:
+        raise HTTPException(415, "This PDF has no readable pages: it may be damaged")
+    if ext == ".pdf":
+        with pymupdf.open(stream=data, filetype="pdf") as d:
+            if d.needs_pass:
+                raise HTTPException(415, "This PDF is password-protected. Remove the password and upload it again.")
     limit = DEMO_LONGDOC_PAGES if DEMO else MAX_LONGDOC_PAGES
     if n > limit:
         msg = f"This instance accepts documents of up to {limit} pages."
@@ -551,10 +560,10 @@ async def upload_report(request: Request, file: UploadFile = File(...),  # noqa:
     rid = uuid.uuid4().hex[:16]
     (LONGDOC_DIR / rid).mkdir(parents=True)
     src = LONGDOC_DIR / rid / "source.pdf"
-    if ext == "pdf":
+    if ext == ".pdf":  # sniff() returns the extension with its dot
         src.write_bytes(data)
     else:
-        with pymupdf.open(stream=data, filetype=ext) as img:
+        with pymupdf.open(stream=data, filetype=ext.lstrip(".")) as img:
             src.write_bytes(img.convert_to_pdf())
     _ld_save(rid, id=rid, owner=owner, client=client, file=file.filename or "document.pdf", pages=n, status="queued",
              progress=0.0, created=time.time(), questions=0)
