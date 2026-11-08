@@ -9,6 +9,7 @@ jobs:
         with: {python-version: "3.12"}
       - run: sudo apt-get update && sudo apt-get install -y tesseract-ocr
       - run: pip install -e ".[dev,ocr]"
+      - run: python -m playwright install --with-deps chromium   # browser tests (tests/test_ui.py)
       - run: ruff check .
       - run: pytest -q
       - name: Small extraction eval (N5)

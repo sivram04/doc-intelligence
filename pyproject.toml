@@ -14,7 +14,7 @@ docintel = "docintel.__main__:main"
 
 [project.optional-dependencies]
 ocr = ["pytesseract"]
-dev = ["pytest", "ruff"]
+dev = ["pytest", "ruff", "playwright"]
 ocr-neural = ["rapidocr-onnxruntime"]
 # Everything a self-hosted install needs (scans read without installing Tesseract)
 local = ["pytesseract", "rapidocr-onnxruntime"]
