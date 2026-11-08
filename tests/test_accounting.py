@@ -127,3 +127,10 @@ def test_receipt_dates_drop_the_printed_time():
     assert date_only("13 May 2018 18:26") == "13 May 2018"
     assert date_only("19-04-2018 13:43:54") == "19-04-2018"
     assert date_only("05/11/2026") == "05/11/2026"
+
+
+def test_malaysian_ringgit():
+    from docintel.accounting import detect_currency
+    from docintel.extract.normalize import currency
+    assert currency("RM") == "MYR"
+    assert detect_currency({}, "TOTAL RM 42.90 GST 6%") == "MYR"

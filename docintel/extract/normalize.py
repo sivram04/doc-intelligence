@@ -22,7 +22,8 @@ from ..schemas import DocType, ExtractedField
 TO_DIGIT = {"O": "0", "Q": "0", "D": "0", "I": "1", "L": "1", "T": "1", "Z": "2", "S": "5", "B": "8", "G": "6"}
 TO_LETTER = {v: k for k, v in {"O": "0", "I": "1", "Z": "2", "S": "5", "B": "8", "G": "6"}.items()}
 CURRENCY = {"$": "USD", "US$": "USD", "₹": "INR", "RS": "INR", "RS.": "INR", "€": "EUR", "£": "GBP", "¥": "JPY",
-            "A$": "AUD", "C$": "CAD", "S$": "SGD", "EURO": "EUR", "EUROS": "EUR", "DOLLARS": "USD", "RUPEES": "INR"}
+            "A$": "AUD", "C$": "CAD", "S$": "SGD", "EURO": "EUR", "EUROS": "EUR", "DOLLARS": "USD", "RUPEES": "INR",
+            "RM": "MYR", "RM.": "MYR", "RINGGIT": "MYR"}
 # Layout per ID type: L = letter, D = digit, A = either
 GSTIN_LAYOUT = "DDLLLLLDDDDLAZA"
 VAT_LAYOUT = {"DE": "DDDDDDDDD", "FR": "AADDDDDDDDD", "NL": "DDDDDDDDDBDD", "ES": "ADDDDDDDA", "IT": "DDDDDDDDDDD",

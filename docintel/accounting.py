@@ -140,10 +140,12 @@ def detect_currency(fields: dict, text: str = "") -> str | None:
     tax_id = f"{fields.get('vendor_tax_id') or ''} {fields.get('buyer_tax_id') or ''}"
     if GSTIN.search(tax_id) or "₹" in text or re.search(r"\bINR\b|\bRs\.?\s?\d", text):
         return "INR"
+    if re.search(r"\bRM\s?\d|\bMYR\b|\bringgit\b", text, re.IGNORECASE):
+        return "MYR"
     for sym, code in (("€", "EUR"), ("£", "GBP")):
         if sym in text:
             return code
-    m = re.search(r"\b(USD|EUR|GBP|INR|CAD|AUD|SGD|AED|JPY|CHF)\b", text)
+    m = re.search(r"\b(USD|EUR|GBP|INR|CAD|AUD|SGD|AED|JPY|CHF|MYR)\b", text)
     return m.group(1) if m else ("USD" if "$" in text else None)
 
 
