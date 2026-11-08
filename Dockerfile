@@ -5,7 +5,7 @@ WORKDIR /app
 COPY pyproject.toml .
 COPY docintel docintel
 RUN pip install --no-cache-dir ".[ocr]"
-RUN useradd --system --uid 10001 docintel && mkdir -p /app/data/uploads /app/data/corrections /app/models && chown -R docintel /app/data /app/models
+RUN useradd --system --uid 10001 docintel && mkdir -p /app/data/uploads /app/data/corrections /app/data/longdocs /app/models && chown -R docintel /app/data /app/models
 USER docintel
 ENV PYTHONUNBUFFERED=1
 HEALTHCHECK --interval=15s --timeout=3s --retries=5 CMD curl -fsS http://localhost:8080/health || exit 1

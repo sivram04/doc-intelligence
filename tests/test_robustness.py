@@ -169,3 +169,28 @@ def test_spoofed_cloudflare_header_does_not_reset_the_demo_limit(tmp_path, monke
                    files=[("files", ("a.pdf", pdf_bytes(), "application/pdf"))])
         codes.append(r.status_code)
     assert codes == [202, 202, 429]
+
+
+def test_unfinished_reports_resume_after_restart(tmp_path, monkeypatch):
+    m = _app(tmp_path, monkeypatch, demo=False)
+    monkeypatch.setattr(m, "LONGDOC_DIR", tmp_path / "ld")
+    started = []
+    monkeypatch.setattr(m, "_ld_process", started.append)
+    rid = TestClient(m.app).post("/reports", files={"file": ("r.pdf", pdf_bytes(), "application/pdf")}).json()["report_id"]
+    m._ld_save(rid, status="reading", progress=0.2)  # the server died here
+    started.clear()
+    with TestClient(m.app):  # entering the client runs the startup hooks, like a restart
+        pass
+    assert started == [rid] and m._ld_state(rid)["status"] == "queued"
+
+
+def test_unfinished_documents_resume_after_restart(tmp_path, monkeypatch):
+    m = _app(tmp_path, monkeypatch, demo=False)
+    m.pool.submit = lambda *a, **k: None  # upload without processing: simulates a crash before the job ran
+    c = TestClient(m.app)
+    job = c.post("/batches", files=[("files", ("a.pdf", pdf_bytes(), "application/pdf"))]).json()["accepted"][0]["job_id"]
+    ran = []
+    m.pool.submit = lambda fn, *a: ran.append(a[0])
+    with TestClient(m.app):
+        pass
+    assert ran == [job]

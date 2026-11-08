@@ -7,11 +7,13 @@ x-app: &app
     API_KEYS: ${API_KEYS:-}
     OLLAMA_BASE_URL: ${DOCKER_OLLAMA_URL:-http://host.docker.internal:11434}
     GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+    SUMMARY_MODEL: ${SUMMARY_MODEL:-}
     WORKERS: ${WORKERS:-2}
     OMP_THREAD_LIMIT: "1"
   volumes:
     - uploads:/app/data/uploads
     - corrections:/app/data/corrections
+    - longdocs:/app/data/longdocs
     - ./models:/app/models:ro
   extra_hosts: ["host.docker.internal:host-gateway"]
   depends_on:
@@ -53,4 +55,4 @@ services:
     volumes: ["./infra/grafana/datasources.yml:/etc/grafana/provisioning/datasources/ds.yml:ro"]
     ports: ["3000:3000"]
 
-volumes: {pgdata: {}, redisdata: {}, uploads: {}, corrections: {}, mlflow: {}}
+volumes: {pgdata: {}, redisdata: {}, uploads: {}, corrections: {}, longdocs: {}, mlflow: {}}

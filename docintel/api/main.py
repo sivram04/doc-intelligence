@@ -510,6 +510,24 @@ def _ld_process(rid: str) -> None:
         _ld_save(rid, status="failed", error=str(e)[:300])
 
 
+@app.on_event("startup")
+def _ld_resume() -> None:
+    """Documents and reports that were mid-way when the server stopped start again instead of staying stuck.
+    (With Redis the arq worker owns the queue, so only the in-process pool is resumed here.)"""
+    if not os.getenv("REDIS_URL"):
+        for j in store.jobs():
+            if j["status"] in ("queued", "running") and Path(j["path"]).exists():
+                store.update_job(j["job_id"], status="queued")
+                pool.submit(_run, j["job_id"], Path(j["path"]))
+    if not LONGDOC_DIR.exists():
+        return
+    for d in LONGDOC_DIR.iterdir():
+        st = _ld_state(d.name)
+        if st and st.get("status") not in ("done", "failed") and (d / "source.pdf").exists():
+            _ld_save(d.name, status="queued", progress=0.0, resumed=True)
+            pool.submit(_ld_process, d.name)
+
+
 def _ld_loaded(rid: str):
     if rid not in _indexes:
         from ..longdoc.index import Index

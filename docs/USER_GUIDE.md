@@ -283,7 +283,6 @@ Interactive API docs: http://localhost:8030/docs
 | Port 8030 is in use | `docintel --port 8040` |
 | A document is very slow | Normal for long scans on a CPU. Long multi-page bank statements can take a few minutes. |
 | A document is the wrong type, or fields are empty | Check its page in the Review tab. Very blurry photos and handwritten documents are not supported. |
-| Status stays **Queued** after a restart | Documents queued when the app stopped are not resumed; upload them again. |
 | Start again from empty | Stop the app and delete the `data/` folder. |
 
 ## 13. Privacy
