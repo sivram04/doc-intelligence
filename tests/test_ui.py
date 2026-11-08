@@ -17,10 +17,10 @@ import pytest
 
 pw = pytest.importorskip("playwright.sync_api")
 
-from docintel.schemas import ExtractedField  # noqa: E402
-from docintel.synth.intl_invoices import generate as make_invoices  # noqa: E402
-from docintel.synth.report import generate as make_reports  # noqa: E402
-from tests.test_batches import _app  # noqa: E402
+from docintel.schemas import ExtractedField
+from docintel.synth.intl_invoices import generate as make_invoices
+from docintel.synth.report import generate as make_reports
+from tests.test_batches import _app
 
 
 class KnownAnswers:
@@ -82,9 +82,9 @@ def site(tmp_path_factory):
     import docintel.jobs
     mp.setattr(docintel.jobs, "make_extractor", lambda spec: KnownAnswers(gts))
     rgt = make_reports(tmp / "rep", 1, 12, 4, scan=False)[0]
+    import docintel.longdoc.index
     import docintel.longdoc.qa
     import docintel.longdoc.summarize
-    import docintel.longdoc.index
     mp.setattr(docintel.longdoc.summarize, "Chat", lambda *a: ReportChat(rgt))
     mp.setattr(docintel.longdoc.qa, "Chat", lambda *a: ReportChat(rgt))
     mp.setattr(docintel.longdoc.index, "embed", lambda *a, **k: None)
