@@ -35,7 +35,9 @@ def norm_name(s) -> str:
 
 
 def same_vendor(pred, gold) -> bool:
-    p, g = norm_name(pred), norm_name(gold)
+    """Same letters, ignoring spacing and punctuation (OCR often merges words: GARDENIABAKERIES(KL))
+    and registration numbers; a misread letter (SANYO for SANYU) still counts as wrong."""
+    p, g = (re.sub(r"\d{4,}\w*|[^a-z]", "", norm_name(x).replace(" ", "")) for x in (pred, gold))
     return bool(p) and (p == g or (len(p) >= 6 and (p in g or g in p)))
 
 

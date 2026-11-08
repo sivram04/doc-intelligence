@@ -118,3 +118,12 @@ def test_line_items_off_from_subtotal_but_matching_total_need_no_suspense():
     assert not [ln for ln in e.lines if ln.account_code == "9999"]
     assert e.needs_review and any("Line items sum" in i for i in e.issues)
     assert round(e.debits, 2) == round(e.credits, 2) == 863147.06
+
+
+def test_receipt_dates_drop_the_printed_time():
+    """Found on real SROIE receipts: '12/06/2018 19:40' reached the date column with the time."""
+    from docintel.extract.normalize import date_only
+    assert date_only("12/06/2018 19:40") == "12/06/2018"
+    assert date_only("13 May 2018 18:26") == "13 May 2018"
+    assert date_only("19-04-2018 13:43:54") == "19-04-2018"
+    assert date_only("05/11/2026") == "05/11/2026"

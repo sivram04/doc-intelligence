@@ -1,0 +1,14 @@
+{
+  "dataset": "SROIE (Voxel51/scanned_receipts)",
+  "extractor": "gemini:gemini-3.5-flash-lite",
+  "receipts": 40,
+  "failures": 0,
+  "accuracy": {
+    "vendor": 0.625,
+    "date": 0.85,
+    "total": 0.925
+  },
+  "wrong_totals": 3,
+  "wrong_total_unflagged": 0,
+  "p50_seconds": 12.2
+}

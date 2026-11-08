@@ -74,6 +74,14 @@ def currency(raw: str | None) -> str | None:
     return CURRENCY.get(s.upper(), CURRENCY.get(s, s))
 
 
+TIME_SUFFIX = re.compile(r"[\sT,]+\d{1,2}:\d{2}(?::\d{2})?(?:\s*[AaPp]\.?[Mm]\.?)?\s*$")
+
+
+def date_only(raw: str | None) -> str | None:
+    """Receipts print the time next to the date ('12/06/2018 19:40'); the date field keeps the date."""
+    return TIME_SUFFIX.sub("", str(raw)).strip() or raw if raw else raw
+
+
 def first_line(raw: str | None) -> str | None:
     if not raw:
         return raw
@@ -83,6 +91,7 @@ def first_line(raw: str | None) -> str | None:
 
 RULES = {
     DocType.INVOICE: {"vendor_name": first_line, "bill_to": first_line, "currency": currency,
+                      "invoice_date": date_only, "due_date": date_only,
                       "vendor_tax_id": tax_id, "buyer_tax_id": tax_id,
                       "discount": lambda v: abs(v) if isinstance(v, (int, float)) else v},
 }
