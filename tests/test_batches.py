@@ -108,3 +108,22 @@ def test_demo_isolates_visitors_and_caps_uploads(tmp_path, monkeypatch, case_dir
     assert bob.get(f"/jobs/{r['accepted'][0]['job_id']}").status_code == 404
     assert bob.get("/review/queue").json() == [] and bob.get("/batches").json() == []
     assert bob.post("/batches", files=_files(case_dir, 1)).status_code == 429
+
+
+def test_demo_report_limit_follows_network_not_just_cookie(tmp_path, monkeypatch):
+    """Clearing cookies (a new browser id) must not reset the long-document demo limit."""
+    import pymupdf
+    from fastapi.testclient import TestClient
+
+    import docintel.api.main as m
+    monkeypatch.setattr(m, "DEMO", True)
+    monkeypatch.setattr(m, "LONGDOC_DIR", tmp_path)
+    monkeypatch.setattr(m, "_ld_process", lambda rid: None)
+    doc = pymupdf.open()
+    doc.new_page().insert_text((72, 72), "Annual report page one with enough text to count as native.")
+    pdf = doc.tobytes()
+    codes = []
+    for _ in range(m.DEMO_MAX_DOCS + 1):
+        c = TestClient(m.app)  # fresh client = no cookie, same address
+        codes.append(c.post("/reports", files={"file": ("r.pdf", pdf, "application/pdf")}).status_code)
+    assert codes == [202] * m.DEMO_MAX_DOCS + [429]

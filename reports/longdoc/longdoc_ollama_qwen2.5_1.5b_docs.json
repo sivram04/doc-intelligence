@@ -1,0 +1,1884 @@
+[
+ {
+  "file": "report00.pdf",
+  "pages": 70,
+  "modality": "native",
+  "read_index_s": 14.4,
+  "summary_s": 284.1,
+  "qa": [
+   {
+    "q": "What was group revenue in 2024?",
+    "gold": "886.8",
+    "gold_page": 9,
+    "question": "What was group revenue in 2024?",
+    "answer": "$886.8 million",
+    "found": true,
+    "citations": [
+     {
+      "page": 9,
+      "quote": "Group revenue for 2024 was $886.8 million, an increase of 11.3% on the prior year."
+     }
+    ],
+    "searched_pages": [
+     1,
+     9,
+     22,
+     26,
+     31,
+     66
+    ]
+   },
+   {
+    "q": "By what percentage did revenue grow compared with the prior year?",
+    "gold": "11.3",
+    "gold_page": 9,
+    "question": "By what percentage did revenue grow compared with the prior year?",
+    "answer": "11.3%",
+    "found": true,
+    "citations": [
+     {
+      "page": 9,
+      "quote": "Group revenue for 2024 was $886.8 million, an increase of 11.3% on the prior year."
+     }
+    ],
+    "searched_pages": [
+     9,
+     22,
+     26,
+     31,
+     40,
+     51
+    ]
+   },
+   {
+    "q": "What was the operating profit?",
+    "gold": "114.4",
+    "gold_page": 10,
+    "question": "What was the operating profit?",
+    "answer": "$114.4 million",
+    "found": true,
+    "citations": [
+     {
+      "page": 10,
+      "quote": "Operating profit reached $114.4 million, giving an operating margin of 12.9%."
+     }
+    ],
+    "searched_pages": [
+     9,
+     10,
+     22,
+     26,
+     31,
+     51
+    ]
+   },
+   {
+    "q": "What was the operating margin?",
+    "gold": "12.9",
+    "gold_page": 10,
+    "question": "What was the operating margin?",
+    "answer": "12.9%",
+    "found": true,
+    "citations": [
+     {
+      "page": 10,
+      "quote": "Operating profit reached $114.4 million, giving an operating margin of 12.9%."
+     }
+    ],
+    "searched_pages": [
+     10,
+     22,
+     26,
+     40,
+     51,
+     63
+    ]
+   },
+   {
+    "q": "What was revenue in the fourth quarter?",
+    "gold": "248.3",
+    "gold_page": 22,
+    "question": "What was revenue in the fourth quarter?",
+    "answer": "$248.3 million",
+    "found": true,
+    "citations": [
+     {
+      "page": 22,
+      "quote": "Fourth-quarter revenue was $248.3 million, the strongest quarter of the year, compared with $204.0 million in the first quarter."
+     }
+    ],
+    "searched_pages": [
+     9,
+     22,
+     26,
+     41,
+     50
+    ]
+   },
+   {
+    "q": "Which segment was the largest, and what share of revenue did it contribute?",
+    "gold": "34",
+    "gold_page": 26,
+    "question": "Which segment was the largest, and what share of revenue did it contribute?",
+    "answer": "The Digital Solutions segment contributed 34% of group revenue and remained the largest segment.",
+    "found": true,
+    "citations": [
+     {
+      "page": 26,
+      "quote": "This section also covers information security for the period under review. The Digital Solutions segment contributed 34% of group revenue and remained the largest segment."
+     }
+    ],
+    "searched_pages": [
+     9,
+     10,
+     22,
+     26,
+     27,
+     31
+    ]
+   },
+   {
+    "q": "How many people did the company employ at year end?",
+    "gold": "9,049",
+    "gold_page": 31,
+    "question": "How many people did the company employ at year end?",
+    "answer": "9,049 people",
+    "found": true,
+    "citations": [
+     {
+      "page": 31,
+      "quote": "At the end of 2024 the company employed 9,049 people, of whom 36% were women."
+     }
+    ],
+    "searched_pages": [
+     1,
+     9,
+     22,
+     31,
+     41,
+     51
+    ]
+   },
+   {
+    "q": "What percentage of employees were women?",
+    "gold": "36",
+    "gold_page": 31,
+    "question": "What percentage of employees were women?",
+    "answer": "36%",
+    "found": true,
+    "citations": [
+     {
+      "page": 31,
+      "quote": "At the end of 2024 the company employed 9,049 people, of whom 36% were women."
+     }
+    ],
+    "searched_pages": [
+     3,
+     10,
+     22,
+     26,
+     31,
+     38
+    ]
+   },
+   {
+    "q": "What were the Scope 1 and 2 emissions?",
+    "gold": "74,212",
+    "gold_page": 38,
+    "question": "What were the Scope 1 and 2 emissions?",
+    "answer": "Scope 1 and 2 emissions fell 21% to 74,212 tonnes of CO2 equivalent.",
+    "found": true,
+    "citations": [
+     {
+      "page": 38,
+      "quote": "Scope 1 and 2 emissions fell 21% to 74,212 tonnes of CO2 equivalent."
+     }
+    ],
+    "searched_pages": [
+     7,
+     14,
+     26,
+     27,
+     38,
+     40
+    ]
+   },
+   {
+    "q": "By what year does the company aim to reach net zero operational emissions?",
+    "gold": "2028",
+    "gold_page": 40,
+    "question": "By what year does the company aim to reach net zero operational emissions?",
+    "answer": "2028",
+    "found": true,
+    "citations": [
+     {
+      "page": 40,
+      "quote": "The board has committed to reaching net zero operational emissions by 2028."
+     }
+    ],
+    "searched_pages": [
+     1,
+     9,
+     22,
+     31,
+     38,
+     40
+    ]
+   },
+   {
+    "q": "What final dividend per share does the board recommend?",
+    "gold": "0.55",
+    "gold_page": 56,
+    "question": "What final dividend per share does the board recommend?",
+    "answer": "$0.55 per share",
+    "found": true,
+    "citations": [
+     {
+      "page": 56,
+      "quote": "The board recommends a final dividend of $0.55 per share."
+     }
+    ],
+    "searched_pages": [
+     22,
+     26,
+     31,
+     40,
+     56,
+     63
+    ]
+   },
+   {
+    "q": "How much capital expenditure is planned for 2025?",
+    "gold": "61",
+    "gold_page": 66,
+    "question": "How much capital expenditure is planned for 2025?",
+    "answer": "$61 million",
+    "found": true,
+    "citations": [
+     {
+      "page": 66,
+      "quote": "Capital expenditure of $61 million is planned for 2025, mainly for a new facility in Tylerton."
+     }
+    ],
+    "searched_pages": [
+     7,
+     27,
+     46,
+     63,
+     66,
+     67
+    ]
+   },
+   {
+    "q": "Who is the Chief Executive Officer?",
+    "gold": "Rhys Pearce-Jones",
+    "gold_page": 59,
+    "question": "Who is the Chief Executive Officer?",
+    "answer": "Rhys Pearce-Jones",
+    "found": true,
+    "citations": [
+     {
+      "page": 59,
+      "quote": "Rhys Pearce-Jones serves as Chief Executive Officer and Ellie Rice as Chief Financial Officer."
+     }
+    ],
+    "searched_pages": [
+     26,
+     27,
+     31,
+     40,
+     59,
+     63
+    ]
+   },
+   {
+    "q": "Who chairs the board?",
+    "gold": "Edward Hutchinson",
+    "gold_page": 63,
+    "question": "Who chairs the board?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     26,
+     27,
+     40,
+     51,
+     56,
+     63
+    ],
+    "withheld": {
+     "answer": "Edward Hutchinson",
+     "reason": "quote not found on the cited page"
+    }
+   },
+   {
+    "q": "How many customer complaints were recorded?",
+    "gold": null,
+    "question": "How many customer complaints were recorded?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     1,
+     3,
+     10,
+     13,
+     22,
+     31
+    ]
+   },
+   {
+    "q": "What was the company's market share in Brazil?",
+    "gold": null,
+    "question": "What was the company's market share in Brazil?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     1,
+     22,
+     26,
+     31,
+     41,
+     56
+    ]
+   },
+   {
+    "q": "What is the share price target set by analysts?",
+    "gold": null,
+    "question": "What is the share price target set by analysts?",
+    "answer": "The board recommends a final dividend of $0.55 per share.",
+    "found": true,
+    "citations": [
+     {
+      "page": 56,
+      "quote": "The board recommends a final dividend of $0.55 per share."
+     }
+    ],
+    "searched_pages": [
+     22,
+     26,
+     40,
+     51,
+     56,
+     63
+    ]
+   }
+  ],
+  "summary": {
+   "model": "ollama:qwen2.5:1.5b",
+   "overview": [],
+   "key_points": [
+    {
+     "text": "Operating profit reached $114.4 million, giving an operating margin of 12.9%.",
+     "citations": [
+      {
+       "page": 10,
+       "quote": "Operating profit reached $114.4 million, giving an operating margin of 12.9%."
+      }
+     ],
+     "id": 1
+    },
+    {
+     "text": "This section also covers travel policy for the period under review.",
+     "citations": [
+      {
+       "page": 11,
+       "quote": "This section also covers travel policy for the period under review."
+      }
+     ],
+     "id": 2
+    },
+    {
+     "text": "This section also covers quality assurance for the period under review.",
+     "citations": [
+      {
+       "page": 11,
+       "quote": "This section also covers quality assurance for the period under review."
+      }
+     ],
+     "id": 3
+    },
+    {
+     "text": "This section also covers data retention for the period under review.",
+     "citations": [
+      {
+       "page": 13,
+       "quote": "This section also covers data retention for the period under review."
+      }
+     ],
+     "id": 4
+    },
+    {
+     "text": "This section also covers audit procedures for the period under review.",
+     "citations": [
+      {
+       "page": 14,
+       "quote": "This section also covers audit procedures for the period under review."
+      }
+     ],
+     "id": 5
+    },
+    {
+     "text": "This section also covers information security for the period under review.",
+     "citations": [
+      {
+       "page": 16,
+       "quote": "This section also covers information security for the period under review."
+      }
+     ],
+     "id": 6
+    },
+    {
+     "text": "This section also covers quality assurance for the period under review.",
+     "citations": [
+      {
+       "page": 16,
+       "quote": "This section also covers quality assurance for the period under review."
+      }
+     ],
+     "id": 7
+    },
+    {
+     "text": "This section also covers procurement policy for the period under review.",
+     "citations": [
+      {
+       "page": 18,
+       "quote": "This section also covers procurement policy for the period under review."
+      }
+     ],
+     "id": 8
+    }
+   ],
+   "facts": [
+    {
+     "text": "Operating profit reached $114.4 million, giving an operating margin of 12.9%.",
+     "citations": [
+      {
+       "page": 10,
+       "quote": "Operating profit reached $114.4 million, giving an operating margin of 12.9%."
+      }
+     ],
+     "id": 1
+    },
+    {
+     "text": "This section also covers travel policy for the period under review.",
+     "citations": [
+      {
+       "page": 11,
+       "quote": "This section also covers travel policy for the period under review."
+      }
+     ],
+     "id": 2
+    },
+    {
+     "text": "This section also covers quality assurance for the period under review.",
+     "citations": [
+      {
+       "page": 11,
+       "quote": "This section also covers quality assurance for the period under review."
+      }
+     ],
+     "id": 3
+    },
+    {
+     "text": "This section also covers data retention for the period under review.",
+     "citations": [
+      {
+       "page": 13,
+       "quote": "This section also covers data retention for the period under review."
+      }
+     ],
+     "id": 4
+    },
+    {
+     "text": "This section also covers audit procedures for the period under review.",
+     "citations": [
+      {
+       "page": 14,
+       "quote": "This section also covers audit procedures for the period under review."
+      }
+     ],
+     "id": 5
+    },
+    {
+     "text": "This section also covers information security for the period under review.",
+     "citations": [
+      {
+       "page": 16,
+       "quote": "This section also covers information security for the period under review."
+      }
+     ],
+     "id": 6
+    },
+    {
+     "text": "This section also covers quality assurance for the period under review.",
+     "citations": [
+      {
+       "page": 16,
+       "quote": "This section also covers quality assurance for the period under review."
+      }
+     ],
+     "id": 7
+    },
+    {
+     "text": "This section also covers procurement policy for the period under review.",
+     "citations": [
+      {
+       "page": 18,
+       "quote": "This section also covers procurement policy for the period under review."
+      }
+     ],
+     "id": 8
+    },
+    {
+     "text": "This section also covers travel policy for the period under review.",
+     "citations": [
+      {
+       "page": 18,
+       "quote": "This section also covers travel policy for the period under review."
+      }
+     ],
+     "id": 9
+    },
+    {
+     "text": "At the end of 2024 the company employed 9,049 people, of whom 36% were women.",
+     "citations": [
+      {
+       "page": 31,
+       "quote": "At the end of 2024 the company employed 9,049 people, of whom 36% were women."
+      }
+     ],
+     "id": 10
+    },
+    {
+     "text": "This section also covers information security for the period under review.",
+     "citations": [
+      {
+       "page": 28,
+       "quote": "This section also covers information security for the period under review."
+      }
+     ],
+     "id": 11
+    },
+    {
+     "text": "This section also covers data retention for the period under review.",
+     "citations": [
+      {
+       "page": 30,
+       "quote": "This section also covers data retention for the period under review."
+      }
+     ],
+     "id": 12
+    },
+    {
+     "text": "This section also covers records classification for the period under review.",
+     "citations": [
+      {
+       "page": 30,
+       "quote": "This section also covers records classification for the period under review."
+      }
+     ],
+     "id": 13
+    },
+    {
+     "text": "This section also covers facility maintenance for the period under review.",
+     "citations": [
+      {
+       "page": 31,
+       "quote": "This section also covers facility maintenance for the period under review."
+      }
+     ],
+     "id": 14
+    },
+    {
+     "text": "This section also covers training programmes for the period under review.",
+     "citations": [
+      {
+       "page": 32,
+       "quote": "This section also covers training programmes for the period under review."
+      }
+     ],
+     "id": 15
+    },
+    {
+     "text": "This section also covers supplier onboarding for the period under review.",
+     "citations": [
+      {
+       "page": 32,
+       "quote": "This section also covers supplier onboarding for the period under review."
+      }
+     ],
+     "id": 16
+    },
+    {
+     "text": "This section also covers records classification for the period under review.",
+     "citations": [
+      {
+       "page": 35,
+       "quote": "This section also covers records classification for the period under review."
+      }
+     ],
+     "id": 17
+    },
+    {
+     "text": "This section also covers document management for the period under review.",
+     "citations": [
+      {
+       "page": 34,
+       "quote": "This section also covers document management for the period under review."
+      }
+     ],
+     "id": 18
+    },
+    {
+     "text": "This section also covers facility maintenance for the period under review.",
+     "citations": [
+      {
+       "page": 34,
+       "quote": "This section also covers facility maintenance for the period under review."
+      }
+     ],
+     "id": 19
+    },
+    {
+     "text": "This section also covers records classification for the period under review.",
+     "citations": [
+      {
+       "page": 36,
+       "quote": "This section also covers records classification for the period under review."
+      }
+     ],
+     "id": 20
+    },
+    {
+     "text": "This section also covers data retention for the period under review.",
+     "citations": [
+      {
+       "page": 30,
+       "quote": "This section also covers data retention for the period under review."
+      }
+     ],
+     "id": 21
+    },
+    {
+     "text": "This section also covers records classification for the period under review.",
+     "citations": [
+      {
+       "page": 36,
+       "quote": "This section also covers records classification for the period under review."
+      }
+     ],
+     "id": 22
+    },
+    {
+     "text": "This section also covers records classification for the period under review.",
+     "citations": [
+      {
+       "page": 36,
+       "quote": "This section also covers records classification for the period under review."
+      }
+     ],
+     "id": 23
+    },
+    {
+     "text": "Porro tenetur itaque fugit placeat beatae delectus.",
+     "citations": [
+      {
+       "page": 54,
+       "quote": "Porro tenetur itaque fugit placeat beatae delectus."
+      }
+     ],
+     "id": 24
+    },
+    {
+     "text": "Et nemo ab pariatur quo pariatur explicabo.",
+     "citations": [
+      {
+       "page": 54,
+       "quote": "Et nemo ab pariatur quo pariatur explicabo."
+      }
+     ],
+     "id": 25
+    },
+    {
+     "text": "Magnam ipsum necessitatibus repellat alias aliquid voluptatem unde.",
+     "citations": [
+      {
+       "page": 55,
+       "quote": "Magnam ipsum necessitatibus repellat alias aliquid voluptatem unde."
+      }
+     ],
+     "id": 26
+    },
+    {
+     "text": "Aliquam eum beatae.",
+     "citations": [
+      {
+       "page": 56,
+       "quote": "Aliquam eum beatae."
+      }
+     ],
+     "id": 27
+    },
+    {
+     "text": "Quasi eos sit.",
+     "citations": [
+      {
+       "page": 56,
+       "quote": "Quasi eos sit."
+      }
+     ],
+     "id": 28
+    },
+    {
+     "text": "This section also covers document management for the period under review.",
+     "citations": [
+      {
+       "page": 63,
+       "quote": "This section also covers document management for the period under review."
+      }
+     ],
+     "id": 29
+    },
+    {
+     "text": "This section also covers procurement policy for the period under review.",
+     "citations": [
+      {
+       "page": 63,
+       "quote": "This section also covers procurement policy for the period under review."
+      }
+     ],
+     "id": 30
+    },
+    {
+     "text": "This section also covers data retention for the period under review.",
+     "citations": [
+      {
+       "page": 66,
+       "quote": "This section also covers data retention for the period under review."
+      }
+     ],
+     "id": 31
+    },
+    {
+     "text": "This section also covers records classification for the period under review.",
+     "citations": [
+      {
+       "page": 65,
+       "quote": "This section also covers records classification for the period under review."
+      }
+     ],
+     "id": 32
+    },
+    {
+     "text": "This section also covers audit procedures for the period under review.",
+     "citations": [
+      {
+       "page": 68,
+       "quote": "This section also covers audit procedures for the period under review."
+      }
+     ],
+     "id": 33
+    },
+    {
+     "text": "This section also covers supplier onboarding for the period under review.",
+     "citations": [
+      {
+       "page": 68,
+       "quote": "This section also covers supplier onboarding for the period under review."
+      }
+     ],
+     "id": 34
+    },
+    {
+     "text": "This section also covers information security for the period under review.",
+     "citations": [
+      {
+       "page": 68,
+       "quote": "This section also covers information security for the period under review."
+      }
+     ],
+     "id": 35
+    },
+    {
+     "text": "This section also covers travel policy for the period under review.",
+     "citations": [
+      {
+       "page": 67,
+       "quote": "This section also covers travel policy for the period under review."
+      }
+     ],
+     "id": 36
+    },
+    {
+     "text": "This section also covers facility maintenance for the period under review.",
+     "citations": [
+      {
+       "page": 67,
+       "quote": "This section also covers facility maintenance for the period under review."
+      }
+     ],
+     "id": 37
+    },
+    {
+     "text": "This section also covers training programmes for the period under review.",
+     "citations": [
+      {
+       "page": 66,
+       "quote": "This section also covers training programmes for the period under review."
+      }
+     ],
+     "id": 38
+    },
+    {
+     "text": "This section also covers quality assurance for the period under review.",
+     "citations": [
+      {
+       "page": 70,
+       "quote": "This section also covers quality assurance for the period under review."
+      }
+     ],
+     "id": 39
+    }
+   ],
+   "explain": "This executive summary provides a concise overview of the key financial and operational aspects of Howard LLC's annual report for the year 2024. The report includes detailed information on various management practices, including travel policies, quality assurance, data retention, audit procedures, information security, procurement policies, and facility maintenance. Additionally, it covers employment statistics, particularly the percentage of women in the workforce. The report also includes a reference to a specific invoice, 'Porro tenetur itaque fugit placeat beatae delectus,' which is not further elaborated upon in the provided facts.",
+   "explain_note": "Plain-language description; not a factual claim, so not cited.",
+   "rejected": [
+    {
+     "text": "This section also covers facility maintenance for the period under review.",
+     "citations": [
+      {
+       "page": 13,
+       "quote": "This section also covers facility maintenance for the period under review."
+      }
+     ],
+     "reason": "quote not found on the cited page"
+    },
+    {
+     "text": "This section also covers procurement policy for the period under review.",
+     "citations": [
+      {
+       "page": 31,
+       "quote": "This section also covers procurement policy for the period under review."
+      }
+     ],
+     "reason": "quote not found on the cited page"
+    },
+    {
+     "text": "This section also covers travel policy for the period under review.",
+     "citations": [
+      {
+       "page": 32,
+       "quote": "This section also covers travel policy for the period under review."
+      }
+     ],
+     "reason": "quote not found on the cited page"
+    },
+    {
+     "text": "Quibusdam dolorem consequuntur tenetur.",
+     "citations": [
+      {
+       "page": 59,
+       "quote": "Quibusdam dolorem consequuntur tenetur."
+      }
+     ],
+     "reason": "quote not found on the cited page"
+    },
+    {
+     "text": "Quia odit.",
+     "citations": [
+      {
+       "page": 62,
+       "quote": "Quia odit."
+      }
+     ],
+     "reason": "quote not found on the cited page"
+    }
+   ],
+   "stats": {
+    "sections": 8,
+    "facts_verified": 39,
+    "statements_rejected": 5,
+    "model_calls": 26
+   }
+  },
+  "false_claims": []
+ },
+ {
+  "file": "report01.pdf",
+  "pages": 70,
+  "modality": "scan",
+  "read_index_s": 53.1,
+  "summary_s": 259.8,
+  "qa": [
+   {
+    "q": "What was group revenue in 2023?",
+    "gold": "576.8",
+    "gold_page": 13,
+    "question": "What was group revenue in 2023?",
+    "answer": "$576.8 million",
+    "found": true,
+    "citations": [
+     {
+      "page": 13,
+      "quote": "Group revenue for 2023 was $576.8 million, an increase of 12.7% on the prior year."
+     }
+    ],
+    "searched_pages": [
+     1,
+     13,
+     21,
+     29,
+     35,
+     65
+    ]
+   },
+   {
+    "q": "By what percentage did revenue grow compared with the prior year?",
+    "gold": "12.7",
+    "gold_page": 13,
+    "question": "By what percentage did revenue grow compared with the prior year?",
+    "answer": "12.7%",
+    "found": true,
+    "citations": [
+     {
+      "page": 13,
+      "quote": "Group revenue for 2023 was $576.8 million, an increase of 12.7% on the prior year."
+     }
+    ],
+    "searched_pages": [
+     13,
+     21,
+     29,
+     35,
+     38,
+     62
+    ]
+   },
+   {
+    "q": "What was the operating profit?",
+    "gold": "48.5",
+    "gold_page": 15,
+    "question": "What was the operating profit?",
+    "answer": "$48.5 million",
+    "found": true,
+    "citations": [
+     {
+      "page": 15,
+      "quote": "Operating profit reached $48.5 million, giving an operating margin of 8.4%."
+     }
+    ],
+    "searched_pages": [
+     13,
+     15,
+     21,
+     29,
+     35,
+     62
+    ]
+   },
+   {
+    "q": "What was the operating margin?",
+    "gold": "8.4",
+    "gold_page": 15,
+    "question": "What was the operating margin?",
+    "answer": "8.4%",
+    "found": true,
+    "citations": [
+     {
+      "page": 15,
+      "quote": "Operating profit reached $48.5 million, giving an operating margin of 8.4%."
+     }
+    ],
+    "searched_pages": [
+     15,
+     21,
+     29,
+     35,
+     55,
+     62
+    ]
+   },
+   {
+    "q": "What was revenue in the fourth quarter?",
+    "gold": "161.5",
+    "gold_page": 21,
+    "question": "What was revenue in the fourth quarter?",
+    "answer": "Fourth-quarter revenue was $161.5 million",
+    "found": true,
+    "citations": [
+     {
+      "page": 21,
+      "quote": "Fourth-quarter revenue was $161.5 million, the strongest quarter of the year, compared with $132.7 million in the first quarter."
+     }
+    ],
+    "searched_pages": [
+     8,
+     13,
+     21,
+     29,
+     40,
+     65
+    ]
+   },
+   {
+    "q": "Which segment was the largest, and what share of revenue did it contribute?",
+    "gold": "34",
+    "gold_page": 29,
+    "question": "Which segment was the largest, and what share of revenue did it contribute?",
+    "answer": "The Logistics segment contributed 34% of group revenue and remained the largest segment.",
+    "found": true,
+    "citations": [
+     {
+      "page": 29,
+      "quote": "The Logistics segment contributed 34% of group revenue and remained the largest segment."
+     }
+    ],
+    "searched_pages": [
+     13,
+     15,
+     21,
+     23,
+     29,
+     35
+    ]
+   },
+   {
+    "q": "How many people did the company employ at year end?",
+    "gold": "7,719",
+    "gold_page": 35,
+    "question": "How many people did the company employ at year end?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     1,
+     13,
+     21,
+     30,
+     35,
+     55
+    ],
+    "withheld": {
+     "answer": "7,719 people",
+     "reason": "number(s) not in the quote: 7719"
+    }
+   },
+   {
+    "q": "What percentage of employees were women?",
+    "gold": "45",
+    "gold_page": 35,
+    "question": "What percentage of employees were women?",
+    "answer": "45%",
+    "found": true,
+    "citations": [
+     {
+      "page": 35,
+      "quote": "This section also covers supplier onboarding for the period under review. At the end of 2023 the company employed 7,719 people, of whom 45% were women."
+     }
+    ],
+    "searched_pages": [
+     13,
+     15,
+     21,
+     29,
+     35,
+     37
+    ]
+   },
+   {
+    "q": "What were the Scope 1 and 2 emissions?",
+    "gold": "34,976",
+    "gold_page": 37,
+    "question": "What were the Scope 1 and 2 emissions?",
+    "answer": "Scope 1 and 2 emissions fell 11% to 34,976 tonnes of CO2 equivalent.",
+    "found": true,
+    "citations": [
+     {
+      "page": 37,
+      "quote": "Scope 1 and 2 emissions fell 11% to 34,976 tonnes of CO2 equivalent."
+     }
+    ],
+    "searched_pages": [
+     11,
+     22,
+     35,
+     37,
+     38,
+     54
+    ]
+   },
+   {
+    "q": "By what year does the company aim to reach net zero operational emissions?",
+    "gold": "2028",
+    "gold_page": 38,
+    "question": "By what year does the company aim to reach net zero operational emissions?",
+    "answer": "2028",
+    "found": true,
+    "citations": [
+     {
+      "page": 38,
+      "quote": "The board has committed to reaching net zero operational emissions by 2028."
+     }
+    ],
+    "searched_pages": [
+     1,
+     13,
+     21,
+     35,
+     37,
+     38
+    ]
+   },
+   {
+    "q": "What final dividend per share does the board recommend?",
+    "gold": "0.68",
+    "gold_page": 54,
+    "question": "What final dividend per share does the board recommend?",
+    "answer": "$0.68 per share",
+    "found": true,
+    "citations": [
+     {
+      "page": 54,
+      "quote": "The board recommends a final dividend of $0.68 per share."
+     }
+    ],
+    "searched_pages": [
+     13,
+     21,
+     29,
+     38,
+     54,
+     62
+    ]
+   },
+   {
+    "q": "How much capital expenditure is planned for 2024?",
+    "gold": "63",
+    "gold_page": 65,
+    "question": "How much capital expenditure is planned for 2024?",
+    "answer": "$63 million",
+    "found": true,
+    "citations": [
+     {
+      "page": 65,
+      "quote": "Capital expenditure of $63 million is planned for 2024, mainly for a new facility in Jonesport."
+     }
+    ],
+    "searched_pages": [
+     11,
+     13,
+     21,
+     28,
+     62,
+     65
+    ]
+   },
+   {
+    "q": "Who is the Chief Executive Officer?",
+    "gold": "Jill Wilson",
+    "gold_page": 58,
+    "question": "Who is the Chief Executive Officer?",
+    "answer": "Jill Wilson",
+    "found": true,
+    "citations": [
+     {
+      "page": 58,
+      "quote": "Jill Wilson serves as Chief Executive Officer and Robin Humphries as Chief Financial Officer."
+     }
+    ],
+    "searched_pages": [
+     21,
+     28,
+     35,
+     38,
+     58,
+     62
+    ]
+   },
+   {
+    "q": "Who chairs the board?",
+    "gold": "Dale Hurst",
+    "gold_page": 62,
+    "question": "Who chairs the board?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     13,
+     22,
+     35,
+     38,
+     54,
+     62
+    ],
+    "withheld": {
+     "answer": "Dale Hurst",
+     "reason": "quote not found on the cited page"
+    }
+   },
+   {
+    "q": "How many patents did the company file?",
+    "gold": null,
+    "question": "How many patents did the company file?",
+    "answer": "7,719",
+    "found": true,
+    "citations": [
+     {
+      "page": 35,
+      "quote": "This section also covers supplier onboarding for the period under review. At the end of 2023 the company employed 7,719 people, of whom 45% were women."
+     }
+    ],
+    "searched_pages": [
+     1,
+     13,
+     21,
+     28,
+     35,
+     55
+    ]
+   },
+   {
+    "q": "How many customer complaints were recorded?",
+    "gold": null,
+    "question": "How many customer complaints were recorded?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     4,
+     8,
+     13,
+     15,
+     21,
+     35
+    ],
+    "withheld": {
+     "answer": "7,719 people",
+     "reason": "number(s) not in the quote: 7719"
+    }
+   },
+   {
+    "q": "What was the company's market share in Brazil?",
+    "gold": null,
+    "question": "What was the company's market share in Brazil?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     9,
+     13,
+     21,
+     29,
+     35,
+     54
+    ],
+    "withheld": {
+     "answer": "The company employed 7,719 people, of whom 45% were women.",
+     "reason": "number(s) not in the quote: 45, 7719"
+    }
+   }
+  ],
+  "summary": {
+   "model": "ollama:qwen2.5:1.5b",
+   "overview": [],
+   "key_points": [
+    {
+     "text": "This section also covers data retention for the period under review.",
+     "citations": [
+      {
+       "page": 2,
+       "quote": "This section also covers data retention for the period under review."
+      }
+     ],
+     "id": 1
+    },
+    {
+     "text": "This section also covers training programmes for the period under review.",
+     "citations": [
+      {
+       "page": 2,
+       "quote": "This section also covers training programmes for the period under review."
+      }
+     ],
+     "id": 2
+    },
+    {
+     "text": "This section also covers quality assurance for the period under review.",
+     "citations": [
+      {
+       "page": 2,
+       "quote": "This section also covers quality assurance for the period under review."
+      }
+     ],
+     "id": 3
+    },
+    {
+     "text": "This section also covers audit procedures for the period under review.",
+     "citations": [
+      {
+       "page": 4,
+       "quote": "This section also covers audit procedures for the period under review."
+      }
+     ],
+     "id": 4
+    },
+    {
+     "text": "This section also covers information security for the period under review.",
+     "citations": [
+      {
+       "page": 4,
+       "quote": "This section also covers information security for the period under review."
+      }
+     ],
+     "id": 5
+    },
+    {
+     "text": "This section also covers procurement policy for the period under review.",
+     "citations": [
+      {
+       "page": 5,
+       "quote": "This section also covers procurement policy for the period under review."
+      }
+     ],
+     "id": 6
+    },
+    {
+     "text": "This section also covers travel policy for the period under review.",
+     "citations": [
+      {
+       "page": 6,
+       "quote": "This section also covers travel policy for the period under review."
+      }
+     ],
+     "id": 7
+    },
+    {
+     "text": "This section also covers facility maintenance for the period under review.",
+     "citations": [
+      {
+       "page": 7,
+       "quote": "This section also covers facility maintenance for the period under review."
+      }
+     ],
+     "id": 8
+    }
+   ],
+   "facts": [
+    {
+     "text": "This section also covers data retention for the period under review.",
+     "citations": [
+      {
+       "page": 2,
+       "quote": "This section also covers data retention for the period under review."
+      }
+     ],
+     "id": 1
+    },
+    {
+     "text": "This section also covers training programmes for the period under review.",
+     "citations": [
+      {
+       "page": 2,
+       "quote": "This section also covers training programmes for the period under review."
+      }
+     ],
+     "id": 2
+    },
+    {
+     "text": "This section also covers quality assurance for the period under review.",
+     "citations": [
+      {
+       "page": 2,
+       "quote": "This section also covers quality assurance for the period under review."
+      }
+     ],
+     "id": 3
+    },
+    {
+     "text": "This section also covers audit procedures for the period under review.",
+     "citations": [
+      {
+       "page": 4,
+       "quote": "This section also covers audit procedures for the period under review."
+      }
+     ],
+     "id": 4
+    },
+    {
+     "text": "This section also covers information security for the period under review.",
+     "citations": [
+      {
+       "page": 4,
+       "quote": "This section also covers information security for the period under review."
+      }
+     ],
+     "id": 5
+    },
+    {
+     "text": "This section also covers procurement policy for the period under review.",
+     "citations": [
+      {
+       "page": 5,
+       "quote": "This section also covers procurement policy for the period under review."
+      }
+     ],
+     "id": 6
+    },
+    {
+     "text": "This section also covers travel policy for the period under review.",
+     "citations": [
+      {
+       "page": 6,
+       "quote": "This section also covers travel policy for the period under review."
+      }
+     ],
+     "id": 7
+    },
+    {
+     "text": "This section also covers facility maintenance for the period under review.",
+     "citations": [
+      {
+       "page": 7,
+       "quote": "This section also covers facility maintenance for the period under review."
+      }
+     ],
+     "id": 8
+    },
+    {
+     "text": "This section also covers supplier onboarding for the period under review.",
+     "citations": [
+      {
+       "page": 9,
+       "quote": "This section also covers supplier onboarding for the period under review."
+      }
+     ],
+     "id": 9
+    },
+    {
+     "text": "This section also covers procurement policy for the period under review.",
+     "citations": [
+      {
+       "page": 11,
+       "quote": "This section also covers procurement policy for the period under review."
+      }
+     ],
+     "id": 10
+    },
+    {
+     "text": "This section also covers facility maintenance for the period under review.",
+     "citations": [
+      {
+       "page": 11,
+       "quote": "This section also covers facility maintenance for the period under review."
+      }
+     ],
+     "id": 11
+    },
+    {
+     "text": "This section also covers records classification for the period under review.",
+     "citations": [
+      {
+       "page": 13,
+       "quote": "This section also covers records classification for the period under review."
+      }
+     ],
+     "id": 12
+    },
+    {
+     "text": "This section also covers audit procedures for the period under review.",
+     "citations": [
+      {
+       "page": 14,
+       "quote": "This section also covers audit procedures for the period under review."
+      }
+     ],
+     "id": 13
+    },
+    {
+     "text": "This section also covers travel policy for the period under review.",
+     "citations": [
+      {
+       "page": 14,
+       "quote": "This section also covers travel policy for the period under review."
+      }
+     ],
+     "id": 14
+    },
+    {
+     "text": "This section also covers document management for the period under review.",
+     "citations": [
+      {
+       "page": 17,
+       "quote": "This section also covers document management for the period under review."
+      }
+     ],
+     "id": 15
+    },
+    {
+     "text": "This section also covers supplier onboarding for the period under review.",
+     "citations": [
+      {
+       "page": 18,
+       "quote": "This section also covers supplier onboarding for the period under review."
+      }
+     ],
+     "id": 16
+    },
+    {
+     "text": "This section also covers internal controls for the period under review.",
+     "citations": [
+      {
+       "page": 19,
+       "quote": "This section also covers internal controls for the period under review."
+      }
+     ],
+     "id": 17
+    },
+    {
+     "text": "This section also covers internal controls for the period under review.",
+     "citations": [
+      {
+       "page": 20,
+       "quote": "This section also covers internal controls for the period under review."
+      }
+     ],
+     "id": 18
+    },
+    {
+     "text": "This section also covers supplier onboarding for the period under review.",
+     "citations": [
+      {
+       "page": 20,
+       "quote": "This section also covers supplier onboarding for the period under review."
+      }
+     ],
+     "id": 19
+    },
+    {
+     "text": "This section also covers training programmes for the period under review.",
+     "citations": [
+      {
+       "page": 20,
+       "quote": "This section also covers training programmes for the period under review."
+      }
+     ],
+     "id": 20
+    },
+    {
+     "text": "This section also covers quality assurance for the period under review.",
+     "citations": [
+      {
+       "page": 21,
+       "quote": "This section also covers quality assurance for the period under review."
+      }
+     ],
+     "id": 21
+    },
+    {
+     "text": "This section also covers information security for the period under review.",
+     "citations": [
+      {
+       "page": 21,
+       "quote": "This section also covers information security for the period under review."
+      }
+     ],
+     "id": 22
+    },
+    {
+     "text": "This section also covers document management for the period under review.",
+     "citations": [
+      {
+       "page": 22,
+       "quote": "This section also covers document management for the period under review."
+      }
+     ],
+     "id": 23
+    },
+    {
+     "text": "This section also covers audit procedures for the period under review.",
+     "citations": [
+      {
+       "page": 22,
+       "quote": "This section also covers audit procedures for the period under review."
+      }
+     ],
+     "id": 24
+    },
+    {
+     "text": "This section also covers records classification for the period under review.",
+     "citations": [
+      {
+       "page": 25,
+       "quote": "This section also covers records classification for the period under review."
+      }
+     ],
+     "id": 25
+    },
+    {
+     "text": "This section also covers procurement policy for the period under review.",
+     "citations": [
+      {
+       "page": 25,
+       "quote": "This section also covers procurement policy for the period under review."
+      }
+     ],
+     "id": 26
+    },
+    {
+     "text": "This section also covers data retention for the period under review.",
+     "citations": [
+      {
+       "page": 26,
+       "quote": "This section also covers data retention for the period under review."
+      }
+     ],
+     "id": 27
+    },
+    {
+     "text": "This section also covers facility maintenance for the period under review.",
+     "citations": [
+      {
+       "page": 27,
+       "quote": "This section also covers facility maintenance for the period under review."
+      }
+     ],
+     "id": 28
+    },
+    {
+     "text": "This section also covers quality assurance for the period under review.",
+     "citations": [
+      {
+       "page": 27,
+       "quote": "This section also covers quality assurance for the period under review."
+      }
+     ],
+     "id": 29
+    },
+    {
+     "text": "This section also covers audit procedures for the period under review.",
+     "citations": [
+      {
+       "page": 28,
+       "quote": "This section also covers audit procedures for the period under review."
+      }
+     ],
+     "id": 30
+    },
+    {
+     "text": "The board recommends a final dividend of $0.68 per share.",
+     "citations": [
+      {
+       "page": 54,
+       "quote": "The board recommends a final dividend of $0.68 per share."
+      }
+     ],
+     "id": 31
+    },
+    {
+     "text": "Jill Wilson serves as Chief Executive Officer and Robin Humphries as Chief Financial Officer.",
+     "citations": [
+      {
+       "page": 58,
+       "quote": "Jill Wilson serves as Chief Executive Officer and Robin Humphries as Chief Financial Officer."
+      }
+     ],
+     "id": 32
+    },
+    {
+     "text": "Atque et molestiae recusandae sint.",
+     "citations": [
+      {
+       "page": 60,
+       "quote": "Atque et molestiae recusandae sint."
+      }
+     ],
+     "id": 33
+    },
+    {
+     "text": "Tempore ullam sit officia velit mollitia voluptate.",
+     "citations": [
+      {
+       "page": 61,
+       "quote": "Tempore ullam sit officia velit mollitia voluptate."
+      }
+     ],
+     "id": 34
+    },
+    {
+     "text": "Nemo sit perferendis eius.",
+     "citations": [
+      {
+       "page": 55,
+       "quote": "Nemo sit perferendis eius."
+      }
+     ],
+     "id": 35
+    },
+    {
+     "text": "Atque et molestiae recusandae sint.",
+     "citations": [
+      {
+       "page": 60,
+       "quote": "Atque et molestiae recusandae sint."
+      }
+     ],
+     "id": 36
+    },
+    {
+     "text": "Neque repudiandae fugiat temporibus.",
+     "citations": [
+      {
+       "page": 62,
+       "quote": "Neque repudiandae fugiat temporibus."
+      }
+     ],
+     "id": 37
+    },
+    {
+     "text": "This section also covers facility maintenance for the period under review.",
+     "citations": [
+      {
+       "page": 63,
+       "quote": "This section also covers facility maintenance for the period under review."
+      }
+     ],
+     "id": 38
+    },
+    {
+     "text": "This section also covers data retention for the period under review.",
+     "citations": [
+      {
+       "page": 63,
+       "quote": "This section also covers data retention for the period under review."
+      }
+     ],
+     "id": 39
+    },
+    {
+     "text": "This section also covers information security for the period under review.",
+     "citations": [
+      {
+       "page": 64,
+       "quote": "This section also covers information security for the period under review."
+      }
+     ],
+     "id": 40
+    },
+    {
+     "text": "This section also covers document management for the period under review.",
+     "citations": [
+      {
+       "page": 64,
+       "quote": "This section also covers document management for the period under review."
+      }
+     ],
+     "id": 41
+    },
+    {
+     "text": "This section also covers travel policy for the period under review.",
+     "citations": [
+      {
+       "page": 64,
+       "quote": "This section also covers travel policy for the period under review."
+      }
+     ],
+     "id": 42
+    },
+    {
+     "text": "This section also covers audit procedures for the period under review.",
+     "citations": [
+      {
+       "page": 62,
+       "quote": "This section also covers audit procedures for the period under review."
+      }
+     ],
+     "id": 43
+    },
+    {
+     "text": "This section also covers internal controls for the period under review.",
+     "citations": [
+      {
+       "page": 62,
+       "quote": "This section also covers internal controls for the period under review."
+      }
+     ],
+     "id": 44
+    },
+    {
+     "text": "This section also covers procurement policy for the period under review.",
+     "citations": [
+      {
+       "page": 64,
+       "quote": "This section also covers procurement policy for the period under review."
+      }
+     ],
+     "id": 45
+    }
+   ],
+   "explain": "This document is the Winter Group Annual Report for the year 2023, providing an overview of the company's operations and financial performance. It covers various aspects such as data retention, training programs, quality assurance, audit procedures, information security, procurement policy, travel policy, facility maintenance, supplier onboarding, and internal controls. The board recommends a final dividend of $0.68 per share, and Jill Wilson serves as the Chief Executive Officer, while Robin Humphries is the Chief Financial Officer. The report is intended for stakeholders to understand the company's operations and financial performance.",
+   "explain_note": "Plain-language description; not a factual claim, so not cited.",
+   "rejected": [
+    {
+     "text": "This section also covers quality assurance for the period under review.",
+     "citations": [
+      {
+       "page": 10,
+       "quote": "This section also covers quality assurance for the period under review."
+      }
+     ],
+     "reason": "quote not found on the cited page"
+    },
+    {
+     "text": "This section also covers information security for the period under review.",
+     "citations": [
+      {
+       "page": 16,
+       "quote": "This section also covers information security for the period under review."
+      }
+     ],
+     "reason": "quote not found on the cited page"
+    },
+    {
+     "text": "This section also covers supplier onboarding for the period under review.",
+     "citations": [
+      {
+       "page": 63,
+       "quote": "This section also covers supplier onboarding for the period under review."
+      }
+     ],
+     "reason": "quote not found on the cited page"
+    },
+    {
+     "text": "This section also covers records classification for the period under review.",
+     "citations": [
+      {
+       "page": 63,
+       "quote": "This section also covers records classification for the period under review."
+      }
+     ],
+     "reason": "quote not found on the cited page"
+    },
+    {
+     "text": "This section also covers quality assurance for the period under review.",
+     "citations": [
+      {
+       "page": 63,
+       "quote": "This section also covers quality assurance for the period under review."
+      }
+     ],
+     "reason": "quote not found on the cited page"
+    }
+   ],
+   "stats": {
+    "sections": 8,
+    "facts_verified": 45,
+    "statements_rejected": 5,
+    "model_calls": 52
+   }
+  },
+  "false_claims": []
+ }
+]

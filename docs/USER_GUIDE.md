@@ -1,6 +1,6 @@
 # DocIntel user guide
 
-DocIntel turns a folder of financial documents into spreadsheets. Drop in invoices, W-2s, pay stubs or bank statements (PDFs, scans or phone photos) and download CSV files: one row per document, with line items and bank transactions in their own files.
+DocIntel turns a folder of financial documents into spreadsheets, and long reports into cited summaries you can question. Drop in invoices, W-2s, pay stubs or bank statements (PDFs, scans or phone photos) and download CSV files: one row per document, with line items and bank transactions in their own files.
 
 It runs on your own computer. Your documents, the extracted data and the CSVs never leave your machine, and there is no account or login.
 
@@ -11,11 +11,12 @@ It runs on your own computer. Your documents, the extracted data and the CSVs ne
 - [5. Check the fields it is unsure about](#5-check-the-fields-it-is-unsure-about)
 - [6. What is in each CSV](#6-what-is-in-each-csv)
 - [7. Journal entries](#7-journal-entries)
-- [8. Choosing a model](#8-choosing-a-model)
-- [9. Settings](#9-settings)
-- [10. Use it from a script (API)](#10-use-it-from-a-script-api)
-- [11. Troubleshooting](#11-troubleshooting)
-- [12. Privacy](#12-privacy)
+- [8. Long documents: summaries and questions with citations](#8-long-documents-summaries-and-questions-with-citations)
+- [9. Choosing a model](#9-choosing-a-model)
+- [10. Settings](#10-settings)
+- [11. Use it from a script (API)](#11-use-it-from-a-script-api)
+- [12. Troubleshooting](#12-troubleshooting)
+- [13. Privacy](#13-privacy)
 
 ## 1. What you need
 
@@ -161,7 +162,41 @@ Post only entries marked **Ready**, or fix the others first in the **Review** ta
 
 **The app learns your choices:** when a reviewer picks a different account for a line (API: `POST /jobs/{id}/accounts`), the choice is saved in `data/account_memory.json`. The next invoice with the same line from the same vendor is posted the same way.
 
-## 8. Choosing a model
+## 8. Long documents: summaries and questions with citations
+
+The **Reports** tab is for long PDFs: annual reports, contracts, filings, policies. Scanned pages are fine.
+
+1. Drop a PDF on **Drop a long PDF here**. A 70-page report is read in under a second (about a minute if every page is scanned), then summarised.
+2. You get:
+   - **What this document is**: two or three plain sentences.
+   - **Summary** and **Key points**: every sentence ends with page chips such as `p 12`. Click one to see that page with the exact words the sentence is based on.
+   - **Figures and dates found**, and the document's **outline**, each with its page.
+3. **Ask the document**: type a question. The answer cites its pages. If the document does not contain the answer, you get *"The document does not state this."* instead of a guess.
+
+**How it keeps false information out.** A statement or answer is shown only if:
+
+- its quote really is on the cited page (checked against the page text, allowing for small OCR errors),
+- every number in it appears in that quote,
+- the quote is about what the statement says (and, for answers, about the question asked).
+
+Anything that fails is never shown as fact. Summary sentences that fail are listed under *"left out because the document does not back them up"*, so you can see what was dropped.
+
+**Measured** on two 70-page annual reports (one fully scanned) with 14 known facts each and 3 questions each that the report cannot answer (`python scripts/eval_longdoc.py`):
+
+| | Gemini 3.5 Flash Lite | Local `qwen2.5:1.5b` |
+|---|---|---|
+| Correct answer with the correct page | 28 of 28 | 25 of 28 |
+| Wrong answers shown | 0 | 0 |
+| Unanswerable questions answered "not stated" | 6 of 6 | 6 of 6 |
+| False statements in summaries | 0 of 34 | 0 of 16 |
+| Summary time per 70-page report | about 1–2 min | about 4–5 min |
+| Each question | about 5 s | about 15–40 s |
+
+The local model's 3 misses were answered "not stated" (safe, but a miss). Its summaries are shorter because the checks drop more of its statements. The reports are synthetic, so treat these as a check of the safeguards rather than a promise for every document.
+
+**Which model:** set `SUMMARY_MODEL` in `.env`. The default is Gemini when `GEMINI_API_KEY` is set, otherwise local `ollama:qwen2.5:1.5b` (`ollama pull qwen2.5:1.5b`). A bigger local model such as `ollama:qwen2.5:7b` writes fuller summaries if your computer can run it. For better search, also run `ollama pull nomic-embed-text`; without it, search falls back to keywords.
+
+## 9. Choosing a model
 
 Set `EXTRACTOR` in a file named `.env` in the project folder (copy `.env.example`), then restart `docintel`.
 
@@ -176,31 +211,35 @@ Measured accuracy on 50 real photographed receipts ([CORD dataset](https://githu
 
 | Field | Local model (`docintel-qwen1.5b-ft-v5`) | Gemini 3.5 Flash Lite |
 |---|---|---|
-| Total | 89% | 85% |
-| Subtotal | 84% | 90% |
-| Tax | 65% | 75% |
+| Total | 87% | 85% |
+| Subtotal | 94% | 90% |
+| Tax | 85% | 75% |
 
-These are small samples (47, 31 and 20 receipts), so treat close numbers as ties. Accuracy on your own documents depends on their layout and scan quality, which is why the review step exists.
+These are small samples (47, 31 and 20 receipts), so treat close numbers as ties. Of the 6 receipts where the local model's total was wrong, 5 were flagged for review automatically; the one that was not had a total that added up but came from the wrong line (the cash paid).
 
-## 9. Settings
+The local model was also tested on 120 invoices in 8 different page designs, including 2 designs it never saw in training: 0.968 of fields correct overall (0.990 and 0.976 on the two unseen designs). Accuracy on your own documents depends on their layout and scan quality, which is why the review step exists.
+
+## 10. Settings
 
 Put any of these in `.env`:
 
 | Setting | Default | What it does |
 |---|---|---|
-| `EXTRACTOR` | `ollama:docintel-qwen1.5b-ft-v5` | Which model reads the documents (section 8). |
+| `EXTRACTOR` | `ollama:docintel-qwen1.5b-ft-v5` | Which model reads the documents (section 9). |
 | `OLLAMA_BASE_URL` | `http://localhost:11434` | Where Ollama runs. |
 | `WORKERS` | `2` | Documents processed at the same time. On a CPU, more than 2 rarely helps. |
 | `MAX_UPLOAD_MB` | `25` | Largest file accepted. |
 | `MAX_BATCH_FILES` | `200` | Most files in one batch. |
 | `DOCINTEL_DB` | `data/docintel.db` | Where results are stored (SQLite). |
 | `UPLOAD_DIR` | `data/uploads` | Where uploaded files are kept. |
+| `SUMMARY_MODEL` | Gemini if `GEMINI_API_KEY` is set, else `ollama:qwen2.5:1.5b` | Model for long-document summaries and questions (section 8). |
+| `MAX_LONGDOC_PAGES` | `500` | Longest document accepted in the Reports tab. |
 | `COMPANY_NAME` | empty | Your company's name. Invoices it issued post as sales instead of purchases (section 7). |
 | `COA_PATH` | empty | Your chart of accounts as JSON (section 7). |
 | `ACCOUNT_MEMORY` | `data/account_memory.json` | Where account choices made in review are remembered. |
 | `API_KEYS` | empty | Comma-separated keys. Leave empty on your own computer; set it if you expose the app to a network. |
 
-## 10. Use it from a script (API)
+## 11. Use it from a script (API)
 
 The console uses a plain HTTP API, so you can automate it. For example, to process a folder:
 
@@ -227,10 +266,14 @@ curl -s http://localhost:8030/batches/6c01873b0c7f/export/invoices.csv
 | `POST /documents` | Upload a single file. |
 | `GET /jobs/{id}` | Full result for one document: values, confidence, page positions. |
 | `GET /review/queue`, `POST /jobs/{id}/review` | The review loop. |
+| `POST /reports` | Upload a long PDF (`file` form field) for a cited summary. |
+| `GET /reports/{id}` | Progress, metadata and the summary with citations. |
+| `POST /reports/{id}/ask` | Ask a question: `{"question": "..."}`. |
+| `GET /reports/{id}/page/{n}.png` | A cited page (1-based). |
 
 Interactive API docs: http://localhost:8030/docs
 
-## 11. Troubleshooting
+## 12. Troubleshooting
 
 | Problem | Fix |
 |---|---|
@@ -243,15 +286,15 @@ Interactive API docs: http://localhost:8030/docs
 | Status stays **Queued** after a restart | Documents queued when the app stopped are not resumed; upload them again. |
 | Start again from empty | Stop the app and delete the `data/` folder. |
 
-## 12. Privacy
+## 13. Privacy
 
 - **Local by default:** with the default model, everything happens on your computer. Uploads are stored in `data/uploads`, and results in `data/docintel.db`.
-- **When something leaves your computer:** only if you choose a hosted model (`gemini:` or `cascade:`). Then the page text of each document sent to it goes to that provider, under their terms.
-- **Deleting your data:** delete the `data/` folder.
+- **When something leaves your computer:** only if you choose a hosted model (`gemini:` or `cascade:`). Then the page text of each document sent to it goes to that provider, under their terms. The same applies to long documents when `SUMMARY_MODEL` is a hosted model; Gemini is the default for summaries whenever `GEMINI_API_KEY` is set, so remove the key or set `SUMMARY_MODEL=ollama:qwen2.5:1.5b` to keep reports local. Google's free tier may use what you send to improve its products: use a paid key or a local model for real documents.
+- **Deleting your data:** delete the `data/` folder (long documents are in `data/longdocs`).
 
 ### The public demo
 
-The online demo is for trying the app with a document or two, not for real work. Each visitor sees only their own documents, and every upload is deleted after 24 hours. It processes 2 documents per visitor per day, of up to 3 pages each, using a hosted model. Please don't upload documents with real personal data to it.
+The online demo is for trying the app with a document or two, not for real work. Each visitor sees only their own documents, and every upload is deleted after 24 hours. It processes 2 documents per visitor per day, of up to 3 pages each (long reports: up to 15 pages and 10 questions), using a hosted model. Please don't upload documents with real personal data to it.
 
 To process more, install it on your own computer as above. It is free and open source.
 

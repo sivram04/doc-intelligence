@@ -1,0 +1,27 @@
+{
+  "dataset": "naver-clova-ix/cord-v2 test",
+  "extractor": "ollama:docintel-qwen1.5b-ft-v5",
+  "ocr": "auto",
+  "receipts": 50,
+  "failures": 0,
+  "field_accuracy": {
+    "total": 0.8723,
+    "subtotal": 0.9355,
+    "tax": 0.85
+  },
+  "field_support": {
+    "total": 47,
+    "subtotal": 31,
+    "tax": 20
+  },
+  "wrong_totals": 6,
+  "wrong_totals_unflagged": 1,
+  "line_item_amounts": {
+    "precision": 0.7481,
+    "recall": 0.7967,
+    "f1": 0.7717,
+    "gold_rows": 123
+  },
+  "p50_latency_ms": 28328,
+  "p95_latency_ms": 37820
+}

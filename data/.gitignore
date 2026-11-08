@@ -7,3 +7,6 @@
 *.db
 /synthetic_layouts
 /synthetic_layouts_train
+/longdoc
+/longdoc_ui
+/longdocs

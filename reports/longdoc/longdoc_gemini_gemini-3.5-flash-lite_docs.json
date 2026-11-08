@@ -1,0 +1,1444 @@
+[
+ {
+  "file": "report00.pdf",
+  "pages": 70,
+  "modality": "native",
+  "read_index_s": 16.1,
+  "summary_s": 72.7,
+  "qa": [
+   {
+    "q": "What was group revenue in 2024?",
+    "gold": "886.8",
+    "gold_page": 9,
+    "question": "What was group revenue in 2024?",
+    "answer": "Group revenue for the year 2024 was $886.8 million, which represented an 11.3% increase compared to the prior year.",
+    "found": true,
+    "citations": [
+     {
+      "page": 9,
+      "quote": "Group revenue for 2024 was $886.8 million, an increase of 11.3% on the prior year."
+     }
+    ],
+    "searched_pages": [
+     1,
+     9,
+     22,
+     26,
+     31,
+     66
+    ]
+   },
+   {
+    "q": "By what percentage did revenue grow compared with the prior year?",
+    "gold": "11.3",
+    "gold_page": 9,
+    "question": "By what percentage did revenue grow compared with the prior year?",
+    "answer": "Group revenue for 2024 increased by 11.3% compared to the prior year.",
+    "found": true,
+    "citations": [
+     {
+      "page": 9,
+      "quote": "Group revenue for 2024 was $886.8 million, an increase of 11.3% on the prior year."
+     }
+    ],
+    "searched_pages": [
+     9,
+     22,
+     26,
+     31,
+     40,
+     51
+    ]
+   },
+   {
+    "q": "What was the operating profit?",
+    "gold": "114.4",
+    "gold_page": 10,
+    "question": "What was the operating profit?",
+    "answer": "The operating profit reached $114.4 million, which resulted in an operating margin of 12.9%.",
+    "found": true,
+    "citations": [
+     {
+      "page": 10,
+      "quote": "Operating profit reached $114.4 million, giving an operating margin of 12.9%."
+     }
+    ],
+    "searched_pages": [
+     9,
+     10,
+     22,
+     26,
+     31,
+     51
+    ]
+   },
+   {
+    "q": "What was the operating margin?",
+    "gold": "12.9",
+    "gold_page": 10,
+    "question": "What was the operating margin?",
+    "answer": "The operating margin was 12.9%.",
+    "found": true,
+    "citations": [
+     {
+      "page": 10,
+      "quote": "Operating profit reached $114.4 million, giving an operating margin of 12.9%."
+     }
+    ],
+    "searched_pages": [
+     10,
+     22,
+     26,
+     40,
+     51,
+     63
+    ]
+   },
+   {
+    "q": "What was revenue in the fourth quarter?",
+    "gold": "248.3",
+    "gold_page": 22,
+    "question": "What was revenue in the fourth quarter?",
+    "answer": "The fourth-quarter revenue was $248.3 million.",
+    "found": true,
+    "citations": [
+     {
+      "page": 22,
+      "quote": "Fourth-quarter revenue was $248.3 million, the strongest quarter of the year, compared with $204.0 million in the first quarter."
+     }
+    ],
+    "searched_pages": [
+     9,
+     22,
+     26,
+     41,
+     50
+    ]
+   },
+   {
+    "q": "Which segment was the largest, and what share of revenue did it contribute?",
+    "gold": "34",
+    "gold_page": 26,
+    "question": "Which segment was the largest, and what share of revenue did it contribute?",
+    "answer": "The Digital Solutions segment was the largest segment and contributed 34% of group revenue.",
+    "found": true,
+    "citations": [
+     {
+      "page": 26,
+      "quote": "The Digital Solutions segment contributed 34% of group revenue and remained the largest segment."
+     }
+    ],
+    "searched_pages": [
+     9,
+     10,
+     22,
+     26,
+     27,
+     31
+    ]
+   },
+   {
+    "q": "How many people did the company employ at year end?",
+    "gold": "9,049",
+    "gold_page": 31,
+    "question": "How many people did the company employ at year end?",
+    "answer": "At the end of 2024, the company employed a total of 9,049 people.",
+    "found": true,
+    "citations": [
+     {
+      "page": 31,
+      "quote": "At the end of 2024 the company employed 9,049 people, of whom 36% were women."
+     }
+    ],
+    "searched_pages": [
+     1,
+     9,
+     22,
+     31,
+     41,
+     51
+    ]
+   },
+   {
+    "q": "What percentage of employees were women?",
+    "gold": "36",
+    "gold_page": 31,
+    "question": "What percentage of employees were women?",
+    "answer": "At the end of 2024, 36% of the company's employees were women.",
+    "found": true,
+    "citations": [
+     {
+      "page": 31,
+      "quote": "At the end of 2024 the company employed 9,049 people, of whom 36% were women."
+     }
+    ],
+    "searched_pages": [
+     3,
+     10,
+     22,
+     26,
+     31,
+     38
+    ]
+   },
+   {
+    "q": "What were the Scope 1 and 2 emissions?",
+    "gold": "74,212",
+    "gold_page": 38,
+    "question": "What were the Scope 1 and 2 emissions?",
+    "answer": "Scope 1 and 2 emissions experienced a 21% decrease, reaching a total of 74,212 tonnes of CO2 equivalent.",
+    "found": true,
+    "citations": [
+     {
+      "page": 38,
+      "quote": "Scope 1 and 2 emissions fell 21% to 74,212 tonnes of CO2 equivalent."
+     }
+    ],
+    "searched_pages": [
+     7,
+     14,
+     26,
+     27,
+     38,
+     40
+    ]
+   },
+   {
+    "q": "By what year does the company aim to reach net zero operational emissions?",
+    "gold": "2028",
+    "gold_page": 40,
+    "question": "By what year does the company aim to reach net zero operational emissions?",
+    "answer": "The company aims to reach net zero operational emissions by the year 2028.",
+    "found": true,
+    "citations": [
+     {
+      "page": 40,
+      "quote": "The board has committed to reaching net zero operational emissions by 2028."
+     }
+    ],
+    "searched_pages": [
+     1,
+     9,
+     22,
+     31,
+     38,
+     40
+    ]
+   },
+   {
+    "q": "What final dividend per share does the board recommend?",
+    "gold": "0.55",
+    "gold_page": 56,
+    "question": "What final dividend per share does the board recommend?",
+    "answer": "The board recommends a final dividend of $0.55 per share.",
+    "found": true,
+    "citations": [
+     {
+      "page": 56,
+      "quote": "The board recommends a final dividend of $0.55 per share."
+     }
+    ],
+    "searched_pages": [
+     22,
+     26,
+     31,
+     40,
+     56,
+     63
+    ]
+   },
+   {
+    "q": "How much capital expenditure is planned for 2025?",
+    "gold": "61",
+    "gold_page": 66,
+    "question": "How much capital expenditure is planned for 2025?",
+    "answer": "A capital expenditure of $61 million is planned for the year 2025, primarily allocated for a new facility located in Tylerton.",
+    "found": true,
+    "citations": [
+     {
+      "page": 66,
+      "quote": "Capital expenditure of $61 million is planned for 2025, mainly for a new facility in Tylerton."
+     }
+    ],
+    "searched_pages": [
+     7,
+     27,
+     46,
+     63,
+     66,
+     67
+    ]
+   },
+   {
+    "q": "Who is the Chief Executive Officer?",
+    "gold": "Rhys Pearce-Jones",
+    "gold_page": 59,
+    "question": "Who is the Chief Executive Officer?",
+    "answer": "Rhys Pearce-Jones serves as the Chief Executive Officer.",
+    "found": true,
+    "citations": [
+     {
+      "page": 59,
+      "quote": "Rhys Pearce-Jones serves as Chief Executive Officer and Ellie Rice as Chief Financial Officer."
+     }
+    ],
+    "searched_pages": [
+     26,
+     27,
+     31,
+     40,
+     59,
+     63
+    ]
+   },
+   {
+    "q": "Who chairs the board?",
+    "gold": "Edward Hutchinson",
+    "gold_page": 63,
+    "question": "Who chairs the board?",
+    "answer": "The board is chaired by Edward Hutchinson.",
+    "found": true,
+    "citations": [
+     {
+      "page": 63,
+      "quote": "This section also covers data retention for the period under review. The board is chaired by Edward Hutchinson."
+     }
+    ],
+    "searched_pages": [
+     26,
+     27,
+     40,
+     51,
+     56,
+     63
+    ]
+   },
+   {
+    "q": "How many customer complaints were recorded?",
+    "gold": null,
+    "question": "How many customer complaints were recorded?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     1,
+     3,
+     10,
+     13,
+     22,
+     31
+    ]
+   },
+   {
+    "q": "What was the company's market share in Brazil?",
+    "gold": null,
+    "question": "What was the company's market share in Brazil?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     1,
+     22,
+     26,
+     31,
+     41,
+     56
+    ]
+   },
+   {
+    "q": "What is the share price target set by analysts?",
+    "gold": null,
+    "question": "What is the share price target set by analysts?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     22,
+     26,
+     40,
+     51,
+     56,
+     63
+    ]
+   }
+  ],
+  "summary": {
+   "model": "gemini:gemini-3.5-flash-lite",
+   "overview": [
+    {
+     "text": "In 2024, Howard LLC achieved a group revenue of $886.8 million, representing an 11.3% increase from the previous year.",
+     "citations": [
+      {
+       "page": 9,
+       "quote": "Group revenue for 2024 was $886.8 million, an increase of 11.3% on the prior year."
+      }
+     ]
+    },
+    {
+     "text": "Operating profit for the year reached $114.4 million, yielding an operating margin of 12.9%.",
+     "citations": [
+      {
+       "page": 10,
+       "quote": "Operating profit reached $114.4 million, giving an operating margin of 12.9%."
+      }
+     ]
+    },
+    {
+     "text": "The strongest quarter was the fourth quarter, with revenue totaling $248.3 million.",
+     "citations": [
+      {
+       "page": 22,
+       "quote": "Fourth-quarter revenue was $248.3 million, the strongest quarter of the year, compared with $204.0 million in the first quarter."
+      }
+     ]
+    },
+    {
+     "text": "The Digital Solutions segment proved to be the largest, contributing 34 percent of the group revenue.",
+     "citations": [
+      {
+       "page": 26,
+       "quote": "The Digital Solutions segment contributed 34% of group revenue and remained the largest segment."
+      }
+     ]
+    },
+    {
+     "text": "By the end of 2024, the company employed a total of 9,049 people and saw Scope 1 and 2 emissions drop by 21% to 74,212 tonnes of CO2 equivalent.",
+     "citations": [
+      {
+       "page": 31,
+       "quote": "At the end of 2024 the company employed 9,049 people, of whom 36% were women."
+      },
+      {
+       "page": 38,
+       "quote": "Scope 1 and 2 emissions fell 21% to 74,212 tonnes of CO2 equivalent."
+      }
+     ]
+    },
+    {
+     "text": "The board aims for net zero operational emissions by 2028 and has proposed a final dividend of $0.55 per share.",
+     "citations": [
+      {
+       "page": 40,
+       "quote": "The board has committed to reaching net zero operational emissions by 2028."
+      },
+      {
+       "page": 56,
+       "quote": "The board recommends a final dividend of $0.55 per share."
+      }
+     ]
+    },
+    {
+     "text": "Leadership includes Edward Hutchinson as board chair, Rhys Pearce-Jones as CEO, and Ellie Rice as CFO.",
+     "citations": [
+      {
+       "page": 59,
+       "quote": "Rhys Pearce-Jones serves as Chief Executive Officer and Ellie Rice as Chief Financial Officer."
+      },
+      {
+       "page": 63,
+       "quote": "The board is chaired by Edward Hutchinson."
+      }
+     ]
+    },
+    {
+     "text": "Looking ahead to 2025, $61 million in capital expenditure is planned primarily for a new facility in Tylerton.",
+     "citations": [
+      {
+       "page": 66,
+       "quote": "Capital expenditure of $61 million is planned for 2025, mainly for a new facility in Tylerton."
+      }
+     ]
+    }
+   ],
+   "key_points": [
+    {
+     "text": "Group revenue for the year 2024 totaled $886.8 million, showing an increase of 11.3% compared to the prior year.",
+     "citations": [
+      {
+       "page": 9,
+       "quote": "Group revenue for 2024 was $886.8 million, an increase of 11.3% on the prior year."
+      }
+     ],
+     "id": 1
+    },
+    {
+     "text": "Operating profit reached $114.4 million, which resulted in an operating margin of 12.9%.",
+     "citations": [
+      {
+       "page": 10,
+       "quote": "Operating profit reached $114.4 million, giving an operating margin of 12.9%."
+      }
+     ],
+     "id": 2
+    },
+    {
+     "text": "Fourth-quarter revenue was $248.3 million, representing the strongest quarter of the year.",
+     "citations": [
+      {
+       "page": 22,
+       "quote": "Fourth-quarter revenue was $248.3 million, the strongest quarter of the year, compared with $204.0 million in the first quarter."
+      }
+     ],
+     "id": 3
+    },
+    {
+     "text": "The Digital Solutions segment contributed 34 percent of group revenue and was the largest segment.",
+     "citations": [
+      {
+       "page": 26,
+       "quote": "The Digital Solutions segment contributed 34% of group revenue and remained the largest segment."
+      }
+     ],
+     "id": 4
+    },
+    {
+     "text": "At the conclusion of 2024, the company had a total of 9,049 employees.",
+     "citations": [
+      {
+       "page": 31,
+       "quote": "At the end of 2024 the company employed 9,049 people, of whom 36% were women."
+      }
+     ],
+     "id": 5
+    },
+    {
+     "text": "Scope 1 and 2 emissions decreased by 21% to reach 74,212 tonnes of CO2 equivalent.",
+     "citations": [
+      {
+       "page": 38,
+       "quote": "Scope 1 and 2 emissions fell 21% to 74,212 tonnes of CO2 equivalent."
+      }
+     ],
+     "id": 6
+    },
+    {
+     "text": "The board has committed to achieving net zero operational emissions by the year 2028.",
+     "citations": [
+      {
+       "page": 40,
+       "quote": "The board has committed to reaching net zero operational emissions by 2028."
+      }
+     ],
+     "id": 7
+    },
+    {
+     "text": "The board recommends a final dividend of $0.55 per share.",
+     "citations": [
+      {
+       "page": 56,
+       "quote": "The board recommends a final dividend of $0.55 per share."
+      }
+     ],
+     "id": 8
+    },
+    {
+     "text": "Capital expenditure of $61 million is planned for 2025, mainly for a new facility in Tylerton.",
+     "citations": [
+      {
+       "page": 66,
+       "quote": "Capital expenditure of $61 million is planned for 2025, mainly for a new facility in Tylerton."
+      }
+     ],
+     "id": 11
+    }
+   ],
+   "facts": [
+    {
+     "text": "Group revenue for the year 2024 totaled $886.8 million, showing an increase of 11.3% compared to the prior year.",
+     "citations": [
+      {
+       "page": 9,
+       "quote": "Group revenue for 2024 was $886.8 million, an increase of 11.3% on the prior year."
+      }
+     ],
+     "id": 1
+    },
+    {
+     "text": "Operating profit reached $114.4 million, which resulted in an operating margin of 12.9%.",
+     "citations": [
+      {
+       "page": 10,
+       "quote": "Operating profit reached $114.4 million, giving an operating margin of 12.9%."
+      }
+     ],
+     "id": 2
+    },
+    {
+     "text": "Fourth-quarter revenue was $248.3 million, representing the strongest quarter of the year.",
+     "citations": [
+      {
+       "page": 22,
+       "quote": "Fourth-quarter revenue was $248.3 million, the strongest quarter of the year, compared with $204.0 million in the first quarter."
+      }
+     ],
+     "id": 3
+    },
+    {
+     "text": "The Digital Solutions segment contributed 34 percent of group revenue and was the largest segment.",
+     "citations": [
+      {
+       "page": 26,
+       "quote": "The Digital Solutions segment contributed 34% of group revenue and remained the largest segment."
+      }
+     ],
+     "id": 4
+    },
+    {
+     "text": "At the conclusion of 2024, the company had a total of 9,049 employees.",
+     "citations": [
+      {
+       "page": 31,
+       "quote": "At the end of 2024 the company employed 9,049 people, of whom 36% were women."
+      }
+     ],
+     "id": 5
+    },
+    {
+     "text": "Scope 1 and 2 emissions decreased by 21% to reach 74,212 tonnes of CO2 equivalent.",
+     "citations": [
+      {
+       "page": 38,
+       "quote": "Scope 1 and 2 emissions fell 21% to 74,212 tonnes of CO2 equivalent."
+      }
+     ],
+     "id": 6
+    },
+    {
+     "text": "The board has committed to achieving net zero operational emissions by the year 2028.",
+     "citations": [
+      {
+       "page": 40,
+       "quote": "The board has committed to reaching net zero operational emissions by 2028."
+      }
+     ],
+     "id": 7
+    },
+    {
+     "text": "The board recommends a final dividend of $0.55 per share.",
+     "citations": [
+      {
+       "page": 56,
+       "quote": "The board recommends a final dividend of $0.55 per share."
+      }
+     ],
+     "id": 8
+    },
+    {
+     "text": "Rhys Pearce-Jones serves as Chief Executive Officer and Ellie Rice as Chief Financial Officer.",
+     "citations": [
+      {
+       "page": 59,
+       "quote": "Rhys Pearce-Jones serves as Chief Executive Officer and Ellie Rice as Chief Financial Officer."
+      }
+     ],
+     "id": 9
+    },
+    {
+     "text": "The board is chaired by Edward Hutchinson.",
+     "citations": [
+      {
+       "page": 63,
+       "quote": "The board is chaired by Edward Hutchinson."
+      }
+     ],
+     "id": 10
+    },
+    {
+     "text": "Capital expenditure of $61 million is planned for 2025, mainly for a new facility in Tylerton.",
+     "citations": [
+      {
+       "page": 66,
+       "quote": "Capital expenditure of $61 million is planned for 2025, mainly for a new facility in Tylerton."
+      }
+     ],
+     "id": 11
+    },
+    {
+     "text": "The text notes that data retention for the period under review is covered in this section.",
+     "citations": [
+      {
+       "page": 69,
+       "quote": "This section also covers data retention for the period under review."
+      }
+     ],
+     "id": 12
+    },
+    {
+     "text": "The text mentions that document management for the period under review is also covered.",
+     "citations": [
+      {
+       "page": 70,
+       "quote": "This section also covers document management for the period under review."
+      }
+     ],
+     "id": 13
+    },
+    {
+     "text": "Supplier onboarding for the period under review is covered in this section as well.",
+     "citations": [
+      {
+       "page": 70,
+       "quote": "This section also covers supplier onboarding for the period under review."
+      }
+     ],
+     "id": 14
+    },
+    {
+     "text": "The text also covers quality assurance for the period under review in this section.",
+     "citations": [
+      {
+       "page": 70,
+       "quote": "This section also covers quality assurance for the period under review."
+      }
+     ],
+     "id": 15
+    }
+   ],
+   "explain": "This document is the annual report for Howard LLC, summarizing the company's financial performance, operational achievements, and sustainability targets for 2024. It is intended for shareholders, investors, and stakeholders to review the company's annual results and future plans.",
+   "explain_note": "Plain-language description; not a factual claim, so not cited.",
+   "rejected": [],
+   "stats": {
+    "sections": 5,
+    "facts_verified": 15,
+    "statements_rejected": 0,
+    "model_calls": 23
+   }
+  },
+  "false_claims": []
+ },
+ {
+  "file": "report01.pdf",
+  "pages": 70,
+  "modality": "scan",
+  "read_index_s": 79.4,
+  "summary_s": 72.9,
+  "qa": [
+   {
+    "q": "What was group revenue in 2023?",
+    "gold": "576.8",
+    "gold_page": 13,
+    "question": "What was group revenue in 2023?",
+    "answer": "Group revenue for 2023 was $576.8 million, which represented an increase of 12.7% compared to the prior year.",
+    "found": true,
+    "citations": [
+     {
+      "page": 13,
+      "quote": "Group revenue for 2023 was $576.8 million, an increase of 12.7% on the prior year."
+     }
+    ],
+    "searched_pages": [
+     1,
+     13,
+     21,
+     29,
+     35,
+     65
+    ]
+   },
+   {
+    "q": "By what percentage did revenue grow compared with the prior year?",
+    "gold": "12.7",
+    "gold_page": 13,
+    "question": "By what percentage did revenue grow compared with the prior year?",
+    "answer": "Group revenue increased by 12.7% on the prior year, reaching $576.8 million in 2023.",
+    "found": true,
+    "citations": [
+     {
+      "page": 13,
+      "quote": "Group revenue for 2023 was $576.8 million, an increase of 12.7% on the prior year."
+     }
+    ],
+    "searched_pages": [
+     13,
+     21,
+     29,
+     35,
+     38,
+     62
+    ]
+   },
+   {
+    "q": "What was the operating profit?",
+    "gold": "48.5",
+    "gold_page": 15,
+    "question": "What was the operating profit?",
+    "answer": "Operating profit reached $48.5 million for the period under review, resulting in an operating margin of 8.4%.",
+    "found": true,
+    "citations": [
+     {
+      "page": 15,
+      "quote": "Operating profit reached $48.5 million, giving an operating margin of 8.4%."
+     }
+    ],
+    "searched_pages": [
+     13,
+     15,
+     21,
+     29,
+     35,
+     62
+    ]
+   },
+   {
+    "q": "What was the operating margin?",
+    "gold": "8.4",
+    "gold_page": 15,
+    "question": "What was the operating margin?",
+    "answer": "The operating margin was 8.4%.",
+    "found": true,
+    "citations": [
+     {
+      "page": 15,
+      "quote": "Operating profit reached $48.5 million, giving an operating margin of 8.4%."
+     }
+    ],
+    "searched_pages": [
+     15,
+     21,
+     29,
+     35,
+     55,
+     62
+    ]
+   },
+   {
+    "q": "What was revenue in the fourth quarter?",
+    "gold": "161.5",
+    "gold_page": 21,
+    "question": "What was revenue in the fourth quarter?",
+    "answer": "Fourth-quarter revenue reached $161.5 million, marking it as the strongest quarter of the year.",
+    "found": true,
+    "citations": [
+     {
+      "page": 21,
+      "quote": "Fourth-quarter revenue was $161.5 million, the strongest quarter of the year, compared with $132.7 million in the first quarter."
+     }
+    ],
+    "searched_pages": [
+     8,
+     13,
+     21,
+     29,
+     40,
+     65
+    ]
+   },
+   {
+    "q": "Which segment was the largest, and what share of revenue did it contribute?",
+    "gold": "34",
+    "gold_page": 29,
+    "question": "Which segment was the largest, and what share of revenue did it contribute?",
+    "answer": "The Logistics segment remained the largest segment and contributed 34% of group revenue.",
+    "found": true,
+    "citations": [
+     {
+      "page": 29,
+      "quote": "The Logistics segment contributed 34% of group revenue and remained the largest segment."
+     }
+    ],
+    "searched_pages": [
+     13,
+     15,
+     21,
+     23,
+     29,
+     35
+    ]
+   },
+   {
+    "q": "How many people did the company employ at year end?",
+    "gold": "7,719",
+    "gold_page": 35,
+    "question": "How many people did the company employ at year end?",
+    "answer": "At the end of 2023, the company employed a total of 7,719 people, with women accounting for 45% of the workforce.",
+    "found": true,
+    "citations": [
+     {
+      "page": 35,
+      "quote": "At the end of 2023 the company employed 7,719 people, of whom 45% were women."
+     }
+    ],
+    "searched_pages": [
+     1,
+     13,
+     21,
+     30,
+     35,
+     55
+    ]
+   },
+   {
+    "q": "What percentage of employees were women?",
+    "gold": "45",
+    "gold_page": 35,
+    "question": "What percentage of employees were women?",
+    "answer": "At the end of 2023, women made up 45% of the company's 7,719 employees.",
+    "found": true,
+    "citations": [
+     {
+      "page": 35,
+      "quote": "At the end of 2023 the company employed 7,719 people, of whom 45% were women."
+     }
+    ],
+    "searched_pages": [
+     13,
+     15,
+     21,
+     29,
+     35,
+     37
+    ]
+   },
+   {
+    "q": "What were the Scope 1 and 2 emissions?",
+    "gold": "34,976",
+    "gold_page": 37,
+    "question": "What were the Scope 1 and 2 emissions?",
+    "answer": "Scope 1 and 2 emissions decreased by 11% to reach a total of 34,976 tonnes of CO2 equivalent.",
+    "found": true,
+    "citations": [
+     {
+      "page": 37,
+      "quote": "Scope 1 and 2 emissions fell 11% to 34,976 tonnes of CO2 equivalent."
+     }
+    ],
+    "searched_pages": [
+     11,
+     22,
+     35,
+     37,
+     38,
+     54
+    ]
+   },
+   {
+    "q": "By what year does the company aim to reach net zero operational emissions?",
+    "gold": "2028",
+    "gold_page": 38,
+    "question": "By what year does the company aim to reach net zero operational emissions?",
+    "answer": "The board of the company has committed to achieving net zero operational emissions by the year 2028.",
+    "found": true,
+    "citations": [
+     {
+      "page": 38,
+      "quote": "The board has committed to reaching net zero operational emissions by 2028."
+     }
+    ],
+    "searched_pages": [
+     1,
+     13,
+     21,
+     35,
+     37,
+     38
+    ]
+   },
+   {
+    "q": "What final dividend per share does the board recommend?",
+    "gold": "0.68",
+    "gold_page": 54,
+    "question": "What final dividend per share does the board recommend?",
+    "answer": "The board recommends a final dividend of $0.68 per share.",
+    "found": true,
+    "citations": [
+     {
+      "page": 54,
+      "quote": "The board recommends a final dividend of $0.68 per share."
+     }
+    ],
+    "searched_pages": [
+     13,
+     21,
+     29,
+     38,
+     54,
+     62
+    ]
+   },
+   {
+    "q": "How much capital expenditure is planned for 2024?",
+    "gold": "63",
+    "gold_page": 65,
+    "question": "How much capital expenditure is planned for 2024?",
+    "answer": "Capital expenditure of $63 million is planned for the year 2024, which is primarily allocated for a new facility located in Jonesport.",
+    "found": true,
+    "citations": [
+     {
+      "page": 65,
+      "quote": "Capital expenditure of $63 million is planned for 2024, mainly for a new facility in Jonesport."
+     }
+    ],
+    "searched_pages": [
+     11,
+     13,
+     21,
+     28,
+     62,
+     65
+    ]
+   },
+   {
+    "q": "Who is the Chief Executive Officer?",
+    "gold": "Jill Wilson",
+    "gold_page": 58,
+    "question": "Who is the Chief Executive Officer?",
+    "answer": "Jill Wilson serves as the Chief Executive Officer of the company.",
+    "found": true,
+    "citations": [
+     {
+      "page": 58,
+      "quote": "Jill Wilson serves as Chief Executive Officer and Robin Humphries as Chief Financial Officer."
+     }
+    ],
+    "searched_pages": [
+     21,
+     28,
+     35,
+     38,
+     58,
+     62
+    ]
+   },
+   {
+    "q": "Who chairs the board?",
+    "gold": "Dale Hurst",
+    "gold_page": 62,
+    "question": "Who chairs the board?",
+    "answer": "The board is chaired by Dale Hurst.",
+    "found": true,
+    "citations": [
+     {
+      "page": 62,
+      "quote": "This section also covers internal controls for the period under review. The board is chaired by Dale Hurst."
+     }
+    ],
+    "searched_pages": [
+     13,
+     22,
+     35,
+     38,
+     54,
+     62
+    ]
+   },
+   {
+    "q": "How many patents did the company file?",
+    "gold": null,
+    "question": "How many patents did the company file?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     1,
+     13,
+     21,
+     28,
+     35,
+     55
+    ]
+   },
+   {
+    "q": "How many customer complaints were recorded?",
+    "gold": null,
+    "question": "How many customer complaints were recorded?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     4,
+     8,
+     13,
+     15,
+     21,
+     35
+    ]
+   },
+   {
+    "q": "What was the company's market share in Brazil?",
+    "gold": null,
+    "question": "What was the company's market share in Brazil?",
+    "answer": "The document does not state this.",
+    "found": false,
+    "citations": [],
+    "searched_pages": [
+     9,
+     13,
+     21,
+     29,
+     35,
+     54
+    ]
+   }
+  ],
+  "summary": {
+   "model": "gemini:gemini-3.5-flash-lite",
+   "overview": [
+    {
+     "text": "Group revenue for the year 2023 was $576.8 million, representing a 12.7% increase compared to the prior year.",
+     "citations": [
+      {
+       "page": 13,
+       "quote": "Group revenue for 2023 was $576.8 million, an increase of 12.7% on the prior year."
+      }
+     ]
+    },
+    {
+     "text": "Operating profit reached $48.5 million, achieving an operating margin of 8.4%.",
+     "citations": [
+      {
+       "page": 15,
+       "quote": "Operating profit reached $48.5 million, giving an operating margin of 8.4%."
+      },
+      {
+       "page": 15,
+       "quote": "Operating profit reached $48.5 million, giving an operating margin of 8.4%."
+      }
+     ]
+    },
+    {
+     "text": "Fourth-quarter revenue reached $161.5 million, marking the highest quarter of the year compared to $132.7 million in the first quarter.",
+     "citations": [
+      {
+       "page": 21,
+       "quote": "Fourth-quarter revenue was $161.5 million, the strongest quarter of the year, compared with $132.7 million in the first quarter."
+      }
+     ]
+    },
+    {
+     "text": "The Logistics segment represented 34% of group revenue and continued to be the largest segment.",
+     "citations": [
+      {
+       "page": 29,
+       "quote": "The Logistics segment contributed 34% of group revenue and remained the largest segment."
+      }
+     ]
+    },
+    {
+     "text": "Scope 1 and 2 emissions decreased by 11% to reach 34,976 tonnes of CO2 equivalent, with a board commitment to achieve net zero operational emissions by the year 2028.",
+     "citations": [
+      {
+       "page": 37,
+       "quote": "Scope 1 and 2 emissions fell 11% to 34,976 tonnes of CO2 equivalent."
+      },
+      {
+       "page": 38,
+       "quote": "The board has committed to reaching net zero operational emissions by 2028."
+      }
+     ]
+    },
+    {
+     "text": "The board recommends a final dividend of $0.68 per share and plans capital expenditure of $63 million for 2024, mainly for a new facility in Jonesport.",
+     "citations": [
+      {
+       "page": 54,
+       "quote": "The board recommends a final dividend of $0.68 per share."
+      },
+      {
+       "page": 65,
+       "quote": "Capital expenditure of $63 million is planned for 2024, mainly for a new facility in Jonesport."
+      }
+     ]
+    },
+    {
+     "text": "Leadership includes Jill Wilson as Chief Executive Officer, Robin Humphries as Chief Financial Officer, and Dale Hurst as board chair.",
+     "citations": [
+      {
+       "page": 58,
+       "quote": "Jill Wilson serves as Chief Executive Officer and Robin Humphries as Chief Financial Officer."
+      },
+      {
+       "page": 62,
+       "quote": "The board is chaired by Dale Hurst."
+      }
+     ]
+    },
+    {
+     "text": "The report concludes with sections covering procurement policy, document management, quality assurance, and records classification.",
+     "citations": [
+      {
+       "page": 69,
+       "quote": "This section also covers procurement policy for the period under review."
+      },
+      {
+       "page": 70,
+       "quote": "This section also covers document management for the period under review."
+      },
+      {
+       "page": 70,
+       "quote": "This section also covers quality assurance for the period under review."
+      },
+      {
+       "page": 70,
+       "quote": "This section also covers records classification for the period under review."
+      }
+     ]
+    }
+   ],
+   "key_points": [
+    {
+     "text": "Group revenue for the year 2023 was $576.8 million, which represents a 12.7% increase compared to the prior year.",
+     "citations": [
+      {
+       "page": 13,
+       "quote": "Group revenue for 2023 was $576.8 million, an increase of 12.7% on the prior year."
+      }
+     ],
+     "id": 1
+    },
+    {
+     "text": "Operating profit reached $48.5 million for the period.",
+     "citations": [
+      {
+       "page": 15,
+       "quote": "Operating profit reached $48.5 million, giving an operating margin of 8.4%."
+      }
+     ],
+     "id": 2
+    },
+    {
+     "text": "The operating margin achieved was 8.4%.",
+     "citations": [
+      {
+       "page": 15,
+       "quote": "Operating profit reached $48.5 million, giving an operating margin of 8.4%."
+      }
+     ],
+     "id": 3
+    },
+    {
+     "text": "Fourth-quarter revenue reached $161.5 million, marking the highest quarter of the year compared to $132.7 million in the first quarter.",
+     "citations": [
+      {
+       "page": 21,
+       "quote": "Fourth-quarter revenue was $161.5 million, the strongest quarter of the year, compared with $132.7 million in the first quarter."
+      }
+     ],
+     "id": 4
+    },
+    {
+     "text": "The Logistics segment represented 34% of group revenue and continued to be the largest segment.",
+     "citations": [
+      {
+       "page": 29,
+       "quote": "The Logistics segment contributed 34% of group revenue and remained the largest segment."
+      }
+     ],
+     "id": 5
+    },
+    {
+     "text": "Scope 1 and 2 emissions decreased by 11% to reach 34,976 tonnes of CO2 equivalent.",
+     "citations": [
+      {
+       "page": 37,
+       "quote": "Scope 1 and 2 emissions fell 11% to 34,976 tonnes of CO2 equivalent."
+      }
+     ],
+     "id": 6
+    },
+    {
+     "text": "The board has made a commitment to achieve net zero operational emissions by the year 2028.",
+     "citations": [
+      {
+       "page": 38,
+       "quote": "The board has committed to reaching net zero operational emissions by 2028."
+      }
+     ],
+     "id": 7
+    },
+    {
+     "text": "The board recommends a final dividend of $0.68 per share.",
+     "citations": [
+      {
+       "page": 54,
+       "quote": "The board recommends a final dividend of $0.68 per share."
+      }
+     ],
+     "id": 8
+    },
+    {
+     "text": "Capital expenditure of $63 million is planned for 2024, mainly for a new facility in Jonesport.",
+     "citations": [
+      {
+       "page": 65,
+       "quote": "Capital expenditure of $63 million is planned for 2024, mainly for a new facility in Jonesport."
+      }
+     ],
+     "id": 11
+    }
+   ],
+   "facts": [
+    {
+     "text": "Group revenue for the year 2023 was $576.8 million, which represents a 12.7% increase compared to the prior year.",
+     "citations": [
+      {
+       "page": 13,
+       "quote": "Group revenue for 2023 was $576.8 million, an increase of 12.7% on the prior year."
+      }
+     ],
+     "id": 1
+    },
+    {
+     "text": "Operating profit reached $48.5 million for the period.",
+     "citations": [
+      {
+       "page": 15,
+       "quote": "Operating profit reached $48.5 million, giving an operating margin of 8.4%."
+      }
+     ],
+     "id": 2
+    },
+    {
+     "text": "The operating margin achieved was 8.4%.",
+     "citations": [
+      {
+       "page": 15,
+       "quote": "Operating profit reached $48.5 million, giving an operating margin of 8.4%."
+      }
+     ],
+     "id": 3
+    },
+    {
+     "text": "Fourth-quarter revenue reached $161.5 million, marking the highest quarter of the year compared to $132.7 million in the first quarter.",
+     "citations": [
+      {
+       "page": 21,
+       "quote": "Fourth-quarter revenue was $161.5 million, the strongest quarter of the year, compared with $132.7 million in the first quarter."
+      }
+     ],
+     "id": 4
+    },
+    {
+     "text": "The Logistics segment represented 34% of group revenue and continued to be the largest segment.",
+     "citations": [
+      {
+       "page": 29,
+       "quote": "The Logistics segment contributed 34% of group revenue and remained the largest segment."
+      }
+     ],
+     "id": 5
+    },
+    {
+     "text": "Scope 1 and 2 emissions decreased by 11% to reach 34,976 tonnes of CO2 equivalent.",
+     "citations": [
+      {
+       "page": 37,
+       "quote": "Scope 1 and 2 emissions fell 11% to 34,976 tonnes of CO2 equivalent."
+      }
+     ],
+     "id": 6
+    },
+    {
+     "text": "The board has made a commitment to achieve net zero operational emissions by the year 2028.",
+     "citations": [
+      {
+       "page": 38,
+       "quote": "The board has committed to reaching net zero operational emissions by 2028."
+      }
+     ],
+     "id": 7
+    },
+    {
+     "text": "The board recommends a final dividend of $0.68 per share.",
+     "citations": [
+      {
+       "page": 54,
+       "quote": "The board recommends a final dividend of $0.68 per share."
+      }
+     ],
+     "id": 8
+    },
+    {
+     "text": "Jill Wilson serves as Chief Executive Officer and Robin Humphries as Chief Financial Officer.",
+     "citations": [
+      {
+       "page": 58,
+       "quote": "Jill Wilson serves as Chief Executive Officer and Robin Humphries as Chief Financial Officer."
+      }
+     ],
+     "id": 9
+    },
+    {
+     "text": "The board is chaired by Dale Hurst.",
+     "citations": [
+      {
+       "page": 62,
+       "quote": "The board is chaired by Dale Hurst."
+      }
+     ],
+     "id": 10
+    },
+    {
+     "text": "Capital expenditure of $63 million is planned for 2024, mainly for a new facility in Jonesport.",
+     "citations": [
+      {
+       "page": 65,
+       "quote": "Capital expenditure of $63 million is planned for 2024, mainly for a new facility in Jonesport."
+      }
+     ],
+     "id": 11
+    },
+    {
+     "text": "Procurement policy for the period under review is covered in this section.",
+     "citations": [
+      {
+       "page": 69,
+       "quote": "This section also covers procurement policy for the period under review."
+      }
+     ],
+     "id": 12
+    },
+    {
+     "text": "Document management for the period under review is covered in this section.",
+     "citations": [
+      {
+       "page": 70,
+       "quote": "This section also covers document management for the period under review."
+      }
+     ],
+     "id": 13
+    },
+    {
+     "text": "Quality assurance for the period under review is also covered in this section.",
+     "citations": [
+      {
+       "page": 70,
+       "quote": "This section also covers quality assurance for the period under review."
+      }
+     ],
+     "id": 14
+    },
+    {
+     "text": "Records classification for the period under review is covered in this section.",
+     "citations": [
+      {
+       "page": 70,
+       "quote": "This section also covers records classification for the period under review."
+      }
+     ],
+     "id": 15
+    }
+   ],
+   "explain": "This document is the 2023 annual report for the Winter Group, detailing the company's financial performance, sustainability targets, leadership, and operational highlights. It is intended for shareholders, board members, investors, and stakeholders to review the company's annual results and future plans.",
+   "explain_note": "Plain-language description; not a factual claim, so not cited.",
+   "rejected": [
+    {
+     "text": "By the conclusion of 2023, the company had a total workforce of 7,719 employees, with women making up 45% of that total.",
+     "citations": [
+      {
+       "page": 35,
+       "quote": "At the end of 2023 the company employed 7,719 people, of whom 45% were women."
+      }
+     ],
+     "reason": "the quote does not support the statement"
+    }
+   ],
+   "stats": {
+    "sections": 5,
+    "facts_verified": 15,
+    "statements_rejected": 1,
+    "model_calls": 46
+   }
+  },
+  "false_claims": []
+ }
+]

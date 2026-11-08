@@ -217,7 +217,11 @@ async def _read_upload(file: UploadFile) -> tuple[bytes, str]:
 @app.get("/config")
 def config(request: Request, owner: str = Depends(visitor)):
     """What the console needs to know: demo limits and how many documents this visitor has left."""
-    out = {"demo": DEMO, "repo_url": REPO_URL, "max_batch": MAX_BATCH, "extractor": os.getenv("EXTRACTOR", "rules")}
+    from ..longdoc.llm import default_model
+    out = {"demo": DEMO, "repo_url": REPO_URL, "max_batch": MAX_BATCH, "extractor": os.getenv("EXTRACTOR", "rules"),
+           "summary_model": default_model(),
+           "longdoc_pages": DEMO_LONGDOC_PAGES if DEMO else MAX_LONGDOC_PAGES,
+           "longdoc_questions": DEMO_MAX_QUESTIONS if DEMO else None}
     if DEMO:
         out |= {"max_docs": DEMO_MAX_DOCS, "max_pages": DEMO_MAX_PAGES, "ttl_hours": DEMO_TTL / 3600,
                 "remaining": demo_allowance(owner, client_of(request)), "limit_message": limit_message()}
@@ -434,6 +438,172 @@ async def seed_demo(request: Request, n: int = 6, split: str = "test", owner: st
         out.append(await _submit(DEMO_DIR / "docs" / gt["file"], gt["file"], gt.get("case_id"),
                                  Path(gt["file"]).suffix, batch_id, owner, client))
     return {"queued": out, "batch_id": batch_id}
+
+
+# ---- Long documents: cited summary and questions (docintel.longdoc) ---------------------------------------------
+# Stored as files under LONGDOC_DIR/<id>/: source.pdf, state.json (owner, status, progress), doc.json
+# (page text, passages, metadata, embeddings) and summary.json. Questions are answered on request.
+
+LONGDOC_DIR = Path(os.getenv("LONGDOC_DIR", "data/longdocs"))
+MAX_LONGDOC_PAGES = int(os.getenv("MAX_LONGDOC_PAGES", "500"))
+DEMO_LONGDOC_PAGES = int(os.getenv("DEMO_LONGDOC_PAGES", "15"))
+DEMO_MAX_QUESTIONS = int(os.getenv("DEMO_MAX_QUESTIONS", "10"))  # per report
+_indexes: dict[str, Any] = {}
+
+
+class Question(BaseModel):
+    question: str = Field(min_length=3, max_length=500)
+
+
+def _ld_state(rid: str) -> dict:
+    p = LONGDOC_DIR / rid / "state.json"
+    return json.loads(p.read_text()) if p.exists() else {}
+
+
+def _ld_save(rid: str, **changes) -> dict:
+    st = _ld_state(rid) | changes
+    tmp = LONGDOC_DIR / rid / "state.json.tmp"
+    tmp.write_text(json.dumps(st))
+    tmp.replace(LONGDOC_DIR / rid / "state.json")
+    return st
+
+
+def _ld_get(rid: str, owner: str) -> dict:
+    if not rid.isalnum():
+        raise HTTPException(404, "Report not found")
+    st = _ld_state(rid)
+    if not st or st.get("owner") != owner:  # other visitors' reports look like they don't exist
+        raise HTTPException(404, "Report not found")
+    return st
+
+
+def _ld_purge() -> None:
+    if not LONGDOC_DIR.exists():
+        return
+    for d in LONGDOC_DIR.iterdir():
+        st = json.loads((d / "state.json").read_text()) if (d / "state.json").exists() else {}
+        if st.get("created", 0) < time.time() - DEMO_TTL:
+            shutil.rmtree(d, ignore_errors=True)
+            _indexes.pop(d.name, None)
+
+
+def _ld_process(rid: str) -> None:
+    from ..longdoc.index import Index
+    from ..longdoc.reader import read
+    from ..longdoc.summarize import summarize
+    try:
+        _ld_save(rid, status="reading", progress=0.0)
+        doc = read(LONGDOC_DIR / rid / "source.pdf",
+                   progress=lambda i, n: _ld_save(rid, progress=round(0.4 * i / n, 3)))
+        _ld_save(rid, status="indexing", progress=0.4, meta=doc.meta)
+        index = Index.build(doc.passages)
+        (LONGDOC_DIR / rid / "doc.json").write_text(json.dumps(doc.to_json() | {"vectors": index.vectors}))
+        _indexes[rid] = (doc, index)
+        _ld_save(rid, status="summarising", progress=0.5)
+        summary = summarize(doc, progress=lambda i, n: _ld_save(rid, progress=round(0.5 + 0.5 * i / n, 3)))
+        (LONGDOC_DIR / rid / "summary.json").write_text(json.dumps(summary))
+        _ld_save(rid, status="done", progress=1.0, finished=time.time())
+    except Exception as e:  # noqa: BLE001 - shown to the user on the report
+        _ld_save(rid, status="failed", error=str(e)[:300])
+
+
+def _ld_loaded(rid: str):
+    if rid not in _indexes:
+        from ..longdoc.index import Index
+        from ..longdoc.reader import LongDoc
+        p = LONGDOC_DIR / rid / "doc.json"
+        if not p.exists():
+            raise HTTPException(409, "The report is still being read")
+        d = json.loads(p.read_text())
+        doc = LongDoc.from_json(d)
+        _indexes[rid] = (doc, Index(doc.passages, d.get("vectors")))
+    return _indexes[rid]
+
+
+@app.post("/reports", status_code=202, dependencies=[Depends(require_key)])
+async def upload_report(request: Request, file: UploadFile = File(...),  # noqa: B008
+                        owner: str = Depends(visitor)):
+    """A long PDF (report, contract, filing) to summarise and question, with citations."""
+    client = client_of(request)
+    if DEMO:
+        _ld_purge()
+    data = await file.read(MAX_UPLOAD + 1)
+    if len(data) > MAX_UPLOAD:
+        raise HTTPException(413, f"File exceeds {MAX_UPLOAD // 1_000_000} MB")
+    ext = sniff(data)
+    if ext is None:
+        raise HTTPException(415, "Unsupported file: expected a PDF or an image")
+    try:
+        n = page_count(data, ext)
+    except Exception:  # noqa: BLE001
+        raise HTTPException(415, "Could not open this PDF") from None
+    limit = DEMO_LONGDOC_PAGES if DEMO else MAX_LONGDOC_PAGES
+    if n > limit:
+        msg = f"This instance accepts documents of up to {limit} pages."
+        raise HTTPException(413, msg + (f" Run your own copy for longer documents: {REPO_URL}" if DEMO else ""))
+    if DEMO:  # same rule as batches: this browser OR this network, whichever has used more
+        since = time.time() - DAY
+        recent = [_ld_state(d.name) for d in LONGDOC_DIR.glob("*")]
+        recent = [st for st in recent if st.get("created", 0) >= since]
+        if (sum(st.get("owner") == owner or st.get("client") == client for st in recent) >= DEMO_MAX_DOCS
+                or len(recent) >= DEMO_DAILY_CAP):
+            raise HTTPException(429, limit_message())
+    rid = uuid.uuid4().hex[:16]
+    (LONGDOC_DIR / rid).mkdir(parents=True)
+    src = LONGDOC_DIR / rid / "source.pdf"
+    if ext == "pdf":
+        src.write_bytes(data)
+    else:
+        with pymupdf.open(stream=data, filetype=ext) as img:
+            src.write_bytes(img.convert_to_pdf())
+    _ld_save(rid, id=rid, owner=owner, client=client, file=file.filename or "document.pdf", pages=n, status="queued",
+             progress=0.0, created=time.time(), questions=0)
+    pool.submit(_ld_process, rid)
+    return {"report_id": rid, "status": "queued", "pages": n}
+
+
+@app.get("/reports", dependencies=[Depends(require_key)])
+def list_reports(owner: str = Depends(visitor)):
+    if not LONGDOC_DIR.exists():
+        return []
+    states = [_ld_state(d.name) for d in LONGDOC_DIR.iterdir()]
+    mine = [s for s in states if s.get("owner") == owner]
+    return sorted(({k: s.get(k) for k in ("id", "file", "pages", "status", "progress", "created")} for s in mine),
+                  key=lambda s: -(s["created"] or 0))
+
+
+@app.get("/reports/{rid}", dependencies=[Depends(require_key)])
+def report(rid: str, owner: str = Depends(visitor)):
+    st = _ld_get(rid, owner)
+    out = {k: v for k, v in st.items() if k not in ("owner", "client")}
+    p = LONGDOC_DIR / rid / "summary.json"
+    if p.exists():
+        out["summary"] = json.loads(p.read_text())
+    return out
+
+
+@app.post("/reports/{rid}/ask", dependencies=[Depends(require_key)])
+def ask_report(rid: str, body: Question, owner: str = Depends(visitor)):
+    from ..longdoc.qa import ask
+    st = _ld_get(rid, owner)
+    if DEMO and st.get("questions", 0) >= DEMO_MAX_QUESTIONS:
+        raise HTTPException(429, f"The public demo answers {DEMO_MAX_QUESTIONS} questions per document. "
+                                 f"Run your own copy for unlimited questions: {REPO_URL}")
+    doc, index = _ld_loaded(rid)
+    answer = ask(doc, index, body.question)
+    _ld_save(rid, questions=st.get("questions", 0) + 1)
+    return answer
+
+
+@app.get("/reports/{rid}/page/{n}.png", dependencies=[Depends(require_key)])
+def report_page(rid: str, n: int, owner: str = Depends(visitor)):
+    """Page n (1-based, as cited) for checking a quote against the original."""
+    _ld_get(rid, owner)
+    with pymupdf.open(LONGDOC_DIR / rid / "source.pdf") as d:
+        if not 1 <= n <= len(d):
+            raise HTTPException(404, "No such page")
+        png = d[n - 1].get_pixmap(matrix=pymupdf.Matrix(1.6, 1.6)).tobytes("png")
+    return Response(png, media_type="image/png", headers={"Cache-Control": "private, max-age=300"})
 
 
 @app.get("/")

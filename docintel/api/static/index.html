@@ -199,6 +199,34 @@ table.docs tr:first-child td { border-top: 0; }
 .rows .del:hover { color: var(--flag); }
 .rows .add { margin-top: 4px; }
 
+/* Reports (long documents) */
+.rep h2.sec { font-size: 13px; font-weight: 600; color: var(--ink-2); margin: 22px 0 8px; }
+.rep .meta { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--ink-2); font-size: 13px; margin: 0 0 6px; }
+.rep .explain { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; margin: 12px 0 0; max-width: 75ch; }
+.rep .explain small { display: block; color: var(--ink-3); font-size: 12px; margin-top: 4px; }
+.rep ol.claims, .rep ul.claims { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; max-width: 75ch; }
+.cite { font: 500 12px var(--mono); border: 1px solid var(--line); background: var(--panel); color: var(--accent); border-radius: 4px;
+  padding: 0 5px; margin-left: 4px; cursor: pointer; vertical-align: 1px; }
+.cite:hover { background: var(--accent-soft); border-color: var(--accent); }
+.ask { display: flex; gap: 8px; max-width: 75ch; }
+.ask input { flex: 1; min-width: 0; padding: 8px 10px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+.answers { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; max-width: 75ch; }
+.answer { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 14px; }
+.answer .q { color: var(--ink-2); font-size: 13px; margin-bottom: 4px; }
+.answer.none { border-style: dashed; color: var(--ink-2); }
+.answer .note { color: var(--ink-3); font-size: 12px; margin-top: 4px; }
+details.more { margin-top: 18px; max-width: 75ch; }
+details.more summary { cursor: pointer; color: var(--ink-2); font-size: 13px; }
+details.more li { color: var(--ink-2); }
+details.more .why { color: var(--flag); font-size: 12px; }
+.facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px 16px; font-size: 13px; color: var(--ink-2); max-width: 900px; }
+dialog.page { border: 0; border-radius: 8px; padding: 0; max-width: min(860px, 94vw); max-height: 92vh; box-shadow: var(--shadow); }
+dialog.page::backdrop { background: rgba(29, 31, 30, .45); }
+dialog.page .top { display: flex; justify-content: space-between; align-items: start; gap: 12px; padding: 12px 16px;
+  border-bottom: 1px solid var(--line); background: var(--panel); position: sticky; top: 0; }
+dialog.page blockquote { margin: 0; font-size: 13px; color: var(--ink); border-left: 3px solid var(--accent); padding-left: 10px; }
+dialog.page img { display: block; width: 100%; min-height: 200px; }
+
 @media (max-width: 1180px) {
   main { grid-template-columns: 200px minmax(0, 1fr) 340px; }
   .canvas { padding: 16px; }
@@ -227,6 +255,7 @@ table.docs tr:first-child td { border-top: 0; }
     </div>
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" id="tabBatches" aria-selected="true" type="button">Batches</button>
+      <button class="tab" role="tab" id="tabReports" aria-selected="false" type="button">Reports</button>
       <button class="tab" role="tab" id="tabReview" aria-selected="false" type="button">Review<span class="count" id="reviewCount"></span></button>
     </div>
     <div class="stats" id="stats" aria-live="polite"></div>
@@ -246,6 +275,19 @@ table.docs tr:first-child td { border-top: 0; }
     </div>
     <div class="detail" id="detail"></div>
   </section>
+  <section class="batches" id="reportView" aria-label="Reports" hidden>
+    <div class="rail">
+      <label class="drop" id="rdrop">
+        <strong>Drop a long PDF here</strong>
+        <small id="rdropHint">A report, contract or filing. You get a cited summary and can ask questions.</small>
+        <input type="file" id="rfileInput" accept=".pdf,application/pdf,image/*" hidden>
+      </label>
+      <h2>Reports</h2>
+      <div class="blist" id="rlist"></div>
+    </div>
+    <div class="detail rep" id="rdetail"><p class="sub">Every statement links to the page and the exact words it comes from. Anything that cannot be matched to the document is left out.</p></div>
+  </section>
+  <dialog class="page" id="pageDlg"><div class="top"><blockquote id="pageQuote"></blockquote><button class="btn small" type="button" id="pageClose">Close</button></div><img id="pageImg" alt="Cited page"></dialog>
   <main id="reviewView" hidden>
     <nav class="queue" aria-label="Review queue">
       <h2 id="qtitle">Queue</h2>
@@ -569,12 +611,14 @@ const TYPE_FILES = { invoice: "invoices", w2: "w2", paystub: "paystubs", bank_st
 
 function show(v) {
   view = v;
-  $("batchView").hidden = v !== "batches"; $("reviewView").hidden = v !== "review";
+  $("batchView").hidden = v !== "batches"; $("reviewView").hidden = v !== "review"; $("reportView").hidden = v !== "reports";
   $("tabBatches").setAttribute("aria-selected", v === "batches"); $("tabReview").setAttribute("aria-selected", v === "review");
-  if (v === "review") loadQueue(true).catch((e) => toast(e.message, true)); else loadBatches();
+  $("tabReports").setAttribute("aria-selected", v === "reports");
+  if (v === "review") loadQueue(true).catch((e) => toast(e.message, true)); else if (v === "reports") loadReports(); else loadBatches();
 }
 $("tabBatches").addEventListener("click", () => show("batches"));
 $("tabReview").addEventListener("click", () => show("review"));
+$("tabReports").addEventListener("click", () => show("reports"));
 
 async function refreshConfig() {
   try { config = await api("/config"); } catch { return; }
@@ -720,6 +764,96 @@ $("sample").addEventListener("click", seed);
 ["dragenter", "dragover"].forEach((t) => $("drop").addEventListener(t, (e) => { e.preventDefault(); $("drop").classList.add("over"); }));
 ["dragleave", "drop"].forEach((t) => $("drop").addEventListener(t, (e) => { e.preventDefault(); $("drop").classList.remove("over"); }));
 $("drop").addEventListener("drop", (e) => uploadFiles(e.dataTransfer.files));
+
+/* ---------- Reports (long documents) ---------- */
+let currentReport = null, rpoll = null;
+const STEP = { queued: "Waiting", reading: "Reading pages", indexing: "Indexing", summarising: "Writing the cited summary", done: "Ready", failed: "Failed" };
+
+function cites(list) {
+  return (list || []).map((c) => `<button class="cite" type="button" data-page="${c.page}" data-quote="${esc(c.quote)}" title="${esc(c.quote)}">p ${c.page}</button>`).join("");
+}
+
+async function loadReports() {
+  const list = await api("/reports").catch(() => []);
+  $("rlist").innerHTML = list.length ? list.map((r) => `
+    <button class="bitem" type="button" data-id="${r.id}" aria-current="${r.id === currentReport}">
+      <span>${esc(r.file)}</span><span class="num">${r.status === "done" ? `${r.pages} p` : r.status === "failed" ? "failed" : `${Math.round(100 * (r.progress || 0))}%`}</span></button>`).join("")
+    : `<p class="sub" style="margin:0">No reports yet.</p>`;
+  $("rlist").querySelectorAll(".bitem").forEach((el) => el.addEventListener("click", () => openReport(el.dataset.id)));
+  if (config.longdoc_pages) $("rdropHint").textContent = `A report, contract or filing, up to ${config.longdoc_pages} pages. You get a cited summary and can ask questions.`;
+  if (!currentReport && list.length) openReport(list[0].id);
+}
+
+async function openReport(id) {
+  currentReport = id; clearTimeout(rpoll);
+  document.querySelectorAll("#rlist .bitem").forEach((el) => el.setAttribute("aria-current", el.dataset.id === id));
+  let r;
+  try { r = await api(`/reports/${id}`); } catch (e) { toast(e.message, true); return; }
+  if (currentReport !== id) return;
+  const m = r.meta || {}, s = r.summary;
+  const head = `<h1>${esc(m.title || r.file)}</h1>
+    <div class="meta num"><span>${esc(r.file)}</span><span>${r.pages} pages${m.scanned_pages ? ` (${m.scanned_pages} scanned)` : ""}</span>
+    ${m.words ? `<span>${m.words.toLocaleString()} words</span>` : ""}${m.author ? `<span>${esc(m.author)}</span>` : ""}</div>`;
+  if (r.status !== "done") {
+    $("rdetail").innerHTML = `${head}<p class="sub">${STEP[r.status] || esc(r.status)}${r.error ? `: <span class="err">${esc(r.error)}</span>` : "…"}</p>
+      <div class="bar"><i style="width:${(100 * (r.progress || 0)).toFixed(1)}%"></i></div>`;
+    if (r.status !== "failed") rpoll = setTimeout(() => { if (view === "reports" && currentReport === id) { openReport(id); loadReports(); } }, 2500);
+    return;
+  }
+  const facts = [...(m.amounts || []).slice(0, 12), ...(m.dates || []).slice(0, 8)];
+  $("rdetail").innerHTML = `${head}
+    ${s.explain ? `<div class="explain">${esc(s.explain)}<small>${esc(s.explain_note)}</small></div>` : ""}
+    <h2 class="sec">Summary</h2>
+    ${s.overview.length ? `<ol class="claims">${s.overview.map((o) => `<li>${esc(o.text)}${cites(o.citations)}</li>`).join("")}</ol>`
+      : `<p class="sub">No summary sentence could be verified against the document.</p>`}
+    <h2 class="sec">Key points</h2>
+    <ul class="claims">${s.key_points.map((o) => `<li>${esc(o.text)}${cites(o.citations)}</li>`).join("")}</ul>
+    <h2 class="sec">Ask the document</h2>
+    <form class="ask" id="askForm"><input id="askInput" placeholder="e.g. What was revenue in the fourth quarter?" maxlength="500" required>
+      <button class="btn primary" type="submit">Ask</button></form>
+    <div class="answers" id="answers"></div>
+    ${facts.length ? `<h2 class="sec">Figures and dates found</h2><div class="facts">${facts.map((f) => `<span>${esc(f.text)}${cites([{ page: f.page, quote: f.text }])}</span>`).join("")}</div>` : ""}
+    ${(m.outline || []).length ? `<details class="more"><summary>Outline (${m.outline.length} headings)</summary><ul>${m.outline.slice(0, 80).map((o) => `<li>${esc(o.heading)}${cites([{ page: o.page, quote: o.heading }])}</li>`).join("")}</ul></details>` : ""}
+    ${s.rejected.length ? `<details class="more"><summary>${s.rejected.length} statement${s.rejected.length > 1 ? "s" : ""} left out because the document does not back them up</summary>
+      <ul>${s.rejected.map((x) => `<li>${esc(x.text)} <span class="why">${esc(x.reason)}</span></li>`).join("")}</ul></details>` : ""}
+    <p class="sub" style="margin-top:18px">Model: ${esc(s.model)} · ${s.stats.facts_verified} verified facts from ${s.stats.sections} sections</p>`;
+  $("askForm").addEventListener("submit", (e) => { e.preventDefault(); askReport(id); });
+}
+
+async function askReport(id) {
+  const q = $("askInput").value.trim(); if (!q) return;
+  const box = document.createElement("div"); box.className = "answer";
+  box.innerHTML = `<div class="q">${esc(q)}</div><span class="sub">Searching the document…</span>`;
+  $("answers").prepend(box); $("askInput").value = "";
+  try {
+    const a = await api(`/reports/${id}/ask`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question: q }) });
+    box.classList.toggle("none", !a.found);
+    box.innerHTML = `<div class="q">${esc(q)}</div>${esc(a.answer)}${cites(a.citations)}
+      ${a.found ? "" : `<div class="note">Searched pages ${a.searched_pages.join(", ")}.${a.withheld ? " A possible answer was withheld because its quote did not match the document." : ""}</div>`}`;
+  } catch (e) { box.classList.add("none"); box.innerHTML = `<div class="q">${esc(q)}</div><span class="err">${esc(e.message)}</span>`; }
+}
+
+document.addEventListener("click", async (e) => {
+  const c = e.target.closest(".cite"); if (!c || !currentReport) return;
+  $("pageQuote").textContent = `Page ${c.dataset.page}: “${c.dataset.quote}”`;
+  $("pageImg").removeAttribute("src"); $("pageDlg").showModal();
+  const key = store("docintel.apikey");
+  const r = await fetch(`/reports/${currentReport}/page/${c.dataset.page}.png`, { headers: key ? { "X-API-Key": key } : {} });
+  if (r.ok) $("pageImg").src = URL.createObjectURL(await r.blob());
+});
+$("pageClose").addEventListener("click", () => $("pageDlg").close());
+
+async function uploadReport(file) {
+  if (!file) return;
+  const form = new FormData(); form.append("file", file);
+  toast(`Uploading ${file.name}…`);
+  try { const r = await api("/reports", { method: "POST", body: form }); currentReport = r.report_id; await loadReports(); openReport(r.report_id); }
+  catch (e) { toast(e.message, true); }
+}
+$("rfileInput").addEventListener("change", (e) => { uploadReport(e.target.files[0]); e.target.value = ""; });
+["dragenter", "dragover"].forEach((t) => $("rdrop").addEventListener(t, (e) => { e.preventDefault(); $("rdrop").classList.add("over"); }));
+["dragleave", "drop"].forEach((t) => $("rdrop").addEventListener(t, (e) => { e.preventDefault(); $("rdrop").classList.remove("over"); }));
+$("rdrop").addEventListener("drop", (e) => uploadReport(e.dataTransfer.files[0]));
 
 refreshConfig().then(() => show("batches"));
 api("/review/queue").then((q) => { $("reviewCount").textContent = q.length || ""; }).catch(() => {});

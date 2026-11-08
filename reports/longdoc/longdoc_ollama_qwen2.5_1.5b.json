@@ -1,0 +1,19 @@
+{
+  "model": "ollama:qwen2.5:1.5b",
+  "documents": 2,
+  "questions": 28,
+  "correct": 25,
+  "right_page": 25,
+  "wrong_shown": 0,
+  "not_found": 3,
+  "unanswerable": 6,
+  "unanswerable_ok": 4,
+  "statements": 16,
+  "false_claims": 0,
+  "rejected": 10,
+  "answer_accuracy": 0.893,
+  "citation_page_accuracy": 0.893,
+  "wrong_answer_rate": 0.0,
+  "unanswerable_accuracy": 0.667,
+  "false_claim_rate": 0.0
+}

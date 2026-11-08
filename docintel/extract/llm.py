@@ -118,6 +118,7 @@ class OpenAICompatExtractor(LLMExtractor):
         rpm = float(os.getenv(f"{provider.upper()}_RPM", DEFAULT_RPM.get(provider, 0)))
         self.min_interval = 60.0 / rpm if rpm > 0 else 0.0
         self._last_call = 0.0
+        self.max_tokens: int | None = None  # cap on the reply; None = provider default
 
     def _pace(self) -> None:
         wait = self._last_call + self.min_interval - time.monotonic()
@@ -133,6 +134,7 @@ class OpenAICompatExtractor(LLMExtractor):
                                headers={"Authorization": f"Bearer {self.api_key}"},
                                json={"model": self.model, "temperature": 0,
                                      "response_format": {"type": "json_object"},
+                                     **({"max_tokens": self.max_tokens} if self.max_tokens else {}),
                                      "messages": [{"role": "system", "content": system},
                                                   {"role": "user", "content": user}]})
             except httpx.TransportError as e:
