@@ -172,7 +172,12 @@ def _auto_spans(page: Page) -> list[Span]:
         return _rapid_spans(page)
     words = sum(len(s.text.split()) for s in spans)
     good = _LAST_CONF.value >= MIN_TESSERACT_CONF and words >= MIN_TESSERACT_WORDS
-    return spans if good else _rapid_spans(page)
+    if good:
+        return spans
+    try:
+        return _rapid_spans(page)
+    except ImportError:  # neural OCR not installed: keep Tesseract's reading; validators and review catch weak reads
+        return spans
 
 
 def analyze(doc: fitz.Document, pages: list[Page], engine: str | None = None) -> Layout:

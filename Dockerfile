@@ -5,7 +5,7 @@ WORKDIR /app
 COPY pyproject.toml .
 COPY docintel docintel
 COPY samples samples
-RUN pip install --no-cache-dir ".[ocr]"
+RUN pip install --no-cache-dir ".[local]"
 RUN useradd --system --uid 10001 docintel && mkdir -p /app/data/uploads /app/data/corrections /app/data/longdocs /app/models && chown -R docintel /app/data /app/models
 USER docintel
 ENV PYTHONUNBUFFERED=1

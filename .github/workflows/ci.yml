@@ -8,11 +8,11 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
       - run: sudo apt-get update && sudo apt-get install -y tesseract-ocr
-      - run: pip install -e ".[dev,ocr]"
+      - run: pip install -e ".[dev,local]"   # Tesseract wrapper + neural OCR, as a local install has
       - run: python -m playwright install --with-deps chromium   # browser tests (tests/test_ui.py)
       - run: ruff check .
+      - run: python scripts/make_data.py --cases 12 --invoices 12   # synthetic documents the API tests seed from
       - run: pytest -q
       - name: Small extraction eval (N5)
         run: |
-          python scripts/make_data.py --cases 12 --invoices 12
           python scripts/evaluate.py --workers 2
