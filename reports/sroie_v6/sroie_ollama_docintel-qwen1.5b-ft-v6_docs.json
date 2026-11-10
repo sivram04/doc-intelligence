@@ -1,0 +1,609 @@
+[
+ {
+  "file": "data/X51008145504.jpg",
+  "doc_type": "invoice",
+  "gold": {
+   "company": "AMTECH ELECTRICAL SUPPLIES",
+   "date": "27/06/18",
+   "total": "136.00"
+  },
+  "pred": {
+   "vendor_name": "AMTECH ELECTRICAL SUPPLIES",
+   "invoice_date": "27/06/18",
+   "total": 136.0,
+   "subtotal": 136.0,
+   "tax": 0.0
+  },
+  "ok": {
+   "vendor": true,
+   "date": true,
+   "total": true
+  },
+  "flags": [
+   "2 line items row(s) don't match the page (amount not on the same line as its description): '30VWV SUPER T8 LED TUBE*D/L -FNM @16900', '2x40W LED F/FITTING (EMPTY)-ITK @14.00'"
+  ],
+  "review": [
+   "vendor_name",
+   "invoice_number",
+   "invoice_date",
+   "due_date",
+   "bill_to",
+   "subtotal",
+   "discount",
+   "tax",
+   "shipping",
+   "total",
+   "line_items",
+   "currency",
+   "vendor_tax_id",
+   "buyer_tax_id",
+   "purchase_order",
+   "tax_lines"
+  ]
+ },
+ {
+  "file": "data/X51005757290.jpg",
+  "doc_type": "invoice",
+  "gold": {
+   "company": "MR. D.I.Y. (M) SDN BHD",
+   "date": "17-03-18",
+   "total": "42.90"
+  },
+  "pred": {
+   "vendor_name": "MR. D.I.Y. (M) SDN BHD",
+   "invoice_date": "17-03-18",
+   "total": 42.9,
+   "subtotal": null,
+   "tax": 2.43
+  },
+  "ok": {
+   "vendor": true,
+   "date": true,
+   "total": true
+  },
+  "flags": [
+   "2 line items row(s) don't match the page (amount not on the same line as its description): 'STUDENT SOCKS 3PCS BK JH61 -_4/200', 'PVC MAN PPER 969 A36 - 10.50'"
+  ],
+  "review": [
+   "vendor_name",
+   "invoice_number",
+   "invoice_date",
+   "due_date",
+   "bill_to",
+   "subtotal",
+   "discount",
+   "tax",
+   "shipping",
+   "total",
+   "line_items",
+   "currency",
+   "vendor_tax_id",
+   "buyer_tax_id",
+   "purchase_order",
+   "tax_lines"
+  ]
+ },
+ {
+  "file": "data/X51006733494.jpg",
+  "doc_type": "invoice",
+  "gold": {
+   "company": "KEDAI UHAT DAN RUNCIT CHONG HWA",
+   "date": "OCT 3, 2016",
+   "total": "RM33.90"
+  },
+  "pred": {
+   "vendor_name": "Kedai Uhat Dan Runcit CHONG HWA",
+   "invoice_date": "Oct 3, 2016",
+   "total": 31.98,
+   "subtotal": null,
+   "tax": 1.92
+  },
+  "ok": {
+   "vendor": true,
+   "date": true,
+   "total": false
+  },
+  "flags": [],
+  "review": [
+   "vendor_name",
+   "invoice_date",
+   "due_date",
+   "bill_to",
+   "subtotal",
+   "discount",
+   "shipping",
+   "line_items",
+   "currency",
+   "buyer_tax_id",
+   "purchase_order",
+   "tax_lines"
+  ]
+ },
+ {
+  "file": "data/X51008142032.jpg",
+  "doc_type": "invoice",
+  "gold": {
+   "company": "ONE ONE THREE SEAFOOD RESTAURANT SDN BHD",
+   "date": "28-05-2018",
+   "total": "112.35"
+  },
+  "pred": {
+   "vendor_name": "ONE ONE THREE SEAFOOD RESTAURANT SDN BHD",
+   "invoice_date": "28-05-2018",
+   "total": 112.36,
+   "subtotal": 106.0,
+   "tax": 6.36
+  },
+  "ok": {
+   "vendor": true,
+   "date": true,
+   "total": false
+  },
+  "flags": [
+   "Line items sum to 349.00, subtotal says 106.00"
+  ],
+  "review": [
+   "vendor_name",
+   "invoice_number",
+   "invoice_date",
+   "due_date",
+   "bill_to",
+   "subtotal",
+   "discount",
+   "tax",
+   "shipping",
+   "total",
+   "line_items",
+   "currency",
+   "vendor_tax_id",
+   "buyer_tax_id",
+   "purchase_order",
+   "tax_lines"
+  ]
+ },
+ {
+  "file": "data/X51005724627.jpg",
+  "doc_type": "invoice",
+  "gold": {
+   "company": "KEDAI PAPAN YEW CHUAN",
+   "date": "31/03/2018",
+   "total": "174.90"
+  },
+  "pred": {
+   "vendor_name": "KEDAI PAPAN YEW CHUAN",
+   "invoice_date": "31/03/2018",
+   "total": 174.9,
+   "subtotal": 165.0,
+   "tax": 9.9
+  },
+  "ok": {
+   "vendor": true,
+   "date": true,
+   "total": true
+  },
+  "flags": [
+   "Line items sum to 17.49, subtotal says 165.00"
+  ],
+  "review": [
+   "vendor_name",
+   "invoice_number",
+   "invoice_date",
+   "due_date",
+   "bill_to",
+   "subtotal",
+   "discount",
+   "tax",
+   "shipping",
+   "total",
+   "line_items",
+   "currency",
+   "vendor_tax_id",
+   "buyer_tax_id",
+   "purchase_order",
+   "tax_lines"
+  ]
+ },
+ {
+  "file": "data/X51005719886.jpg",
+  "doc_type": "invoice",
+  "gold": {
+   "company": "SUNFISH",
+   "date": "05/01/2018",
+   "total": "28.70"
+  },
+  "pred": {
+   "vendor_name": "SUNFISH",
+   "invoice_date": "01/01/2018",
+   "total": 30.32,
+   "subtotal": 28.7,
+   "tax": 1.62
+  },
+  "ok": {
+   "vendor": true,
+   "date": false,
+   "total": false
+  },
+  "flags": [],
+  "review": [
+   "invoice_date",
+   "due_date",
+   "bill_to",
+   "discount",
+   "shipping",
+   "total",
+   "line_items",
+   "currency",
+   "buyer_tax_id",
+   "purchase_order",
+   "tax_lines"
+  ]
+ },
+ {
+  "file": "data/X51005568914.jpg",
+  "doc_type": "invoice",
+  "gold": {
+   "company": "IKANO HANDEL SDN BHD",
+   "date": "09/08/17",
+   "total": "99.80"
+  },
+  "pred": {
+   "vendor_name": "IKANO HANDEL SDN BHD",
+   "invoice_date": "09/08/17",
+   "total": 99.8,
+   "subtotal": 94.16,
+   "tax": 5.64
+  },
+  "ok": {
+   "vendor": true,
+   "date": true,
+   "total": true
+  },
+  "flags": [
+   "Line items sum to 99.80, subtotal says 94.16",
+   "2 line items row(s) don't match the page (amount not on the same line as its description): '30169728 BAGIS C0AT-HANGER CH', '70350938 TEA DORSER CH'"
+  ],
+  "review": [
+   "vendor_name",
+   "invoice_number",
+   "invoice_date",
+   "due_date",
+   "bill_to",
+   "subtotal",
+   "discount",
+   "tax",
+   "shipping",
+   "total",
+   "line_items",
+   "currency",
+   "vendor_tax_id",
+   "buyer_tax_id",
+   "purchase_order",
+   "tax_lines"
+  ]
+ },
+ {
+  "file": "data/X51006679216.jpg",
+  "doc_type": "invoice",
+  "gold": {
+   "company": "FTOF NOODLE HOUSE",
+   "date": "21/05/2018",
+   "total": "RM31.60"
+  },
+  "pred": {
+   "vendor_name": "FACE TO FACE NOODLE HOUSE",
+   "invoice_date": "21/05/2018",
+   "total": 31.6,
+   "subtotal": 31.6,
+   "tax": 1.79
+  },
+  "ok": {
+   "vendor": false,
+   "date": true,
+   "total": true
+  },
+  "flags": [
+   "Total 31.60 != subtotal - discount + tax + shipping (33.39)",
+   "Line items sum to 32.60, subtotal says 31.60",
+   "6 line items row(s) don't match the page (amount not on the same line as its description): '711-Omega Half Boiled Egg', '706-Toasted Bread (Homemade Kaya)', '837-Honey Lemon (Hot)' and 3 more"
+  ],
+  "review": [
+   "vendor_name",
+   "invoice_number",
+   "invoice_date",
+   "due_date",
+   "bill_to",
+   "subtotal",
+   "discount",
+   "tax",
+   "shipping",
+   "total",
+   "line_items",
+   "currency",
+   "vendor_tax_id",
+   "buyer_tax_id",
+   "purchase_order",
+   "tax_lines"
+  ]
+ },
+ {
+  "file": "data/X51006557195.jpg",
+  "doc_type": "invoice",
+  "gold": {
+   "company": "GARDENIA BAKERIES (KL) SDN BHD",
+   "date": "12/10/2017",
+   "total": "59.54"
+  },
+  "pred": {
+   "vendor_name": "GARDENIA BAKERIES (KL) SDN BHD",
+   "invoice_date": "12/10/2017",
+   "total": 59.54,
+   "subtotal": null,
+   "tax": 1.82
+  },
+  "ok": {
+   "vendor": true,
+   "date": true,
+   "total": true
+  },
+  "flags": [],
+  "review": [
+   "due_date",
+   "subtotal",
+   "discount",
+   "tax",
+   "shipping",
+   "line_items",
+   "currency",
+   "buyer_tax_id",
+   "purchase_order",
+   "tax_lines"
+  ]
+ },
+ {
+  "file": "data/X51005268472.jpg",
+  "doc_type": "invoice",
+  "gold": {
+   "company": "ASIA MART",
+   "date": "22/12/2017",
+   "total": "32.70"
+  },
+  "pred": {
+   "vendor_name": "ASIA MART",
+   "invoice_date": "22/12/2017",
+   "total": 32.7,
+   "subtotal": 31.03,
+   "tax": 1.65
+  },
+  "ok": {
+   "vendor": true,
+   "date": true,
+   "total": true
+  },
+  "flags": [
+   "Total 32.70 != subtotal - discount + tax + shipping (32.68)",
+   "Line items sum to 19,879.19, subtotal says 31.03",
+   "Tax lines sum to 768.55, tax total says 1.65"
+  ],
+  "review": [
+   "vendor_name",
+   "invoice_number",
+   "invoice_date",
+   "due_date",
+   "bill_to",
+   "subtotal",
+   "discount",
+   "tax",
+   "shipping",
+   "total",
+   "line_items",
+   "currency",
+   "vendor_tax_id",
+   "buyer_tax_id",
+   "purchase_order",
+   "tax_lines"
+  ]
+ },
+ {
+  "file": "data/X51007339114.jpg",
+  "doc_type": "invoice",
+  "gold": {
+   "company": "SANYU STATIONERY SHOP",
+   "date": "14/12/2017",
+   "total": "36.00"
+  },
+  "pred": {
+   "vendor_name": "SANYU STATIONERY SHOP",
+   "invoice_date": "14/12/2017",
+   "total": 36.0,
+   "subtotal": null,
+   "tax": 36.0
+  },
+  "ok": {
+   "vendor": true,
+   "date": true,
+   "total": true
+  },
+  "flags": [
+   "Tax lines sum to 2.04, tax total says 36.00",
+   "1 line items row(s) don't match the page (amount not on the same line as its description): 'SONOFAX - EC THERMAL ROLL (BLUE) - (7MMx'"
+  ],
+  "review": [
+   "vendor_name",
+   "invoice_number",
+   "invoice_date",
+   "due_date",
+   "bill_to",
+   "subtotal",
+   "discount",
+   "tax",
+   "shipping",
+   "total",
+   "line_items",
+   "currency",
+   "vendor_tax_id",
+   "buyer_tax_id",
+   "purchase_order",
+   "tax_lines"
+  ]
+ },
+ {
+  "file": "data/X51006857265.jpg",
+  "doc_type": "invoice",
+  "gold": {
+   "company": "MPH BOOKSTORES SDN BHD",
+   "date": "11/12/2017",
+   "total": "31.45"
+  },
+  "pred": {
+   "vendor_name": "MPH BOOKSTORES SDN BHD",
+   "invoice_date": "11/12/2017",
+   "total": 31.47,
+   "subtotal": null,
+   "tax": 1.78
+  },
+  "ok": {
+   "vendor": true,
+   "date": true,
+   "total": false
+  },
+  "flags": [
+   "1 line items row(s) don't match the page (amount not on the same line as its description): 'STICKERS & OTHER GIFT CARDS'"
+  ],
+  "review": [
+   "vendor_name",
+   "invoice_number",
+   "invoice_date",
+   "due_date",
+   "bill_to",
+   "subtotal",
+   "discount",
+   "tax",
+   "shipping",
+   "total",
+   "line_items",
+   "currency",
+   "vendor_tax_id",
+   "buyer_tax_id",
+   "purchase_order",
+   "tax_lines"
+  ]
+ },
+ {
+  "file": "data/X51008164510.jpg",
+  "doc_type": "invoice",
+  "gold": {
+   "company": "OCEAN LC PACKAGING ENTERPRISE",
+   "date": "27/06/2018",
+   "total": "RM152.00"
+  },
+  "pred": {
+   "vendor_name": "OCEAN IC PACKAGING ENTERPRISE",
+   "invoice_date": "27/06/2018",
+   "total": 152.0,
+   "subtotal": 152.0,
+   "tax": 0.0
+  },
+  "ok": {
+   "vendor": false,
+   "date": true,
+   "total": true
+  },
+  "flags": [
+   "1 line items row(s) don't match the page (amount not on the same line as its description): 'Lai'"
+  ],
+  "review": [
+   "vendor_name",
+   "invoice_number",
+   "invoice_date",
+   "due_date",
+   "bill_to",
+   "subtotal",
+   "discount",
+   "tax",
+   "shipping",
+   "total",
+   "line_items",
+   "currency",
+   "vendor_tax_id",
+   "buyer_tax_id",
+   "purchase_order",
+   "tax_lines"
+  ]
+ },
+ {
+  "file": "data/X51005676546.jpg",
+  "doc_type": "invoice",
+  "gold": {
+   "company": "SYARIKAT PERNIAGAAN GIN KEE",
+   "date": "11/01/2018",
+   "total": "21.20"
+  },
+  "pred": {
+   "vendor_name": "SYARIKAT PERNIA AGNIKEE",
+   "invoice_date": "11/01/2018",
+   "total": 21.2,
+   "subtotal": 20.0,
+   "tax": 1.2
+  },
+  "ok": {
+   "vendor": false,
+   "date": true,
+   "total": true
+  },
+  "flags": [
+   "Line items sum to 212.00, subtotal says 20.00"
+  ],
+  "review": [
+   "vendor_name",
+   "invoice_number",
+   "invoice_date",
+   "due_date",
+   "bill_to",
+   "subtotal",
+   "discount",
+   "tax",
+   "shipping",
+   "total",
+   "line_items",
+   "currency",
+   "vendor_tax_id",
+   "buyer_tax_id",
+   "purchase_order",
+   "tax_lines"
+  ]
+ },
+ {
+  "file": "data/X51006556840.jpg",
+  "doc_type": "invoice",
+  "gold": {
+   "company": "GARDENIA BAKERIES (KL) SDN BHD",
+   "date": "17/09/2017",
+   "total": "40.18"
+  },
+  "pred": {
+   "vendor_name": "GAKDENIABAKERIESKLJSDNRIIDI39386X",
+   "invoice_date": "17/09/2017",
+   "total": 40.18,
+   "subtotal": null,
+   "tax": 0.48
+  },
+  "ok": {
+   "vendor": false,
+   "date": true,
+   "total": true
+  },
+  "flags": [],
+  "review": [
+   "invoice_date",
+   "due_date",
+   "subtotal",
+   "discount",
+   "shipping",
+   "line_items",
+   "currency",
+   "buyer_tax_id",
+   "purchase_order",
+   "tax_lines"
+  ]
+ }
+]

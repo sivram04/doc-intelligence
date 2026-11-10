@@ -57,6 +57,7 @@ DEMO_MAX_PAGES = int(os.getenv("DEMO_MAX_PAGES", "3"))      # per document
 DEMO_DAILY_CAP = int(os.getenv("DEMO_DAILY_CAP", "150"))    # all visitors together (free LLM quota)
 DEMO_TTL = float(os.getenv("DEMO_TTL_HOURS", "24")) * 3600
 TRUST_CLOUDFLARE = os.getenv("TRUST_CLOUDFLARE", "").lower() in ("1", "true", "yes")
+TRUST_PROXY_HOPS = int(os.getenv("TRUST_PROXY_HOPS", "0"))  # trusted reverse proxies in front (Hugging Face Space: 1)
 REPO_URL = os.getenv("REPO_URL", "https://github.com/sivram04/doc-intelligence")
 COOKIE = "docintel_visitor"
 DAY = 86400
@@ -65,6 +66,23 @@ app = FastAPI(title="Document Intelligence Engine", version="0.2.0")
 pool = ThreadPoolExecutor(max_workers=int(os.getenv("WORKERS", "2")))
 store = Store()
 setup_logging(os.getenv("LOG_LEVEL", "INFO"))
+
+# Pages may be framed only by the hosts listed here (a Hugging Face Space shows the app inside huggingface.co).
+FRAME_ANCESTORS = os.getenv("FRAME_ANCESTORS", "'self' https://huggingface.co https://*.hf.space")
+CSP = ("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+       "font-src https://fonts.gstatic.com; img-src 'self' blob: data:; connect-src 'self'; object-src 'none'; "
+       f"base-uri 'none'; form-action 'self'; frame-ancestors {FRAME_ANCESTORS}")
+
+
+@app.middleware("http")
+async def security_headers(request: Request, call_next):
+    response = await call_next(request)
+    h = response.headers
+    h.setdefault("X-Content-Type-Options", "nosniff")
+    h.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
+    h.setdefault("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
+    h.setdefault("Content-Security-Policy", CSP)
+    return response
 
 
 class ReviewIn(BaseModel):
@@ -103,7 +121,15 @@ def visitor(request: Request, response: Response) -> str:
     if not (len(vid) == 32 and vid.isalnum()):
         vid = secrets.token_hex(16)
         https = request.url.scheme == "https" or request.headers.get("x-forwarded-proto") == "https"
-        response.set_cookie(COOKIE, vid, max_age=int(DEMO_TTL), httponly=True, samesite="lax", secure=https)
+        # Over HTTPS the demo may be shown inside another site's frame (a Hugging Face Space page), where browsers
+        # only keep a cookie marked SameSite=None; Secure, partitioned to that embedding site (CHIPS).
+        opts = {"max_age": int(DEMO_TTL), "httponly": True, "secure": https, "samesite": "none" if https else "lax"}
+        response.set_cookie(COOKIE, vid, **opts)
+        if https:  # add the Partitioned attribute by hand: Starlette only emits it on Python 3.14+
+            cookies = response.headers.getlist("set-cookie")
+            del response.headers["set-cookie"]
+            for c in cookies:
+                response.headers.append("set-cookie", c + "; Partitioned" if c.startswith(f"{COOKIE}=") else c)
     return vid
 
 
@@ -113,6 +139,12 @@ def client_of(request: Request) -> str:
     ip = request.client.host if request.client else ""
     if TRUST_CLOUDFLARE:  # only behind Cloudflare: anyone can send this header to a server reached directly
         ip = request.headers.get("cf-connecting-ip") or ip
+    elif TRUST_PROXY_HOPS:
+        # Behind N trusted proxies (a Hugging Face Space has 1), the real client is the Nth address from the
+        # right of X-Forwarded-For: those entries were appended by our proxies, anything further left by the caller.
+        hops = [h.strip() for h in request.headers.get("x-forwarded-for", "").split(",") if h.strip()]
+        if len(hops) >= TRUST_PROXY_HOPS:
+            ip = hops[-TRUST_PROXY_HOPS]
     salt = os.getenv("DEMO_SALT", "docintel")
     return hashlib.sha256(f"{salt}:{ip}".encode()).hexdigest()[:16]
 
@@ -634,5 +666,10 @@ def report_page(rid: str, n: int, owner: str = Depends(visitor)):
 
 
 @app.get("/")
+def landing():
+    return FileResponse(STATIC / "landing.html")
+
+
+@app.get("/app")
 def ui():
     return FileResponse(STATIC / "index.html")

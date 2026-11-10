@@ -1,0 +1,132 @@
+{
+ "doc_id": "intl0004-de",
+ "doc_type": "invoice",
+ "case_id": null,
+ "file": "intl0004-de.pdf",
+ "benchmark": "intl",
+ "locale": "DE",
+ "pages": 1,
+ "modality": "native",
+ "fields": {
+  "vendor_name": {
+   "value": "Drubin",
+   "bbox": null
+  },
+  "invoice_number": {
+   "value": "RE-5647-008",
+   "bbox": null
+  },
+  "invoice_date": {
+   "value": "05.11.2026",
+   "bbox": null
+  },
+  "due_date": {
+   "value": null,
+   "bbox": null
+  },
+  "bill_to": {
+   "value": "Stadelmann",
+   "bbox": null
+  },
+  "subtotal": {
+   "value": 62234.43,
+   "bbox": null
+  },
+  "discount": {
+   "value": 3111.72,
+   "bbox": null
+  },
+  "tax": {
+   "value": 11244.71,
+   "bbox": null
+  },
+  "shipping": {
+   "value": 60.0,
+   "bbox": null
+  },
+  "total": {
+   "value": 70427.42,
+   "bbox": null
+  },
+  "line_items": {
+   "value": [
+    {
+     "description": "Annual software licence",
+     "quantity": 3.0,
+     "unit_price": 73.32,
+     "amount": 219.96
+    },
+    {
+     "description": "Desk lamp LED",
+     "quantity": 25.0,
+     "unit_price": 34.58,
+     "amount": 864.5
+    },
+    {
+     "description": "Cloud hosting (monthly)",
+     "quantity": 25.0,
+     "unit_price": 1274.21,
+     "amount": 31855.25
+    },
+    {
+     "description": "Spare parts kit",
+     "quantity": 10.0,
+     "unit_price": 86.13,
+     "amount": 861.3
+    },
+    {
+     "description": "Laptop 14in",
+     "quantity": 3.0,
+     "unit_price": 667.53,
+     "amount": 2002.59
+    },
+    {
+     "description": "Printer paper A4 (500 sheets)",
+     "quantity": 25.0,
+     "unit_price": 82.19,
+     "amount": 2054.75
+    },
+    {
+     "description": "Laptop 14in",
+     "quantity": 12.0,
+     "unit_price": 1372.74,
+     "amount": 16472.88
+    },
+    {
+     "description": "Monitor 27in",
+     "quantity": 12.0,
+     "unit_price": 658.6,
+     "amount": 7903.2
+    }
+   ],
+   "bbox": null
+  },
+  "currency": {
+   "value": "EUR",
+   "bbox": null
+  },
+  "vendor_tax_id": {
+   "value": "DE790271891",
+   "bbox": null
+  },
+  "buyer_tax_id": {
+   "value": "DE129881318",
+   "bbox": null
+  },
+  "purchase_order": {
+   "value": null,
+   "bbox": null
+  },
+  "tax_lines": {
+   "value": [
+    {
+     "tax_type": "VAT",
+     "rate": 19.0,
+     "taxable_amount": null,
+     "amount": 11244.71
+    }
+   ],
+   "bbox": null
+  }
+ }
+}

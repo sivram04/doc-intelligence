@@ -1,0 +1,108 @@
+{
+ "doc_id": "intl0000-in",
+ "doc_type": "invoice",
+ "case_id": null,
+ "file": "intl0000-in.pdf",
+ "benchmark": "intl",
+ "locale": "IN",
+ "pages": 1,
+ "modality": "scan",
+ "fields": {
+  "vendor_name": {
+   "value": "Dalal-Gaba",
+   "bbox": null
+  },
+  "invoice_number": {
+   "value": "GST/99-88/1614",
+   "bbox": null
+  },
+  "invoice_date": {
+   "value": "05/11/2026",
+   "bbox": null
+  },
+  "due_date": {
+   "value": "05/12/2026",
+   "bbox": null
+  },
+  "bill_to": {
+   "value": "Chana Group",
+   "bbox": null
+  },
+  "subtotal": {
+   "value": 90644.25,
+   "bbox": null
+  },
+  "discount": {
+   "value": null,
+   "bbox": null
+  },
+  "tax": {
+   "value": 16315.97,
+   "bbox": null
+  },
+  "shipping": {
+   "value": null,
+   "bbox": null
+  },
+  "total": {
+   "value": 106960.22,
+   "bbox": null
+  },
+  "line_items": {
+   "value": [
+    {
+     "description": "Data migration",
+     "quantity": 1.0,
+     "unit_price": 80508.66,
+     "amount": 80508.66
+    },
+    {
+     "description": "Toner cartridge",
+     "quantity": 3.0,
+     "unit_price": 577.97,
+     "amount": 1733.91
+    },
+    {
+     "description": "Annual software licence",
+     "quantity": 1.0,
+     "unit_price": 4111.21,
+     "amount": 4111.21
+    },
+    {
+     "description": "Annual software licence",
+     "quantity": 1.0,
+     "unit_price": 4290.47,
+     "amount": 4290.47
+    }
+   ],
+   "bbox": null
+  },
+  "currency": {
+   "value": "INR",
+   "bbox": null
+  },
+  "vendor_tax_id": {
+   "value": "24XRGYA8162N1Z5",
+   "bbox": null
+  },
+  "buyer_tax_id": {
+   "value": "27JMMEP9589Q1Z0",
+   "bbox": null
+  },
+  "purchase_order": {
+   "value": "PO-56135",
+   "bbox": null
+  },
+  "tax_lines": {
+   "value": [
+    {
+     "tax_type": "IGST",
+     "rate": 18.0,
+     "taxable_amount": null,
+     "amount": 16315.97
+    }
+   ],
+   "bbox": null
+  }
+ }
+}

@@ -1,0 +1,95 @@
+{
+ "report": {
+  "all": {
+   "invoices": 45,
+   "exact": 0.956,
+   "review": 0.356,
+   "safe": 1.0,
+   "wrong_unreviewed": 0.0,
+   "total_ok": 1.0,
+   "tax_ok": 1.0,
+   "date_ok": 1.0
+  },
+  "de": {
+   "invoices": 5,
+   "exact": 1.0,
+   "review": 0.2,
+   "safe": 1.0,
+   "wrong_unreviewed": 0.0,
+   "total_ok": 1.0,
+   "tax_ok": 1.0,
+   "date_ok": 1.0
+  },
+  "es": {
+   "invoices": 5,
+   "exact": 1.0,
+   "review": 0.4,
+   "safe": 1.0,
+   "wrong_unreviewed": 0.0,
+   "total_ok": 1.0,
+   "tax_ok": 1.0,
+   "date_ok": 1.0
+  },
+  "fr": {
+   "invoices": 5,
+   "exact": 0.8,
+   "review": 0.4,
+   "safe": 1.0,
+   "wrong_unreviewed": 0.0,
+   "total_ok": 1.0,
+   "tax_ok": 1.0,
+   "date_ok": 1.0
+  },
+  "in": {
+   "invoices": 10,
+   "exact": 0.9,
+   "review": 0.3,
+   "safe": 1.0,
+   "wrong_unreviewed": 0.0,
+   "total_ok": 1.0,
+   "tax_ok": 1.0,
+   "date_ok": 1.0
+  },
+  "it": {
+   "invoices": 5,
+   "exact": 1.0,
+   "review": 0.6,
+   "safe": 1.0,
+   "wrong_unreviewed": 0.0,
+   "total_ok": 1.0,
+   "tax_ok": 1.0,
+   "date_ok": 1.0
+  },
+  "nl": {
+   "invoices": 5,
+   "exact": 1.0,
+   "review": 0.4,
+   "safe": 1.0,
+   "wrong_unreviewed": 0.0,
+   "total_ok": 1.0,
+   "tax_ok": 1.0,
+   "date_ok": 1.0
+  },
+  "uk": {
+   "invoices": 5,
+   "exact": 1.0,
+   "review": 0.2,
+   "safe": 1.0,
+   "wrong_unreviewed": 0.0,
+   "total_ok": 1.0,
+   "tax_ok": 1.0,
+   "date_ok": 1.0
+  },
+  "us": {
+   "invoices": 5,
+   "exact": 1.0,
+   "review": 0.4,
+   "safe": 1.0,
+   "wrong_unreviewed": 0.0,
+   "total_ok": 1.0,
+   "tax_ok": 1.0,
+   "date_ok": 1.0
+  }
+ },
+ "wrong_unreviewed": []
+}

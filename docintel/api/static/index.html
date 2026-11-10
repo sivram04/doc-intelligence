@@ -3,53 +3,57 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DocIntel</title>
+<title>DocIntel app</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='9' y='7' width='18' height='22' rx='1' fill='%23F3A6B5'/%3E%3Crect x='7' y='5' width='18' height='22' rx='1' fill='%23F2D64B'/%3E%3Crect x='5' y='3' width='18' height='22' rx='1' fill='%23fff' stroke='%232E2C7A' stroke-width='2'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f4f3ef;          /* paper desk */
-  --panel: #fbfaf7;
-  --panel-2: #eeede8;     /* second neutral layer: rails, toolbars */
-  --line: #dddbd3;
-  --ink: #1d1f1e;
-  --ink-2: #555a57;
-  --ink-3: #6f7470;
-  --accent: #0f6b5c;      /* actions, selection */
+  /* Carbon-copy world (see landing.html): white original, canary / pink / sky copies, carbon-indigo ink. */
+  --bg: #f5f4ef;
+  --panel: #ffffff;
+  --panel-2: #fbf7e2;     /* canary-tinted rails and toolbars */
+  --line: #e2dfd2;
+  --ink: #16151f;
+  --ink-2: #4a4860;
+  --ink-3: #6b6980;
+  --accent: #2e2c7a;      /* carbon ink: actions, selection, figures */
   --accent-ink: #ffffff;
-  --accent-soft: #dcece7;
-  --check: #9a5b00;       /* needs review */
-  --check-soft: #fbecd2;
-  --check-box: rgba(214, 140, 20, .22);
-  --flag: #b3261e;
-  --flag-soft: #f8dedb;
-  --ok-box: rgba(15, 107, 92, .12);
-  --focus: #0f6b5c;
-  --shadow: 0 1px 2px rgba(29, 31, 30, .06), 0 8px 24px rgba(29, 31, 30, .08);
-  --radius: 6px;
-  --font: "IBM Plex Sans", system-ui, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --accent-soft: #e6e5f7;
+  --canary: #f2d64b;
+  --check: #6e5300;       /* needs review: canary copy */
+  --check-soft: #fbefb3;
+  --check-box: rgba(242, 214, 75, .38);
+  --flag: #a3243b;        /* flagged: pink copy */
+  --flag-soft: #fbdbe2;
+  --ok-box: rgba(46, 44, 122, .10);
+  --focus: #2e2c7a;
+  --shadow: 0 1px 0 rgba(22, 21, 31, .14), 0 14px 32px -16px rgba(22, 21, 31, .35);
+  --radius: 3px;
+  --ease: cubic-bezier(.16, 1, .3, 1);
+  --font: "Archivo", system-ui, sans-serif;
+  --mono: "Spline Sans Mono", ui-monospace, monospace;
 }
 * { box-sizing: border-box; }
 html, body { height: 100%; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.45 var(--font); }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 14.5px/1.5 var(--font); -webkit-font-smoothing: antialiased; }
 ::selection { background: var(--accent-soft); color: var(--ink); }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-* { scrollbar-width: thin; scrollbar-color: #c9c6bc transparent; }
+* { scrollbar-width: thin; scrollbar-color: #cbc6b0 transparent; }
 button, input { font: inherit; color: inherit; }
 .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
 
 /* App frame */
 .app { display: grid; grid-template-rows: auto 1fr; height: 100%; }
-header { display: flex; align-items: center; gap: 24px; padding: 10px 20px; background: var(--panel);
-  border-bottom: 1px solid var(--line); }
-.brand { font-weight: 600; letter-spacing: -.01em; display: flex; align-items: center; gap: 8px; }
-.brand svg { color: var(--accent); }
-.stats { display: flex; gap: 20px; margin-left: auto; color: var(--ink-2); font-size: 13px; }
-.stats b { color: var(--ink); font-weight: 500; }
-.who { display: flex; align-items: center; gap: 8px; color: var(--ink-2); font-size: 13px; }
-.who input { width: 120px; padding: 5px 8px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+header { display: flex; align-items: center; gap: 24px; padding: 0 20px; height: 56px; flex: none; background: var(--canary);
+  border-bottom: 1.5px solid var(--ink); position: relative; z-index: 2; }
+.brand { font: 800 18px var(--font); font-stretch: 110%; letter-spacing: -.01em; display: flex; align-items: center; gap: 9px;
+  color: var(--ink); text-decoration: none; }
+.stats { display: flex; gap: 20px; color: var(--ink); font-size: 13px; }
+.stats b { color: var(--ink); font-weight: 600; }
+.who { display: flex; align-items: center; gap: 8px; color: var(--ink); font-size: 13px; }
+.who input { width: 120px; padding: 5px 8px; border: 1.5px solid var(--ink); border-radius: var(--radius); background: #fff; }
 
 main { display: grid; grid-template-columns: 240px minmax(0, 1fr) 380px; min-height: 0; }
 
@@ -59,7 +63,7 @@ main { display: grid; grid-template-columns: 240px minmax(0, 1fr) 380px; min-hei
 .qitem { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; width: 100%; text-align: left; padding: 10px 16px;
   border: 0; background: transparent; cursor: pointer; border-top: 1px solid transparent; }
 .qitem:hover { background: rgba(255, 255, 255, .55); }
-.qitem[aria-current="true"] { background: var(--panel); box-shadow: inset 2px 0 0 var(--accent); }
+.qitem[aria-current="true"] { background: var(--panel); box-shadow: inset 0 0 0 1.5px var(--ink); }
 .qitem .name { font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .qitem .type { color: var(--ink-3); font-size: 12px; }
 .pill { align-self: center; grid-row: span 2; font-size: 12px; padding: 1px 8px; border-radius: 99px;
@@ -75,7 +79,7 @@ main { display: grid; grid-template-columns: 240px minmax(0, 1fr) 380px; min-hei
 .box { position: absolute; border-radius: 3px; transition: box-shadow .15s ease-out, background-color .15s ease-out; cursor: pointer; }
 .box.auto { background: var(--ok-box); }
 .box.check { background: var(--check-box); }
-.box.active { box-shadow: 0 0 0 2px var(--accent), 0 2px 6px rgba(29, 31, 30, .18); background: rgba(15, 107, 92, .16); }
+.box.active { box-shadow: 0 0 0 2px var(--accent), 0 2px 6px rgba(29, 31, 30, .18); background: rgba(46, 44, 122, .14); }
 .canvas .placeholder { width: min(100%, 820px); aspect-ratio: 8.5 / 11; background: linear-gradient(90deg, #ecebe6, #f3f2ee, #ecebe6);
   background-size: 200% 100%; animation: shimmer 1.4s ease-in-out infinite; border-radius: 2px; }
 @keyframes shimmer { to { background-position: -200% 0; } }
@@ -83,7 +87,7 @@ main { display: grid; grid-template-columns: 240px minmax(0, 1fr) 380px; min-hei
 /* Fields panel */
 .fields { background: var(--panel); border-left: 1px solid var(--line); display: grid; grid-template-rows: auto auto 1fr auto; min-height: 0; }
 .doc-head { padding: 16px 20px 12px; border-bottom: 1px solid var(--line); }
-.doc-head h1 { font-size: 16px; font-weight: 600; margin: 0 0 2px; letter-spacing: -.01em; }
+.doc-head h1 { font: 800 18px/1.2 var(--font); font-stretch: 90%; margin: 0 0 2px; overflow-wrap: anywhere; }
 .doc-head .meta { color: var(--ink-2); font-size: 13px; }
 .flags { margin: 0; padding: 10px 20px; background: var(--flag-soft); color: var(--flag); font-size: 13px; list-style: none; }
 .flags li + li { margin-top: 4px; }
@@ -95,7 +99,7 @@ main { display: grid; grid-template-columns: 240px minmax(0, 1fr) 380px; min-hei
 .field .conf { font-size: 12px; color: var(--ink-3); justify-self: end; }
 .field input { grid-column: 1 / -1; width: 100%; padding: 7px 9px; border: 1px solid var(--line); border-radius: var(--radius);
   background: #fff; font-family: var(--mono); font-size: 13px; }
-.field input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px rgba(15, 107, 92, .15); }
+.field input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px rgba(46, 44, 122, .18); }
 .field .status { font-size: 12px; font-weight: 500; justify-self: end; display: inline-flex; gap: 4px; align-items: center; }
 .status.check { color: var(--check); }
 .status.auto { color: var(--accent); }
@@ -104,10 +108,12 @@ main { display: grid; grid-template-columns: 240px minmax(0, 1fr) 380px; min-hei
 .field .src { grid-column: 1 / -1; font-size: 12px; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .actions { border-top: 1px solid var(--line); padding: 12px 20px; display: flex; gap: 10px; align-items: center; background: var(--panel-2); }
-.btn { border: 1px solid var(--line); background: #fff; padding: 8px 14px; border-radius: var(--radius); cursor: pointer; font-weight: 500; }
+.btn { border: 1.5px solid var(--ink); background: #fff; padding: 8px 14px; border-radius: var(--radius); cursor: pointer; font-weight: 600;
+  transition: background-color .2s, transform .25s var(--ease); }
+.btn:active { transform: translateY(1px); }
 .btn:hover { background: var(--panel-2); }
 .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.btn.primary:hover { background: #0c5a4d; }
+.btn.primary:hover { background: #222064; }
 .btn:disabled { opacity: .5; cursor: not-allowed; }
 .progress { color: var(--ink-2); font-size: 13px; margin-right: auto; }
 kbd { font-family: var(--mono); font-size: 12px; padding: 1px 5px; border: 1px solid var(--line); border-bottom-width: 2px;
@@ -117,15 +123,37 @@ kbd { font-family: var(--mono); font-size: 12px; padding: 1px 5px; border: 1px s
   padding: 9px 14px; border-radius: var(--radius); font-size: 13px; transition: opacity .2s ease-out, transform .2s ease-out; pointer-events: none; }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 .toast.err { background: var(--flag); }
+/* Welcome sheet: white original with canary and pink copies offset behind it. */
+.welcome { display: flex; justify-content: center; padding: 6vh 8px 48px; }
+.wsheet { position: relative; width: min(620px, 100%); background: #fff; border: 1.5px solid var(--ink); border-radius: var(--radius);
+  padding: 34px 36px 30px; }
+.wsheet::before, .wsheet::after { content: ""; position: absolute; inset: 0; border: 1.5px solid var(--ink); border-radius: var(--radius); z-index: -1; }
+.wsheet::before { background: var(--canary); transform: translate(10px, 10px) rotate(.8deg); }
+.wsheet::after { background: #f3a6b5; transform: translate(20px, 20px) rotate(1.6deg); z-index: -2; }
+.welcome { isolation: isolate; }
+.wtag { font: 600 11px var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--ink-2); }
+.wsheet h2 { font: 800 clamp(26px, 3.4vw, 36px)/1.05 var(--font); font-stretch: 82%; letter-spacing: -.02em; margin: 10px 0 10px; text-wrap: balance; }
+.wsheet > p { color: var(--ink-2); font-size: 15.5px; margin: 0 0 20px; }
+.wsteps { list-style: none; margin: 0 0 26px; padding: 0; border-top: 1.5px solid var(--ink); counter-reset: w; }
+.wsteps li { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.wsteps b { font-weight: 700; }
+.wsteps span { color: var(--ink-2); }
+.wcta { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn.big { padding: 12px 20px; font-size: 15.5px; }
+.wnote { margin: 16px 0 0 !important; font-size: 13.5px !important; color: var(--ink-3) !important; }
+.wnote a { color: var(--accent); }
+@media (max-width: 900px) { #batchView.fresh .rail { display: none; } .wsheet { padding: 24px 20px; } .wsteps li { grid-template-columns: 1fr; gap: 2px; } .wcta .btn { flex: 1 1 100%; } .welcome { padding: 8px 20px 36px 0; } }
 .center-msg { margin: auto; text-align: center; color: var(--ink-2); max-width: 340px; }
-.center-msg h2 { color: var(--ink); font-size: 16px; margin: 0 0 6px; }
+.center-msg h2 { color: var(--ink); font: 800 24px/1.15 var(--font); font-stretch: 85%; margin: 0 0 8px; }
 
 /* View switch */
 .tabs { display: flex; gap: 4px; }
-.tab { border: 0; background: transparent; padding: 6px 12px; border-radius: var(--radius); cursor: pointer; color: var(--ink-2); font-weight: 500; }
-.tab:hover { background: var(--panel-2); }
-.tab[aria-selected="true"] { background: var(--accent-soft); color: var(--accent); }
-.tab .count { font-family: var(--mono); font-size: 12px; margin-left: 4px; }
+.tab { border: 0; background: transparent; padding: 7px 12px; border-radius: var(--radius); cursor: pointer; color: var(--ink); font-weight: 600;
+  transition: background-color .2s, box-shadow .2s; }
+.tab:hover { background: rgba(255, 255, 255, .45); }
+.tab[aria-selected="true"] { background: var(--panel); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.tab .count { font-family: var(--mono); font-size: 11.5px; margin-left: 6px; background: var(--ink); color: #fff; border-radius: 99px; padding: 0 6px; }
+.tab .count:empty { display: none; }
 .app { display: flex; flex-direction: column; }
 .app > .batches, .app > main { flex: 1; }
 .banner { padding: 8px 20px; background: var(--check-soft); color: #5c3a00; font-size: 13px; border-bottom: 1px solid var(--line); }
@@ -135,7 +163,7 @@ kbd { font-family: var(--mono); font-size: 12px; padding: 1px 5px; border: 1px s
 /* Batches view */
 .batches { display: grid; grid-template-columns: 300px minmax(0, 1fr); min-height: 0; }
 .batches .rail { background: var(--panel-2); border-right: 1px solid var(--line); overflow: auto; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
-.drop { border: 1.5px dashed #b9b6ab; border-radius: 8px; padding: 22px 16px; text-align: center; background: var(--panel);
+.drop { border: 1.5px dashed var(--ink-3); border-radius: var(--radius); padding: 22px 16px; text-align: center; background: var(--panel);
   color: var(--ink-2); cursor: pointer; transition: border-color .15s ease-out, background-color .15s ease-out; }
 .drop.off { cursor: default; border-style: solid; background: var(--panel-2); }
 .drop.off a { color: var(--accent); font-weight: 600; }
@@ -147,13 +175,13 @@ kbd { font-family: var(--mono); font-size: 12px; padding: 1px 5px; border: 1px s
 .bitem { display: flex; justify-content: space-between; gap: 8px; text-align: left; border: 0; background: transparent; cursor: pointer;
   padding: 8px; border-radius: var(--radius); }
 .bitem:hover { background: rgba(255, 255, 255, .6); }
-.bitem[aria-current="true"] { background: var(--panel); box-shadow: inset 2px 0 0 var(--accent); }
+.bitem[aria-current="true"] { background: var(--panel); box-shadow: inset 0 0 0 1.5px var(--ink); }
 .bitem span:last-child { color: var(--ink-3); font-size: 12px; }
 .detail { overflow: auto; padding: 24px 28px; }
-.detail h1 { font-size: 18px; margin: 0 0 4px; letter-spacing: -.01em; }
+.detail h1 { font: 800 28px/1.1 var(--font); font-stretch: 85%; margin: 0 0 6px; letter-spacing: -.015em; }
 .detail .sub { color: var(--ink-2); margin: 0 0 16px; }
-.bar { height: 6px; background: var(--panel-2); border-radius: 99px; overflow: hidden; margin: 0 0 16px; }
-.bar i { display: block; height: 100%; background: var(--accent); width: 0; transition: width .3s ease-out; }
+.bar { height: 8px; border: 1px solid var(--line); background: var(--panel-2); border-radius: 99px; overflow: hidden; margin: 0 0 16px; }
+.bar i { display: block; height: 100%; background: var(--accent); width: 0; transition: width .6s var(--ease); }
 .exports { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 18px; }
 .exports .label { color: var(--ink-2); font-size: 13px; margin-right: 4px; }
 .btn.small { padding: 5px 10px; font-size: 13px; }
@@ -227,6 +255,15 @@ dialog.page .top { display: flex; justify-content: space-between; align-items: s
 dialog.page blockquote { margin: 0; font-size: 13px; color: var(--ink); border-left: 3px solid var(--accent); padding-left: 10px; }
 dialog.page img { display: block; width: 100%; min-height: 200px; }
 
+/* One authored motion: each view arrives like the next sheet dropped on the pad. */
+@keyframes sheetIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.enter { animation: sheetIn .55s var(--ease) both; }
+@media (prefers-reduced-motion: reduce) { .enter { animation: none; } * { transition: none !important; } }
+.mview { display: none; }
+.home { margin-left: auto; color: var(--ink); font-weight: 600; font-size: 13.5px; text-decoration: none; white-space: nowrap; }
+.home:hover { text-decoration: underline; }
+@media (hover: none) { .keys { display: none; } }
+
 @media (max-width: 1180px) {
   main { grid-template-columns: 200px minmax(0, 1fr) 340px; }
   .canvas { padding: 16px; }
@@ -244,21 +281,36 @@ dialog.page img { display: block; width: 100%; min-height: 200px; }
   .queue { max-height: 180px; border-right: 0; border-bottom: 1px solid var(--line); }
   .fields { border-left: 0; border-top: 1px solid var(--line); }
   .stats { display: none; }
+  .keys { display: none; }
+  /* Phone and tablet review: one pane at a time, switched by a segmented control. */
+  .mview { display: flex; padding: 10px 16px; background: var(--panel-2); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 1; }
+  .mview button { flex: 1; padding: 9px 10px; border: 1.5px solid var(--ink); background: #fff; font-weight: 600; cursor: pointer; }
+  .mview button + button { border-left: 0; }
+  .mview button:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+  .mview button:last-child { border-radius: 0 var(--radius) var(--radius) 0; }
+  .mview button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+  main[data-pane="fields"] .canvas, main[data-pane="page"] .fields { display: none; }
+  .canvas { padding: 12px; }
+  .queue { max-height: 150px; }
+  .actions { position: sticky; bottom: 0; }
+  header { gap: 10px; padding: 0 12px; }
+  .brand span, .home { display: none; }
 }
 </style>
 </head>
 <body>
 <div class="app">
   <header>
-    <div class="brand">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="m9 15 2 2 4-4"/></svg>
-      DocIntel
-    </div>
+    <a class="brand" href="/" title="About DocIntel" aria-label="DocIntel: about this project">
+      <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true"><rect x="9" y="7" width="18" height="22" rx="1" fill="#F3A6B5" stroke="#16151f" stroke-width="1.5"/><rect x="7" y="5" width="18" height="22" rx="1" fill="#fff7c9" stroke="#16151f" stroke-width="1.5"/><rect x="5" y="3" width="18" height="22" rx="1" fill="#fff" stroke="#16151f" stroke-width="1.5"/><path d="M9 10h10M9 14h10M9 18h6" stroke="#2E2C7A" stroke-width="1.5"/></svg>
+      <span>DocIntel</span>
+    </a>
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" id="tabBatches" aria-selected="true" type="button">Batches</button>
       <button class="tab" role="tab" id="tabReports" aria-selected="false" type="button">Reports</button>
       <button class="tab" role="tab" id="tabReview" aria-selected="false" type="button">Review<span class="count" id="reviewCount"></span></button>
     </div>
+    <a class="home" href="/">About this project</a>
     <div class="stats" id="stats" aria-live="polite"></div>
     <label class="who">Reviewer <input id="reviewer" autocomplete="off" spellcheck="false"></label>
   </header>
@@ -289,7 +341,11 @@ dialog.page img { display: block; width: 100%; min-height: 200px; }
     <div class="detail rep" id="rdetail"><p class="sub">Every statement links to the page and the exact words it comes from. Anything that cannot be matched to the document is left out.</p></div>
   </section>
   <dialog class="page" id="pageDlg"><div class="top"><blockquote id="pageQuote"></blockquote><button class="btn small" type="button" id="pageClose">Close</button></div><img id="pageImg" alt="Cited page"></dialog>
-  <main id="reviewView" hidden>
+  <main id="reviewView" data-pane="fields" hidden>
+    <div class="mview" role="group" aria-label="Show">
+      <button type="button" id="mvPage" aria-pressed="false">Page</button>
+      <button type="button" id="mvFields" aria-pressed="true">Fields</button>
+    </div>
     <nav class="queue" aria-label="Review queue">
       <h2 id="qtitle">Queue</h2>
       <div id="queue"></div>
@@ -301,7 +357,7 @@ dialog.page img { display: block; width: 100%; min-height: 200px; }
       <div class="list" id="list" role="listbox" aria-label="Fields"></div>
       <div>
         <div class="actions">
-          <span class="progress num" id="progress"></span>
+          <span class="progress" id="progress"></span>
           <button class="btn" id="skip" type="button">Skip</button>
           <button class="btn primary" id="submit" type="button">Submit review</button>
         </div>
@@ -453,7 +509,7 @@ function drawBoxes() {
     Object.assign(el.style, { left: `${b.x0 * k - pad}px`, top: `${b.y0 * k - pad}px`,
       width: `${(b.x1 - b.x0) * k + 2 * pad}px`, height: `${(b.y1 - b.y0) * k + 2 * pad}px` });
     el.title = human(x.name);
-    el.addEventListener("click", () => setActive(i, true));
+    el.addEventListener("click", () => { setActive(i, true); if (matchMedia("(max-width: 900px)").matches) pane("fields"); });
     page.append(el);
   });
 }
@@ -541,6 +597,7 @@ function setActive(i, scrollPage, keepFocus = false) {
 function updateProgress() {
   const need = state.fields.filter((x) => x.needs), done = need.filter((x) => x.confirmed).length;
   $("progress").textContent = need.length ? `${done} of ${need.length} checked` : "All fields auto-accepted";
+  $("mvFields").textContent = need.length && done < need.length ? `Fields · ${need.length - done} to check` : "Fields";
 }
 
 const toNum = (v) => { const n = parseFloat(String(v ?? "").replace(/[$,\s]/g, "")); return Number.isFinite(n) ? n : null; };
@@ -615,17 +672,53 @@ function show(v) {
   $("batchView").hidden = v !== "batches"; $("reviewView").hidden = v !== "review"; $("reportView").hidden = v !== "reports";
   $("tabBatches").setAttribute("aria-selected", v === "batches"); $("tabReview").setAttribute("aria-selected", v === "review");
   $("tabReports").setAttribute("aria-selected", v === "reports");
+  const el = { batches: $("batchView"), review: $("reviewView"), reports: $("reportView") }[v];
+  el.classList.remove("enter"); void el.offsetWidth; el.classList.add("enter");
   if (v === "review") loadQueue(true).catch((e) => toast(e.message, true)); else if (v === "reports") loadReports(); else loadBatches();
 }
 $("tabBatches").addEventListener("click", () => show("batches"));
+function pane(p) {
+  $("reviewView").dataset.pane = p;
+  $("mvPage").setAttribute("aria-pressed", p === "page"); $("mvFields").setAttribute("aria-pressed", p === "fields");
+  if (p === "page") requestAnimationFrame(drawBoxes);
+}
+$("mvPage").addEventListener("click", () => pane("page"));
+$("mvFields").addEventListener("click", () => pane("fields"));
 $("tabReview").addEventListener("click", () => show("review"));
 $("tabReports").addEventListener("click", () => show("reports"));
+
+// First screen for a new visitor: one sheet on the pad, with its two copies peeking out behind it.
+function welcome() {
+  const out = config.demo && config.remaining < 1;
+  $("batchView").classList.add("fresh");
+  $("detail").innerHTML = `<div class="welcome enter">
+    <div class="wsheet">
+      <span class="wtag">${config.demo ? "Public demo" : "Get started"}</span>
+      <h2>See an invoice become a spreadsheet and a journal entry.</h2>
+      <p>Start with our sample documents, or use one of your own. It takes about a minute.</p>
+      <ol class="wsteps">
+        <li><b>Upload</b><span>A PDF or photo, in any layout. Scans are fine.</span></li>
+        <li><b>Check</b><span>Fields the model is unsure about are marked, with the page beside them.</span></li>
+        <li><b>Download</b><span>CSV files and a balanced journal entry, ready for Excel, QuickBooks or Xero.</span></li>
+      </ol>
+      <div class="wcta">
+        <button class="btn primary big" type="button" id="wSample" ${out ? "disabled" : ""}>Try sample documents</button>
+        <button class="btn big" type="button" id="wOwn" ${out ? "disabled" : ""}>Choose your own file</button>
+      </div>
+      <p class="wnote">${out ? `You've used today's demo documents. <a href="${esc(config.repo_url)}#quick-start" target="_blank" rel="noopener">Run DocIntel on your own computer</a> for unlimited use.`
+        : config.demo ? `${config.remaining} of ${config.max_docs} documents left today. Please use sample or public documents: the demo reads them with Google's Gemini API.`
+        : "Running on your own machine: no limits, and documents stay on this computer."}</p>
+    </div></div>`;
+  $("wSample").addEventListener("click", seed);
+  $("wOwn").addEventListener("click", () => $("fileInput").click());
+}
 
 async function refreshConfig() {
   try { config = await api("/config"); } catch { return; }
   const b = $("banner");
   if (!config.demo) { b.hidden = true; return; }
   b.hidden = false;
+  document.querySelector(".who").hidden = true;  // reviewer names mean nothing to demo visitors
   b.innerHTML = `Public demo: <b class="num">${config.remaining}</b> of ${config.max_docs} documents left today, up to ${config.max_pages} pages each.
     Files are visible only to you and deleted after ${config.ttl_hours} hours. Need more? It is free and open source:
     <a href="${esc(config.repo_url)}#quick-start" target="_blank" rel="noopener">run it on your own computer</a>.`;
@@ -647,8 +740,7 @@ async function loadBatches() {
   $("blist").querySelectorAll(".bitem").forEach((el) => el.addEventListener("click", () => openBatch(el.dataset.id)));
   if (!current) {
     if (list.length) openBatch(list[0].batch_id);
-    else $("detail").innerHTML = `<div class="center-msg" style="margin-top:12vh"><h2>Turn a folder of documents into a spreadsheet</h2>
-      <p>Drop invoices, W-2s, pay stubs or bank statements on the left. Each document becomes a row in a CSV, with line items and transactions in their own files.</p></div>`;
+    else welcome();
   }
 }
 
@@ -699,6 +791,7 @@ async function setAccount(batchId, el) {
 }
 
 async function openBatch(id) {
+  $("batchView").classList.remove("fresh");
   current = id; clearTimeout(poll);
   await accountsReady;
   document.querySelectorAll(".bitem").forEach((el) => el.setAttribute("aria-current", el.dataset.id === id));
@@ -715,7 +808,7 @@ async function openBatch(id) {
   const toCheck = b.documents.filter((d) => d.status === "done" && !d.reviewed && d.to_review).length;
   $("detail").innerHTML = `
     <h1>${b.complete ? "Batch ready" : "Extracting documents"}</h1>
-    <p class="sub num">${b.finished} of ${b.total} processed${b.counts.failed ? ` · ${b.counts.failed} failed` : ""}${toCheck ? ` · ${toCheck} with fields to check` : ""}</p>
+    <p class="sub">${b.finished} of ${b.total} processed${b.counts.failed ? ` · ${b.counts.failed} failed` : ""}${toCheck ? ` · ${toCheck} with fields to check` : ""}</p>
     <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="${b.total}" aria-valuenow="${b.finished}"><i style="width:${(100 * b.finished / b.total).toFixed(1)}%"></i></div>
     ${lastRefused.length ? `<div class="refused">Not processed:<ul>${lastRefused.map((r) => `<li>${esc(r.file)}: ${esc(r.error)}</li>`).join("")}</ul></div>` : ""}
     <div class="exports">
@@ -793,7 +886,7 @@ async function openReport(id) {
   if (currentReport !== id) return;
   const m = r.meta || {}, s = r.summary;
   const head = `<h1>${esc(m.title || r.file)}</h1>
-    <div class="meta num"><span>${esc(r.file)}</span><span>${r.pages} pages${m.scanned_pages ? ` (${m.scanned_pages} scanned)` : ""}</span>
+    <div class="meta"><span>${esc(r.file)}</span><span>${r.pages} pages${m.scanned_pages ? ` (${m.scanned_pages} scanned)` : ""}</span>
     ${m.words ? `<span>${m.words.toLocaleString()} words</span>` : ""}${m.author ? `<span>${esc(m.author)}</span>` : ""}</div>`;
   if (r.status !== "done") {
     $("rdetail").innerHTML = `${head}<p class="sub">${STEP[r.status] || esc(r.status)}${r.error ? `: <span class="err">${esc(r.error)}</span>` : "…"}</p>
@@ -856,7 +949,10 @@ $("rfileInput").addEventListener("change", (e) => { uploadReport(e.target.files[
 ["dragleave", "drop"].forEach((t) => $("rdrop").addEventListener(t, (e) => { e.preventDefault(); $("rdrop").classList.remove("over"); }));
 $("rdrop").addEventListener("drop", (e) => uploadReport(e.dataTransfer.files[0]));
 
-refreshConfig().then(() => show("batches"));
+refreshConfig().then(() => {
+  show("batches");
+  if (location.hash === "#sample" && (!config.demo || config.remaining > 0)) { history.replaceState(null, "", "/app"); seed(); }
+});
 api("/review/queue").then((q) => { $("reviewCount").textContent = q.length || ""; }).catch(() => {});
 </script>
 </body>

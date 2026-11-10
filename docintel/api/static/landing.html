@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DocIntel: invoices to spreadsheets and journal entries</title>
+<meta name="description" content="Open-source document intelligence. Drop in any invoice and get a CSV row and a balanced journal entry, with every number traced back to the page.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='9' y='7' width='18' height='22' rx='1' fill='%23F3A6B5'/%3E%3Crect x='7' y='5' width='18' height='22' rx='1' fill='%23F2D64B'/%3E%3Crect x='5' y='3' width='18' height='22' rx='1' fill='%23fff' stroke='%232E2C7A' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #ffffff;
+  --canary: #f2d64b;
+  --canary-deep: #e6c52e;
+  --pink: #f3a6b5;
+  --pink-soft: #f9d3db;
+  --sky: #9cc6e8;
+  --sky-soft: #d4e7f6;
+  --carbon: #2e2c7a;         /* carbon-copy ink: links, figures, actions */
+  --carbon-2: #4a48a6;
+  --ink: #16151f;
+  --ink-2: #44425a;
+  --rule: rgba(22, 21, 31, .14);
+  --display: "Archivo", "Arial Narrow", sans-serif;
+  --text: "Archivo", system-ui, sans-serif;
+  --fig: "Spline Sans Mono", ui-monospace, monospace;
+  --ease: cubic-bezier(.16, 1, .3, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--canary); color: var(--ink); font: 400 17px/1.55 var(--text); font-stretch: 100%;
+  -webkit-font-smoothing: antialiased; }
+::selection { background: var(--carbon); color: #fff; }
+:focus-visible { outline: 3px solid var(--carbon); outline-offset: 3px; border-radius: 2px; }
+a { color: var(--carbon); text-underline-offset: .2em; text-decoration-thickness: 1.5px; }
+.fig { font-family: var(--fig); font-variant-numeric: tabular-nums; }
+.wrap { width: min(1180px, 100% - 32px); margin-inline: auto; }
+
+/* Top bar */
+.top { position: sticky; top: 0; z-index: 10; background: var(--canary); border-bottom: 1.5px solid var(--ink); }
+.top .wrap { display: flex; align-items: center; gap: 24px; height: 60px; }
+.mark { display: flex; align-items: center; gap: 10px; font: 800 19px var(--display); font-stretch: 110%; letter-spacing: -.01em;
+  color: var(--ink); text-decoration: none; }
+.top nav { display: flex; gap: 22px; margin-left: auto; font-weight: 500; font-size: 15px; }
+.top nav a { color: var(--ink); text-decoration: none; }
+.top nav a:hover { text-decoration: underline; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 20px; border-radius: 3px; font: 650 16px var(--text);
+  text-decoration: none; border: 1.5px solid var(--ink); cursor: pointer; transition: transform .25s var(--ease), background-color .2s; }
+.btn.go { background: var(--carbon); border-color: var(--carbon); color: #fff; }
+.btn.go:hover { background: #222064; transform: translateY(-2px); }
+.btn.alt { background: transparent; color: var(--ink); }
+.btn.alt:hover { background: rgba(255, 255, 255, .45); transform: translateY(-2px); }
+.btn.sm { padding: 8px 14px; font-size: 14px; }
+.btn svg { flex: none; }
+
+/* Hero */
+.hero { padding: 72px 0 96px; overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: 56px; align-items: center; }
+h1 { font: 800 clamp(42px, 6.2vw, 84px)/.95 var(--display); font-stretch: 78%; letter-spacing: -.025em; margin: 0 0 24px; text-wrap: balance; }
+.lede { font-size: 20px; max-width: 34ch; margin: 0 0 32px; color: var(--ink); }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.cta small { flex-basis: 100%; color: var(--ink-2); font-size: 14px; margin-top: 4px; }
+
+/* The copy set: original + canary + pink, fanned like a torn-off carbon pad */
+.set { position: relative; height: 700px; }
+.sheet { position: absolute; width: min(420px, 82%); background: var(--paper); border-radius: 2px; padding: 22px 24px;
+  box-shadow: 0 1px 0 rgba(22, 21, 31, .2), 0 18px 40px -18px rgba(22, 21, 31, .45);
+  transition: transform 1.1s var(--ease); font-size: 13px; }
+.sheet .stub { display: flex; justify-content: space-between; font: 600 11px var(--fig); letter-spacing: .04em; text-transform: uppercase;
+  color: var(--ink-2); border-bottom: 1px dashed var(--rule); padding-bottom: 8px; margin-bottom: 12px; }
+.s-orig { left: 0; top: 0; z-index: 3; transform: rotate(-2deg); }
+.s-csv { left: 34%; top: 300px; z-index: 2; background: #fff7c9; transform: rotate(1.5deg); }
+.s-jnl { left: 0; top: 420px; z-index: 1; background: var(--pink-soft); transform: rotate(-.5deg); }
+.set.stacked .s-csv { transform: translate(-34%, -300px) rotate(-2deg); }
+.set.stacked .s-jnl { transform: translate(0, -420px) rotate(-2deg); }
+.inv h3 { font: 800 20px var(--display); font-stretch: 90%; margin: 0; }
+.inv .row { display: flex; justify-content: space-between; gap: 10px; padding: 3px 0; }
+.inv .muted { color: var(--ink-2); }
+.inv table { width: 100%; border-collapse: collapse; margin: 10px 0 6px; }
+.inv th { font: 600 10.5px var(--fig); text-transform: uppercase; color: var(--ink-2); text-align: left; border-bottom: 1px solid var(--ink); padding: 3px 0; }
+.inv td { padding: 4px 0; border-bottom: 1px solid var(--rule); }
+.inv .r { text-align: right; }
+.sum { margin-left: auto; width: 62%; }
+.sum .row:last-child { border-top: 1.5px solid var(--ink); margin-top: 3px; padding-top: 5px; font-weight: 700; }
+[data-k] { border-radius: 2px; transition: background-color .2s, box-shadow .2s; }
+[data-k].lit { background: var(--sky-soft); box-shadow: 0 0 0 2px var(--carbon); }
+.copy [data-k] { color: var(--carbon); border-bottom: 1.5px solid var(--carbon); cursor: default; }
+.csv { font: 500 12px/1.7 var(--fig); overflow-wrap: anywhere; }
+.csv .h { color: var(--ink-2); }
+.jl { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.jl td { padding: 4px 0; border-bottom: 1px solid rgba(22, 21, 31, .12); }
+.jl .r { text-align: right; font-family: var(--fig); }
+.jl tr:last-child td { border: 0; border-top: 1.5px solid var(--ink); font-weight: 700; }
+.tag { display: inline-block; font: 600 10.5px var(--fig); text-transform: uppercase; letter-spacing: .04em; color: var(--ink-2); }
+.hint { position: absolute; right: 0; bottom: 0; margin: 0; font-size: 13px; color: var(--ink-2); max-width: 26ch; text-align: right; }
+
+/* Bands: each section is a sheet of the set */
+section.band { padding: 104px 0; border-top: 1.5px solid var(--ink); scroll-margin-top: 60px; }
+.b-white { background: var(--paper); }
+.b-pink { background: var(--pink); }
+.b-sky { background: var(--sky); }
+.b-ink { background: var(--carbon); color: #fff; }
+.b-ink a { color: #fff; }
+h2 { font: 800 clamp(32px, 4.2vw, 56px)/1 var(--display); font-stretch: 80%; letter-spacing: -.02em; margin: 0 0 20px; text-wrap: balance; max-width: 18ch; }
+.intro { font-size: 19px; max-width: 58ch; margin: 0 0 48px; }
+
+/* Problem */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.retype { list-style: none; margin: 0; padding: 0; border-top: 1.5px solid var(--ink); }
+.retype li { display: block; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.retype b { display: block; font-size: 18px; margin-bottom: 2px; }
+.retype span.k { font: 600 13px var(--fig); color: var(--carbon); padding-top: 4px; }
+
+/* Outputs: three copies, different sizes, overlapping */
+.copies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.cp { border: 1.5px solid var(--ink); border-radius: 2px; padding: 26px 24px 28px; }
+.cp:nth-child(1) { background: #fff7c9; }
+.cp:nth-child(2) { background: var(--paper); }
+.cp:nth-child(3) { background: var(--sky-soft); }
+.cp h3 { font: 800 26px/1.05 var(--display); font-stretch: 85%; margin: 10px 0 10px; }
+.cp p { margin: 0 0 14px; }
+.cp ul { margin: 0; padding-left: 18px; color: var(--ink-2); font-size: 15px; }
+.cp li + li { margin-top: 4px; }
+
+/* Proof: measured results typed onto a form */
+.form { background: var(--paper); border: 1.5px solid var(--ink); border-radius: 2px; overflow-x: auto; }
+.form table { width: 100%; border-collapse: collapse; min-width: 640px; }
+.form th, .form td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.form th { font: 600 11.5px var(--fig); text-transform: uppercase; letter-spacing: .04em; color: var(--ink-2); background: var(--sky-soft); border-bottom: 1.5px solid var(--ink); }
+.form td.n { font: 600 22px var(--fig); color: var(--carbon); white-space: nowrap; }
+.form td small { display: block; color: var(--ink-2); font-size: 13.5px; margin-top: 2px; }
+.form tr:last-child td { border-bottom: 0; }
+.note { font-size: 14px; color: var(--ink); max-width: 75ch; margin: 18px 0 0; }
+
+/* Build: routing slip */
+.slip { list-style: none; margin: 0; padding: 0; counter-reset: s; border-left: 2px solid rgba(255, 255, 255, .35); }
+.slip li { position: relative; padding: 0 0 34px 34px; max-width: 64ch; }
+.slip li::before { content: ""; position: absolute; left: -8px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--canary); }
+.slip b { display: block; font: 800 22px var(--display); font-stretch: 85%; margin-bottom: 4px; }
+.slip p { margin: 0; color: rgba(255, 255, 255, .86); }
+.slip code { font: 500 14px var(--fig); background: rgba(255, 255, 255, .12); padding: 1px 6px; border-radius: 2px; }
+.stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 40px; }
+.stack span { font: 500 13px var(--fig); border: 1px solid rgba(255, 255, 255, .45); padding: 5px 10px; border-radius: 2px; }
+
+/* Limits */
+.limits { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.limits h3 { font: 800 22px var(--display); font-stretch: 85%; margin: 0 0 8px; }
+.limits p { margin: 0 0 12px; }
+
+/* Close */
+.close { padding: 112px 0; background: var(--canary); border-top: 1.5px solid var(--ink); }
+.close h2 { max-width: 16ch; }
+footer { background: var(--ink); color: rgba(255, 255, 255, .78); font-size: 14px; padding: 28px 0; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+footer a { color: #fff; }
+
+/* Scroll motion. Content is visible by default; JS adds .js-motion, then each block reveals once as it enters. */
+.js-motion .rv { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform 1s var(--ease); }
+.js-motion .rv.in { opacity: 1; transform: none; }
+/* Headings rise line by line out of a mask, like type coming off the platen. */
+.js-motion .ln { display: block; overflow: hidden; padding-bottom: .06em; }
+.js-motion .ln > span { display: block; transform: translateY(105%); transition: transform 1s var(--ease); }
+.js-motion .in .ln > span, .js-motion .ln.in > span { transform: none; }
+.js-motion .in .ln:nth-child(2) > span { transition-delay: .09s; }
+.js-motion .in .ln:nth-child(3) > span { transition-delay: .18s; }
+.js-motion .in .ln:nth-child(4) > span { transition-delay: .27s; }
+/* Copies drop onto the pad one after another, settling from a slight tilt. */
+.js-motion .cp { opacity: 0; transform: translateY(40px) rotate(-1.5deg); transition: opacity .7s var(--ease), transform 1.1s var(--ease); }
+.js-motion .copies.in .cp { opacity: 1; transform: none; }
+.js-motion .copies.in .cp:nth-child(2) { transition-delay: .12s; }
+.js-motion .copies.in .cp:nth-child(3) { transition-delay: .24s; }
+/* Results are typed onto the form row by row; each figure counts up. */
+.js-motion .form tbody tr { opacity: 0; transform: translateX(-12px); transition: opacity .5s var(--ease), transform .7s var(--ease); }
+.js-motion .form.in tbody tr { opacity: 1; transform: none; }
+.js-motion .form.in tbody tr:nth-child(2) { transition-delay: .08s; }
+.js-motion .form.in tbody tr:nth-child(3) { transition-delay: .16s; }
+.js-motion .form.in tbody tr:nth-child(4) { transition-delay: .24s; }
+.js-motion .form.in tbody tr:nth-child(5) { transition-delay: .32s; }
+/* The routing slip: the line draws down and each stop lights in turn. */
+.js-motion .slip { border-left-color: transparent; background: linear-gradient(rgba(255,255,255,.35), rgba(255,255,255,.35)) 0 0 / 2px 0 no-repeat;
+  transition: background-size 1.6s var(--ease); margin-left: -2px; padding-left: 2px; }
+.js-motion .slip.in { background-size: 2px 100%; }
+.js-motion .slip li { opacity: 0; transform: translateY(14px); transition: opacity .6s var(--ease), transform .8s var(--ease); }
+.js-motion .slip.in li { opacity: 1; transform: none; }
+.js-motion .slip li::before { transform: scale(0); transition: transform .5s var(--ease); }
+.js-motion .slip.in li::before { transform: scale(1); }
+.js-motion .slip.in li:nth-child(2), .js-motion .slip.in li:nth-child(2)::before { transition-delay: 0.15s; }
+.js-motion .slip.in li:nth-child(3), .js-motion .slip.in li:nth-child(3)::before { transition-delay: 0.30s; }
+.js-motion .slip.in li:nth-child(4), .js-motion .slip.in li:nth-child(4)::before { transition-delay: 0.45s; }
+.js-motion .slip.in li:nth-child(5), .js-motion .slip.in li:nth-child(5)::before { transition-delay: 0.60s; }
+.js-motion .slip.in li:nth-child(6), .js-motion .slip.in li:nth-child(6)::before { transition-delay: 0.75s; }
+.js-motion .stack span { opacity: 0; transform: scale(.9); transition: opacity .4s var(--ease), transform .5s var(--ease); }
+.js-motion .stack.in span { opacity: 1; transform: none; }
+/* Top bar gains a hairline shadow once the page scrolls. */
+.top { transition: box-shadow .3s; }
+.top.scrolled { box-shadow: 0 8px 20px -14px rgba(22, 21, 31, .5); }
+
+/* Entrance: the copies peel off the pad once */
+@media (prefers-reduced-motion: no-preference) {
+  .set.peel .s-csv, .set.peel .s-jnl { transition-duration: 1.4s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+  .js-motion .rv, .js-motion .cp, .js-motion .form tbody tr, .js-motion .slip li, .js-motion .stack span { opacity: 1 !important; transform: none !important; }
+  .js-motion .ln > span, .js-motion .slip li::before { transform: none !important; }
+}
+
+@media (max-width: 920px) {
+  .hero { padding: 44px 0 64px; }
+  .hero .wrap, .split, .limits { grid-template-columns: 1fr; gap: 36px; }
+  .set { height: auto; display: flex; flex-direction: column; gap: 14px; }
+  .sheet, .set.stacked .s-csv, .set.stacked .s-jnl { position: relative; left: auto; top: auto; width: 100%; transform: none; }
+  .s-orig { transform: rotate(-1deg); }
+  .hint { position: static; text-align: left; max-width: none; }
+  .copies { grid-template-columns: 1fr; }
+  section.band { padding: 72px 0; }
+  .top nav a:not(.btn) { display: none; }
+  .lede { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+<!--
+THESIS: DocIntel is a carbon-copy set: the invoice is the original, and the spreadsheet and journal entry are its copies, each figure traceable to the page. Refuses the hero-plus-screenshot SaaS page.
+OWN-WORLD: duplicate-book papers (white original, canary, pink, sky copies) in full-bleed bands, carbon-indigo ink for every figure and action, condensed Archivo display, Spline Sans Mono for figures only, 1.5px black rules, depth only from overlapping sheets.
+STORY: a visitor sees one invoice become a CSV row and a balanced journal entry, learns it was measured on real receipts, sees how it was built, then tries the 2-document demo or runs it free.
+FIRST VIEWPORT: left, condensed headline, lede, Try the demo + Run it yourself; right, the fanned copy set; hovering a carbon figure lights its source on the original.
+FORM: carbon-copy duplicate forms, grounded list position 5, seed 4260f144. Raise from papercut: depth only by sheet overlap. Raise from jacquard: every figure traceable to its exact source.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+-->
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/" aria-label="DocIntel home">
+      <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><rect x="9" y="7" width="18" height="22" rx="1" fill="#F3A6B5" stroke="#16151f" stroke-width="1.5"/><rect x="7" y="5" width="18" height="22" rx="1" fill="#fff7c9" stroke="#16151f" stroke-width="1.5"/><rect x="5" y="3" width="18" height="22" rx="1" fill="#fff" stroke="#16151f" stroke-width="1.5"/><path d="M9 10h10M9 14h10M9 18h6" stroke="#2E2C7A" stroke-width="1.5"/></svg>
+      DocIntel
+    </a>
+    <nav aria-label="Page">
+      <a href="#what">What it does</a>
+      <a href="#proof">Results</a>
+      <a href="#built">How it's built</a>
+      <a class="btn go sm" href="/app">Open the app</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1 class="split-h"><span class="ln"><span>Any invoice in.</span></span><span class="ln"><span>The spreadsheet</span></span><span class="ln"><span>and the journal</span></span><span class="ln"><span>entry out.</span></span></h1>
+      <p class="lede rv">DocIntel reads invoices in any layout, posts them as balanced double-entry journals with GST and VAT split out, and shows exactly where on the page every number came from.</p>
+      <div class="cta rv">
+        <a class="btn go" href="/app">Try the live demo
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn alt" id="repo" href="https://github.com/sivram04/doc-intelligence">Run it yourself, free</a>
+        <small id="demoNote">The demo takes 2 documents per visitor per day. No sign-up, and files are deleted after 24 hours.</small>
+      </div>
+    </div>
+
+    <div class="set stacked" id="set" aria-label="Example: one invoice and the two copies DocIntel makes from it">
+      <article class="sheet s-orig inv">
+        <div class="stub"><span>Original · sample invoice</span><span>p 1</span></div>
+        <div class="row"><h3>Harbour &amp; Pine Ltd</h3><span class="muted fig">VAT GB 284 7731 02</span></div>
+        <div class="row muted"><span>Invoice <span class="fig" data-k="no">HP-20417</span></span><span class="fig" data-k="date">14 Mar 2025</span></div>
+        <div class="row muted"><span>Bill to: Northgate Studio</span></div>
+        <table>
+          <thead><tr><th>Item</th><th class="r">Qty</th><th class="r">Amount</th></tr></thead>
+          <tbody>
+            <tr><td>Oak shelving, 2 m</td><td class="r fig">4</td><td class="r fig">1,120.00</td></tr>
+            <tr><td>Installation</td><td class="r fig">1</td><td class="r fig">280.00</td></tr>
+          </tbody>
+        </table>
+        <div class="sum">
+          <div class="row"><span>Subtotal</span><span class="fig" data-k="sub">1,400.00</span></div>
+          <div class="row"><span>VAT 20%</span><span class="fig" data-k="vat">280.00</span></div>
+          <div class="row"><span>Total GBP</span><span class="fig" data-k="tot">1,680.00</span></div>
+        </div>
+      </article>
+
+      <article class="sheet s-csv copy">
+        <div class="stub"><span>Canary copy · invoices.csv</span><span>row 1</span></div>
+        <div class="csv"><span class="h">invoice_number,date,subtotal,tax,total,currency</span><br>
+          <span data-k="no">HP-20417</span>,<span data-k="date">2025-03-14</span>,<span data-k="sub">1400.00</span>,<span data-k="vat">280.00</span>,<span data-k="tot">1680.00</span>,GBP</div>
+      </article>
+
+      <article class="sheet s-jnl copy">
+        <div class="stub"><span>Pink copy · journal entry</span><span>balanced</span></div>
+        <table class="jl">
+          <tr><td>6020 Furniture &amp; fittings</td><td class="r"><span data-k="sub">1,400.00</span></td><td class="r"></td></tr>
+          <tr><td>2210 VAT input recoverable</td><td class="r"><span data-k="vat">280.00</span></td><td class="r"></td></tr>
+          <tr><td>2100 Accounts payable</td><td class="r"></td><td class="r"><span data-k="tot">1,680.00</span></td></tr>
+          <tr><td>Total</td><td class="r">1,680.00</td><td class="r">1,680.00</td></tr>
+        </table>
+      </article>
+      <p class="hint" id="hint">Point at a blue figure to see where it came from on the invoice. Sample data.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band b-white" id="problem">
+  <div class="wrap split">
+    <div>
+      <h2>Finance teams still retype invoices.</h2>
+      <p class="intro rv">Every supplier lays out an invoice differently, and scans arrive tilted and blurred. Template-based tools break on each new layout, and chat-style AI can return a confident number that isn't on the page. So someone keys the figures into a spreadsheet and the ledger by hand.</p>
+    </div>
+    <ul class="retype">
+      <li><div><b>No templates</b>A fine-tuned model reads the page, so a supplier's new layout needs no setup. It was tested on invoice designs it never saw in training.</div></li>
+      <li><div><b>Checks before trust</b>Line items must add up to the subtotal, and tax plus subtotal must equal the total. Anything that fails goes to a person to check, with the page beside it.</div></li>
+      <li><div><b>Every number has a source</b>Each value is linked to the exact place on the page it was read from, so a reviewer confirms it at a glance.</div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band b-pink" id="what">
+  <div class="wrap">
+    <h2>One upload, three copies.</h2>
+    <p class="intro rv">Drop a folder of invoices, receipts, W-2s, pay stubs or bank statements. Each document comes back as rows you can open in Excel and entries you can post.</p>
+    <div class="copies">
+      <article class="cp">
+        <span class="tag">Copy 1</span>
+        <h3>Spreadsheets</h3>
+        <p>One row per document, with line items, tax lines and bank transactions in their own CSV files. Download all of it as one ZIP.</p>
+        <ul><li>Any layout, scanned or digital</li><li>Currency and dates normalised</li><li>Low-confidence fields marked for review</li></ul>
+      </article>
+      <article class="cp">
+        <span class="tag">Copy 2</span>
+        <h3>Journal entries</h3>
+        <p>Balanced double-entry journals, ready for QuickBooks or Xero import. GST, VAT and sales tax go to their own accounts.</p>
+        <ul><li>Debits always equal credits</li><li>Remembers the account you pick for each item</li><li>Explains why each line posts where it does</li></ul>
+      </article>
+      <article class="cp">
+        <span class="tag">Copy 3</span>
+        <h3>Cited report summaries</h3>
+        <p>Upload a long PDF, such as a 70-page annual report or contract. You get a summary where every sentence links to its page, and you can ask questions.</p>
+        <ul><li>Statements the document doesn't back up are left out</li><li>Says "not stated" instead of guessing</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band b-sky" id="proof">
+  <div class="wrap">
+    <h2>Measured, not promised.</h2>
+    <p class="intro rv">Every figure below comes from a benchmark you can rerun from the repository. The local model is a 1.5-billion-parameter model fine-tuned for this job, and it runs free on an ordinary laptop.</p>
+    <div class="form">
+      <table>
+        <thead><tr><th>Test</th><th>Result</th><th>What it shows</th></tr></thead>
+        <tbody>
+          <tr><td>120 invoices in 8 page designs, 2 never seen in training</td><td class="n">0.97</td><td>Field accuracy (F1) of the local model.<small>0.99 and 0.98 on the two unseen designs.</small></td></tr>
+          <tr><td>45 international invoices (GST, VAT, sales tax; 5 currencies)</td><td class="n">0.98</td><td>Field accuracy, including tax lines and line items.</td></tr>
+          <tr><td>50 photographed shop receipts (public CORD dataset)</td><td class="n">87%</td><td>Totals read correctly by the local model.<small>The wrong totals were flagged for review instead of passed through.</small></td></tr>
+          <tr><td>Fields accepted without review</td><td class="n">99.7%</td><td>Precision of auto-accepted fields, with 13% of fields sent to a person.</td></tr>
+          <tr><td>Questions about annual reports, including unanswerable ones</td><td class="n">0</td><td>Made-up answers. Unanswerable questions got "the document does not state this".</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Small samples, honestly reported: treat differences of a few points as ties. Real receipts remain the hardest case, which is why every uncertain field goes to review.</p>
+  </div>
+</section>
+
+<section class="band b-ink" id="built">
+  <div class="wrap split">
+    <div>
+      <h2>How it's built.</h2>
+      <p class="intro rv" style="color:rgba(255,255,255,.9)">An end-to-end document pipeline, with the model as one checked step rather than the whole product.</p>
+      <div class="stack" aria-label="Technology">
+        <span>Python · FastAPI</span><span>PyMuPDF · Tesseract · RapidOCR</span><span>Qwen2.5-1.5B · QLoRA</span><span>Ollama</span>
+        <span>Gemini API</span><span>BM25 + embeddings</span><span>SQLite / Postgres</span><span>Redis · arq</span><span>Docker</span><span>Playwright</span>
+      </div>
+    </div>
+    <ol class="slip">
+      <li><b>Read the page</b><p>PDF text and layout come from PyMuPDF, and scans go through OCR. Each word keeps its position, which is what makes every value traceable.</p></li>
+      <li><b>Extract the fields</b><p>A Qwen2.5-1.5B model fine-tuned with QLoRA on a free Kaggle GPU, served on CPU by Ollama. Trained on thousands of synthetic invoices in varied layouts plus real receipts. The hosted demo uses Gemini instead.</p></li>
+      <li><b>Check the numbers</b><p>Validators test sums, tax, dates and currency. Confidence thresholds fitted on held-out data decide which fields a person must check.</p></li>
+      <li><b>Review and learn</b><p>A review queue shows the page with each field's source highlighted. Corrections are saved as training data for the next model.</p></li>
+      <li><b>Post and export</b><p>Balanced journal entries, tax split by type, and CSV exports, including <code>quickbooks_journal.csv</code>.</p></li>
+      <li><b>Long documents</b><p>Pages are indexed with BM25 and embeddings. A statement is kept only if its quote is found on the cited page.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band b-white" id="privacy">
+  <div class="wrap limits">
+    <div>
+      <h3>Run it on your own machine</h3>
+      <p>DocIntel is open source. Locally it uses the fine-tuned model through Ollama, so documents never leave your computer and it costs nothing per page. No GPU is needed.</p>
+      <p><a id="repo2" href="https://github.com/sivram04/doc-intelligence#quick-start">Setup guide</a></p>
+    </div>
+    <div>
+      <h3>About the public demo</h3>
+      <p>The demo sends your files to Google's Gemini API to read them, so please upload only sample or public documents. Your files are visible only to you and deleted after 24 hours.</p>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <h2>Try it with your own invoice.</h2>
+    <div class="cta"><a class="btn go" href="/app">Open the demo</a><a class="btn alt" href="/app#sample">Use a sample document</a></div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>DocIntel · open-source document intelligence</span><span><a id="repo3" href="https://github.com/sivram04/doc-intelligence">Source code</a></span></div></footer>
+
+<script>
+// Scroll motion: split h2s into masked lines, then reveal each block once as it enters the viewport.
+const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+document.documentElement.classList.add("js-motion");
+document.querySelectorAll("h2").forEach((h) => {
+  const parts = h.innerHTML.split(/<br\s*\/?>|(?<=[.,])\s+/).filter(Boolean);
+  h.innerHTML = parts.map((p) => `<span class="ln"><span>${p}</span></span>`).join("");
+});
+const watch = document.querySelectorAll("h2, .rv, .copies, .form, .slip, .stack, .retype li, .limits > div");
+document.querySelectorAll(".retype li, .limits > div").forEach((el) => el.classList.add("rv"));
+const io = "IntersectionObserver" in window && !calm ? new IntersectionObserver((es) => es.forEach((e) => {
+  if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); countUp(e.target); }
+}), { threshold: 0.18, rootMargin: "0px 0px -6% 0px" }) : null;
+watch.forEach((el) => (io ? io.observe(el) : el.classList.add("in")));
+requestAnimationFrame(() => document.querySelector(".hero h1").classList.add("in"));
+
+// Results count up from zero, keeping their exact printed format.
+function countUp(root) {
+  if (calm || !root.classList.contains("form")) return;
+  root.querySelectorAll("td.n").forEach((td) => {
+    const txt = td.textContent.trim(), m = txt.match(/^([\d.]+)(%?)$/); if (!m) return;
+    const end = parseFloat(m[1]), dp = (m[1].split(".")[1] || "").length, t0 = performance.now();
+    const step = (t) => { const k = Math.min(1, (t - t0) / 1100), e = 1 - Math.pow(1 - k, 4);
+      td.textContent = (end * e).toFixed(dp) + m[2]; if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  });
+}
+
+addEventListener("scroll", () => document.querySelector(".top").classList.toggle("scrolled", scrollY > 8), { passive: true });
+
+// Peel the copies off the pad once, after first paint.
+const set = document.getElementById("set");
+requestAnimationFrame(() => setTimeout(() => set.classList.remove("stacked"), 350));
+
+// Signature: point at a carbon figure and its source lights up on the original.
+const touch = matchMedia("(hover: none)").matches;
+if (touch) document.getElementById("hint").textContent = "Tap a blue figure to see where it came from on the invoice. Sample data.";
+let lit = null;
+const light = (k) => { document.querySelectorAll("[data-k]").forEach((el) => el.classList.toggle("lit", el.dataset.k === k)); lit = k; };
+document.querySelectorAll(".copy [data-k]").forEach((el) => {
+  el.tabIndex = 0;
+  el.addEventListener("mouseenter", () => light(el.dataset.k));
+  el.addEventListener("mouseleave", () => light(null));
+  el.addEventListener("focus", () => light(el.dataset.k));
+  el.addEventListener("blur", () => light(null));
+  el.addEventListener("click", () => light(touch && lit === el.dataset.k ? null : el.dataset.k));
+});
+
+// Real demo limits and repository link from the server.
+fetch("/config").then((r) => r.json()).then((c) => {
+  ["repo", "repo3"].forEach((id) => (document.getElementById(id).href = c.repo_url));
+  document.getElementById("repo2").href = `${c.repo_url}#quick-start`;
+  if (c.demo) document.getElementById("demoNote").textContent =
+    `The demo takes ${c.max_docs} documents per visitor per day. No sign-up, and files are deleted after ${c.ttl_hours} hours.`;
+  else document.getElementById("demoNote").textContent = "This copy is running on your own machine, so there are no limits.";
+}).catch(() => {});
+</script>
+</body>
+</html>

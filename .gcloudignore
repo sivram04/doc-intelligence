@@ -1,0 +1,7 @@
+# Uploaded to Cloud Build: only what the Dockerfile needs. Never secrets or local data.
+*
+!Dockerfile
+!pyproject.toml
+!docintel/**
+!samples/**
+**/__pycache__

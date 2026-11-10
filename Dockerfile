@@ -4,6 +4,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends tesseract-ocr l
 WORKDIR /app
 COPY pyproject.toml .
 COPY docintel docintel
+COPY samples samples
 RUN pip install --no-cache-dir ".[ocr]"
 RUN useradd --system --uid 10001 docintel && mkdir -p /app/data/uploads /app/data/corrections /app/data/longdocs /app/models && chown -R docintel /app/data /app/models
 USER docintel

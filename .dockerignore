@@ -5,3 +5,6 @@ build
 .git
 .dvc
 mlflow.db
+.env
+.env.*
+!.env.example

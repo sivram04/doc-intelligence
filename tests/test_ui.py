@@ -121,7 +121,7 @@ def page(browser, site):
     pg = ctx.new_page()
     errors = []
     pg.on("pageerror", lambda e: errors.append(str(e)))
-    pg.goto(site["url"])
+    pg.goto(site["url"] + "/app")
     yield pg
     ctx.close()
     assert not errors, errors  # no JavaScript errors in any flow
@@ -172,7 +172,11 @@ def test_report_summary_citation_and_questions(page, site):
     page.wait_for_selector("#rdetail h2:has-text('Summary')", timeout=60000)
     assert page.locator("#rdetail ol.claims li").count() >= 1
     page.locator("#rdetail .cite").first.click()
-    page.wait_for_function("document.getElementById('pageImg').naturalWidth > 0", timeout=15000)
+    for _ in range(150):  # polled from outside the page: the CSP forbids eval-based waits
+        if page.evaluate("document.getElementById('pageImg').naturalWidth") > 0:
+            break
+        page.wait_for_timeout(100)
+    assert page.evaluate("document.getElementById('pageImg').naturalWidth") > 0
     assert "Page" in page.inner_text("#pageQuote")
     page.click("#pageClose")
     page.fill("#askInput", "What final dividend per share does the board recommend?")
@@ -186,7 +190,7 @@ def test_report_summary_citation_and_questions(page, site):
 def test_phone_layout_has_no_sideways_scroll(browser, site):
     ctx = browser.new_context(viewport={"width": 375, "height": 812}, is_mobile=True)
     pg = ctx.new_page()
-    pg.goto(site["url"])
+    pg.goto(site["url"] + "/app")
     for tab in ("#tabBatches", "#tabReports", "#tabReview"):
         pg.click(tab)
         pg.wait_for_timeout(800)
@@ -204,3 +208,37 @@ def test_hostile_file_name_is_shown_as_text(page, site, tmp_path):
     page.wait_for_selector("#detail table.docs tbody tr", timeout=60000)
     assert page.evaluate("window.__xss") is None
     assert "<img" in page.inner_text("#detail table.docs")
+
+
+def test_landing_explains_and_leads_to_the_app(browser, site):
+    for vp in ({"width": 1440, "height": 900}, {"width": 375, "height": 812}):
+        ctx = browser.new_context(viewport=vp)
+        pg = ctx.new_page()
+        errors: list[str] = []
+        pg.on("pageerror", lambda e, errs=errors: errs.append(str(e)))
+        pg.goto(site["url"] + "/")
+        assert "Any invoice in" in pg.inner_text("h1")
+        for section in ("#problem", "#what", "#proof", "#built", "#privacy"):
+            assert pg.locator(section).count() == 1, section
+        assert pg.evaluate("document.documentElement.scrollWidth") <= vp["width"] + 1
+        pg.locator(".s-jnl [data-k='vat']").click()  # a copy's figure lights its source on the original
+        assert pg.locator(".s-orig [data-k='vat'].lit").count() == 1
+        pg.click(".hero a.btn.go")
+        pg.wait_for_url("**/app")
+        pg.wait_for_selector("#tabBatches")
+        assert not errors, errors
+        ctx.close()
+
+
+def test_phone_review_switches_between_page_and_fields(browser, site):
+    ctx = browser.new_context(viewport={"width": 375, "height": 812}, is_mobile=True)
+    pg = ctx.new_page()
+    pg.goto(site["url"] + "/app")
+    pg.click("#tabReview")
+    pg.wait_for_selector(".qitem", timeout=30000)
+    pg.wait_for_selector(".fields input", timeout=10000)
+    assert pg.locator(".canvas").is_hidden() and pg.locator(".fields").is_visible()
+    pg.click("#mvPage")
+    assert pg.locator(".canvas").is_visible() and pg.locator(".fields").is_hidden()
+    assert pg.locator(".keys").is_hidden()  # keyboard shortcuts are not shown on phones
+    ctx.close()

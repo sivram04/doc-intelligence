@@ -14,3 +14,5 @@ data/corrections/
 models/finetuned_v2/
 models/finetuned_v*/
 models/docintel-*/
+.impeccable/review/
+reports/*.log

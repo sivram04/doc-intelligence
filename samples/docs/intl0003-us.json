@@ -1,0 +1,108 @@
+{
+ "doc_id": "intl0003-us",
+ "doc_type": "invoice",
+ "case_id": null,
+ "file": "intl0003-us.pdf",
+ "benchmark": "intl",
+ "locale": "US",
+ "pages": 1,
+ "modality": "native",
+ "fields": {
+  "vendor_name": {
+   "value": "Bass, Rojas and Harrison",
+   "bbox": null
+  },
+  "invoice_number": {
+   "value": "INV-80892",
+   "bbox": null
+  },
+  "invoice_date": {
+   "value": "11/05/2026",
+   "bbox": null
+  },
+  "due_date": {
+   "value": "12/05/2026",
+   "bbox": null
+  },
+  "bill_to": {
+   "value": "Gonzales, Chapman and Tapia",
+   "bbox": null
+  },
+  "subtotal": {
+   "value": 4085.41,
+   "bbox": null
+  },
+  "discount": {
+   "value": null,
+   "bbox": null
+  },
+  "tax": {
+   "value": 245.12,
+   "bbox": null
+  },
+  "shipping": {
+   "value": null,
+   "bbox": null
+  },
+  "total": {
+   "value": 4330.53,
+   "bbox": null
+  },
+  "line_items": {
+   "value": [
+    {
+     "description": "Cloud hosting (monthly)",
+     "quantity": 10.0,
+     "unit_price": 55.8,
+     "amount": 558.0
+    },
+    {
+     "description": "Maintenance visit",
+     "quantity": 25.0,
+     "unit_price": 45.31,
+     "amount": 1132.75
+    },
+    {
+     "description": "Laptop 14in",
+     "quantity": 10.0,
+     "unit_price": 67.67,
+     "amount": 676.7
+    },
+    {
+     "description": "Courier charges",
+     "quantity": 1.0,
+     "unit_price": 1717.96,
+     "amount": 1717.96
+    }
+   ],
+   "bbox": null
+  },
+  "currency": {
+   "value": "USD",
+   "bbox": null
+  },
+  "vendor_tax_id": {
+   "value": null,
+   "bbox": null
+  },
+  "buyer_tax_id": {
+   "value": null,
+   "bbox": null
+  },
+  "purchase_order": {
+   "value": null,
+   "bbox": null
+  },
+  "tax_lines": {
+   "value": [
+    {
+     "tax_type": "Sales tax",
+     "rate": 6.0,
+     "taxable_amount": null,
+     "amount": 245.12
+    }
+   ],
+   "bbox": null
+  }
+ }
+}

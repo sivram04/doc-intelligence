@@ -1,0 +1,156 @@
+{
+ "doc_id": "intl0005-fr",
+ "doc_type": "invoice",
+ "case_id": null,
+ "file": "intl0005-fr.pdf",
+ "benchmark": "intl",
+ "locale": "FR",
+ "pages": 1,
+ "modality": "scan",
+ "fields": {
+  "vendor_name": {
+   "value": "Michel",
+   "bbox": null
+  },
+  "invoice_number": {
+   "value": "RE-6135-752",
+   "bbox": null
+  },
+  "invoice_date": {
+   "value": "05.11.2026",
+   "bbox": null
+  },
+  "due_date": {
+   "value": "20.11.2026",
+   "bbox": null
+  },
+  "bill_to": {
+   "value": "Dupont SA",
+   "bbox": null
+  },
+  "subtotal": {
+   "value": 12205.86,
+   "bbox": null
+  },
+  "discount": {
+   "value": 1220.59,
+   "bbox": null
+  },
+  "tax": {
+   "value": 2202.05,
+   "bbox": null
+  },
+  "shipping": {
+   "value": 25.0,
+   "bbox": null
+  },
+  "total": {
+   "value": 13212.32,
+   "bbox": null
+  },
+  "line_items": {
+   "value": [
+    {
+     "description": "Design review",
+     "quantity": 2.0,
+     "unit_price": 51.18,
+     "amount": 102.36
+    },
+    {
+     "description": "Laptop 14in",
+     "quantity": 2.0,
+     "unit_price": 41.31,
+     "amount": 82.62
+    },
+    {
+     "description": "Printer paper A4 (500 sheets)",
+     "quantity": 5.0,
+     "unit_price": 946.99,
+     "amount": 4734.95
+    },
+    {
+     "description": "Cloud hosting (monthly)",
+     "quantity": 12.0,
+     "unit_price": 194.15,
+     "amount": 2329.8
+    },
+    {
+     "description": "Spare parts kit",
+     "quantity": 12.0,
+     "unit_price": 75.13,
+     "amount": 901.56
+    },
+    {
+     "description": "Marketing campaign setup",
+     "quantity": 2.0,
+     "unit_price": 121.99,
+     "amount": 243.98
+    },
+    {
+     "description": "Monitor 27in",
+     "quantity": 1.0,
+     "unit_price": 70.74,
+     "amount": 70.74
+    },
+    {
+     "description": "Maintenance visit",
+     "quantity": 1.0,
+     "unit_price": 647.43,
+     "amount": 647.43
+    },
+    {
+     "description": "Laptop 14in",
+     "quantity": 1.0,
+     "unit_price": 25.37,
+     "amount": 25.37
+    },
+    {
+     "description": "Courier charges",
+     "quantity": 25.0,
+     "unit_price": 52.31,
+     "amount": 1307.75
+    },
+    {
+     "description": "Spare parts kit",
+     "quantity": 10.0,
+     "unit_price": 56.68,
+     "amount": 566.8
+    },
+    {
+     "description": "Cloud hosting (monthly)",
+     "quantity": 25.0,
+     "unit_price": 47.7,
+     "amount": 1192.5
+    }
+   ],
+   "bbox": null
+  },
+  "currency": {
+   "value": "EUR",
+   "bbox": null
+  },
+  "vendor_tax_id": {
+   "value": "FR52424086612",
+   "bbox": null
+  },
+  "buyer_tax_id": {
+   "value": "FR65897655732",
+   "bbox": null
+  },
+  "purchase_order": {
+   "value": null,
+   "bbox": null
+  },
+  "tax_lines": {
+   "value": [
+    {
+     "tax_type": "VAT",
+     "rate": 20.0,
+     "taxable_amount": null,
+     "amount": 2202.05
+    }
+   ],
+   "bbox": null
+  }
+ }
+}

@@ -16,6 +16,7 @@ def _app(tmp_path, monkeypatch, demo: bool):
     monkeypatch.setenv("CORRECTIONS_LOG", str(tmp_path / "corr.jsonl"))
     monkeypatch.setenv("UPLOAD_DIR", str(tmp_path / "up"))
     monkeypatch.setenv("THRESHOLDS", str(tmp_path / "none.json"))
+    monkeypatch.setenv("LONGDOC_DIR", str(tmp_path / "ld"))
     for k in ("DATABASE_URL", "REDIS_URL", "API_KEYS"):
         monkeypatch.delenv(k, raising=False)
     if demo:

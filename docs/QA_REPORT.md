@@ -112,3 +112,34 @@ python scripts/eval_cord.py --extractor ollama:docintel-qwen1.5b-ft-v5
 python scripts/eval_sroie.py --extractor ollama:docintel-qwen1.5b-ft-v5 --n 15
 python scripts/eval_longdoc.py --model gemini:gemini-3.5-flash-lite
 ```
+
+## v6 retrain on real receipts (2026-11-09): not promoted
+
+v6 = v5 data + 67 real SROIE receipts (Gemini-labelled, kept only when the total matched the human label).
+
+| Test | v5 | v6 |
+|---|---|---|
+| SROIE total (15 real receipts) | 53% | 73% (1 wrong total unflagged) |
+| CORD total / subtotal / tax (50) | 87% / 94% / 85% | 87% / 81% / 65% |
+| CORD wrong totals unflagged | 1 | 0 |
+| Layouts, 120 invoices (field F1) | 0.968 | 0.972 |
+| International, 45 invoices (field F1) | 0.983 | 0.983 |
+
+Default stays v5: v6 lost subtotal and tax on CORD. Two of v6's four SROIE misses are 1–2 cent Malaysian rounding
+(the receipt rounds to 5 sen). The unflagged miss read the pre-tax amount as the total (31.98 vs 33.90).
+
+## Landing page, redesign and security pass (2026-11-09)
+
+New: a landing page at `/` (problem, outputs, measured results, how it is built, privacy); the app moved to `/app`.
+Both use one visual system (carbon-copy forms: white, canary, pink, sky papers; carbon-indigo ink; Archivo and
+Spline Sans Mono). On phones, Review shows one pane at a time (Page / Fields), and keyboard hints are hidden.
+
+| Area | Tests | What they cover |
+|---|---|---|
+| Browser (Playwright, Edge) | 7 (1 skipped on Windows) | Batch upload, CSV/ZIP, journal edit, review fix reaches CSV, report citations and questions, phone layout, XSS file name, **landing page on desktop and phone (sections, no sideways scroll, figure-to-source link, CTA to app)**, **phone Review pane switch** |
+| Security | 4 new | **CSP, nosniff, referrer and permissions headers on pages and API**; **a second visitor gets 404 on every per-document endpoint** (jobs, pages, images, batches, exports, journal, review submit, reports, report pages, report questions); **renamed programs, ZIPs and HTML posing as PDFs/images refused; path-like file names stored as text**; oversized upload refused |
+| Dependencies | pip-audit | No known vulnerabilities in the declared dependencies |
+| Full suite | 81 passed, 1 skipped | ruff clean |
+
+Already in place and re-verified: spreadsheet formula injection is neutralised in every CSV; demo limits cannot be reset by a forged Cloudflare header.
+Not yet tested: the Docker image live, the hosted deployment, and real phones (tests use phone-sized browser windows).

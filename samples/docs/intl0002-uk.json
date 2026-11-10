@@ -1,0 +1,108 @@
+{
+ "doc_id": "intl0002-uk",
+ "doc_type": "invoice",
+ "case_id": null,
+ "file": "intl0002-uk.pdf",
+ "benchmark": "intl",
+ "locale": "UK",
+ "pages": 1,
+ "modality": "scan",
+ "fields": {
+  "vendor_name": {
+   "value": "Perkins Ltd",
+   "bbox": null
+  },
+  "invoice_number": {
+   "value": "INV-821052",
+   "bbox": null
+  },
+  "invoice_date": {
+   "value": "05/11/2026",
+   "bbox": null
+  },
+  "due_date": {
+   "value": "20/11/2026",
+   "bbox": null
+  },
+  "bill_to": {
+   "value": "Marshall, Dodd and Tomlinson",
+   "bbox": null
+  },
+  "subtotal": {
+   "value": 13508.05,
+   "bbox": null
+  },
+  "discount": {
+   "value": 675.4,
+   "bbox": null
+  },
+  "tax": {
+   "value": 2566.53,
+   "bbox": null
+  },
+  "shipping": {
+   "value": null,
+   "bbox": null
+  },
+  "total": {
+   "value": 15399.18,
+   "bbox": null
+  },
+  "line_items": {
+   "value": [
+    {
+     "description": "Network switch 24-port",
+     "quantity": 3.0,
+     "unit_price": 60.63,
+     "amount": 181.89
+    },
+    {
+     "description": "Cloud hosting (monthly)",
+     "quantity": 5.0,
+     "unit_price": 806.4,
+     "amount": 4032.0
+    },
+    {
+     "description": "Implementation support",
+     "quantity": 2.0,
+     "unit_price": 63.38,
+     "amount": 126.76
+    },
+    {
+     "description": "Spare parts kit",
+     "quantity": 12.0,
+     "unit_price": 763.95,
+     "amount": 9167.4
+    }
+   ],
+   "bbox": null
+  },
+  "currency": {
+   "value": "GBP",
+   "bbox": null
+  },
+  "vendor_tax_id": {
+   "value": "GB917669706",
+   "bbox": null
+  },
+  "buyer_tax_id": {
+   "value": null,
+   "bbox": null
+  },
+  "purchase_order": {
+   "value": "PO-80527",
+   "bbox": null
+  },
+  "tax_lines": {
+   "value": [
+    {
+     "tax_type": "VAT",
+     "rate": 20.0,
+     "taxable_amount": null,
+     "amount": 2566.53
+    }
+   ],
+   "bbox": null
+  }
+ }
+}

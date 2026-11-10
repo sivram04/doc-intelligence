@@ -1,0 +1,14 @@
+{
+  "dataset": "SROIE (Voxel51/scanned_receipts)",
+  "extractor": "ollama:docintel-qwen1.5b-ft-v6",
+  "receipts": 15,
+  "failures": 0,
+  "accuracy": {
+    "vendor": 0.733,
+    "date": 0.933,
+    "total": 0.733
+  },
+  "wrong_totals": 4,
+  "wrong_total_unflagged": 1,
+  "p50_seconds": 34.4
+}
