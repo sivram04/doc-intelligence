@@ -143,3 +143,18 @@ Spline Sans Mono). On phones, Review shows one pane at a time (Page / Fields), a
 
 Already in place and re-verified: spreadsheet formula injection is neutralised in every CSV; demo limits cannot be reset by a forged Cloudflare header.
 Not yet tested: the Docker image live, the hosted deployment, and real phones (tests use phone-sized browser windows).
+
+## v7 retrain (2026-11-09): not promoted
+
+v7 = v6 data with printed subtotals filled in (13 receipts) and the receipts whose labels had no subtotal removed
+(24), leaving 48 real receipts.
+
+| Test | v5 (default) | v6 | v7 |
+|---|---|---|---|
+| SROIE total (15 real receipts) | 53% | 73% | 60% (0 wrong totals unflagged) |
+| CORD total / subtotal / tax (50) | 87% / 94% / 85% | 87% / 81% / 65% | 87% / 84% / 65% |
+
+Removing blank-subtotal labels recovered a little subtotal accuracy but not tax, and gave back part of the receipt
+gain. Adding real receipts keeps trading CORD subtotal and tax for SROIE totals, so v5 stays the default. The layout and
+international tests were not run, because v7 already failed the CORD bar. Next step if revisited: a larger, balanced
+mix of receipt sources rather than more SROIE alone.
