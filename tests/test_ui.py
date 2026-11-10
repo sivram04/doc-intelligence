@@ -205,7 +205,8 @@ def test_hostile_file_name_is_shown_as_text(page, site, tmp_path):
     except OSError:
         pytest.skip("this file system does not allow < > in file names")
     page.set_input_files("#fileInput", str(evil))
-    page.wait_for_selector("#detail table.docs tbody tr", timeout=60000)
+    # wait for this upload's own row: rows from earlier batches may already be on the page
+    page.wait_for_selector("#detail table.docs td:has-text('onerror=window.__xss')", timeout=60000)
     assert page.evaluate("window.__xss") is None
     assert "<img" in page.inner_text("#detail table.docs")
 
