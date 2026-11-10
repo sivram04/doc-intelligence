@@ -159,7 +159,7 @@ def parse_date(raw: object, day_first: bool) -> str | None:
              else ["%m/%d/%Y", "%m-%d-%Y", "%d.%m.%Y", "%d/%m/%Y", "%m/%d/%y", "%d/%m/%y"])
     for f in fmts:
         try:
-            return datetime.strptime(s, f).date().isoformat()  # a calendar date, no time zone
+            return datetime.strptime(s, f).date().isoformat()  # noqa: DTZ007 - a calendar date, no time zone
         except ValueError:
             continue
     return None
